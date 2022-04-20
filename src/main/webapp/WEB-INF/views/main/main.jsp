@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>main</title>
-<script src="/resources/js/jquery-3.6.0.js"></script>
-<link rel="stylesheet" href="/resources/css/main.css">
-<link rel="stylesheet" href="/resources/css/common.css">
-<script src="/resources/js/commons.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+<script type="text/javascript" src="/resources/js/commons.js"></script>
 
 </head>
 <body>	
@@ -43,7 +43,7 @@ function makeClone() {
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="./kor/images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
