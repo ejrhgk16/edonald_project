@@ -129,14 +129,14 @@
 						</ul>
 						<!-- //tab -->
 						<div class="brnadCont01">
-							<div class="img"><img src="../kor/images/story/img_brand02_01.jpg" alt="창업주 레이 크록(Ray Kroc) 이미지"></div>
+							<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_01.jpg" alt="창업주 레이 크록(Ray Kroc) 이미지"></div>
 							<h2 class="titDep2">맥도날드 기업철학의 뿌리,<br>창업주 레이 크록(Ray Kroc)의 이야기</h2>
 							<h3 class="txtInfo02">1954년, 맥도날드 형제가 만든 최고의 햄버거를 만나다</h3>
 							<p role="text" class="txtInfo">맥도날드 역사는 1954년 레이 크록(Ray Kroc)이 캘리포니아에 있는 한 햄버거 가게를 방문하면서부터 시작되었습니다.<br>밀크 쉐이크 기계 판매원으로 근무하던 크록은 맥도날드 형제가 운영하던 햄버거 가게에서 주문을 받았고 그들에게 감탄했습니다.<br>메뉴는 간단하고 저렴하지만 햄버거의 품질과 맛은 최고였습니다.</p>
 						</div>
 						<div class="brandCont03">
 							<div class="col2">
-								<img src="../kor/images/story/img_brand02_02.jpg" alt="맥도날드 1호 일리노이주 매장 이미지">
+								<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_02.jpg" alt="맥도날드 1호 일리노이주 매장 이미지">
 								<div>
 									<h3 class="tit">1955년, 일리노이주에 첫 매장 오픈에서 5년 후,<br>200개의 매장 오픈까지</h3>
 									<p>크록은 맥도날드 형제에게 미국 전역에 걸쳐 맥도날드 매장을 개장하는 비전을 제시하며<br>프랜차이즈 사업을 제안했습니다. 1955년에 크록은 일리노이주의 데스플레인스<br>(Des Plaines)에 맥도날드의 첫 정식 프랜차이즈 매장을 오픈했습니다.<br>이 후 큰 성공을 거두어 불과 5년 만에 점포 수는 200개가 되었습니다.</p>
@@ -149,7 +149,7 @@
 									<h3 class="tit">‘세 다리 의자(The Three-Legged Stool)’ 철학</h3>
 									<p>크록은 언제 어디에서나 변함없이 좋은 품질의 음식을 제공하고 완벽한 서비스를<br>동일하게 제공한다는 경영철학을 추구했습니다. 이를 위해 크록은 프랜차이즈 파트너와<br>공급 업체와의 수평적인 관계를 통해 동반 성장이 이루어져야 한다는 신념으로 이들에게<br>‘맥도날드를 위해 일하는 것’이 아닌, ‘맥도날드와 함께 본인들을 위해 일하는 것’이라는<br>비전을 전달했습니다. 크록은 ‘사업은 혼자 하는것이 아니라(by yourself), 본인을 위해<br>하는 것(for yourself)이다’라는 유명한 슬로건을 남긴 바 있습니다.<br>크록의 신념은 프랜차이즈 파트너, 공급업체가 의자의 세 다리와 같은 역할을 해야만<br>맥도날드가 튼튼하게 바로설 수 있다는 의미의 ‘세 다리 의자(The Three-Legged Stool)’<br> 철학을 바탕으로 하고 있습니다. 이것이 맥도날드가 오늘날의 프랜차이즈 표본이 되고,<br>60년 가까이 전세계에서 최대 규모의 프랜차이즈 업체로 성장하게 된 비결입니다.</p>
 								</div>
-								<img src="../kor/images/story/img_brand02_03.jpg" alt="세 다리 의자(The Three-Legged Stool) 이미지">
+								<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_03.jpg" alt="세 다리 의자(The Three-Legged Stool) 이미지">
 							</div>
 						</div>
 						<div class="brandCont04">
@@ -166,22 +166,22 @@
 							<div class="socialList">
 								<ul>
 									<li>
-										<span class="thum"><img src="../kor/images/story/img_brand02_04.jpg" alt=""></span>
+										<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_04.jpg" alt=""></span>
 										<strong>Quality 품질</strong>
 										<p>품질은 최고의 재료, 엄격한 조리 방법 그리고 안전이 검증된 준비 방법, 뛰어난 맛을 지닌<br>제품을 말합니다. 맥도날드의 목표는 고객에게 최적의 가격으로 뛰어난 품질의 제품을<br>제공하는 것입니다. 우리는 맥도날드의 엄격한 품질 기준에 따른 고품질의 음식을 제공합니다.<br>맥도날드는 품질을 최우선시하여 품질 관리 시스템을 구축하였습니다.</p>
 									</li>
 									<li>
-										<span class="thum"><img src="../kor/images/story/img_brand02_05.jpg" alt=""></span>
+										<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_05.jpg" alt=""></span>
 										<strong>Service 서비스</strong>
 										<p>빠르고 친절한 서비스는 맥도날드의 성공에 기반이 되어 왔습니다. 맥도날드는 항상 고객의<br>입장에서 생각합니다. 주문이 들어옴과 동시에 주문한 음식을 만들기 시작해 고객들에게<br>더욱 신선하고 따뜻한 제품을 제공할 수 있도록 하는 주방 시스템인 ‘메이드 포 유(Made<br>For You)’를 통해 더욱 빠르고 편리한 서비스를 제공하고 있습니다. 맥도날드의 서비스는<br>음식을 제공하는데 그치는 것이 아니라 고객의 행복과 즐거움이 되도록 노력하는 것입니다.</p>
 									</li>
 									<li>
-										<span class="thum"><img src="../kor/images/story/img_brand02_06.jpg" alt=""></span>
+										<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_06.jpg" alt=""></span>
 										<strong>Cleanliness 청결</strong>
 										<p>청결은 맥도날드가 1955년 첫 시작부터 지켜온 중요한 철학입니다.<br>매장의 주방, 로비부터 화장실, 주차장에 이르기까지 깨끗하고 상쾌한 공간과 시설을 제공합니다. 매장에서는 매 30분마다 크루들이 손을 씻도록 하고 있으며, <br>시간별로 철저히 위생 상태를 체크하는 것은 물론, 조리시 장갑 등 위생 용품을<br>식재료에 따라 다르게 사용하는 등 세심한 부분까지 철저하고 체계적인 시스템을<br>갖추고 있습니다.</p>
 									</li>
 									<li>
-										<span class="thum"><img src="../kor/images/story/img_brand02_07.jpg" alt=""></span>
+										<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand02_07.jpg" alt=""></span>
 										<strong>Value 가치</strong>
 										<p>맥도날드의 가치는 고품질의 음식, 친절한 직원의 응대, 깨끗한 환경 그리고 빠르고 정확한<br>서비스 등 고객이 맥도날드에서 접하게 되는 모든 경험을 말합니다. 맥도날드는 최상의<br>서비스를 제공하여 고객들이 맥도날드를 방문할 때마다 즐거운 경험을 할 수 있도록<br>고객의 만족이 100%가 될 때까지 지속적으로 노력합니다. 맥도날드는 음식 이상의 가치를 고객에게 전달하고자 합니다.</p>
 									</li>
