@@ -155,26 +155,26 @@ function makeClone() {
 			<div class="swiper swiper-container swiper-container-horizontal">
 			<ul class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3200px, 0px, 0px);">
 				<li class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="8" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=320&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0408_Strawberry">
-					<img src="./upload/main/banner/1641377444960.png" alt="신선한 우유와 딸기의 진한 만남_1등급 원유 사용 베리 스트로베리 맥플러리, 스트로베리콘"></a></li>
+					<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1641377444960.png" alt="신선한 우유와 딸기의 진한 만남_1등급 원유 사용 베리 스트로베리 맥플러리, 스트로베리콘"></a></li>
 				<li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 1600px; visibility: visible;"><a href="/kor/promotion/detail.do?page=1&amp;seq=356&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0310_MyMcD">
-					<img src="./upload/main/banner/1646731135357.png" alt="구매 금액 100원 당 5포인트 적립되는 마이 맥도날드 리워드 출시! 첫 적립 시 맥너겟 무료 (맥너겟으로 교환 가능한 1,500 포인트로 증정드립니다.)"></a></li>
-				<li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=358&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0331_Shanghai%20LE"><img src="./upload/main/banner/1648632144508.png" alt="한국인이 사랑하는 이탈리아의 맛 신제품 아라비아따 리코타 치킨 버거 아라비아따 소스로 매콤하게 리코타 치즈로 부드럽게"></a></li>
+					<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1646731135357.png" alt="구매 금액 100원 당 5포인트 적립되는 마이 맥도날드 리워드 출시! 첫 적립 시 맥너겟 무료 (맥너겟으로 교환 가능한 1,500 포인트로 증정드립니다.)"></a></li>
+				<li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=358&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0331_Shanghai%20LE"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1648632144508.png" alt="한국인이 사랑하는 이탈리아의 맛 신제품 아라비아따 리코타 치킨 버거 아라비아따 소스로 매콤하게 리코타 치즈로 부드럽게"></a></li>
 				<li class="video swiper-slide" data-swiper-slide-index="2" style="width: 1600px; visibility: hidden;">
 			   		<span>
 						<div class="video-box">
 							<video muted="" playsinline="" autoplay="">
-								<source src="./kor/images/main/0117_McD_BB_Double_BigMac_30_1920X540_2.mp4" type="video/mp4">
+								<source src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/0117_McD_BB_Double_BigMac_30_1920X540_2.mp4" type="video/mp4">
 							</video>
 							<button type="button" class="sound off">Sound on</button>
 						</div>
 					</span>
 				</li>
 				 	
-				<li class="swiper-slide" data-swiper-slide-index="3" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=350&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0204_Spicy%20Mcnugget"><img src="./upload/main/banner/1643865649530.jpg" alt="바삭함 속에 기분 좋은 매콤함 신제품 스파이시맥너겟 &amp; 맥너겟"></a></li>
-				<li class="swiper-slide" data-swiper-slide-index="4" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=348&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0113_BAQ1"><img src="./upload/main/banner/1645007676428.png" alt="모두가 해피한 인기 스낵 할인! 신메뉴 소시지 스낵랩 2400원, 필레 오 피쉬 단품 할인 전 3500원 할인 후 2500원, 맥치킨 단품 할인 전 3300원 할인 후 2900, 골든 모짜렐라 치즈스틱 2조각 할인 전 2300원 할인 후 1500원 , 바닐라 쉐이크 미디엄 할인 전 2500원 할인 후 2000원, 오레오 맥플러리 할인 전 2500원 할인 후 1900원, 아이스/핫 아메리카노 라지 할인 전 각 2900원 할인 후 각 2400원"></a></li>
-				<li class="swiper-slide" data-swiper-slide-index="5" style="width: 1600px; visibility: hidden;"><img src="./upload/main/banner/1633532684256.png" alt="점심을 제대로 굿런치 맥런치_맥치킨 모짜렐라, 베이컨 토마토 디럭스, 더블 불고기 버거, 빅맥, 맥스파이시 상하이 버거, 1955 버거, 더블 필레 오 피쉬, 쿼터파운더 치즈"></li>
-				<li class="swiper-slide" data-swiper-slide-index="6" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=306&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=1104_Vanilla"><img src="./upload/main/banner/1635905159418.png" alt="맥카페 바닐라를 만나다! 달콤한 바닐라 시럽이 듬뿍! New 바닐라 라떼"></a></li>
-				<li class="swiper-slide" data-swiper-slide-index="7" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=344&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=1104_StrawberryChiller"><img src="./upload/main/banner/1641377337519.png" alt="딸기의 상큼함을 한 잔에! 딸기 칠러"></a></li>
+				<li class="swiper-slide" data-swiper-slide-index="3" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=350&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0204_Spicy%20Mcnugget"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1643865649530.jpg" alt="바삭함 속에 기분 좋은 매콤함 신제품 스파이시맥너겟 &amp; 맥너겟"></a></li>
+				<li class="swiper-slide" data-swiper-slide-index="4" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=348&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=0113_BAQ1"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1645007676428.png" alt="모두가 해피한 인기 스낵 할인! 신메뉴 소시지 스낵랩 2400원, 필레 오 피쉬 단품 할인 전 3500원 할인 후 2500원, 맥치킨 단품 할인 전 3300원 할인 후 2900, 골든 모짜렐라 치즈스틱 2조각 할인 전 2300원 할인 후 1500원 , 바닐라 쉐이크 미디엄 할인 전 2500원 할인 후 2000원, 오레오 맥플러리 할인 전 2500원 할인 후 1900원, 아이스/핫 아메리카노 라지 할인 전 각 2900원 할인 후 각 2400원"></a></li>
+				<li class="swiper-slide" data-swiper-slide-index="5" style="width: 1600px; visibility: hidden;"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1633532684256.png" alt="점심을 제대로 굿런치 맥런치_맥치킨 모짜렐라, 베이컨 토마토 디럭스, 더블 불고기 버거, 빅맥, 맥스파이시 상하이 버거, 1955 버거, 더블 필레 오 피쉬, 쿼터파운더 치즈"></li>
+				<li class="swiper-slide" data-swiper-slide-index="6" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=306&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=1104_Vanilla"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1635905159418.png" alt="맥카페 바닐라를 만나다! 달콤한 바닐라 시럽이 듬뿍! New 바닐라 라떼"></a></li>
+				<li class="swiper-slide" data-swiper-slide-index="7" style="width: 1600px; visibility: hidden;"><a href="/kor/promotion/detail.do?page=1&amp;seq=344&amp;utm_medium=Corp_site&amp;utm_source=Main_banner&amp;utm_campaign=1104_StrawberryChiller"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1641377337519.png" alt="딸기의 상큼함을 한 잔에! 딸기 칠러"></a></li>
 			</ul>
 			<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 		
@@ -202,7 +202,7 @@ function makeClone() {
 							
 						
 <li><a href="#" onclick="goDetail(this)" data-seq="130" data="130,N,./kor/promotion/detail.do?page=1&amp;seq=356&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0310_MyMcD">
-								<div class="tmb"><img src="../upload/main/card/1646730927037.png" alt="첫 적립 시 맥너겟 무료 마이 맥도날드 리워드 출시!"></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1646730927037.png" alt="첫 적립 시 맥너겟 무료 마이 맥도날드 리워드 출시!"></div>
 								<div class="con">
 									<strong class="tit">첫 적립 시 1500 포인트 제공!<br>
 마이 맥도날드 리워드 출시!</strong>
@@ -210,21 +210,21 @@ function makeClone() {
 							</a></li>
 
 <li><a href="#" onclick="goDetail(this)" data-seq="126" data="126,N,https://www.mcdonalds.co.kr./kor/story/competition/farmToRestaurant.do?utm_medium=Corp_site&amp;utm_source=Main_cardblock_quality&amp;utm_campaign=0127_BB">
-								<div class="tmb"><img src="../upload/main/card/1643187174757.png" alt="맥도날드 품질 이야기"></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1643187174757.png" alt="맥도날드 품질 이야기"></div>
 								<div class="con">
 									<strong class="tit">우리가 엄격해질수록 <br>버거는 더 맛있어지니까!</strong>
 								</div>
 							</a></li>
 
 <li><a href="#" onclick="goDetail(this)" data-seq="131" data="131,N,https://mcdonalds.co.kr./kor/promotion/detail.do?page=1&amp;seq=358">
-								<div class="tmb"><img src="../upload/main/card/1648632255889.png" alt=""></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1648632255889.png" alt=""></div>
 								<div class="con">
 									<strong class="tit">한국인이 사랑하는 이탈리아의 맛<br> NEW 아라비아따 리코타 치킨 버거</strong>
 								</div>
 							</a></li>
 
 <li><a href="#" onclick="goDetail(this)" data-seq="128" data="128,N,./kor/promotion/detail.do?page=1&amp;seq=350&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0204_Spicy%20Mcnugget">
-								<div class="tmb"><img src="../upload/main/card/1643868245207.jpg" alt="바삭함 속에 기분 좋은 매콤함  스파이시 맥너겟 출시! 신제품 스파이시 맥너겟 &amp;맥너겟"></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1643868245207.jpg" alt="바삭함 속에 기분 좋은 매콤함  스파이시 맥너겟 출시! 신제품 스파이시 맥너겟 &amp;맥너겟"></div>
 								<div class="con">
 									<strong class="tit">바삭함 속에 기분 좋은 매콤함 <br>
 스파이시 맥너겟 출시!</strong>
@@ -232,14 +232,14 @@ function makeClone() {
 							</a></li>
 
 <li><a href="#" onclick="goDetail(this)" data-seq="125" data="125,N,./kor/promotion/detail.do?page=1&amp;seq=348&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0113_BAQ1">
-								<div class="tmb"><img src="../upload/main/card/1644570199804.png" alt="해피스낵 소시지 스낵랩 신규 출시"></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1644570199804.png" alt="해피스낵 소시지 스낵랩 신규 출시"></div>
 								<div class="con">
 									<strong class="tit">인기 스낵을 하루 종일 할인된 가격으로!</strong>
 								</div>
 							</a></li>
 
 <li><a href="#" onclick="goDetail(this)" data-seq="121" data="121,N,./kor/promotion/detail.do?page=1&amp;seq=344&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=1104_StrawberryChiller">
-								<div class="tmb"><img src="../upload/main/card/1641377482506.png" alt="딸기의 상큼함을 한 잔에!  딸기 칠러가 돌아왔다!"></div>
+								<div class="tmb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1641377482506.png" alt="딸기의 상큼함을 한 잔에!  딸기 칠러가 돌아왔다!"></div>
 								<div class="con">
 									<strong class="tit">딸기의 상큼함을 한 잔에! <br> 딸기 칠러가 돌아왔다!</strong>
 								</div>
@@ -296,7 +296,7 @@ function makeClone() {
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="./kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>
@@ -414,7 +414,7 @@ function makeClone() {
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="./kor/images/story/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">변화는 나의 자부심</h2>
@@ -432,7 +432,7 @@ function makeClone() {
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="./kor/images/story/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">매일 열정적일 수 있는 나만의 비결</h2>
@@ -450,7 +450,7 @@ function makeClone() {
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="./kor/images/story/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">행복을 배달하는 사람으로.</h2>
@@ -468,7 +468,7 @@ function makeClone() {
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="./kor/images/story/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">맥도날드를 넘어, 나 자신의 변화까지</h2>
