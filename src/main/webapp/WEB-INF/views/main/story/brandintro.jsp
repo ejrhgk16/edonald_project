@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/common.css">
-<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+ <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
 <div class="wrapper ">
@@ -17,7 +18,7 @@
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="../kor/images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 				 	<div class="menu">
 						<ul class="depth1">
@@ -384,7 +385,7 @@
 										<li class="year1988">
 											<strong>1988<span class="hide">년도</span></strong>
 											<div class="yearCont">
-												<div class="thum"><img src="../kor/images/story/img_histoy_kor_1988.png" alt="맥도날드 압구정점 이미지"></div>
+												<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_histoy_kor_1988.png" alt="맥도날드 압구정점 이미지"></div>
 												<div class="txt">
 													<span>맥도날드 1호점, 압구정점 오픈</span>
 												</div>
@@ -541,7 +542,7 @@
 										<li class="yearG1954">
 											<strong class="fGrey">1954<span class="hide">년도</span></strong>
 											<div class="yearCont">
-												<div class="thum"><img src="../kor/images/story/img_histoy_global_1954.png" alt="레이크록과 맥도날드 형제 이미지"></div>
+												<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_histoy_global_1954.png" alt="레이크록과 맥도날드 형제 이미지"></div>
 												<div class="txt">
 													<span>레이 크록, 맥도날드 형제 방문</span>
 												</div>												

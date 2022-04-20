@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="css/common.css">
+	 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
     <div class="wrapper subMain">
@@ -52,10 +54,10 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
 									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
 									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>

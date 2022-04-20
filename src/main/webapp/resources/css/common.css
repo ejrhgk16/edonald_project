@@ -36,7 +36,7 @@
 html{margin:0;height:100%}
 body{height:100%;background:#fff;word-wrap:break-word;word-break:keep-all}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td,button{margin:0;padding:0}
-body,input,select,textarea,button,pre{font-family:SpeedeeK, Malgun Gothic,'맑은고딕', Dotum,'돋움', Arial, sans-serif;color:#808080;font-size: 16px;font-weight: 500;line-height:1.9;}
+body,input,select,textarea,button,pre{font-family:SpeedeeK, Malgun Gothic,'留묒�怨좊뵓', Dotum,'�룍��', Arial, sans-serif;color:#808080;font-size: 16px;font-weight: 500;line-height:1.9;}
 section,nav,article,aside,hgroup,header,footer,iframe{display:block}
 form,fieldset,img,input,button {border:0 none;background:none}
 img {margin:0;padding:0;line-height:0;vertical-align:top;}
@@ -106,7 +106,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .formWrap input[type=checkbox] + label, .formWrap input[type=radio] + label{display:inline-block;padding-right:54px;line-height:34px;color:#292929}
 .formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(../images/common/bg_form.png) no-repeat}
 .formWrap input[type=checkbox]:checked + label:before{background-position:-34px 0}
-.formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label챙혶쨈 챙�쑣ㅓヂΒ맡�짧쩍챙�붋� 챙�쑣ㅓヅ졻�� 챗짼쩍챙큄째 */
+.formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label梨숉샄夷� 梨숋옙�몿�뀚�긾�믩㎕占쎌㎣姨띿콡占쎈텑占� 梨숋옙�몿�뀚�깄議삼옙占� 梨쀬㏈姨띿콡�걚吏� */
 .formWrap.labelR input[type=checkbox] + label:before, .formWrap.labelR input[type=radio] + label:before{right:auto;left:0}
 .formWrap input[type=radio] + label{line-height:40px}
 .formWrap input[type=radio] + label:before{width:40px;height:40px;background-position:0 -44px}
@@ -161,7 +161,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .tabType01 li{display:inline-block;margin:0 40px;vertical-align:top}
 .tabType01 li a{display:block;height:40px;font-size:20px;line-height:39px}
 .tabType01 li a[aria-selected="true"]{color:#db0007;font-weight:600;border-bottom:1px solid #db0007}
-.tabCont, .subtabCont{display:none;position:relative}/* .tabMn 챘�슿늘ヂ뜯궗 챠�뮻� 챘혥�씳ヂ멤�� class */
+.tabCont, .subtabCont{display:none;position:relative}/* .tabMn 梨섓옙�듌�뒛�긾�쑐沅� 梨좑옙裕삼옙 梨섑삦占쎌뵵�긾硫ㅿ옙占� class */
 
 /* table */
 .tableType01{border-top:2px solid #292929;border-bottom:1px solid #292929}
@@ -227,10 +227,10 @@ ul.notiTxt:before{display:none}
 .popLayer .layCont .scroll:after{content:'';display:block;height:55px}
 .popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(../images/common/btn_close.png) 0 0 no-repeat}
 
-.popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 챙�쑣겷р�붋� 챘째�씳ぢ뮤Γ�짧쩍챙흹쩌챘징흹 챘짼�왗�힋쩌챙혶쨈 챙흹�왗�쨔�쑦��▦쑦ヅ졻�� type */
+.popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 梨숋옙�몿寃롤�占쎈텑占� 梨섏㎏占쎌뵵�걿裕ㅞ볩옙吏㏃찉梨숉씥姨뚯콠吏뺥씥 梨섏㏈占쎌솙占쏀엹姨뚯콡�샄夷� 梨숉씥占쎌솙占쎌쮷占쎌뫂占쏙옙�뼣�뫂�깄議삼옙占� type */
 .popLayer.layerType02 .btnArea{margin-top:0;padding-top:40px}
 
-.popLayer.layerType03 .layCont{border:0}/* 챠흸혶챙�붴�� 챙�뮻겷モ�뮤㉲р�붋� 챙�붋�챘째짹 챙�붴�졗ヅ졻�� type */
+.popLayer.layerType03 .layCont{border:0}/* 梨좏씤�샄梨숋옙遺댐옙占� 梨숋옙裕산껭�깴占쎈�ㅳ돯�占쎈텑占� 梨숋옙遺뗰옙梨섏㎏吏� 梨숋옙遺댐옙議쀣깄議삼옙占� type */
 .popLayer.layerType03 .layCont .scroll{padding:0}
 .popLayer.layerType03 .layCont .scroll:after{display:none}
 .popLayer.layerType03 .layCont .scroll .contHead .img img{width:100%;border-radius:10px 10px 0 0}
@@ -261,9 +261,9 @@ ul.notiTxt:before{display:none}
 .header .hLogo a{display:block}
 .header .hMenu{height:100%;padding:52px 0}
 .header .hMenu .menu{position:absolute;top:0;left:0;right:0;text-align:center;background:#fff}
-/* 2021.05.31 챙�녚쑦�혻�� */
+/* 2021.05.31 梨숋옙�뀣�뫂占쏀샍占쏙옙 */
 .header .hMenu .menu .depth1{display:inline-block;padding-left:0;text-align:left;vertical-align:top;margin-left:-136px;}
-/* 2021.05.31 챙�녚쑦�혻�� 챘혖혶 */
+/* 2021.05.31 梨숋옙�뀣�뫂占쏀샍占쏙옙 梨섑삏�샄 */
 .header .hMenu .menu .depth1 a{display:inline-block;vertical-align:top}
 .header .hMenu .menu .depth1>li{float:left}
 .header .hMenu .menu .depth1>li .dth1{position:relative;margin-right:85px;padding:0 10px;color:#292929;font-size:20px;line-height:140px;font-weight:600}
@@ -277,9 +277,9 @@ ul.notiTxt:before{display:none}
 .header .hMenu .menu .depth2>li .dth2:hover,
 .header .hMenu .menu .depth2>li .dth2:focus{color:#000;border-bottom:1px solid #000}
 .header .hMenu .util{position:relative;float:right;margin:0 0 0 50px}
-/*2021.5.31 챙쨋�씳ぢ겸궗*/
+/*2021.5.31 梨숈쮮占쎌뵵�걿寃멸텢*/
 .header .hMenu .util .renter{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;border-radius:48px;background:#db0007;}
-/*2021.5.31 챙쨋�씳ぢ겸궗 챘혖혶*/
+/*2021.5.31 梨숈쮮占쎌뵵�걿寃멸텢 梨섑삏�샄*/
 .header .hMenu .util .lang{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#264a36;border-radius:48px}
 .header .hMenu .util .recruit{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#d87e00;border-radius:48px}
 .header .hMenu .util .srch{margin-left:26px;width:36px;height:36px;text-indent:-9999px;background:url(../images/common/ico_search.png) 0 0 no-repeat}
@@ -296,7 +296,7 @@ ul.notiTxt:before{display:none}
 .header.fixed .hMenu .menu .depth1>li .dth1.current:before{bottom:25px}
 .header.fixed.open .hMenu .menu .depth1:before{top:80px}
 
-.header .dummy{height:100%;overflow:hidden}/* 챗째�궗챙혶쨈챘�쑩� */
+.header .dummy{height:100%;overflow:hidden}/* 梨쀬㎏占쎄텢梨숉샄夷덉콠占쎌뫆占� */
 .header.fixed .dummy img{margin-top:-140px}
 
 .topSearch{display:inline-block}
@@ -362,23 +362,23 @@ ul.notiTxt:before{display:none}
 .mainEvent.basicSwiper{position:relative;max-width:1900px;margin:0 auto}
 .mainEvent .swiper li{position:relative;float:left;height:540px;overflow:hidden;text-align:center}
 .mainEvent .swiper li a{display:inline-block;margin:0 -100%;vertical-align:top}
-/* 2021.1.4 챙�봔뮨�혻�샖ぢ력셌р�왖� */
+/* 2021.1.4 梨숋옙遊붾�⑨옙�샍占쎌깣�걿�젰�뀒�占쎌솘占� */
 .mainEvent .swiper li span{display:inline-block;margin:0 -100%;vertical-align:top}
-/* 2021.1.4 챙�봔뮨�혻�샖ぢ력셌р�왖� 챘혖혶 */
+/* 2021.1.4 梨숋옙遊붾�⑨옙�샍占쎌깣�걿�젰�뀒�占쎌솘占� 梨섑삏�샄 */
 .mainEvent .swiper li img{height:100%}
-/* 2020.6.4 KV 챘쨔�왗モ�앪�씳��쑣� 챙쨋�씳ぢ겸궗 */
+/* 2020.6.4 KV 梨섏쮷占쎌솙�깴占쎌빁占쎌뵵占쏙옙�몿占� 梨숈쮮占쎌뵵�걿寃멸텢 */
 .mainEvent .swiper li video{width:100%;}
 .mainEvent .swiper li.video .video-box{width:1920px;overflow:hidden;margin:0 auto;}
 .mainEvent .swiper li.video .sound{position:absolute;left:30px;top:30px;width:30px;height:30px;background-image:url(../images/main/icon_sound_on.png);background-repeat:no-repeat;background-size:100% auto;font-size:0;}
 .mainEvent .swiper li.video .sound.off{background-image:url(../images/main/icon_sound_off.png);}
-/* 2020.6.4 KV 챘쨔�왗モ�앪�씳��쑣� 챙쨋�씳ぢ겸궗 챘혖혶 */
+/* 2020.6.4 KV 梨섏쮷占쎌솙�깴占쎌빁占쎌뵵占쏙옙�몿占� 梨숈쮮占쎌뵵�걿寃멸텢 梨섑삏�샄 */
 .mainEvent .indicator{position:absolute;left:50%;bottom:27px;width:366px;margin-left:-183px;padding-left:66px}
 .mainEvent .indicator .timer{display:block;position:relative;width:300px;height:6px;overflow:hidden;text-indent:-9999px;vertical-align:top;border-radius:6px;background:#fff}
 .mainEvent .indicator .timer .bar{position:absolute;top:0;left:0;height:100%;border-radius:6px;background:#ffbc0d}
-/* 2020.6.4 css 챙�녚쑦�혻�� */
+/* 2020.6.4 css 梨숋옙�뀣�뫂占쏀샍占쏙옙 */
 .mainEvent .indicator .play{position:absolute;top:50%;left:0;width:36px;height:36px;margin-top:-18px;overflow:hidden;text-indent:-9999px;background:url(../images/main/bg_swiper_new.png) -92px 0 no-repeat}
 .mainEvent .indicator .play.pause{background-position:-92px -36px}
-/* 2020.6.4 css 챙�녚쑦�혻�� 챘혖혶 */
+/* 2020.6.4 css 梨숋옙�뀣�뫂占쏀샍占쏙옙 梨섑삏�샄 */
 .mainEvent .ctrl{position:absolute;top:50%;width:90px;height:90px;margin-top:-45px;overflow:hidden;text-indent:-9999px;background:url(../images/main/bg_swiper_new.png) 0 0 no-repeat;z-index:1}
 .mainEvent .ctrl.prev{left:0}
 .mainEvent .ctrl.next{right:0;background-position:0 -90px}
@@ -686,7 +686,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .applyCont02 .swiperType02 .prmTxt dt{font-size:40px;font-weight:600;line-height:1;color:#ffbc0d}
 .applyCont02 .swiperType02 .prmTxt .sTit{margin:30px 0 20px;font-size:24px;line-height:1;color:#292929}
 
-/* 챙짠�궗챘혧�왗р�붋먄р�왙� 챙째쩐챙�™�왗ヂ냈늘ぢ맞� layerpop */
+/* 梨숈쭬占쎄텢梨섑삨占쎌솙�占쎈텑癒꾊�占쎌솛占� 梨숈㎏姨먯콡占썩꽓占쎌솙�긾�깉�뒛�걿留욑옙 layerpop */
 .storeSch .schTop {color:#292929}
 .storeSch .schTop .schArea{margin-top:30px}
 .storeSch .schTop .schArea > div:after{display:block;content:'';clear:both}
@@ -720,7 +720,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .storeSch .schCon .noResult{margin-top:20px;padding:35px 0 30px;font-size:20px;border-top:2px solid #000;border-bottom:1px solid #000}
 .storeSch .schCon .noResult:before{width:195px;height:195px;background:url(../images/common/bg_noresult_s.png) 0 0 no-repeat}
 
-/* 챙혶쨈챘짼짚챠힋쨍챘짠짚챙탑짜 */
+/* 梨숉샄夷덉콠吏쇱쭦梨좏엹夷띿콠吏좎쭦梨숉깙吏� */
 .eventStore .topInfo {position:relative;width:780px;height:156px;margin:0 auto;text-align:center;color:#292929;border-radius:156px;background:#ffd566}
 .eventStore .topInfo:before {content:'';display:block;position:absolute;top:19px;left:-33px;width:149px;height:145px;background:url(../images/store/bg_storeList.png) 0 0 no-repeat}
 .eventStore .topInfo h2 {padding-top:40px;font-size:30px;font-weight:600;line-height:1.6}
@@ -730,7 +730,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .eventStore .storeList li {float:left;width:25%;padding:50px 0 50px 40px;border-bottom:1px solid #d1d1d1;background:url(../images/store/bg_ico_storeList.png) 0 50% no-repeat;font-size:20px;color:#292929}
 .eventStore .storeList li.noTi {height:139px;background:none}
 
-/* 챙혶쨈챘짼짚챠힋쨍챘짠짚챙탑짜2 */
+/* 梨숉샄夷덉콠吏쇱쭦梨좏엹夷띿콠吏좎쭦梨숉깙吏�2 */
 .eventStore2 .topInfo {position:relative;width:780px;height:156px;margin:0 auto;text-align:center;color:#292929;border-radius:156px;background:#febaa5;}
 .eventStore2 .topInfo:before {content:'';display:block;position:absolute;top:19px;left:-33px;width:149px;height:145px;background:url(../images/store/bg_storeList2.png) 0 0 no-repeat}
 .eventStore2 .topInfo h2 {padding-top:40px;font-size:30px;font-weight:600;line-height:1.6}
@@ -796,11 +796,11 @@ p.nutrDesc{padding-top:35px;color:#292929}
 
 
 /* story */
-.visualArea.bgStory{color:#fff;background:url(/uploadFolder/images/story/bg_visual_storymain.jpg) 50% 50% no-repeat}
-.visualArea.bgStory01{color:#fff;background:url(/uploadFolder/images/story/bg_visual_story01.jpg) 50% 50% no-repeat}
-.visualArea.bgStory02{color:#fff;background:url(/uploadFolder/images/story/bg_visual_story02.jpg) 50% 50% no-repeat}
-.visualArea.bgStory03{color:#fff;background:url(/uploadFolder/images/story/bg_visual_story03.jpg) 50% 50% no-repeat}
-.visualArea.bgStory04{color:#fff;background:url(/uploadFolder/images/story/bg_visual_story04.jpg) 50% 50% no-repeat}
+.visualArea.bgStory{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_visual_storymain.jpg) 50% 50% no-repeat}
+.visualArea.bgStory01{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_visual_story01.jpg) 50% 50% no-repeat}
+.visualArea.bgStory02{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_visual_story02.jpg) 50% 50% no-repeat}
+.visualArea.bgStory03{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_visual_story03.jpg) 50% 50% no-repeat}
+.visualArea.bgStory04{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_visual_story04.jpg) 50% 50% no-repeat}
 
 .subMain .visualArea.bgStory .titDep1{color:#292929}
 .submainCon {margin-top:100px}
@@ -904,7 +904,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .globalMc .tabType01 li{margin:0 30px}
 .globalMc .assignList{text-align:center}
 .globalMc .assignList li{display:inline-block;position:relative;width:337px;padding-top:270px;text-align:center;vertical-align:top}
-.globalMc .assignList li:before{display:block;content:'';position:absolute;top:0;left:50%;width:247px;height:247px;margin-left:-124px;background:url(../images/story/bg_globalmc.png) 0 0 no-repeat}
+.globalMc .assignList li:before{display:block;content:'';position:absolute;top:0;left:50%;width:247px;height:247px;margin-left:-124px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_globalmc.png) 0 0 no-repeat}
 .globalMc .assignList li + li{margin-left:-4px}
 .globalMc .assignList.item01{margin:0 -30px}
 .globalMc .assignList.item01 li{width:307px}
@@ -926,7 +926,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .globalMc .pointTxt{width:970px;margin:70px auto 0;background:#da0000;border-radius:30px;text-align:center;color:#fff;line-height:60px}
 .globalMc .btnArea{padding-top:100px;border-top:1px solid #d1d1d1}
 
-.social{margin:0 0 340px -50px} /* 챠�▦쑦モ�뮤� 챗째�왗ぢ꼲� 챠�꽓�▣�혶쨍 챠�™�왗�큄�� */
+.social{margin:0 0 340px -50px} /* 梨좑옙�뼣�뫂�깴占쎈�ㅿ옙 梨쀬㎏占쎌솙�걿瑗뀐옙 梨좑옙苑볩옙�뼠占쏀샄夷� 梨좑옙�꽓占쎌솙占쏀걚占쏙옙 */
 .social:after{content:'';display:block;clear:both}
 .social>div{float:left;width:559px;margin-left:50px}
 .social>div a{display:block}
@@ -953,7 +953,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .col2:after{display:block;content:'';clear:both}
 .col2 > *{float:left;width:50%}
  
-/*2022.1.12 챙�뮴�*/
+/*2022.1.12 梨숋옙裕댐옙*/
 .contArea[data-background="food01"]{background:url(../images/story/bg_food_01_01.jpg) no-repeat center top;}
 .contArea[data-background="food02"]{background:url(../images/story/bg_food_02_01.jpg) no-repeat center top;}
 .contArea[data-background="food03"]{background:url(../images/story/bg_food_03.jpg) no-repeat center top;}
@@ -1023,7 +1023,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .competitive .division .yellowBox{background:#ffbc0d;padding:20px;border-radius:15px;font-size:14px;color:#292929;text-align:center}
 .competitive .division .socialList{margin:0 -40px;}
 .competitive .bottomArea #tab01 .txtInfo{text-align:left;}
-/*2022.1.12 챘혖혶*/
+/*2022.1.12 梨섑삏�샄*/
 
 .faqResult .sorting{padding:80px 0 60px;text-align:center;height:180px;}
 .faqResult .faqToggle{border-top:2px solid #292929;border-bottom:2px solid #292929}
@@ -1050,12 +1050,12 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .crewList li .crewThumb{display:block;position:relative}
 .crewList li .crewThumb:hover:before{display:block;content:'';position:absolute;top:0;left:50%;width:248px;height:248px;margin:-1px 0 0 -124px;border-radius:125px;background:#ffbc0d;opacity:0.9}
 .crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(../images/story/ico_crew_over.png) 0 0 no-repeat}
-/* 챠혖짭챘짙짢챙혶쨈챙�◈셌ぢ맞� layerpop */
+/* 梨좏삏吏�梨섏쭥吏�梨숉샄夷덉콡占썩뿀�뀒�걿留욑옙 layerpop */
 .crewDetail .crewCont .tit{font-size:20px;font-weight:600;color:#292929}
 .crewDetail .crewCont .txt{margin-top:25px}
 .crewDetail .crewCont .crewInfo{margin-top:30px;padding-top:35px;border-top:1px solid #d1d1d1;color:#292929}
 
-/* 챙혶쨍챙탑짭챙짹�왗�큄짤 */
+/* 梨숉샄夷띿콡�깙吏�梨숈㏏占쎌솙占쏀걚吏� */
 .inner.type02 .tabType01 {width:1168px;margin:0 auto 60px}
 .careerIntro {padding:80px 0;background:#f8f8f8}
 .careerIntro p {position:relative;width:1168px;margin:0 auto;padding-left:290px;font-size:20px;color:#292929}

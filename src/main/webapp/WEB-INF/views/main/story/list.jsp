@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="../css/common.css">
+ <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
     <div class="wrapper ">
@@ -125,15 +127,15 @@
 						<h2 class="titDep2">McDonald's Sustainability</h2>
 						<div class="social">
 							<div>
-								<a href="../kor/story/society/scaleForGood.do">
-									<span class="thum"><img src="../kor/images/story/img_social01.jpg" alt=""></span>
+								<a href="/story/society/scaleForGood.do">
+									<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_social01.jpg" alt=""></span>
 									<strong>스케일 포 굿</strong>
 									<p>스케일 포 굿 캠페인은 맥도날드가 책임있는 글로벌 기업으로<br>전세계 사회, 환경문제에 기여하고자 시작한 캠페인입니다.</p>
 								</a>
 							</div>
 							<div>
-								<a href="../kor/story/society/kidsSoccer.do">
-									<span class="thum"><img src="../kor/images/story/img_social02.jpg" alt=""></span>
+								<a href="/story/society/kidsSoccer.do">
+									<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_social02.jpg" alt=""></span>
 									<strong>지역사회 공헌</strong>
 									<p>맥도날드가 속한 지역사회에서 받은 사랑을 되돌려주고,<br>지역사회의 발전과 행복에 기여하고자 노력하고 있습니다.</p>
 								</a>
@@ -169,7 +171,7 @@
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="../kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>

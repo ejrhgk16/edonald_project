@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+ <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
     <div class="wrapper ">
@@ -162,7 +163,7 @@
 					<div class="inner">
 						<div class="scaleforgood">
 							<h2 class="titDep2">‘스케일 포 굿(Scale for Good) 캠페인’은 무엇인가요?</h2>
-							<div class="img"><img src="../kor/images/story/img_scalefogood.jpg" alt="스케일 포 굿(Scale for Good) 캠페인"></div>
+							<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_scalefogood.jpg" alt="스케일 포 굿(Scale for Good) 캠페인"></div>
 							<h3 class="titDep4">스케일 포 굿 캠페인은 맥도날드가 책임 있는 글로벌 기업으로<br>전 세계적으로 발생하고 있는 사회, 환경적 문제해결에 기여하고자 시작한 글로벌 캠페인입니다.</h3>
 							<p role="text" class="txtInfo">맥도날드는 전 세계 120개 마켓에서 37,000여개 레스토랑을 운영하며 매일 6,900만명의 고객이 찾는<br>책임 있는 글로벌 기업입니다. 맥도날드의 작은 변화는 전 세계에 아주 큰 변화를 만들어 낼 수 있습니다.</p>
 						</div>
@@ -249,7 +250,7 @@
 							</div>
 							<!-- //사람에 대한 투자 -->
 							<div class="btnArea">
-								<a href="../kor/story/society/list.do" role="button" class="btnList"><span>목록보기</span></a>
+								<a href="/story/society/list.do" role="button" class="btnList"><span>목록보기</span></a>
 							</div>
 						</div>
 					</div>

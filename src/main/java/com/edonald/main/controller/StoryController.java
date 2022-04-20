@@ -21,9 +21,26 @@ public class StoryController {
 		return "main/story/brandintro";
 	}
 	
-		@RequestMapping(value = "/story/intro/brandhistory.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/story/intro/brandhistory.do", method = RequestMethod.GET)
 	public String brandhistory() {
 		return "main/story/brandhistory";
+	}
+	
+	
+	@RequestMapping(value = "/story/society/list.do", method = RequestMethod.GET)
+	public String societyList() {
+		return "main/story/list";
+	}
+	
+	
+	@RequestMapping(value = "/story/society/scaleForGood.do", method = RequestMethod.GET)
+	public String scaleForGood() {
+		return "main/story/scaleForGood";
+	}
+	
+	@RequestMapping(value = "/story/society/kidsSoccer.do", method = RequestMethod.GET)
+	public String kidsSoccer() {
+		return "main/story/kidsSoccer";
 	}
 }
 
