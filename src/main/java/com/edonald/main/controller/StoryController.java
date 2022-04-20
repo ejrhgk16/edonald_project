@@ -42,6 +42,16 @@ public class StoryController {
 	public String kidsSoccer() {
 		return "main/story/kidsSoccer";
 	}
+	
+	@RequestMapping(value = "/story/society/happyBurger.do", method = RequestMethod.GET)
+	public String happyBurger() {
+		return "main/story/happyBurger";
+	}
+	
+	@RequestMapping(value = "story/society/safetyGuard.do", method = RequestMethod.GET)
+	public String safetyGuard() {
+		return "main/story/safetyGuard";
+	}
 }
 
 

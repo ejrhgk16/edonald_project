@@ -24,6 +24,7 @@
 
 	<context:component-scan base-package="com.edonald.ed" />
 	<context:component-scan base-package="com.edonald.main"/>
+	<context:component-scan base-package="com.edonald.deliver"/>
 	
 	
 	
