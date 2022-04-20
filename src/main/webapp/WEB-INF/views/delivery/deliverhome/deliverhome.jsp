@@ -4,11 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./css/main.css">
-<script type="text/javascript" src="./js/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="./js/slide.js"></script>
-<script type="text/javascript" src="./js/home.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/slide.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Insert title here</title>
@@ -40,7 +39,7 @@
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
-							<li class="list-item"><img src="./img/icon_profile_gray.png"
+							<li class="list-item"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 								alt="Profile" width="20" class="profile-grey-avator"></li>
 
 							<li class="list-item">
@@ -57,7 +56,7 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
-							src="./img/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
 
 						</a>
 					</div>
@@ -210,13 +209,13 @@
 
 						<a class="slide-target slide-item action-ordernow cycle-slide"
 							onclick="onPromoClick({ 'id':'10777','name':'모닝(제네릭)2','creative':'banner' + '1','position':'homepage'})"
-							style="background-image: url(./img/landing_67762_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 97; display: none; opacity: 1;">
+							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67739_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 97; display: none; opacity: 1;">
 						</a><a class="slide-target slide-item action-ordernow cycle-slide"
 							onclick="onPromoClick({ 'id':'10865','name':'소시지스낵랩(BF)','creative':'banner' + '2','position':'homepage'})"
-							style="background-image: url(./img/landing_67739_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 100; display: none; opacity: 1;">
+							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67741_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 100; display: none; opacity: 1;">
 						</a><a class="slide-target slide-item action-ordernow cycle-slide"
 							onclick="onPromoClick({ 'id':'10786','name':'맥카페','creative':'banner' + '3','position':'homepage'})"
-							style="background-image: url(./img/landing_67741_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 99; display: none; opacity: 1;">
+							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67743_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 99; display: none; opacity: 1;">
 						</a>
 					</div>
 					<!-- Begin Normal Login Panel -->
@@ -355,7 +354,7 @@
 					<h1 class="section-title">맥딜리버리 이용 방법!</h1>
 					<p>
 						<a href="#signin" data-target="#signin" data-toggle="modal"> <img
-							class="img-block" alt="" src="./img/how_mcdelivery_works_ko.png">
+							class="img-block" alt="" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_ko.png">
 						</a>
 					</p>
 				</section>
@@ -464,7 +463,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<img class="logo" src="./img/mcdelivery_logo_ko.jpg" alt="">
+						<img class="logo" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="">
 
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">
