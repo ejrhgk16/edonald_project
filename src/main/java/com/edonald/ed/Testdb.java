@@ -19,6 +19,7 @@ public class Testdb {
 	public void insert() {
 		System.out.println("abc");
 		TestDto dto = new TestDto();
+		dto.setId(1);
 		dto.setId(222);
 		dto.setName("testest2222");
 		mapper.insertTest(dto);
