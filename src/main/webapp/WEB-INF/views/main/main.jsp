@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>main</title>
-<link rel="stylesheet" href="./kor/css/common.css">
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="kor/js/commons.js"></script>
+<script src="/resources/js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/common.css">
+<script src="/resources/js/commons.js"></script>
 
 </head>
 <body>	
