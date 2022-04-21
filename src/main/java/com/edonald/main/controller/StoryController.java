@@ -67,6 +67,11 @@ public class StoryController {
 	public String faq() {
 		return "main/story/faq";
 	}
+	
+	@RequestMapping(value = "story/people/crew.do", method = RequestMethod.GET)
+	public String crew() {
+		return "main/story/crew";
+	}
 }
 
 

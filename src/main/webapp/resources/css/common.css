@@ -104,7 +104,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .formWrap input[type=checkbox], .formWrap input[type=radio]{/*display:none*/position:absolute;right:15px;top:15px}
 .formWrap input[type=checkbox]:focus+label, .formWrap input[type=radio]:focus+label{width:100%;height:42px;border:1px dotted #000}
 .formWrap input[type=checkbox] + label, .formWrap input[type=radio] + label{display:inline-block;padding-right:54px;line-height:34px;color:#292929}
-.formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main//bg_form.png) no-repeat}
+.formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_form.png) no-repeat}
 .formWrap input[type=checkbox]:checked + label:before{background-position:-34px 0}
 .formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label筌��닀�깂鸚뤄옙 筌��닂�삕占쎈た占쎈�싷옙湲억옙誘⒲럶�뜝�럩�렍冶⑤씮肄▼뜝�럥�뀘�뜝占� 筌��닂�삕占쎈た占쎈�싷옙源꾥�곗궪�삕�뜝占� 筌��с룉冶⑤씮肄∽옙嫄싷쭪占� */
 .formWrap.labelR input[type=checkbox] + label:before, .formWrap.labelR input[type=radio] + label:before{right:auto;left:0}
@@ -225,7 +225,7 @@ ul.notiTxt:before{display:none}
 .popLayer .layCont{overflow:hidden;border-radius:10px;border:1px solid #ffbc0d;background:#fff}
 .popLayer .layCont .scroll{overflow-y:auto;padding:40px 50px 0}
 .popLayer .layCont .scroll:after{content:'';display:block;height:55px}
-.popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(../images/common/btn_close.png) 0 0 no-repeat}
+.popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_close.png) 0 0 no-repeat}
 
 .popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 筌��닂�삕占쎈た野껊·占썲뜝�럥�뀘�뜝占� 筌��꼷�럮�뜝�럩逾듸옙嫄욤짆�뀧蹂⑹삕筌욁룂李됵㎖�닀�뵦冶⑤슣肄좑쭪類μ뵦 筌��꼷�룉�뜝�럩�넍�뜝���뿹冶⑤슣肄∽옙�깂鸚뤄옙 筌��닀�뵦�뜝�럩�넍�뜝�럩怡룟뜝�럩維귛뜝�룞�삕占쎈샬占쎈쳜占쎄퉬鈺곗궪�삕�뜝占� type */
 .popLayer.layerType02 .btnArea{margin-top:0;padding-top:40px}
