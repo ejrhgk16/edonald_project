@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 	
 	@RequestMapping(value = "/main/main.do", method = RequestMethod.GET )
-	public String mainmain() {
+	public String mainMain() {
 		return "main/main";
+	}
+	
+	@RequestMapping(value = "/main/menu/burgermenu.do", method = RequestMethod.GET)
+	public String mainMenuBurgermenu() {
+		return "main/menu/burgermenu";
 	}
 }

@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>더블 빅맥</title>
-<link rel="stylesheet" href="kor/css/common.css">
-<link rel="shortcut icon" type="image/x-icon" href="kor/images/favicon.ico">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+<link rel="shortcut icon" type="image/x-icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/favicon.ico">
 </head>
 <body>
 <div class="wrapper ">

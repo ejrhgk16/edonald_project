@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>버거</title>
-<link rel="stylesheet" href="kor/css/common.css">
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="kor/js/commons.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
 <div class="wrapper ">
 		<header class="header" style="margin-top: 0px;"><!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
 			<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="kor/images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -111,7 +111,7 @@
 							<ul class="menuList" id="menuList">
 								<li>
 									<a href="javascript:goDetail(452)" data-seq="452">
-										<div class="thum"><img src="upload/product/pcList/1648631631748.png" alt="신제품 아라비아따 리코타 치킨 버거"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1648631631748.png" alt="신제품 아라비아따 리코타 치킨 버거"></div>
 										<div class="name">
 											<strong class="ko">아라비아따 리코타 치킨 버거</strong>
 											<em class="en">Arrabbiata Ricotta Chicken Burger</em>
@@ -121,7 +121,7 @@
 
 								<li>
 									<a href="javascript:goDetail(442)" data-seq="442">
-										<div class="thum"><img src="upload/product/pcList/1644571668912.png" alt="신제품 더블 빅맥"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1644571668912.png" alt="신제품 더블 빅맥"></div>
 										<div class="name">
 											<strong class="ko">더블 빅맥</strong>
 											<em class="en">Double Big Mac</em>
@@ -131,7 +131,7 @@
 
 								<li>
 									<a href="javascript:goDetail(387)" data-seq="387">
-										<div class="thum"><img src="upload/product/pcList/1621834836862.png" alt="신제품 트리플 치즈버거"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1621834836862.png" alt="신제품 트리플 치즈버거"></div>
 										<div class="name">
 											<strong class="ko">트리플 치즈버거</strong>
 											<em class="en">Triple Cheeseburger</em>
@@ -141,7 +141,7 @@
 
 								<li>
 									<a href="javascript:goDetail(15)" data-seq="15">
-										<div class="thum"><img src="upload/product/pcList/1583727841393.png" alt="빅맥®"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1583727841393.png" alt="빅맥®"></div>
 										<div class="name">
 											<strong class="ko">빅맥<sub class="reg">®</sub></strong>
 											<em class="en">Big Mac<sub class="reg">®</sub></em>
@@ -151,7 +151,7 @@
 
 								<li>
 									<a href="javascript:goDetail(19)" data-seq="19">
-										<div class="thum"><img src="upload/product/pcList/1583728339451.png" alt="맥스파이시® 상하이 버거"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1583728339451.png" alt="맥스파이시® 상하이 버거"></div>
 										<div class="name">
 											<strong class="ko">맥스파이시<sub class="reg">®</sub> 상하이 버거</strong>
 											<em class="en">McSpicy<sub class="reg">®</sub> Shanghai Burger</em>
@@ -161,7 +161,7 @@
 
 								<li>
 									<a href="javascript:goDetail(1)" data-seq="1">
-										<div class="thum"><img src="upload/product/pcList/1599119588089.png" alt="1955 버거™"></div>
+										<div class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/1599119588089.png" alt="1955 버거™"></div>
 										<div class="name">
 											<strong class="ko">1955<sub>®</sub> 버거</strong>
 											<em class="en">1955<sub>®</sub> Burger</em>
@@ -269,7 +269,7 @@ function more(){
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>

@@ -10,7 +10,7 @@ $(document).ready(function() {
 	//quickMenu	
 	var currentPosition = parseInt($(".aside").css("width")) + 200;
 	$(window).scroll(function() {
-		var position = $(window).scrollTop();
+		var position = $(document).scrollTop() + $(window).innerHeight();
 		$(".aside").stop().animate({ "top": position + currentPosition + "px" }, 1);
 	});
 

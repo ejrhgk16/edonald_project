@@ -17,9 +17,12 @@
 <!-- jquery ui -->
 
 
-<link rel="stylesheet" href="./common/css/app_faqMain.css">
-<link rel="stylesheet" href="./common/css/app_common.css">
-<script src="./common/js/app_commons.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+
+<link rel="stylesheet" href="/resources/css/app_faqMain.css">
+<link rel="stylesheet" href="/resources/css/app_common.css">
+<script src="/resources/js/app_commons.js"></script>
 
 <style type="text/css">
 #latte-plugin { -
@@ -212,50 +215,76 @@
 100
 
 
+
+
 %
 {
 opacity
 
 
+
+
 :
+
+
 
 
 0
+
+
 ;
-
-
 transform
+
+
 
 
 :
 
 
+
+
 translate
+
+
 (
 
 
+
+
 -50
+
+
 %
 ,
 -50
+
+
 %
-
-
 )
+
+
 
 
 scale
+
+
 (
 
 
+
+
 1
+
+
 .6
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -267,50 +296,76 @@ keyframes currentContextBlink { 0% {
 100
 
 
+
+
 %
 {
 opacity
 
 
+
+
 :
+
+
 
 
 0
+
+
 ;
-
-
 transform
+
+
 
 
 :
 
 
+
+
 translate
+
+
 (
 
 
+
+
 -50
+
+
 %
 ,
 -50
+
+
 %
-
-
 )
+
+
 
 
 scale
+
+
 (
 
 
+
+
 1
+
+
 .6
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 .latte-plugin-core .latte-plugin-button.is-blink::after {
@@ -640,50 +695,76 @@ scale
 100
 
 
+
+
 %
 {
 opacity
 
 
+
+
 :
+
+
 
 
 0
+
+
 ;
-
-
 transform
+
+
 
 
 :
 
 
+
+
 translate
+
+
 (
 
 
+
+
 -50
+
+
 %
 ,
 -50
+
+
 %
-
-
 )
+
+
 
 
 scale
+
+
 (
 
 
+
+
 1
+
+
 .6
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -695,50 +776,76 @@ keyframes currentContextBlink { 0% {
 100
 
 
+
+
 %
 {
 opacity
 
 
+
+
 :
+
+
 
 
 0
+
+
 ;
-
-
 transform
+
+
 
 
 :
 
 
+
+
 translate
+
+
 (
 
 
+
+
 -50
+
+
 %
 ,
 -50
+
+
 %
-
-
 )
+
+
 
 
 scale
+
+
 (
 
 
+
+
 1
+
+
 .6
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 .latte-plugin-core .latte-plugin-button.is-blink::after {
@@ -989,7 +1096,8 @@ scale
 											style="width: 250px;">
 											<span class="ui-selectmenu-text">전체</span>
 										</button>
-										<div class="ui-selectmenu-menu ui-front" style="top: 70px; left: 0px;" tabindex="-1">
+										<div class="ui-selectmenu-menu ui-front"
+											style="top: 70px; left: 0px;" tabindex="-1">
 											<ul aria-hidden="true" aria-labelledby="category-button"
 												id="category-menu" role="listbox" tabindex="0"
 												class="ui-menu ui-corner-bottom ui-widget ui-widget-content"
@@ -1325,7 +1433,7 @@ scale
 
 
 	<div id="latte-plugin" class="is-left"
-		style="-latte-plugin-badge-borderRadius: 58px; - -color-primary: #DB0007FF; - -color-primary-button-color: #ffffff; - -color-border-extralight: #FFFFFFFF; - -color-border-lighter: #E1E1E1; - -color-text-primary: #333333; - -color-text-secondary: #898989; - -chat-footer-input-bg: #F5F5F5; - -chat-color-bg: #FFBC0DFF; - -chat-color-button-disabled: #ADADAD; - -chat-color-sub-icon: #ADADAD; - -latte-plugin-global-widget-button-hover-bg: #DB0007FF; - -message-borderRadius: 3px 8px 8px 14px; - -message-backgroundColor: #FFD200FF; - -message-color: #000000FF; - -message-paddingTop: 7px; - -message-paddingRight: 11px; - -message-paddingBottom: 7px; - -message-paddingLeft: 11px; - -message-marginBottom: 8px; - -messageOwner-borderRadius: 8px 3px 14px 8px; - -messageOwner-backgroundColor: #FFFFFFFF; - -messageOwner-color: #000000FF; - -messageOwner-paddingTop: 7px; - -messageOwner-paddingRight: 11px; - -messageOwner-paddingBottom: 7px; - -messageOwner-paddingLeft: 11px; - -messageOwner-marginBottom: 8px; - -header-text-color: #FFFFFFFF; - -header-text-secondary-color: #FFFFFFFF; - -header-text-share-color: #FFFFFFFF; - -header-icon-refresh-color: #000000FF; - -header-icon-refresh-bg: #FFD200FF; - -header-icon-close-color: #FFFFFFFF; - -header-shareButton-borderRadius: 4px; - -header-shareButton-backgroundColor: #FFD200FF; - -header-shareButton-borderWidth: 0px; - -header-shareButton-color: #333333; - -header-bg-color: #DB0007FF; - -header-bg-borderColor: #E04247FF; - -header-bg-borderWidth: 1px; - -footer-submit-borderRadius: 5px; - -footer-submit-active-bg: #DB0007FF; - -footer-submit-active-borderWidth: 1px; - -footer-submit-active-color: #ffffff; - -footer-submit-disabled-bg: #E1E1E1FF; - -footer-submit-disabled-borderWidth: 1px; - -footer-submit-disabled-color: #ADADADFF; - -profile-text-name-color: #000000FF; - -profile-text-date-color: #00000090; - -userInput-card-borderRadius: 8px; - -userInput-card-bg: #FFFFFFFF; - -userInput-card-borderWidth: 0px; - -userInput-card-title-color: #333333; - -userInput-input-borderRadius: 8px; - -userInput-input-bg: #ffffff00; - -userInput-input-borderWidth: 1px; - -userInput-input-borderColor: #E1E1E1FF; - -userInput-input-color: #333333; - -userInput-input-placeholder-color: #898989; - -userInput-check-active-bg: #DB0007FF; - -userInput-check-active-borderWidth: 0px; - -userInput-check-active-color: #FFFFFFFF; - -userInput-check-disabled-bg: #E1E1E1FF; - -userInput-check-disabled-color: #ADADADFF; - -userInput-button-text: &amp;amp; quot; 대화 시작하기&amp;amp; quot;; - -userInput-button-text-temp: 대화 시작하기; - -userInput-button-borderRadius: 8px; - -userInput-button-active-bg: #DB0007FF; - -userInput-button-active-borderWidth: 1px; - -userInput-button-active-borderColor: #DB0007FF; - -userInput-button-active-color: #FFFFFFFF; - -userInput-button-disabled-bg: #ffffff00; - -userInput-button-disabled-borderWidth: 1px; - -userInput-button-disabled-borderColor: #DB0007FF; - -userInput-button-disabled-color: #DB0007FF; - -card-shape-borderRadius: 8px; - -card-shape-bg: #ffffff; - -card-shape-borderWidth: 0px; - -card-shape-color: #333333; - -slider-control-borderRadius: 20px; - -slider-control-bg: #FFFFFFFF; - -slider-control-color: #DB0007FF; - -button-borderRadius: 8px; - -button-margin-bottom: 8px; - -button-default-bg: #DB0007FF; - -button-default-borderWidth: 1px; - -button-default-borderColor: #DB0007FF; - -button-default-color: #FFFFFFFF; - -button-hover-bg: #A20005FF; - -button-hover-borderWidth: 1px; - -button-hover-borderColor: #A20005FF; - -button-hover-color: #ffffff; - -quick-button-borderRadius: 30px; - -quick-button-margin: 8px; - -quick-button-default-bg: #DB0007FF; - -quick-button-default-borderWidth: 1px; - -quick-button-default-borderColor: #DB0007FF; - -quick-button-default-color: #FFFFFFFF; - -quick-button-hover-bg: #A20005FF; - -quick-button-hover-borderWidth: 1px; - -quick-button-hover-borderColor: #A20005FF; - -quick-button-hover-color: #ffffff; - -systemMessage-design-borderWidth: 1px; - -systemMessage-design-borderColor: #00000020; - -systemMessage-design-text-color: #00000090; - -latte-plugin-button-borderRadius: 58px; - -latte-plugin-button-bg: #DB0008FF; - -latte-plugin-button-borderWidth: 0px; - -latte-plugin-button-color: #FFFFFFFF; - -latte-plugin-button-hover-bg: #DB0008FF; - -latte-plugin-button-hover-color: #FFFFFFFF; - -latte-plugin-badge-bg: #FFD200FF; - -latte-plugin-badge-borderWidth: 0px; - -latte-plugin-badge-color: #DB0007FF; - -bg-bg-color: #C5A990FF; left: 25px; bottom: 76px;">
+		style="-latte-plugin-badge-borderRadius: 58px; - -color-primary: #DB0007FF; - -color-primary-button-color: #ffffff; - -color-border-extralight: #FFFFFFFF; - -color-border-lighter: #E1E1E1; - -color-text-primary: #333333; - -color-text-secondary: #898989; - -chat-footer-input-bg: #F5F5F5; - -chat-color-bg: #FFBC0DFF; - -chat-color-button-disabled: #ADADAD; - -chat-color-sub-icon: #ADADAD; - -latte-plugin-global-widget-button-hover-bg: #DB0007FF; - -message-borderRadius: 3px 8px 8px 14px; - -message-backgroundColor: #FFD200FF; - -message-color: #000000FF; - -message-paddingTop: 7px; - -message-paddingRight: 11px; - -message-paddingBottom: 7px; - -message-paddingLeft: 11px; - -message-marginBottom: 8px; - -messageOwner-borderRadius: 8px 3px 14px 8px; - -messageOwner-backgroundColor: #FFFFFFFF; - -messageOwner-color: #000000FF; - -messageOwner-paddingTop: 7px; - -messageOwner-paddingRight: 11px; - -messageOwner-paddingBottom: 7px; - -messageOwner-paddingLeft: 11px; - -messageOwner-marginBottom: 8px; - -header-text-color: #FFFFFFFF; - -header-text-secondary-color: #FFFFFFFF; - -header-text-share-color: #FFFFFFFF; - -header-icon-refresh-color: #000000FF; - -header-icon-refresh-bg: #FFD200FF; - -header-icon-close-color: #FFFFFFFF; - -header-shareButton-borderRadius: 4px; - -header-shareButton-backgroundColor: #FFD200FF; - -header-shareButton-borderWidth: 0px; - -header-shareButton-color: #333333; - -header-bg-color: #DB0007FF; - -header-bg-borderColor: #E04247FF; - -header-bg-borderWidth: 1px; - -footer-submit-borderRadius: 5px; - -footer-submit-active-bg: #DB0007FF; - -footer-submit-active-borderWidth: 1px; - -footer-submit-active-color: #ffffff; - -footer-submit-disabled-bg: #E1E1E1FF; - -footer-submit-disabled-borderWidth: 1px; - -footer-submit-disabled-color: #ADADADFF; - -profile-text-name-color: #000000FF; - -profile-text-date-color: #00000090; - -userInput-card-borderRadius: 8px; - -userInput-card-bg: #FFFFFFFF; - -userInput-card-borderWidth: 0px; - -userInput-card-title-color: #333333; - -userInput-input-borderRadius: 8px; - -userInput-input-bg: #ffffff00; - -userInput-input-borderWidth: 1px; - -userInput-input-borderColor: #E1E1E1FF; - -userInput-input-color: #333333; - -userInput-input-placeholder-color: #898989; - -userInput-check-active-bg: #DB0007FF; - -userInput-check-active-borderWidth: 0px; - -userInput-check-active-color: #FFFFFFFF; - -userInput-check-disabled-bg: #E1E1E1FF; - -userInput-check-disabled-color: #ADADADFF; - -userInput-button-text: &amp;amp; amp; quot; 대화 시작하기&amp;amp; amp; quot;; - -userInput-button-text-temp: 대화 시작하기; - -userInput-button-borderRadius: 8px; - -userInput-button-active-bg: #DB0007FF; - -userInput-button-active-borderWidth: 1px; - -userInput-button-active-borderColor: #DB0007FF; - -userInput-button-active-color: #FFFFFFFF; - -userInput-button-disabled-bg: #ffffff00; - -userInput-button-disabled-borderWidth: 1px; - -userInput-button-disabled-borderColor: #DB0007FF; - -userInput-button-disabled-color: #DB0007FF; - -card-shape-borderRadius: 8px; - -card-shape-bg: #ffffff; - -card-shape-borderWidth: 0px; - -card-shape-color: #333333; - -slider-control-borderRadius: 20px; - -slider-control-bg: #FFFFFFFF; - -slider-control-color: #DB0007FF; - -button-borderRadius: 8px; - -button-margin-bottom: 8px; - -button-default-bg: #DB0007FF; - -button-default-borderWidth: 1px; - -button-default-borderColor: #DB0007FF; - -button-default-color: #FFFFFFFF; - -button-hover-bg: #A20005FF; - -button-hover-borderWidth: 1px; - -button-hover-borderColor: #A20005FF; - -button-hover-color: #ffffff; - -quick-button-borderRadius: 30px; - -quick-button-margin: 8px; - -quick-button-default-bg: #DB0007FF; - -quick-button-default-borderWidth: 1px; - -quick-button-default-borderColor: #DB0007FF; - -quick-button-default-color: #FFFFFFFF; - -quick-button-hover-bg: #A20005FF; - -quick-button-hover-borderWidth: 1px; - -quick-button-hover-borderColor: #A20005FF; - -quick-button-hover-color: #ffffff; - -systemMessage-design-borderWidth: 1px; - -systemMessage-design-borderColor: #00000020; - -systemMessage-design-text-color: #00000090; - -latte-plugin-button-borderRadius: 58px; - -latte-plugin-button-bg: #DB0008FF; - -latte-plugin-button-borderWidth: 0px; - -latte-plugin-button-color: #FFFFFFFF; - -latte-plugin-button-hover-bg: #DB0008FF; - -latte-plugin-button-hover-color: #FFFFFFFF; - -latte-plugin-badge-bg: #FFD200FF; - -latte-plugin-badge-borderWidth: 0px; - -latte-plugin-badge-color: #DB0007FF; - -bg-bg-color: #C5A990FF; left: 25px; bottom: 76px;">
 		<div class="latte-plugin-script" style="display: none;">
 			<iframe id="latte-plugin-script-iframe" name="latte-iframe"
 				src="https://widget-chat.latte.ai/chat?master_uid=98d7a49133a6469694397c9e0a42709c&amp;chatbot_uid=129b8c4c266f49f3a6c5712ed3930c89&amp;origin_uid=129b8c4c266f49f3a6c5712ed3930c89&amp;is_widget=1"

@@ -28,8 +28,9 @@
 	<script type="text/javascript" src="/common/js/customer_common.js"></script>
 	
 	
-	<link rel="stylesheet" href="/common/css/app_inquiry.css">
-	<link rel="stylesheet" href="/common/css/app_common.css">
+	<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+	<link rel="stylesheet" href="/resources/css/app_common.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/app_common.css">
 	
 	
 	<!--link rel="stylesheet" href="/common/css/app_lib.css" /-->
@@ -106,8 +107,8 @@ $(function() {
         <div class="headArea">
           <strong class="hLogo">
             <a href="http://www.mcdonalds.co.kr" target="_blank" class="logo" title="메인으로 이동">
-              <img src="/common/images/common/logo.png" alt="맥도날드">
-            </a>
+              <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드">
+            </a>x
           </strong>
           <nav class="hMenu">
             <ul>
