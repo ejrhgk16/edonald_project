@@ -5,6 +5,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="./css/main.css">
 <link rel="stylesheet" type="text/css" href="./css/local.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="/resources/js/main.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -40,7 +42,7 @@
 						<ul class="list-inline list-inline-divide">
 
 							<li class="list-item"><img
-								src="./img/icon_profile_gray.png"
+								src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 								alt="Profile" width="20" class="profile-grey-avator"></li>
 
 							<li class="list-item"
@@ -60,7 +62,7 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
-							src="./img/mcdelivery_logo_ko.jpg"
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
 							alt="McDelivery&amp;trade;">
 
 						</a>
@@ -349,7 +351,7 @@
 				<div class="modal-header">
 
 					<img class="logo"
-						src="./img/mcdelivery_logo_ko.jpg"
+						src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
 						alt="">
 
 					<button type="button" class="close" data-dismiss="modal"

@@ -104,7 +104,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .formWrap input[type=checkbox], .formWrap input[type=radio]{/*display:none*/position:absolute;right:15px;top:15px}
 .formWrap input[type=checkbox]:focus+label, .formWrap input[type=radio]:focus+label{width:100%;height:42px;border:1px dotted #000}
 .formWrap input[type=checkbox] + label, .formWrap input[type=radio] + label{display:inline-block;padding-right:54px;line-height:34px;color:#292929}
-.formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(../images/common/bg_form.png) no-repeat}
+.formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_form.png) no-repeat}
 .formWrap input[type=checkbox]:checked + label:before{background-position:-34px 0}
 .formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label筌��닀�깂鸚뤄옙 筌��닂�삕占쎈た占쎈�싷옙湲억옙誘⒲럶�뜝�럩�렍冶⑤씮肄▼뜝�럥�뀘�뜝占� 筌��닂�삕占쎈た占쎈�싷옙源꾥�곗궪�삕�뜝占� 筌��с룉冶⑤씮肄∽옙嫄싷쭪占� */
 .formWrap.labelR input[type=checkbox] + label:before, .formWrap.labelR input[type=radio] + label:before{right:auto;left:0}
@@ -225,7 +225,7 @@ ul.notiTxt:before{display:none}
 .popLayer .layCont{overflow:hidden;border-radius:10px;border:1px solid #ffbc0d;background:#fff}
 .popLayer .layCont .scroll{overflow-y:auto;padding:40px 50px 0}
 .popLayer .layCont .scroll:after{content:'';display:block;height:55px}
-.popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(../images/common/btn_close.png) 0 0 no-repeat}
+.popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_close.png) 0 0 no-repeat}
 
 .popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 筌��닂�삕占쎈た野껊·占썲뜝�럥�뀘�뜝占� 筌��꼷�럮�뜝�럩逾듸옙嫄욤짆�뀧蹂⑹삕筌욁룂李됵㎖�닀�뵦冶⑤슣肄좑쭪類μ뵦 筌��꼷�룉�뜝�럩�넍�뜝���뿹冶⑤슣肄∽옙�깂鸚뤄옙 筌��닀�뵦�뜝�럩�넍�뜝�럩怡룟뜝�럩維귛뜝�룞�삕占쎈샬占쎈쳜占쎄퉬鈺곗궪�삕�뜝占� type */
 .popLayer.layerType02 .btnArea{margin-top:0;padding-top:40px}
@@ -954,14 +954,14 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .col2 > *{float:left;width:50%}
  
 /*2022.1.12 筌��닂�삕獒뺣뙋�삕*/
-.contArea[data-background="food01"]{background:url(../images/story/bg_food_01_01.jpg) no-repeat center top;}
-.contArea[data-background="food02"]{background:url(../images/story/bg_food_02_01.jpg) no-repeat center top;}
-.contArea[data-background="food03"]{background:url(../images/story/bg_food_03.jpg) no-repeat center top;}
-.contArea[data-background="food04"]{background:url(../images/story/bg_food_04_01.jpg) no-repeat center top;}
-.contArea[data-background="food05"]{background:url(../images/story/bg_food_05.jpg) no-repeat center top;}
-.contArea[data-background="food06"]{background:url(../images/story/bg_food_06.jpg) no-repeat center top;}
-.contArea[data-background="food07"]{background:url(../images/story/bg_food_07.jpg) no-repeat center top;}
-.contArea[data-background="food08"]{background:url(../images/story/bg_food_08.jpg) no-repeat center top;}
+.contArea[data-background="food01"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_01_01.jpg) no-repeat center top;}
+.contArea[data-background="food02"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_02_01.jpg) no-repeat center top;}
+.contArea[data-background="food03"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_03.jpg) no-repeat center top;}
+.contArea[data-background="food04"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_04_01.jpg) no-repeat center top;}
+.contArea[data-background="food05"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_05.jpg) no-repeat center top;}
+.contArea[data-background="food06"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_06.jpg) no-repeat center top;}
+.contArea[data-background="food07"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_07.jpg) no-repeat center top;}
+.contArea[data-background="food08"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main//bg_food_08.jpg) no-repeat center top;}
 .contArea.others{background:#fff;}
 .competitive{margin-top:20px;}
 .competitive:after{content:'';display:block;clear:both}
@@ -985,24 +985,24 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .competitive .foodTab:after{content:'';display:block;clear:both}
 .competitive .foodTab li{float:left;width:136px;margin-left:10px;height:136px;}
 .competitive .foodTab li a:before{content:'';display:block;width:136px;height:136px;background: no-repeat center;}
-.competitive .foodTab li.food01 a:before{background-image: url(../images/story/bg_food_beef.png);}
-.competitive .foodTab li.food02 a:before{background-image: url(../images/story/bg_food_chicken.png);}
-.competitive .foodTab li.food03 a:before{background-image: url(../images/story/bg_food_bread.png);}
-.competitive .foodTab li.food04 a:before{background-image: url(../images/story/bg_food_lettuce.png);}
-.competitive .foodTab li.food05 a:before{background-image: url(../images/story/bg_food_tomato.png);}
-.competitive .foodTab li.food06 a:before{background-image: url(../images/story/bg_food_egg.png);}
-.competitive .foodTab li.food07 a:before{background-image: url(../images/story/bg_food_cheese.png);}
-.competitive .foodTab li.food08 a:before{background-image: url(../images/story/bg_food_onion.png);}
+.competitive .foodTab li.food01 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_beef.png);}
+.competitive .foodTab li.food02 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_chicken.png);}
+.competitive .foodTab li.food03 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_bread.png);}
+.competitive .foodTab li.food04 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_lettuce.png);}
+.competitive .foodTab li.food05 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_tomato.png);}
+.competitive .foodTab li.food06 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_egg.png);}
+.competitive .foodTab li.food07 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_cheese.png);}
+.competitive .foodTab li.food08 a:before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_onion.png);}
 .competitive .foodTab li a{display:block;overflow:hidden;font-size:0}
 .competitive .foodTab li a[aria-selected="true"]:before{content:'';display:block;}
-.competitive .foodTab li.food01 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_beef_on.png);}
-.competitive .foodTab li.food02 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_chicken_on.png);}
-.competitive .foodTab li.food03 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_bread_on.png);}
-.competitive .foodTab li.food04 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_lettuce_on.png);}
-.competitive .foodTab li.food05 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_tomato_on.png);}
-.competitive .foodTab li.food06 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_egg_on.png);}
-.competitive .foodTab li.food07 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_cheese_on.png);}
-.competitive .foodTab li.food08 a[aria-selected="true"]::before{background-image: url(../images/story/bg_food_onion_on.png);}
+.competitive .foodTab li.food01 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_beef_on.png);}
+.competitive .foodTab li.food02 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_chicken_on.png);}
+.competitive .foodTab li.food03 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_bread_on.png);}
+.competitive .foodTab li.food04 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_lettuce_on.png);}
+.competitive .foodTab li.food05 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_tomato_on.png);}
+.competitive .foodTab li.food06 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_egg_on.png);}
+.competitive .foodTab li.food07 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_cheese_on.png);}
+.competitive .foodTab li.food08 a[aria-selected="true"]::before{background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_onion_on.png);}
 .competitive .foodCont{display:table;width:100%;margin-top:40px;background-color: #fff;border-radius: 30px;}
 .competitive .foodCont .img{display:table-cell;width:315px;vertical-align:top;padding: 40px 10px 40px 90px;}
 .competitive .foodCont .txt{display:table-cell;vertical-align:top;padding: 80px 110px 30px 30px;}
@@ -1049,7 +1049,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .crewList li .crewInfo{display:block;margin-top:5px}
 .crewList li .crewThumb{display:block;position:relative}
 .crewList li .crewThumb:hover:before{display:block;content:'';position:absolute;top:0;left:50%;width:248px;height:248px;margin:-1px 0 0 -124px;border-radius:125px;background:#ffbc0d;opacity:0.9}
-.crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(../images/story/ico_crew_over.png) 0 0 no-repeat}
+.crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ico_crew_over.png) 0 0 no-repeat}
 /* 筌�醫륁굩筌욑옙筌��꼷彛ο쭪占쏙㎖�닀�깂鸚룸뜆肄▼뜝�뜦肉�占쎈�믭옙嫄울쭕�쉻�삕 layerpop */
 .crewDetail .crewCont .tit{font-size:20px;font-weight:600;color:#292929}
 .crewDetail .crewCont .txt{margin-top:25px}
@@ -1059,7 +1059,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .inner.type02 .tabType01 {width:1168px;margin:0 auto 60px}
 .careerIntro {padding:80px 0;background:#f8f8f8}
 .careerIntro p {position:relative;width:1168px;margin:0 auto;padding-left:290px;font-size:20px;color:#292929}
-.careerIntro p:before {content:'';display:block;position:absolute;top:-80px;left:70px;width:160px;height:245px;background:url(../images/story/bg_ico_career_2020_04.png) 0 0 no-repeat}
+.careerIntro p:before {content:'';display:block;position:absolute;top:-80px;left:70px;width:160px;height:245px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_ico_career_2020_04.png) 0 0 no-repeat}
 .careersWrap {overflow:hidden;width:1168px;margin:0 auto;padding-top:60px}
 .careersWrap div {float:left;width:50%}
 .careersWrap div p {padding:40px 0 30px}

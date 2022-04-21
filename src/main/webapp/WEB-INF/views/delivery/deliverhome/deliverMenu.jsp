@@ -3,37 +3,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$(".btn-faq").on("click", function(e){
-		//console.log($(this).attr("data-target"));
-		var divId = $(this).attr("data-target");
-		if($(divId).attr("class") == "collapse in"){
-			$(divId).attr("class", "collapse");
-		}else{
-			$(divId).attr("class", "collapse in");
-		}
-	})
-})
-</script>
+<script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache,no-Store">
+
+<title>Menu</title>
+<meta name="keywords" content="Menu">
+<meta name="description" content="Menu desc">
+
+
+
+<link rel="stylesheet" href="./css/main.css">
+<!--[if lte IE 9]>
+				<link rel="stylesheet" href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/css/main-2.css" />
+		<![endif]-->
+
+
+<link rel="stylesheet" href="./css/local.css">
+
 </head>
-<body class="country-82 lang-ko ">
+<body class="country-82 lang-ko page-menu">
 
 	<div class="root">
 		<div class="wrap container">
 			<div class="global-header">
-				<script>
-					/*<![CDATA[*/
-					window.WOSPageVars = {
-						'DURATION_OF_GDPR_DAY' : 365
-					};
-
-					/*]]>*/
-				</script>
+				<script>	
+			/*<![CDATA[*/ 	
+				window.WOSPageVars = {	
+	            	'DURATION_OF_GDPR_DAY': 365	
+	            };
+				     		        
+				
+			/*]]>*/	
+			</script>
 				<!-- Begin Cookies Wrap -->
 
 				<!-- End Cookies Wrap -->
@@ -50,8 +58,7 @@ $(document).ready(function(){
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
 
-							<li class="list-item"><img
-								src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+							<li class="list-item"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 								alt="Profile" width="20" class="profile-grey-avator"></li>
 
 							<li class="list-item"
@@ -71,15 +78,14 @@ $(document).ready(function(){
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href=""> <img
-							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
-							alt="McDelivery&amp;trade;">
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
 
 						</a>
 					</div>
 					<div class="main-navigation clearfix">
 						<ul class="nav navbar-nav">
 
-							<li class="menu-item menu-item-menu"><a
+							<li class="menu-item menu-item-menu selected"><a
 								class="menu-item-target" href="/kr/menu.html"> <i
 									class="fa mcd mcd-burger icon"></i> 메뉴
 							</a></li>
@@ -90,34 +96,32 @@ $(document).ready(function(){
 									class="fa fa-user icon"></i> 마이 페이지
 							</a></li>
 
-							<li class="menu-item menu-item-support dropdown  selected"><a
-								class="menu-item-target dropdown-toggle" href=""
+							<li class="menu-item menu-item-support dropdown "><a
+								class="menu-item-target dropdown-toggle" href="#"
 								data-toggle="dropdown"> <i class="fa fa-phone icon"></i>
 									기타정보<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">이용약관</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">이용약관</a>
+
+									</li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">개인정보 처리방침</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">개인정보
+											처리방침</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">자주 묻는 질문</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">자주
+											묻는 질문</a></li>
 									<li class="dropdown-menu-item"><a
 										class="dropdown-menu-item-target"
 										href="http://www.mcdonalds.co.kr/kor/news/detail.do?page=1&amp;seq=517&amp;rnum=1&amp;temp_seq=&amp;searchWord="
 										target="_blank">과일 칠러 판매 제외 매장</a></li>
 									<li class="dropdown-menu-item"><a
 										class="dropdown-menu-item-target"
-										href=""
+										href="http://www.mcdonalds.co.kr/uploadFolder/page/p_menu.jsp?staticLinkId=17&amp;locale=ko"
 										target="_blank">영양정보/원산지 정보/기타 정보</a></li>
 									<li class="dropdown-menu-item"><a
 										class="dropdown-menu-item-target"
-										href=""
+										href="https://www.mcdelivery.co.kr/m/kr/changeSkin.html?skin=mobile"
 										target="_self">모바일 웹</a></li>
 
 
@@ -220,435 +224,255 @@ $(document).ready(function(){
 				<!-- [/deliveryhoursavailability.modal] -->
 
 			</div>
-			<div class="main" role="main">
-
+			<div class="main">
 				<div class="row row-narrow">
 					<div class="page-sidebar">
-						<div class="sidebar-menu">
-							<h2 class="menu-category">기타정보</h2>
-							<ul class="menu">
+						<div class="sidebar-menu" data-sticky="true">
+							<div class="food-menu">
+								<ul class="primary-menu">
 
+									<li class="primary-menu-item selected"><a
+										class="primary-menu-item-target" href="?daypartId=1"><span>일반
+												메뉴</span><i class="fa fa-angle-right"></i></a>
+										<ul class="secondary-menu">
+											<li class="secondary-menu-item selected"><a
+												class="secondary-menu-item-target" href="#"><i
+													class="fa fa-circle"></i> <span>추천 메뉴</span></a></li>
+											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target" href="#"><i
+													class="fa fa-circle"></i> <span>버거 &amp; 세트</span></a></li>
+											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target"
+												href="?daypartId=1&amp;catId=13"><i class="fa fa-circle"></i>
+													<span>스낵 &amp; 사이드</span></a></li>
+											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target"
+												href="?daypartId=1&amp;catId=14"><i class="fa fa-circle"></i>
+													<span>음료</span></a></li>
+											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target"
+												href="?daypartId=1&amp;catId=15"><i class="fa fa-circle"></i>
+													<span>디저트</span></a></li>
+											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target"
+												href="?daypartId=1&amp;catId=16"><i class="fa fa-circle"></i>
+													<span>해피밀®</span></a></li>
 
-								<li class="menu-item"><a class="menu-item-target" id="이용약관"
-									href=""
-									target="_self">이용약관</a></li>
+										</ul></li>
 
+									<li class="primary-menu-item"><a
+										class="primary-menu-item-target" href="?daypartId=2"><span>아침
+												메뉴</span><i class="fa fa-angle-right"></i></a></li>
 
+								</ul>
+							</div>
+							<a href="#menu-availability" class="h5 text-link"
+								data-toggle="html-popover" data-container="body"
+								data-html="true" data-content-selector="#menu-availability"
+								data-placement="right" data-original-title="" title=""><i
+								class="mcd icon mcd-detail"></i> <span class="text-default">메뉴
+									주문 시간</span></a>
+							<div id="menu-availability"
+								class="popover-wrapper popover-details">
+								<div class="popover-wrapper">
+									<table class="table-default table-menu-availability">
+										<thead>
+											<tr>
+												<td></td>
+												<th class="menu-type">아침 메뉴</th>
+												<th class="menu-type">일반 메뉴</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th class="days">월-금</th>
+												<td><div>3:50 AM - 10:20 AM</div>
+													<div class="last-order">(마지막 주문 10:20 AM)</div></td>
+												<td><div>10:20 AM - 3:50 AM</div>
+													<div class="last-order">(마지막 주문 3:50 AM)</div></td>
+											</tr>
+											<tr>
+												<th class="days">토, 일 &amp; <br>공휴일
+												</th>
+												<td><div>3:50 AM - 10:20 AM</div>
+													<div class="last-order">(마지막 주문 10:20 AM)</div></td>
+												<td><div>10:20 AM - 3:50 AM</div>
+													<div class="last-order">(마지막 주문 3:50 AM)</div></td>
+											</tr>
+										</tbody>
+									</table>
 
-								<li class="menu-item"><a class="menu-item-target"
-									id="개인정보 처리방침"
-									href=""
-									target="_self">개인정보 처리방침</a></li>
+								</div>
+							</div>
 
-
-
-								<li class="menu-item selected"><a class="menu-item-target"
-									id="자주 묻는 질문"
-									href=""
-									target="_self">자주 묻는 질문</a></li>
-
-
-
-								<li class="menu-item"><a class="menu-item-target"
-									id="과일 칠러 판매 제외 매장"
-									href=""
-									target="_blank">과일 칠러 판매 제외 매장</a></li>
-
-
-
-								<li class="menu-item"><a class="menu-item-target"
-									id="영양정보/원산지 정보/기타 정보"
-									href=""
-									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-
-
-
-								<li class="menu-item"><a class="menu-item-target"
-									id="모바일 웹"
-									href=""
-									target="_self">모바일 웹</a></li>
-
-							</ul>
 						</div>
 					</div>
-					<div class="col-xs-10">
-						<div class="page-title">
-							<h1>자주 묻는 질문</h1>
+					<div class="col-xs-10 pull-right">
+						<div class="clearfix">
+							<div class="page-breadcrumbs pull-left">
+								<ol class="breadcrumb type-sans">
+									<li><a href="">메뉴</a></li>
+
+									<li class="active">추천 메뉴</li>
+
+								</ol>
+							</div>
+
 						</div>
-						<div class="panel-lg panel panel-default">
-							<div class="panel-body">
+						<div class="page-content">
+							<div class="row row-narrow">
+								<div class="col-xs-8">
+									<div id="product-cards" class="product-cards"
+										data-equal-height=".product-card--standard .product-title, .product-card--standard .product-info">
+										<div class="row row-narrow">
 
-								<div class="panel-group panel-lg accordion faq">
-									<!-- ACCORDION 1-N -->
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state collapsed accordion-state-collapsed accordion-faq-collapsed"
-														data-target="#faq-1" aria-expanded="false"><i
-														class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">매장에서 판매하는 모든 메뉴를
-													배달하나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-1" aria-expanded="false"
-											style="">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">배달이 어려운 일부 메뉴를 제외하고, 맥도날드 매장에서 판매하고
-														있는 대부분의 제품을 배달해 드리고 있습니다. 다만, 맥딜리버리 서비스 메뉴의 가격은 매장 가격과 상이할
-														수 있으며, 매장에서 진행되는 할인 및 행사 내용은 적용되지 않을 수 있습니다. 맥딜리버리 주문이 가능한
-														제품은 메뉴 창에서 확인하실 수 있습니다.</p>
+											<div class="product-card product-card--standard">
+												<div class="panel panel-default panel-product">
+													<div class="panel-body">
+														<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/delivery/4941.png" class="img-block">
+														<h5 class="product-title" style="height: 30.8px;">아라비아따
+															리코타 치킨 버거</h5>
+														<div class="product-badges"></div>
+													</div>
+													<div class="panel-footer">
+														<div class="row row-narrow">
+															<div class="product-info" style="height: 78.3px;">
+																<div class="product-details">
+																	<div class="product-cost">
+																		가격 <span class="starting-price">₩ 9,000</span>
+																	</div>
+																	<div class="product-nutritional-info">
+
+																		<span class="text-default">948~1097 Kcal</span>
+																	</div>
+
+																	<div class="product-allergen-info">
+																		<div>
+																			<a href="#" class="action-link"
+																				data-toggle="html-popover" data-placement="bottom"
+																				data-html="true"
+																				data-content-selector=".popover-details"
+																				data-original-title="" title=""><i
+																				class="mcd icon mcd-allergen"></i> <span
+																				class="text-default">알레르기 정보</span></a>
+																			<div class="popover-details">
+																				<div class="popover-wrapper type-sans">
+																					<h4>아라비아따 리코타 치킨 버거</h4>
+																					<div>아라비아따 리코타 치킨 버거 (난류, 우유, 대두, 밀, 돼지고기,
+																						토마토, 닭고기), 후렌치 후라이 (대두), 케첩 (토마토)</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+															<div class="product-controls">
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+																<a data-productid="789"
+																	class="btn btn-block action-create btn-yellow"
+																	href="../guest_address.html?from=browsemenu"
+																	onclick="onProductClick({ 'name':&quot;아라비아따 리코타 치킨 버거&quot;,'id':'4941','price':'9000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
+
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 
+											<div class="product-card product-card--standard">
+												<div class="panel panel-default panel-product">
+													<div class="panel-body">
+														<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/delivery/7990.png" class="img-block">
+														<h5 class="product-title" style="height: 30.8px;">맥딜리버리
+															빅맥® 플러스팩</h5>
+														<div class="product-badges"></div>
+													</div>
+													<div class="panel-footer">
+														<div class="row row-narrow">
+															<div class="product-info" style="height: 78.3px;">
+																<div class="product-details">
+																	<div class="product-cost">
+																		가격 <span class="starting-price">₩ 13,000</span>
+																	</div>
+																	<div class="product-nutritional-info">
+
+
+
+																		<span class="text-default">1664~1812 Kcal</span>
+
+																	</div>
+
+																	<div class="product-allergen-info">
+																		<div>
+																			<a href="#" class="action-link"
+																				data-toggle="html-popover" data-placement="bottom"
+																				data-html="true"
+																				data-content-selector=".popover-details"
+																				data-original-title="" title=""><i
+																				class="mcd icon mcd-allergen"></i> <span
+																				class="text-default">알레르기 정보</span></a>
+																			<div class="popover-details">
+																				<div class="popover-wrapper type-sans">
+																					<h4>맥딜리버리 빅맥® 플러스팩</h4>
+																					<div>맥딜리버리 빅맥® 플러스팩 (난류, 우유, 대두, 밀, 쇠고기), 후렌치
+																						후라이 (대두), 케첩 (토마토), 에그 불고기 버거 (난류, 대두, 밀, 돼지고기,
+																						조개, 굴), 맥너겟® 6조각 (대두, 밀, 닭고기), 스위트칠리 소스 (토마토), 스위트
+																						앤 사워 소스 (대두, 밀, 아황산류), 케이준 소스 (난류, 대두), 오렌지 칠리 소스
+																						(토마토)</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+															<div class="product-controls">
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+
+
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+																<a data-productid="789"
+																	class="btn btn-block action-create btn-yellow"
+																	href="../guest_address.html?from=browsemenu"
+																	onclick="onProductClick({ 'name':&quot;맥딜리버리 빅맥® 플러스팩&quot;,'id':'7990','price':'13000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
+
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-2"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">런치 세트도 주문 가능한가요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-2">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">맥런치 세트 메뉴는 매일 오전 10시 30 분부터 오후 2시까지
-														더욱 합리적인 가격으로 점심 식사를 즐기시려는 고객들을 위해 마련되어 있으며, 맥도날드 매장에서만
-														제공됩니다. 따라서 맥딜리버리 서비스 이용 시에는 런치 세트가 적용 되지 않습니다.</p>
-												</div>
-											</div>
 
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-3"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">주문 가능한 최소 금액이 있나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-3">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">맥딜리버리 서비스는 12,000원 이상 주문 시 별도 배달비
-														없이 이용 가능하며, 12,000원 미만 주문 시 소액 주문비 2천원을 부담하시면 최소 3천원부터 주문이
-														가능합니다. 다만, 매장 및 주문 채널 별 최소 주문 금액이 다르게 운영될 수 있는 점 이용에 참고 부탁
-														드립니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-4"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">가격은 어떻게 확인이 가능한가요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-4">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">제품 주문 시에 가격을 확인할 수 있으며, 맥도날드 가격 정책에
-														따라 매장 가격과 배달 시 가격은 다르게 책정되어 있습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-5"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">배달 가능한 시간은 어떻게 되는지요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-5">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">일부 매장을 제외하고 24시간 맥딜리버리 서비스를 제공하고
-														있습니다. 다만, 재료부족 등 매장상황에 따라 서비스 제공이 불가능한 경우 개별 연락하에 주문이 변경
-														또는 취소 될 수 있음을 양해해주시기 바랍니다. 또한 기상 악화시에는 배달 라이더들의 안전을 위해 배달이
-														중단, 제한, 지연 될 수 있고, 일부 시간대에 제품 품질 유지를 위해 기계청소를 실시함에 따라 일부
-														시간대 특정 메뉴가 생산이 되지 않습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-6"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">배달 시간이 얼마나 걸리나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-6">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">맥딜리버리 서비스의 배달 시간은 주문량 및 매장 상황에 따라
-														소요 시간이 다르며, 고객님의 주문 시에 배달 가능한 예상 시간을 미리 안내 드리고 있습니다. 안내 드린
-														시간 내 음식을 제공할 수 있도록 노력하겠습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-7"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">전국적으로 배달이 가능한가요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-7">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">지난 2007년 업계 최초로 맥도날드가 배달 서비스를 시작한
-														이후, 맥도날드는 더 많은 고객들에게 편리한 배달 서비스를 제공하고자 노력하고 있습니다. 현재 전국 매장
-														중 70%이상의 매장에서 배달 서비스를 제공하고 있으며, 맥딜리버리 주소 검색창, 혹은 회원 가입 후
-														주소 등록 시 고객님의 주소로 배달 가능한 매장 검색을 통하여 배달가능여부를 확인하실 수 있습니다.
-														다만, 호텔, 모텔, PC방, 노래방 등 공공장소의 경우 프론트까지만 맥딜리버리 서비스를 하고 있습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-8"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">다른 할인 적용 카드가 있나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-8">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">현재, 맥딜리버리 서비스에는 매장과 마찬가지로 별도로 적용되는
-														타사 할인 또는 멤버십 카드가 없습니다. 맥도날드는 별도의 할인 혜택 대신, 좋은 품질의 제품을 항상
-														합리적인 가격으로 만나실 수 있도록 노력하고 있습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-9"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">쿠폰 사용을 할 수 있는지요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-9">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">일부 쿠폰의 경우 쿠폰에 기재된 내용에 따라 1600 5252
-														전화 주문 시 혹은 인터넷 주문을 통해 사용하실 수 있습니다. 쿠폰에 기재된 내용에 따라 사용가능여부를
-														확인 부탁 드립니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-10"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">주문을 변경, 취소하고 싶은데
-													가능하나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-10">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">주문사항의 변경, 취소를 원하시는 경우 1600 5252 로
-														연락 하시어 가능여부를 확인하여 주시기 바랍니다. 제품이 만들어졌거나, 이미 배송중인 경우 변경, 취소가
-														제한될 수 있습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-11"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">대량주문에 대한 제한이 있는지요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-11">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">₩89,000원 이상 대량주문의 경우 매장 상황을 파악한 후
-														맥딜리버리 콜센터에서 확인전화를 드리며 확인 전화가 완료되어야 주문이 접수됩니다. 원재료 및 제품의
-														생산시간을 고려하여 가능 여부를 안내해드립니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-12"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">주문을 미리 예약하고 싶은데요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-12">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">주문받기 원하시는 일정의 2시간 전부터 7일 전까지 주문 예약이
-														가능합니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-13"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">현금영수증 발행이 가능하나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-13">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">결제 시 현금영수증을 선택하여 발행 여부를 선택하실 수
-														있습니다.</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-14"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">화면이 올바로 보이지 않나요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-14">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">
-														Internet Explorer 8 또는 그 이상의 버전에서는 호환성 보기를 해제 하고 사용해야
-														정상적으로 보입니다.<br>호환성 보기 해제 방법: Internet Explorer 메뉴에서
-														‘도구’&gt; ‘호환성 보기 설정’ 클릭&gt; 호환성 보기 설정 창에서 모든 체크 박스 해제.
-													</p>
-												</div>
-											</div>
-
-										</div>
-									</div>
-									<div class="panel-default faq-row">
-										<div class="panel-heading">
-											<div class="row">
-												<div class="faq-col col-xs-1">
-													<a data-toggle="collapse"
-														class="btn btn-faq btn-faq accordion-state accordion-faq-collapsed accordion-state-expanded"
-														data-target="#faq-15"><i class="mcd icon"></i></a>
-												</div>
-												<div class="col-xs-11 faq-title">배달 시에도 해피밀 토이 선택이
-													가능한가요?</div>
-											</div>
-										</div>
-										<div class="collapse" id="faq-15">
-											<div class="row">
-												<div class="col-xs-offset-1 col-xs-11">
-													<p class="faq-copy">배달 주문 시에도 해피밀 토이의 선택은 가능하나, 매장의 상황에
-														따라 다른 토이로 대체될 수 있는 점 양해 부탁 드립니다.</p>
-												</div>
-											</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="panel panel-basic panel-narrow">
+										<div class="panel-section-group">
+											<section class="panel-section how-it-works">
+												<a href="#signin" data-toggle="modal" data-target="#signin"><img
+													src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_portrait_ko.png"></a>
+											</section>
 
 										</div>
 									</div>
 								</div>
-								<div class="faq-help" id="contact-us-info">
-									<div class="row">
-										<div class="col-xs-1">
-											<i class="mcd mcd-question icon"></i>
-										</div>
-										<div class="col-xs-11 ">
-											<div class="faq-help-title">문제가 해결되지 않았나요?</div>
-											<div class="faq-help-note notes">맥딜리버리 콜센터로 연락하시기 바랍니다.
-												1600 5252</div>
-										</div>
-									</div>
-								</div>
-								<section class="how-it-works home-section">
-									<h1 class="section-title">맥딜리버리 이용 방법!</h1>
-									<p>
-
-										<a href="#signin" data-target="#signin" data-toggle="modal"><img
-											class="img-block" alt=""
-											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_ko.png"></a>
-									</p>
-								</section>
 							</div>
 						</div>
+
 					</div>
 				</div>
-
-
 			</div>
 		</div>
+
+
 		<div class="global-footer">
 			<div class="footer-nav">
 				<div class="container">
@@ -676,26 +500,23 @@ $(document).ready(function(){
 							</ul>
 						</div>
 
+
+
+
 						<div class="column">
 							<h3 class="list-group-title">기타정보</h3>
 							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">이용약관</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">개인정보 처리방침</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">자주 묻는 질문</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="http://www.mcdonalds.co.kr/kor/news/detail.do?page=1&amp;seq=517&amp;rnum=1&amp;temp_seq=&amp;searchWord=&amp;locale=ko"
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">과일 칠러 판매 제외 매장</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="http://www.mcdonalds.co.kr/uploadFolder/page/p_menu.jsp?staticLinkId=17&amp;locale=ko"
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="https://www.mcdelivery.co.kr/m/kr/changeSkin.html?skin=mobile&amp;locale=ko"
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">모바일 웹</a></li>
 							</ul>
 						</div>
@@ -764,9 +585,11 @@ $(document).ready(function(){
 			<div class="modal-content">
 				<div class="modal-header">
 
-					<img class="logo"
-						src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
-						alt="">
+
+
+					<img class="logo" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="">
+
+
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">
 						<i class="fa mcd mcd-close"></i>
@@ -781,9 +604,6 @@ $(document).ready(function(){
 
 					<div class="row">
 						<div class="col-xs-offset-3 col-xs-6">
-
-
-
 							<ul id="signin-nav-tabs-login-fragment"
 								class="nav nav-tabs nav-tabs-login-fragment">
 								<li class="active"><a href="#modal-signin-tab-login"
@@ -817,6 +637,7 @@ $(document).ready(function(){
 												<div class="list-group-item textfield-list-group-item">
 													<label class="sr-only" for="form_login_modal_password">비밀번호</label>
 
+
 													<input type="password" name="password"
 														id="form_login_modal_password"
 														class="required list-group-form-control"
@@ -845,9 +666,10 @@ $(document).ready(function(){
 
 
 											<p class="action-forgot-password">
-												<a class="action-link" href="/kr/forgot-password.html">비밀번호
-													찾기</a>
+												<a class="action-link" href="">비밀번호 찾기</a>
 											</p>
+
+
 										</fieldset>
 									</form>
 
@@ -856,7 +678,7 @@ $(document).ready(function(){
 
 										<a class="btn btn-block btn-red btn-xl"
 											onclick="                   dataLayer.push({                    'event':'trackEvent',                    'eventDetails.category':'i am new',                    'eventDetails.action':'click popup modal',                    'eventDetails.label':'register now'                   });                  "
-											href="guest.html"> <span>회원가입</span>
+											href=""> <span>회원가입</span>
 										</a>
 
 
@@ -889,7 +711,7 @@ $(document).ready(function(){
 										<div class="guest-order-note">온라인 결제로 즉시 주문</div>
 										<a class="btn btn-block btn-red btn-xl"
 											onclick="dataLayer.push(               {                'event': 'trackEvent',                'eventDetails.category': 'i am new',                'eventDetails.action': 'click popup modal',                'eventDetails.label': 'guest order'               });"
-											href="/kr/guest_address.html">비회원 주문</a>
+											href="">비회원 주문</a>
 									</div>
 								</div>
 
@@ -933,7 +755,7 @@ $(document).ready(function(){
 								class="btn btn-default btn-red btn-lg text-ucase">확인</button>
 						</div>
 						<input type="hidden" name="csrfValue"
-							value="0bfe025f34e76bae74001feb4c774506">
+							value="59a76edb4778114cb3a1ecdcd891bc82">
 					</form>
 					<p class="note">주문 관련 문의사항은 맥딜리버리 콜센터로연락하시기 바랍니다1600-5252.</p>
 				</div>
@@ -1002,36 +824,65 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<!--	[#trackOrder.modal] -->
 
 
+
+
+
+
+
+	<!-- 
+	[#trackOrder.modal] -->
 
 	<!-- [/#trackOrder.modal] -->
 
-	<!-- [#alertAddBookEmpty.modal] -->
-	<div id="alertAddBookEmpty" data-backdrop="static"
+
+	<!-- [countdowntimer.modal] -->
+	<div id="countdowntimer" data-alert-type="modal" data-backdrop="static"
 		data-keyboard="false"
-		class="modal-addressbookempty modal-alert modal fade" role="dialog"
-		aria-labelledby="addressbookempty-title" aria-hidden="true"
-		tabindex="-1">
+		class="modal-countdowntimer modal-alert alert-session-timeout modal-alert modal fade"
+		role="dialog" aria-labelledby="countdowntimer-title"
+		aria-hidden="true" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h1 id="addressbookempty-title">고객님의 주소가 등록되어 있지 않습니다.</h1>
-				</div>
+				<div class="modal-header"></div>
 				<div class="modal-body">
-					<div class="alert-content">
-						<p>배달 받으실 주소를 먼저 추가해 주시고 주문해 주세요.</p>
-						<p>
-							<a class="btn btn-default btn-red btn-lg text-ucase"
-								href="">주소 추가하기</a>
-						</p>
+					<div class="row">
+						<div class="col-xs-3 timer-wrapper">
+							<div class="time-disclaimer">세션 만료까지</div>
+
+
+							<div class="time timer text-din timer-clock session-timer">14:23</div>
+
+
+							<div class="time-disclaimer">세션 만료까지 _분 남았습니다</div>
+
+						</div>
+						<div class="col-xs-8 timer-wrapper">
+							<div class="alert-content text-left">
+								<h1 id="countdowntimer-title">아직도 주문 중이신가요?</h1>
+
+
+								<p>일시적으로 중단되었습니다. 주문을 계속하시려면 계속 버튼을 눌러주세요.</p>
+
+								<p>
+									<button type="button"
+										data-dismiss-trigger="session.action.continue"
+										aria-hidden="true" class="btn btn-red btn-lg text-ucase">
+										계속</button>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- [/#alertAddBookEmpty.modal] -->
+	<!-- [/countdowntimer.modal] -->
+
+	<!-- [#signin.modal] -->
+
+	<!-- [/#signin.modal] -->
 
 	<div id="rememberMe" class="modal-rememberme modal fade"
 		data-backdrop="static" role="dialog"
@@ -1057,6 +908,43 @@ $(document).ready(function(){
 					<p class="note">맥딜리버리 채널을 이용한 주문 관련 문의 사항은 맥딜리버리 콜센터
 						(1600-5252) 를 이용해 주시기 바랍니다.</p>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popover fade right in" role="tooltip"
+		style="top: 365.034px; left: 127.602px; display: none;">
+		<div class="arrow" style="top: 50%;"></div>
+		<h3 class="popover-title" style="display: none;"></h3>
+		<div class="popover-content">
+			<div class="popover-wrapper">
+				<table class="table-default table-menu-availability">
+					<thead>
+						<tr>
+							<td></td>
+							<th class="menu-type">아침 메뉴</th>
+							<th class="menu-type">일반 메뉴</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="days">월-금</th>
+							<td><div>3:50 AM - 10:20 AM</div>
+								<div class="last-order">(마지막 주문 10:20 AM)</div></td>
+							<td><div>10:20 AM - 3:50 AM</div>
+								<div class="last-order">(마지막 주문 3:50 AM)</div></td>
+						</tr>
+						<tr>
+							<th class="days">토, 일 &amp; <br>공휴일
+							</th>
+							<td><div>3:50 AM - 10:20 AM</div>
+								<div class="last-order">(마지막 주문 10:20 AM)</div></td>
+							<td><div>10:20 AM - 3:50 AM</div>
+								<div class="last-order">(마지막 주문 3:50 AM)</div></td>
+						</tr>
+					</tbody>
+				</table>
+
 			</div>
 		</div>
 	</div>

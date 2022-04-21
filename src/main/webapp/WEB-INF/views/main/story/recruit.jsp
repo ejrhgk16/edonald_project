@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/common.css">
+	 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 
 <style>
 
@@ -21,7 +23,7 @@
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="..../kor/images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -57,12 +59,12 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -71,7 +73,7 @@
 					<form id="commonSearchForm" method="post">
 					<div class="util">
 						<a href="/kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
-						<a href="/kor/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
+						<a href="/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
 						<a href="/eng/main.do" class="lang" title="영문사이트로 이동">ENG</a>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>
@@ -119,8 +121,8 @@
 						<p class="subCopy">끊임없는 변화와 도전을 통해 성장해온 맥도날드<br>이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.</p>
 						<ul class="navPath">
 							<li><a href="/kor/main.do">Home</a></li>
-							<li><a href="/kor/story/main.do">Story</a></li>
-							<li><a href="/kor/story/people/crew.do">맥도날드 사람들</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/people/crew.do">맥도날드 사람들</a></li>
 						</ul>
 					</div>
 				</div>
@@ -128,21 +130,21 @@
 				<div class="contArea">
 					<div class="inner type02">
 						<ul class="tabType01">
-							<li><a href="/kor/story/people/crew.do" role="button">크루이야기</a></li>
-							<li><a href="/kor/story/people/work.do" role="button">업무소개</a></li>
-							<li><a href="/kor/story/people/recruit.do" role="button" aria-selected="true">인재채용</a></li>
+							<li><a href="/story/people/crew.do" role="button">크루이야기</a></li>
+							<li><a href="/story/people/work.do" role="button">업무소개</a></li>
+							<li><a href="/story/people/recruit.do" role="button" aria-selected="true">인재채용</a></li>
 						</ul>
 						<div class="careerIntro">
 							<p>변화를 만나는 곳, 변화를 만드는 곳<br>한국맥도날드의 최신 채용정보를 확인하세요.</p>
 						</div>
 						<div class="careersWrap">
 							<div>
-								<img src="../kor/images/story/img_career01.jpg" alt="">
+								<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_career01.jpg" alt="">
 								<p>맥도날드의 시간제(Part Time) 근무자를 우리는 크루(Crew) 라고 부릅니다.<br>즐거운 일터에서 함께 일하며 경험을 쌓고, 다양한 혜택과 매니저로 성장할 수 있는<br>최고의 기회를 누려보세요!</p>
 								<a href="https://www.mcalba.co.kr/m/appstrap/" class="btnMC btnM" target="_blank" title="새창 열림">크루 지원하기</a>
 							</div>
 							<div>
-								<img src="../kor/images/story/img_career02.jpg" alt="">
+								<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_career02.jpg" alt="">
 								<p>사회인으로 첫 발을 내딛는 지금, 당신은 중요한 선택의 순간에 서 있습니다.<br>당신의 첫번째 선택이 맥도날드가 되기를 희망합니다. 늘 현명한 선택으로 성공을 창조해 온 맥도날드, 이곳에서 당신의 소중한 꿈을 펼쳐보세요 !</p>
 								<a href="http://mcd.saramin.co.kr" class="btnMC btnM" target="_blank" title="새창 열림">레스토랑 매니저 / 본사 직원 지원하기</a>
 							</div>
@@ -152,7 +154,7 @@
 
 			</div>
 			<div class="aside">
-				<a href="/kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
+				<a href="/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
