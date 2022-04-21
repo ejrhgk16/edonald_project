@@ -72,6 +72,18 @@ public class StoryController {
 	public String crew() {
 		return "main/story/crew";
 	}
+	
+	
+	
+	@RequestMapping(value = "story/people/work.do", method = RequestMethod.GET)
+	public String work() {
+		return "main/story/work";
+	}
+	
+	@RequestMapping(value = "story/people/recruit.do", method = RequestMethod.GET)
+	public String recruit() {
+		return "main/story/recruit";
+	}
 }
 
 

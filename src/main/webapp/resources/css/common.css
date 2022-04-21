@@ -1059,7 +1059,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .inner.type02 .tabType01 {width:1168px;margin:0 auto 60px}
 .careerIntro {padding:80px 0;background:#f8f8f8}
 .careerIntro p {position:relative;width:1168px;margin:0 auto;padding-left:290px;font-size:20px;color:#292929}
-.careerIntro p:before {content:'';display:block;position:absolute;top:-80px;left:70px;width:160px;height:245px;background:url(../images/story/bg_ico_career_2020_04.png) 0 0 no-repeat}
+.careerIntro p:before {content:'';display:block;position:absolute;top:-80px;left:70px;width:160px;height:245px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_ico_career_2020_04.png) 0 0 no-repeat}
 .careersWrap {overflow:hidden;width:1168px;margin:0 auto;padding-top:60px}
 .careersWrap div {float:left;width:50%}
 .careersWrap div p {padding:40px 0 30px}
