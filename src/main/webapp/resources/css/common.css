@@ -141,7 +141,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .btnS{min-width:100px;padding:0 25px;font-size:13px;line-height:34px;border-radius:34px}
 
 .btnMore{margin-top:80px;text-align:center}
-.btnMore .more{display:inline-block;width:90px;height:90px;overflow:hidden;vertical-align:top;text-indent:-9999px;background:url(../images/common/btn_more.png) 0 0 no-repeat}
+.btnMore .more{display:inline-block;width:90px;height:90px;overflow:hidden;vertical-align:top;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_more.png) 0 0 no-repeat}
 
 .btnPaging{margin-top:60px;text-align:center}
 .btnPaging a{display:inline-block;width:40px;height:40px;margin:0 3px;vertical-align:top;border:1px solid #d1d1d1;border-radius:5px;background:#fff}
@@ -315,13 +315,13 @@ ul.notiTxt:before{display:none}
 
 /**2020.06.10**/
 .aside{position:fixed;bottom:110px;left:49%;margin:0 0 0 635px;z-index:10}
-.aside .goDelivery{display:block;width:121px;height:121px;overflow:hidden;text-indent:-9999px;background:url(../images/common/btn_delivery_04.png) 0 0 no-repeat; background-size:cover;}
+.aside .goDelivery{display:block;width:121px;height:121px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_delivery_04.png) 0 0 no-repeat; background-size:cover;}
 
 /*2022.1.12 go_story */
-.aside .go_story{display:block;width:121px;height:121px;overflow:hidden;text-indent:-9999px;background:url(../images/common/btn_story_04.png) no-repeat center 0;margin-bottom:20px;}
+.aside .go_story{display:block;width:121px;height:121px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_story_04.png) no-repeat center 0;margin-bottom:20px;}
 
 .aside.fixedB {position:absolute;bottom:378px}
-.btnTop{position:fixed;bottom:45px;left:50%;width:51px;height:48px;margin:0 0 0 650px;background:url(../images/common/btn_top_04.png) 0 14px no-repeat;text-indent:-9999px;font-size:1px;z-index:10}
+.btnTop{position:fixed;bottom:45px;left:50%;width:51px;height:48px;margin:0 0 0 650px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_top_04.png) 0 14px no-repeat;text-indent:-9999px;font-size:1px;z-index:10}
 .btnTop.fixedB{position:absolute;bottom:310px}
 /**2020.06.10**/
 
@@ -333,7 +333,7 @@ ul.notiTxt:before{display:none}
 .footer .fUtil .privacy {color:yellow}
 .footer .fSns{float:right}
 .footer .fSns li{float:left;margin-left:20px}
-.footer .fSns a{display:block;width:40px;height:40px;overflow:hidden;text-indent:-9999px;background:url(../images/common/ico_sns.png) 0 0 no-repeat}
+.footer .fSns a{display:block;width:40px;height:40px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ico_sns.png) 0 0 no-repeat}
 .footer .fSns a.fb{background-position:0 0}
 .footer .fSns a.ig{background-position:0 -40px}
 .footer .fSns a.yt{background-position:0 -80px}
@@ -370,13 +370,13 @@ ul.notiTxt:before{display:none}
 .mainEvent .swiper li video{width:100%;}
 .mainEvent .swiper li.video .video-box{width:1920px;overflow:hidden;margin:0 auto;}
 .mainEvent .swiper li.video .sound{position:absolute;left:30px;top:30px;width:30px;height:30px;background-image:url(../images/main/icon_sound_on.png);background-repeat:no-repeat;background-size:100% auto;font-size:0;}
-.mainEvent .swiper li.video .sound.off{background-image:url(../images/main/icon_sound_off.png);}
+.mainEvent .swiper li.video .sound.off{background-image:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/icon_sound_off.png);}
 /* 2020.6.4 KV 筌��꼷怡룟뜝�럩�넍占쎄뭅�뜝�럩鍮곩뜝�럩逾드뜝�룞�삕占쎈た�뜝占� 筌��늿怡��뜝�럩逾듸옙嫄욕칰硫명뀬 筌��꼹�굩占쎌깂 */
 .mainEvent .indicator{position:absolute;left:50%;bottom:27px;width:366px;margin-left:-183px;padding-left:66px}
 .mainEvent .indicator .timer{display:block;position:relative;width:300px;height:6px;overflow:hidden;text-indent:-9999px;vertical-align:top;border-radius:6px;background:#fff}
 .mainEvent .indicator .timer .bar{position:absolute;top:0;left:0;height:100%;border-radius:6px;background:#ffbc0d}
 /* 2020.6.4 css 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 */
-.mainEvent .indicator .play{position:absolute;top:50%;left:0;width:36px;height:36px;margin-top:-18px;overflow:hidden;text-indent:-9999px;background:url(../images/main/bg_swiper_new.png) -92px 0 no-repeat}
+.mainEvent .indicator .play{position:absolute;top:50%;left:0;width:36px;height:36px;margin-top:-18px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_swiper_new.png) -92px 0 no-repeat}
 .mainEvent .indicator .play.pause{background-position:-92px -36px}
 /* 2020.6.4 css 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 筌��꼹�굩占쎌깂 */
 .mainEvent .ctrl{position:absolute;top:50%;width:90px;height:90px;margin-top:-45px;overflow:hidden;text-indent:-9999px;background:url(../images/main/bg_swiper_new.png) 0 0 no-repeat;z-index:1}
