@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/common.css">
-<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
-
+	 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 
 <script>
 	<!-- 버튼을 누르면 아래 설명이 나온다 -->
@@ -125,7 +125,7 @@
 
 			<div class="headArea">
 				<strong class="hLogo"><a href="/" class="logo"
-					title="메인으로 이동"><img src="kor/images/common/logo.png"
+					title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png"
 						alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
@@ -163,15 +163,15 @@
 									<li><a href="kor/happymeal/list.do" class="dth2">이달의
 											해피밀</a></li>
 								</ul></li>
-							<li><a href="kor/story/main.do" class="dth1  current">Story</a>
+							<li><a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="kor/story/intro/brandintro.do" class="dth2">브랜드
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드
 											소개</a></li>
-									<li><a href="kor/story/society/list.do" class="dth2">사회적
+									<li><a href="/story/society/list.do" class="dth2">사회적
 											책임과 지원</a></li>
-									<li><a href="kor/story/competition/farmToRestaurant.do"
+									<li><a href="/story/competition/farmToRestaurant.do"
 										class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="kor/story/people/crew.do" class="dth2">맥도날드
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드
 											사람들</a></li>
 								</ul></li>
 						</ul>
@@ -180,7 +180,7 @@
 					<form id="commonSearchForm" method="post">
 						<div class="util">
 							<a href="kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>
-							<a href="kor/story/people/recruit.do" class="recruit"
+							<a href="/story/people/recruit.do" class="recruit"
 								title="인재채용으로 이동">RECRUIT</a> <a href="/eng/main.do"
 								class="lang" title="영문사이트로 이동">ENG</a>
 							<div class="topSearch">
@@ -239,8 +239,8 @@
 						</p>
 						<ul class="navPath">
 							<li><a href="kor/main.do">Home</a></li>
-							<li><a href="kor/story/main.do">Story</a></li>
-							<li><a href="kor/story/competition/farmToRestaurant.do">맥도날드
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/competition/farmToRestaurant.do">맥도날드
 									경쟁력</a></li>
 						</ul>
 					</div>
@@ -249,9 +249,9 @@
 				<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="kor/story/competition/farmToRestaurant.do"
+							<li><a href="/story/competition/farmToRestaurant.do"
 								role="button">농장에서 레스토랑까지</a></li>
-							<li><a href="kor/story/competition/faq.do" role="button"
+							<li><a href="/story/competition/faq.do" role="button"
 								aria-selected="true">궁금한 모든 것을 알려드립니다</a></li>
 
 						</ul>
@@ -706,7 +706,7 @@
 					<li class="web_accessibility"><a
 						href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110"
 						class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-							<img src="kor/images/common/web_accessibility.svg"
+							<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg"
 							alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
 					</a></li>
 				</ul>

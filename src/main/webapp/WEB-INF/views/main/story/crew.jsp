@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/common.css">
-<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+	 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 <script>
 	$(document).ready(function(){
 		$('.crewThumb').on('click',function(){
@@ -174,8 +175,8 @@
 						<p class="subCopy">끊임없는 변화와 도전을 통해 성장해온 맥도날드<br>이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.</p>
 						<ul class="navPath">
 							<li><a href="/kor/main.do">Home</a></li>
-							<li><a href="/kor/story/main.do">Story</a></li>
-							<li><a href="/kor/story/people/crew.do">맥도날드 사람들</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/people/crew.do">맥도날드 사람들</a></li>
 						</ul>
 					</div>
 				</div>
@@ -183,9 +184,9 @@
 				<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="/kor/story/people/crew.do" role="button" aria-selected="true">크루이야기</a></li>
-							<li><a href="/kor/story/people/work.do" role="button">업무소개</a></li>
-						    <li><a href="/kor/story/people/recruit.do" role="button">인재채용</a></li> 
+							<li><a href="/story/people/crew.do" role="button" aria-selected="true">크루이야기</a></li>
+							<li><a href="/story/people/work.do" role="button">업무소개</a></li>
+						    <li><a href="/story/people/recruit.do" role="button">인재채용</a></li> 
 						</ul>
 						<h2 class="hide">크루이야기</h2>
 						
@@ -194,22 +195,22 @@
 							<h3 class="titDep3">크루들이 만들어가는 맥도날드의 변화 이야기</h3><!-- 수정 -->
 							<ul class="crewList">
 								<li>
-									<a href="#crew_1" class="crewThumb"><img src="../kor/images/story/img_crew_thumb01.png" alt="목포 남악 DT점 김지웅 매니저"></a>
+									<a href="#crew_1" class="crewThumb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_thumb01.png" alt="목포 남악 DT점 김지웅 매니저"></a>
 									<strong class="tit">변화는 나의 자부심</strong>
 									<span class="crewInfo">목포 남악 DT점 김지웅 매니저</span>
 								</li>
 								<li>
-									<a href="#crew_2" class="crewThumb"><img src="../kor/images/story/img_crew_thumb02.png" alt="경희대점 권영미 크루"></a>
+									<a href="#crew_2" class="crewThumb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_thumb02.png" alt="경희대점 권영미 크루"></a>
 									<strong class="tit">매일 열정적일 수 있는<br>나만의 비결</strong>
 									<span class="crewInfo">경희대점 권영미 크루</span>
 								</li>
 								<li>
-									<a href="#crew_3" class="crewThumb"><img src="../kor/images/story/img_crew_thumb03.png" alt="미아역점 이지혁 라이더"></a>
+									<a href="#crew_3" class="crewThumb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_thumb03.png" alt="미아역점 이지혁 라이더"></a>
 									<strong class="tit">행복을 배달하는 사람으로</strong>
 									<span class="crewInfo">미아역점 이지혁 라이더</span>
 								</li>
 								<li>
-									<a href="#crew_4" class="crewThumb"><img src="../kor/images/story/img_crew_thumb04.png" alt="석촌역점 이나라 크루"></a>
+									<a href="#crew_4" class="crewThumb"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_thumb04.png" alt="석촌역점 이나라 크루"></a>
 									<strong class="tit">맥도날드를 넘어,<br>나 자신의 변화까지</strong>
 									<span class="crewInfo">석촌역점 이나라 크루</span>
 								</li>
@@ -229,7 +230,7 @@
 		<div class="layCont" tabindex="0" style="">
 			<div class="scroll crewDetail" style="">
 				<div class="contHead">
-					<div class="img"><img src="../kor/images/story/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
 				</div>
 				<div class="contBtm crewCont" tabindex="0">
 					<h2 class="tit">변화는 나의 자부심</h2>
@@ -247,7 +248,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="../kor/images/story/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">매일 열정적일 수 있는 나만의 비결</h2>
@@ -265,7 +266,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="../kor/images/story/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">행복을 배달하는 사람으로.</h2>
@@ -283,7 +284,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="../kor/images/story/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">맥도날드를 넘어, 나 자신의 변화까지</h2>
@@ -298,7 +299,7 @@
 	</div>
 			
 			<div class="aside">
-				<a href="/kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
+				<a href="/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
@@ -314,7 +315,7 @@
 					<li><a href="/kor/store/rental.do">임차문의</a></li>
 					<li><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank" title="새창 열림">고객문의</a></li>
 					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="/kor/story/people/recruit.do">인재채용</a></li> 
+				    <li><a href="/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>
@@ -323,7 +324,7 @@
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="/kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>

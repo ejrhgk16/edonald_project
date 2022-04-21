@@ -52,6 +52,38 @@ public class StoryController {
 	public String safetyGuard() {
 		return "main/story/safetyGuard";
 	}
+	
+	@RequestMapping(value = "story/society/mcDonaldHouse.do", method = RequestMethod.GET)
+	public String mcDonaldHouse() {
+		return "main/story/mcDonaldHouse";
+	}
+	
+	@RequestMapping(value = "story/competition/farmToRestaurant.do", method = RequestMethod.GET)
+	public String farmToRestaurant() {
+		return "main/story/farmToRestaurant";
+	}
+	/*ajax °Ô½ÃÆÇ*/
+	@RequestMapping(value = "story/competition/faq.do", method = RequestMethod.GET)
+	public String faq() {
+		return "main/story/faq";
+	}
+	
+	@RequestMapping(value = "story/people/crew.do", method = RequestMethod.GET)
+	public String crew() {
+		return "main/story/crew";
+	}
+	
+	
+	
+	@RequestMapping(value = "story/people/work.do", method = RequestMethod.GET)
+	public String work() {
+		return "main/story/work";
+	}
+	
+	@RequestMapping(value = "story/people/recruit.do", method = RequestMethod.GET)
+	public String recruit() {
+		return "main/story/recruit";
+	}
 }
 
 

@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/common.css">
-<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+	 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/common.css">
+ <script type="text/javascript" src="/resources/js/commons.js"></script>
 </head>
 <body>
 <script>
@@ -97,12 +98,12 @@
 								</ul>
 							</li>
 							<li>
-								<a href="../kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="../kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="../kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="../kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="../kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -111,7 +112,7 @@
 					<form id="commonSearchForm" method="post">
 					<div class="util">
 						<a href="../kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
-						<a href="../kor/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
+						<a href="/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
 						<a href="/eng/main.do" class="lang" title="영문사이트로 이동">ENG</a>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>
@@ -160,8 +161,8 @@
 							모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.</p>
 						<ul class="navPath">
 							<li><a href="../kor/main.do">Home</a></li>
-							<li><a href="../kor/story/main.do">Story</a></li>
-							<li><a href="../kor/story/competition/farmToRestaurant.do">맥도날드 품질 이야기</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/competition/farmToRestaurant.do">맥도날드 품질 이야기</a></li>
 						</ul>
 					</div>
 				</div>
@@ -169,8 +170,8 @@
 				<div class="contArea" data-background="food01">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="../kor/story/competition/farmToRestaurant.do" role="button" aria-selected="true">농장에서 레스토랑까지</a></li>
-							<li><a href="../kor/story/competition/faq.do" role="button">궁금한 모든 것을 알려드립니다</a></li>
+							<li><a href="/story/competition/farmToRestaurant.do" role="button" aria-selected="true">농장에서 레스토랑까지</a></li>
+							<li><a href="/story/competition/faq.do" role="button">궁금한 모든 것을 알려드립니다</a></li>
 						</ul>
 						<h2 class="hide">농장에서 레스토랑까지</h2>
 <!--  					<div class="img"><img src="../kor/images/story/img_competitive01.jpg" alt=""></div> -->
@@ -207,7 +208,7 @@
 									<div id="subTab01" class="subtabCont" style="display:block">
 										<h5 class="hide">쇠고기</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive01.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive01.png" alt=""></div>
 											<div class="txt">
 												<h6 class="titDep4">호주 청정 지역에서 키운 무방부제 &amp; 무첨가제 <br>100% 순 쇠고기 패티</h6>
 												<p class="txtInfo">맥도날드 쇠고기 패티는 청정한 호주 대자연에서 깨끗함을 먹고 자란 100%
@@ -222,7 +223,7 @@
 									<div id="subTab02" class="subtabCont">
 										<h5 class="hide">치킨, 돼지고기</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive02.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive02.png" alt=""></div>
 											<div class="txt">
 												<h6 class="titDep4">신선하고 안전한 재료로<br>엄선하여 만든 치킨 패티</h6>
 												<p class="txtInfo">맥도날드 치킨 패티는 세계보건기구(WHO)에서 공표한 ‘주요항생제리스트(HPCIA)’ 에 포함된 항생제 및 방부제를 사용하지 않으며, 
@@ -238,7 +239,7 @@
 									<div id="subTab03" class="subtabCont">
 										<h5 class="hide">빵</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive03.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03.png" alt=""></div>
 											<div class="txt">
 												<h6 class="titDep4">매일 구워 배송 받는 햄버거 빵</h6>
 												<p class="txtInfo">맥도날드에서 사용하는 햄버거 빵은 국제식품안전협회(GFSI*)의 식품안전시스템 규격 인증을 받은 공장에서, 60년 이상의 햄버거 빵 제조 기술을 바탕으로 생산된 우수한 품질의 제품입니다.</p>
@@ -251,7 +252,7 @@
 									<div id="subTab04" class="subtabCont">
 										<h5 class="hide">양상추</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive04.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive04.png" alt=""></div>
 											<div class="txt">
 												<h6 class="titDep4">국제적인 우수 농산물 품질 관리 인증 제조사에서 공급하는 신선한 양상추</h6>
 												<p class="txtInfo">농지의 물은 깨끗한지, 토양의 영양분은 풍부한지 농지 주위에 오염 요소는 없는지, 양상추가 자라는 농장부터 꼼꼼히 확인합니다.</p>
@@ -266,7 +267,7 @@
 									<div id="subTab05" class="subtabCont">
 										<h5 class="hide">토마토</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive05.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive05.png" alt=""></div>
 											<div class="txt">
 												<!-- 2021.01.05 문구 수정 -->
 												<h6 class="titDep4">우리 땅에서 건강하게 키운 100% 국내산 토마토</h6>
@@ -283,7 +284,7 @@
 									<div id="subTab06" class="subtabCont">
 										<h5 class="hide">계란</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive06.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive06.png" alt=""></div>
 											<div class="txt">
 												<h6 class="titDep4">우수한 품질의 국내산 1+ 등급 계란</h6>
 												<p class="txtInfo">표면 세척과 UV 살균 등 꼼꼼한 위생 처리를 거친 뒤, 레스토랑에서 조리될 때까지 7°C 이하로 냉장 보관되어 최상의 신선함을 자랑합니다. </p>
@@ -294,7 +295,7 @@
 									<div id="subTab07" class="subtabCont">
 										<h5 class="hide">치즈</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive07.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive07.png" alt=""></div>
 											<div class="txt">
 												<!-- 2021.01.05 문구 수정 -->
 												<h6 class="titDep4">치즈 본연의 풍미가 가득한 뉴질랜드 방목 치즈</h6>
@@ -306,7 +307,7 @@
 									<div id="subTab08" class="subtabCont">
 										<h5 class="hide">양파</h5>
 										<div class="foodCont">
-											<div class="img"><img src="../kor/images/story/img_competitive08.png" alt=""></div>
+											<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive08.png" alt=""></div>
 											<div class="txt">
 												<!-- 2021.01.05 문구 수정 -->
 												<h6 class="titDep4">HACCP 인증 완료한 시설에서 공급하는 신선한 양파</h6>
@@ -325,12 +326,12 @@
 									<div class="socialList">
 										<ul>
 											<li>
-												<span class="thum"><img src="../kor/images/story/img_competitive02_01.jpg" alt=""></span>
+												<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive02_01.jpg" alt=""></span>
 												<strong>최적의 온도와 보안 상태를 확인하는<br>검수 및 하역 단계</strong>
 												<p>깐깐한 관리를 통해 선별되고 가공된 원재료는 최적화된 온도에서 보관된 상태로 원재료 컨테이너에 봉인되어 물류 창고에 도착합니다. 물류업체에서 보안 확인을 마친 후, 트럭과 공장 사이의 공간이 한치의 틈도 없이 맞물리도록 도킹 작업을 수행, 최적의 온도를 유지하도록 한 후 재료를 하역합니다. 하역과정에서 재료의 온도를 확인하고 검수하는 과정을 거친 후에, 품질 검사증을 붙여 최적의 상태로 보관될 수 있도록 합니다.</p>
 											</li>
 											<li>
-												<span class="thum"><img src="../kor/images/story/img_competitive02_02_1.jpg" style="border-radius:8px" alt=""></span>
+												<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive02_02_1.jpg" style="border-radius:8px" alt=""></span>
 												<strong>안전과 청결은 기본, VeroFresh program 관리를 통한 배송단계</strong>
 												<p>검수가 완료된 재료들은 레스토랑으로 이동되기 전까지 재료의 종류, 레스토랑 배송 날짜 등에 따라 분류하여 안전하고 깨끗하게 보관됩니다. 
 												이 때, 재료들의 신선한 보관을 위해 최적의 온도 상태를 유지합니다. 재료의 유효기간과 상태를 다시 한 번 점검 후, 배송 차량이 
@@ -351,17 +352,17 @@
 										<div class="socialList">
 											<ul>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_01_01.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_01_01.jpg" alt=""></span>
 													<strong>냉장/냉동고로 식재료를 입고할 때<br>적정 온도 유지는 필수</strong>
 													<p>배송된 재료가 바로 냉장/냉동실로 이동될 수 있도록 사전에 필요한 공간을 확보해 둡니다. 그리고 항온 담요와 방수포를 덮어 식재료 온도를 유지하며, 바닥에 닿지 않도록 트레이를 사용하여 냉장/냉동고로 입고시킵니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_01_02.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_01_02.jpg" alt=""></span>
 													<strong>샘플 검수를 통해 식재료의 신선한 상태를 점검</strong>
 													<p>식재료가 배송되면 기준에 미달하는 식재료는 없는지 냉동/냉장 각 재료 중 일부 박스를 샘플로 뜯어 확인하고, 문제가 있을 경우 폐기를 위해 반품 처리 합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_01_03.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_01_03.jpg" alt=""></span>
 													<strong>먼저 들어온 제품을 먼저 사용하고<br>냉장/냉동고의 온도를 철저히 유지</strong>
 													<p>선입선출이라는 말을 아시나요? 먼저 들어온 식재료부터 들어온 순서에 맞게 사용될 수 있도록 보관·관리하며, 재료 박스간의 적정 간격을 유지하여 온도가 잘 유지될 수 있도록 보관합니다.</p>
 												</li>
@@ -374,17 +375,17 @@
 										<div class="socialList">
 											<ul>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_02_01.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_02_01.jpg" alt=""></span>
 													<strong>매일 첫 제품이 제공되기 전에<br>조리된 제품의 온도를 체크</strong>
 													<p>매일 첫 제품이 제공되기 전 패티의 온도를 체크하여 식품 안전 온도를 유지하는지 확인합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_02_02.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_02_02.jpg" alt=""></span>
 													<strong>식약처 기준보다 더 염격한 산가기준 적용</strong>
 													<p>매일 레스토랑 기름의 산가를 측정하여 기준을 초과하는 경우 즉시 교체하고 있습니다. 국내 식품 위생 법률에서 정한 3.0의 산가 기준보다 더 엄격한 2.5의 산가 기준을 적용합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_02_03.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_02_03.jpg" alt=""></span>
 													<strong>매일 식품 안전사항을 체크하고 관리</strong>
 													<p>모든 레스토랑에서는 매일 식품 안전사항을 체크하여 철저히 품질 관리를 하며, 
 													맥도날드 글로벌 공통의 레스토랑 식품안전 기준이 상시 유지 중인지 제 3자 점검기관을 통해 전 매장을 점검합니다.</p>
@@ -398,22 +399,22 @@
 										<div class="socialList">
 											<ul>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_03_01.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_03_01.jpg" alt=""></span>
 													<strong>패티의 종류에 따라 적정 온도로<br>조리되는 오토 쿠킹 모드</strong>
 													<p>패티는 그릴이라는 장비를 통해 자동으로 구워집니다. 오토 쿠킹 모드를 누르면 정해진 조리 시간에 따라 자동으로 조리되며, 정해진 시간이 종료되면 자동으로 상판이 올라가며 조리가 완료됩니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_03_02.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_03_02.jpg" alt=""></span>
 													<strong>교차 오염 방지를 위한 일회용 장갑 사용</strong>
 													<p>교차 오염을 방지하기 위해 조리되지 않은 식품을 만질 때는 파란 장갑을, 조리된 식품이나 조리 도구를 만질 때는 흰 장갑을 사용합니다. 한번 사용한 장갑은 바로 폐기하고, 새 장갑으로 교체하여 사용합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_03_03.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_03_03.jpg" alt=""></span>
 													<strong>깨끗하고 안전한 제품을<br>제공하기 위해 준비하는 크루</strong>
 													<p>레스토랑 주방에서는 30분마다 한번씩 손 씻기 타이머가 울립니다. 주방에서 근무하는 모든 직원들은 30분마다 한 번씩 손부터 아래팔까지 손을 씻습니다. 청결한 유니폼 착용 등 개인 위생에도 만전을 기합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_03_04.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_03_04.jpg" alt=""></span>
 													<strong>4시간 경마다 세척하여 사용하는 조리 도구</strong>
 													<p>깨끗한 조리 환경을 위해, 레스토랑 직원들은 4시간 경마다 한 번씩 조리 도구를 세척하여 청결하게 사용하고 있습니다.</p>
 												</li>
@@ -426,22 +427,22 @@
 										<div class="socialList">
 											<ul>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_04_01.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_04_01.jpg" alt=""></span>
 													<strong>주문이 들어옴과 동시에 음식을<br>만드는 ‘메이드 포 유’ 시스템</strong>
 													<p>맥도날드는 음식을 미리 만들어 놓지 않고, 고객 주문 접수와 동시에 음식을 만들어 갓 조리된 신선한 음식만을 제공하는 ‘메이드 포 유(Made for You)’ 시스템을 적용하고 있습니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_04_02.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_04_02.jpg" alt=""></span>
 													<strong>고객의견을 반영한 제품 구성 및 함량 변경</strong>
 													<p>위생을 위해 슈레더로 변경한 양상추의 함량이 적게 느껴진다는 고객 의견을 반영하여 일부 메뉴의 슈레더 양상추 함량이 30g씩 늘어났습니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_04_03.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_04_03.jpg" alt=""></span>
 													<strong>고객이 주문하는 공간도 언제나 깨끗하게 유지</strong>
 													<p>고객이 주문을 하는 카운터와 디지털 키오스크 공간도 언제나 기분 좋게 사용하실 수 있도록 깨끗이 유지합니다.</p>
 												</li>
 												<li>
-													<span class="thum"><img src="../kor/images/story/img_competitive03_04_04.jpg" alt=""></span>
+													<span class="thum"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_competitive03_04_04.jpg" alt=""></span>
 													<strong>고객이 레스토랑을 나가는 순간까지 깨끗하게</strong>
 													<p>고객이 음식을 드시는 테이블은 물론, 휴지통과 화장실까지 청결하게 유지될 수 있도록 노력합니다.</p>
 												</li>
@@ -449,7 +450,7 @@
 										</div>
 									</div>
 									<div class="btnArea">
-										<a href="../kor/story/competition/faq.do" class="btnMC btnL action">맥도날드의 음식과 재료에 대해 더 궁금한 점이 있다면?</a>
+										<a href="/story/competition/faq.do" class="btnMC btnL action">맥도날드의 음식과 재료에 대해 더 궁금한 점이 있다면?</a>
 									</div>
 								</div>
 								<!-- //레스토랑에서의 노력 -->
@@ -459,7 +460,7 @@
 				</div>
 			</div>
 			<div class="aside">
-				<a href="../kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
+				<a href="/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
@@ -475,7 +476,7 @@
 					<li><a href="../kor/store/rental.do">임차문의</a></li>
 					<li><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank" title="새창 열림">고객문의</a></li>
 					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="../kor/story/people/recruit.do">인재채용</a></li> 
+				    <li><a href="/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>
@@ -484,7 +485,7 @@
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="../kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>
