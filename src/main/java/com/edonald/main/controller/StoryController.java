@@ -52,6 +52,21 @@ public class StoryController {
 	public String safetyGuard() {
 		return "main/story/safetyGuard";
 	}
+	
+	@RequestMapping(value = "story/society/mcDonaldHouse.do", method = RequestMethod.GET)
+	public String mcDonaldHouse() {
+		return "main/story/mcDonaldHouse";
+	}
+	
+	@RequestMapping(value = "story/competition/farmToRestaurant.do", method = RequestMethod.GET)
+	public String farmToRestaurant() {
+		return "main/story/farmToRestaurant";
+	}
+	/*ajax °Ô½ÃÆÇ*/
+	@RequestMapping(value = "story/competition/faq.do", method = RequestMethod.GET)
+	public String faq() {
+		return "main/story/faq";
+	}
 }
 
 

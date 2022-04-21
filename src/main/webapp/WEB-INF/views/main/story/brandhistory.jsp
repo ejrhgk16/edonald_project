@@ -58,10 +58,10 @@
 							<li>
 								<a href="../kor/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="../kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="../kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="../kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="../kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -69,8 +69,8 @@
 					<!-- //menu -->
 					<form id="commonSearchForm" method="post">
 					<div class="util">
-						<a href="../kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
-						<a href="../kor/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
+						<a href="/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
+						<a href="/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
 						<a href="/eng/main.do" class="lang" title="영문사이트로 이동">ENG</a>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>
@@ -118,8 +118,8 @@
 						<p class="subCopy">1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자,<br>음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.</p>
 						<ul class="navPath">
 							<li><a href="../kor/main.do">Home</a></li>
-							<li><a href="../kor/story/main.do">Story</a></li>
-							<li><a href="../kor/story/intro/brandintro.do">브랜드 소개</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/intro/brandintro.do">브랜드 소개</a></li>
 						</ul>
 					</div>
 				</div>
@@ -128,8 +128,8 @@
 					<div class="inner">
 						<!-- tab -->
 						<ul class="tabType01">
-							<li><a href="../kor/story/intro/brandintro.do" role="button">맥도날드 소개</a></li>
-							<li><a href="../kor/story/intro/brandhistory.do" role="button" aria-selected="true">맥도날드 철학 및 역사</a></li>
+							<li><a href="/story/intro/brandintro.do" role="button">맥도날드 소개</a></li>
+							<li><a href="/story/intro/brandhistory.do" role="button" aria-selected="true">맥도날드 철학 및 역사</a></li>
 						</ul>
 						<!-- //tab -->
 						<div class="brnadCont01">
@@ -198,7 +198,7 @@
 
 			</div>
 			<div class="aside">
-				<a href="../kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
+				<a href="/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
