@@ -58,8 +58,8 @@
 								<ul class="depth2">
 									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
 									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -68,7 +68,7 @@
 					<form id="commonSearchForm" method="post">
 					<div class="util">
 						<a href="/kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
-						<a href="/kor/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
+						<a href="/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
 						<a href="/eng/main.do" class="lang" title="영문사이트로 이동">ENG</a>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>
@@ -129,7 +129,7 @@
 									<h3 class="tit">01. 브랜드소개</h3>
 									<strong class="subTit">1955년부터 지금까지 이어져온<br>맥도날드의 발자취</strong>
 									<p>1955년 작은 레스토랑에서부터 지금에 이르기까지<br>고객이 가장 좋아하는 장소이자, 음식을 즐기는<br>최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.</p>
-									<a href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/brandintro.do" class="btnMC btnM" title="브랜드소개 페이지 이동">자세히 보기</a>
+									<a href="/story/intro/brandintro.do" class="btnMC btnM" title="브랜드소개 페이지 이동">자세히 보기</a>
 								</div>								
 							</li>
 							<li class="subMenu">								
@@ -137,7 +137,7 @@
 									<h3 class="tit">02.<br>맥도날드의<br>사회적 책임</h3>
 									<strong class="subTit">더 나은 세상을 위한 맥도날드의 노력</strong>
 									<p>맥도날드는 건전한 기업시민으로서의 책임을 다하고자 노력합니다.<br>지역 사회의 발전과 사람들의 행복에 기여하고<br>지금보다 더 나은 세상을 만들기 위해 오늘도 나아갑니다.</p>
-									<a href="kor/story/society/list.do" class="btnMC btnM" title="맥도날드의 사회적 책임과 지원 페이지 이동">자세히 보기</a>									
+									<a href="/story/society/list.do" class="btnMC btnM" title="맥도날드의 사회적 책임과 지원 페이지 이동">자세히 보기</a>									
 								</div>
 								<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_submenu02.jpg" alt="맥도날드의 사회적 책임 이미지"></div>								
 							</li>
@@ -147,7 +147,7 @@
 									<h3 class="tit">03. 맥도날드 경쟁력</h3>
 									<strong class="subTit">식재료부터 레스토랑까지<br>엄격한 기준을 고집합니다.</strong>
 									<p>맥도날드는 어떤 곳 보다 햄버거 비즈니스를 진지하게 생각합니다.<br>엄격한 품질 관리 시스템을 통해 고품질의 음식을 제공하며,<br>조리 과정에서 고객이 궁금한 모든 것을 알려드립니다.</p><!-- 0702 문구수정 -->
-									<a href="/kor/story/competition/farmToRestaurant.do" class="btnMC btnM">자세히 보기</a>
+									<a href="/story/competition/farmToRestaurant.do" class="btnMC btnM">자세히 보기</a>
 								</div>								
 							</li>
 							<li class="subMenu">								
@@ -155,7 +155,7 @@
 									<h3 class="tit">04. 맥도날드 사람들</h3>
 									<strong class="subTit">최초의 서비스에 담긴 자부심으로<br>맥도날드의 새로운 변화를 이끌어갑니다.</strong>
 									<p>끊임없는 변화와 도전을 통해 성장해온 맥도날드.<br>이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 <br>'맥도날드 사람들'이 있습니다.</p><!-- 0702 문구수정 -->
-									<a href="/kor/story/people/crew.do" class="btnMC btnM" title="맥도날드 사람들 페이지 이동">자세히 보기</a>
+									<a href="/story/people/crew.do" class="btnMC btnM" title="맥도날드 사람들 페이지 이동">자세히 보기</a>
 								</div>
 								<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_submenu04.jpg" alt="맥도날드 사람들 이미지"></div>						
 							</li>
@@ -165,7 +165,7 @@
 
 			</div>
 			<div class="aside">
-				<a href="/kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
+				<a href="/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
@@ -181,7 +181,7 @@
 					<li><a href="/kor/store/rental.do">임차문의</a></li>
 					<li><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank" title="새창 열림">고객문의</a></li>
 					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="/kor/story/people/recruit.do">인재채용</a></li> 
+				    <li><a href="/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>

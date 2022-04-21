@@ -54,7 +54,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="../kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
 									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
 									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
@@ -68,7 +68,7 @@
 					<form id="commonSearchForm" method="post">
 					<div class="util">
 						<a href="../kor/store/rental.do" class="renter" title="임차문의로 이동">임차문의</a>					
-						<a href="../kor/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
+						<a href="/story/people/recruit.do" class="recruit" title="인재채용으로 이동">RECRUIT</a>
 						<a href="/eng/main.do" class="lang" title="영문사이트로 이동">ENG</a>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>

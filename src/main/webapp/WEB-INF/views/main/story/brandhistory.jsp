@@ -56,7 +56,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="../kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
 									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
 									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
@@ -223,7 +223,7 @@
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="../kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>

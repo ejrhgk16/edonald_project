@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../main.css">  
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/main.css">
+ <script type="text/javascript" src="/resources/js/main.js"></script>
 </head>
 <body>
 <div class="root">

@@ -54,12 +54,12 @@
 								</ul>
 							</li>
 							<li>
-								<a href="../kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="../kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="../kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="../kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="../kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -116,8 +116,8 @@
 						<p class="subCopy">맥도날드는 건전한 기업시민으로서의 책임을 다하고자 노력합니다.<br>지역 사회의 발전과 사람들의 행복에 기여하고, 지금보다 더 나은 세상을 만들기 위해 오늘도 나아갑니다.</p>
 						<ul class="navPath">
 							<li><a href="../kor/main.do">Home</a></li>
-							<li><a href="../kor/story/main.do">Story</a></li>
-							<li><a href="../kor/story/society/list.do">맥도날드 사회적 책임</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/society/list.do">맥도날드 사회적 책임</a></li>
 						</ul>
 					</div>
 				</div>
@@ -162,7 +162,7 @@
 					<li><a href="../kor/store/rental.do">임차문의</a></li>
 					<li><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank" title="새창 열림">고객문의</a></li>
 					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="../kor/story/people/recruit.do">인재채용</a></li> 
+				    <li><a href="/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>

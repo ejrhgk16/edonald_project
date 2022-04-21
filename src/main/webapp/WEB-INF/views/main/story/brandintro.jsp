@@ -54,12 +54,12 @@
 								</ul>
 							</li>
 							<li>
-								<a href="../kor/story/main.do" class="dth1  current">Story</a>
+								<a href="/story/main.do" class="dth1  current">Story</a>
 								<ul class="depth2">
-									<li><a href="../kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="../kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="../kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="../kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -116,8 +116,8 @@
 						<p class="subCopy">1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자,<br>음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.</p>
 						<ul class="navPath">
 							<li><a href="../kor/main.do">Home</a></li>
-							<li><a href="../kor/story/main.do">Story</a></li>
-							<li><a href="../kor/story/intro/brandintro.do">브랜드 소개</a></li>
+							<li><a href="/story/main.do">Story</a></li>
+							<li><a href="/story/intro/brandintro.do">브랜드 소개</a></li>
 						</ul>
 					</div>
 				</div>
@@ -125,8 +125,8 @@
 				<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="../kor/story/intro/brandintro.do" role="button" aria-selected="true">맥도날드 소개</a></li>
-							<li><a href="../kor/story/intro/brandhistory.do" role="button">맥도날드 철학 및 역사</a></li>
+							<li><a href="/story/intro/brandintro.do" role="button" aria-selected="true">맥도날드 소개</a></li>
+							<li><a href="/story/intro/brandhistory.do" role="button">맥도날드 철학 및 역사</a></li>
 						</ul>
 						<div class="brnadCont01">
 							<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/img_brand_cont01.jpg" alt="1955 맥도날드 매장 이미지"></div>
