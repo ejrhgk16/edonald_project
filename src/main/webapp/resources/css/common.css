@@ -1049,7 +1049,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .crewList li .crewInfo{display:block;margin-top:5px}
 .crewList li .crewThumb{display:block;position:relative}
 .crewList li .crewThumb:hover:before{display:block;content:'';position:absolute;top:0;left:50%;width:248px;height:248px;margin:-1px 0 0 -124px;border-radius:125px;background:#ffbc0d;opacity:0.9}
-.crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(../images/story/ico_crew_over.png) 0 0 no-repeat}
+.crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ico_crew_over.png) 0 0 no-repeat}
 /* 筌�醫륁굩筌욑옙筌��꼷彛ο쭪占쏙㎖�닀�깂鸚룸뜆肄▼뜝�뜦肉�占쎈�믭옙嫄울쭕�쉻�삕 layerpop */
 .crewDetail .crewCont .tit{font-size:20px;font-weight:600;color:#292929}
 .crewDetail .crewCont .txt{margin-top:25px}
