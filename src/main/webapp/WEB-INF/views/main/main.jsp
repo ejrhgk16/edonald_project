@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>main</title>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <script type="text/javascript" src="/resources/js/commons.js"></script>
 
@@ -271,7 +270,7 @@ function makeClone() {
 							</a></li>
 </script>	
 			</div>
-			<div class="aside fixedB">
+			<div class="aside">
 				<a href="./kor/story/competition/farmToRestaurant.do" class="go_story" title="품질 이야기로 이동">품질 이야기</a>
 				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 			</div>
