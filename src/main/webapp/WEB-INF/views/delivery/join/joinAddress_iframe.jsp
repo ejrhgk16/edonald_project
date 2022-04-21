@@ -8,8 +8,9 @@
 <meta name="language" content="ko">
 <title>맥딜리버리</title>
 
-<link rel="stylesheet" type="text/css" href="./css/w_address.css">
-<link rel="stylesheet" type="text/css" href="./css/wos2.6/selectric2.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/w_address.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/wos2.6/selectric2.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 
 <link rel="icon" type="image/x-icon" href="/mdsgis/resources/old/favicon.ico">
 
@@ -17,7 +18,7 @@
 <body>
 
 <div class="wrap">
-  <div class="flow" style="position: absolute center;"> <img src="./img/order_floww_01.gif" width="897" height="100" alt="맥딜리버리 주문단계"> </div>
+  <div class="flow" style="position: absolute center;"> <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/order_floww_01.gif" width="897" height="100" alt="맥딜리버리 주문단계"> </div>
   <!--시작:탭메뉴-->
   <div class="tab_menu" style="display:none;">
     <ul>
