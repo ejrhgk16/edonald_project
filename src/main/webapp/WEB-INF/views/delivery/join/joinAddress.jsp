@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +6,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/local.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <meta charset="UTF-8">
@@ -15,15 +17,14 @@
 	<div class="root">
 		<div class="wrap container">
 			<div class="global-header">
-				<script>	
-			/*<![CDATA[*/ 	
-				window.WOSPageVars = {	
-	            	'DURATION_OF_GDPR_DAY': 365	
-	            };
-				     		        
-				
-			/*]]>*/	
-			</script>
+				<script>
+					/*<![CDATA[*/
+					window.WOSPageVars = {
+						'DURATION_OF_GDPR_DAY' : 365
+					};
+
+					/*]]>*/
+				</script>
 				<!-- Begin Cookies Wrap -->
 
 				<!-- End Cookies Wrap -->
@@ -40,7 +41,8 @@
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
 
-							<li class="list-item"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+							<li class="list-item"><img
+								src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 								alt="Profile" width="20" class="profile-grey-avator"></li>
 
 							<li class="list-item"
@@ -59,7 +61,8 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
-							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
+							alt="McDelivery&amp;trade;">
 
 						</a>
 					</div>
@@ -256,10 +259,28 @@
 										name="jsonEditAddressRequest" id="jsonEditAddressRequest"
 										value="{&quot;RequestID&quot;:1,&quot;Language&quot;:&quot;ko-KR&quot;,&quot;Body&quot;:&quot;&quot;,&quot;ExternalMarketCode&quot;:&quot;KR&quot;,&quot;Application&quot;:&quot;WOI&quot;,&quot;MessageType&quot;:1}">
 
+									<div class="flow" style="position: absolute center; margin-right: 10px; padding-right:10px;" align="center">
+										<img
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/order_floww_01.gif"
+											width="897" height="100" alt="맥딜리버리 주문단계">
+									</div>
+									<fieldset class="sBox">
+										<legend>맥딜리버리 가능여부 검색</legend>
+										<!-- 20191112 수정 yjs -->
+										<div class="frm frwWrap" style="margin:10px 60px 60px 40px; padding: 10px;" align="center">
+											<span style="display:inline-block; width:200px; margin:10px 60px 60px 40px"><input type="text" class="addr1" id="addr1"
+												placeholder="주소를 선택해주세요." readonly="" title="입력 된 주소"></span>
+											<button type="button" class="btnMC btnM"
+												onclick="openApiPost()" title="주소찾기 새창 열림">주소찾기</button>
+										</div>
+										<!-- //20191112 수정 yjs -->
+										<div class="frm">
+											<input type="text" class="addr2" id="addr2" title="상세주소 입력"
+												placeholder="상세주소를 입력하세요.">
+										</div>
 
-									<iframe style="width: 100%;" frameborder="0" id="apaFrame"
-										scrolling="no" src="./joinAddress_iframe.jsp"> Inside
-										Iframe</iframe>
+
+									</fieldset>
 								</div>
 
 							</fieldset>
@@ -297,21 +318,18 @@
 						<div class="column">
 							<h3 class="list-group-title">메뉴</h3>
 							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="">추천 메뉴</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">버거 &amp; 세트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">스낵 &amp; 사이드</a>
-								</li>
+								<li class="menu-item"><a class="menu-item-target" href="">추천
+										메뉴</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">버거
+										&amp; 세트</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">스낵
+										&amp; 사이드</a></li>
 								<li class="menu-item"><a class="menu-item-target"
 									href="/kr/menu.html?daypartId=1&amp;catId=14">음료</a></li>
 								<li class="menu-item"><a class="menu-item-target"
 									href="/kr/menu.html?daypartId=1&amp;catId=15">디저트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">해피밀®</a></li>
-								<li><a class="menu-item-target" target="_blank"
-									href="">메뉴
+								<li class="menu-item"><a class="menu-item-target" href="">해피밀®</a></li>
+								<li><a class="menu-item-target" target="_blank" href="">메뉴
 										다운로드</a></li>
 							</ul>
 						</div>
@@ -322,23 +340,17 @@
 						<div class="column">
 							<h3 class="list-group-title">기타정보</h3>
 							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">이용약관</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">개인정보 처리방침</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">자주 묻는 질문</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">과일 칠러 판매 제외 매장</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">모바일 웹</a></li>
 							</ul>
 						</div>
@@ -374,9 +386,7 @@
 					<div class="text-center">
 						한국맥도날드(유) | 대표자: 앤토니 마티네즈 | 서울특별시 종로구 종로 51 종로타워 14층 | 전화번호:
 						1600-5252 | 사업자등록번호: 101-81-26409 | 호스팅서비스 제공자: 아마존 웹 서비스 <br>
-						<br>공정위 사업자 링크 정보: <a
-							href=""
-							target="_blank">한국맥도날드(유)</a>
+						<br>공정위 사업자 링크 정보: <a href="" target="_blank">한국맥도날드(유)</a>
 					</div>
 					<div class="text-center text-ucase">Copyright © 2014 All
 						Rights Reserved By McDonald's™</div>
@@ -1024,7 +1034,7 @@
 		</div>
 	</div>
 
-	
+
 
 	<iframe id="ne_tgmiframe_0" width="0" height="0"
 		style="position: absolute; width: 0px; height: 0px; display: none;"

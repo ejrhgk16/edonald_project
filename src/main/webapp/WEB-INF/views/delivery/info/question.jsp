@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$(".btn-faq").on("click", function(e){

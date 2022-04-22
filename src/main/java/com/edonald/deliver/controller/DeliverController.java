@@ -10,4 +10,9 @@ public class DeliverController {
 	public String deliverhome() {
 		return "/delivery/deliverhome/deliverhome";
 	}
+	
+	@GetMapping("/joinpage")
+	public String joinpage() {
+		return "/delivery/join/joinAddress";
+	}
 }
