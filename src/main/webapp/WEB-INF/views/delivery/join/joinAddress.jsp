@@ -259,7 +259,9 @@
 										name="jsonEditAddressRequest" id="jsonEditAddressRequest"
 										value="{&quot;RequestID&quot;:1,&quot;Language&quot;:&quot;ko-KR&quot;,&quot;Body&quot;:&quot;&quot;,&quot;ExternalMarketCode&quot;:&quot;KR&quot;,&quot;Application&quot;:&quot;WOI&quot;,&quot;MessageType&quot;:1}">
 
-									<div class="flow" style="position: absolute center; margin-right: 10px; padding-right:10px;" align="center">
+									<div class="flow"
+										style="position: absolute center; margin-right: 10px; padding-right: 10px;"
+										align="center">
 										<img
 											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/order_floww_01.gif"
 											width="897" height="100" alt="맥딜리버리 주문단계">
@@ -267,15 +269,26 @@
 									<fieldset class="sBox">
 										<legend>맥딜리버리 가능여부 검색</legend>
 										<!-- 20191112 수정 yjs -->
-										<div class="frm frwWrap" style="margin:10px 60px 60px 40px; padding: 10px;" align="center">
-											<span style="display:inline-block; width:200px; margin:10px 60px 60px 40px"><input type="text" class="addr1" id="addr1"
-												placeholder="주소를 선택해주세요." readonly="" title="입력 된 주소"></span>
+										<div class="frm frwWrap" align="center">
+											<span style="display: inline-block; margin: 10px 10px 10px 40px">
+												<input type="text" class="addr1" id="addr1"placeholder="주소를 선택해주세요." readonly=""  title="입력 된 주소" style="width:300px;">
+											</span>
 											<button type="button" class="btnMC btnM"
 												onclick="openApiPost()" title="주소찾기 새창 열림">주소찾기</button>
+										</div>
+										<div class="frm">
+											<input type="text" class="addr2" id="addr2" title="상세주소 입력" style="width:600px;"
+												placeholder="상세주소를 입력하세요.">
+										</div>
+										<div class="frm">
+											<input type="text" class="addr2" id="addr2" title="상세주소 입력"
+												placeholder="상세주소를 입력하세요.">
 										</div>
 										<!-- //20191112 수정 yjs -->
 										<div class="frm">
 											<input type="text" class="addr2" id="addr2" title="상세주소 입력"
+												placeholder="상세주소를 입력하세요."> <input type="text"
+												class="addr2" id="addr3" title="참고항목 입력"
 												placeholder="상세주소를 입력하세요.">
 										</div>
 
