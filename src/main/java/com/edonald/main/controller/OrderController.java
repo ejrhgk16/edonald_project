@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class OrderController {
 
-	@RequestMapping("kr/menu")
+	@RequestMapping("kr/menu.do")
 	public String menu() {
 		return "delivery/order/menu";
 	}

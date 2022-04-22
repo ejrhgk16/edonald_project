@@ -3666,8 +3666,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 	color: #843534
 }
 
-@
--webkit-keyframes progress-bar-stripes {
+@-webkit-keyframes progress-bar-stripes {
 	from {background-position: 40px 0
 }
 
@@ -3676,8 +3675,7 @@ to {
 }
 
 }
-@
-keyframes progress-bar-stripes {
+@keyframes progress-bar-stripes {
 	from {background-position: 40px 0
 }
 
@@ -4979,9 +4977,7 @@ button.close {
 }
 
 .fa-flip-horizontal, .fa-flip-vertical, .fa-rotate-180, .fa-rotate-270,
-	.fa-rotate-90 {
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation)
-}
+	.fa-rotate-90 {filter: progid:DXImageTransform.Microsoft.BasicImage(rotation= $rotation)}
 
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right,
 	.carousel-control .icon-next, .carousel-control .icon-prev {
@@ -5039,7 +5035,7 @@ button.close {
 	border: 1px solid #fff;
 	border-radius: 10px;
 	cursor: pointer;
-	background-color: #000\9;
+	background-color: #0009;
 	background-color: transparent
 }
 
@@ -5139,8 +5135,7 @@ button.close {
 	position: relative
 }
 
-@
--ms-viewport {
+@-ms-viewport {
 	width: device-width
 }
 
@@ -6761,13 +6756,11 @@ input[type=number] {
 	animation: spin 2s infinite linear
 }
 
-@
--moz-keyframes spin { 0%{
+@-moz-keyframes spin { 0%{
 	-moz-transform: rotate(0)
 }
 
-100
-%
+100%
 {
 -moz-transform
 :
@@ -6776,13 +6769,11 @@ rotate(
 )
 }
 }
-@
--webkit-keyframes spin { 0%{
+@-webkit-keyframes spin { 0%{
 	-webkit-transform: rotate(0)
 }
 
-100
-%
+100%
 {
 -webkit-transform
 :
@@ -6791,13 +6782,11 @@ rotate(
 )
 }
 }
-@
--o-keyframes spin { 0%{
+@-o-keyframes spin { 0%{
 	-o-transform: rotate(0)
 }
 
-100
-%
+100%
 {
 -o-transform
 :
@@ -6806,13 +6795,11 @@ rotate(
 )
 }
 }
-@
--ms-keyframes spin { 0%{
+@-ms-keyframes spin { 0%{
 	-ms-transform: rotate(0)
 }
 
-100
-%
+100%
 {
 -ms-transform
 :
@@ -6821,13 +6808,11 @@ rotate(
 )
 }
 }
-@
-keyframes spin { 0%{
+@keyframes spin { 0%{
 	transform: rotate(0)
 }
 
-100
-%
+100%
 {
 transform
 :
@@ -10263,7 +10248,7 @@ rotate(
 .icheckbox, .iradio {
 	margin: 0;
 	padding: 0;
-	background: url(../img/icheck_red2.png) no-repeat;
+	background: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icheck_red2.png) no-repeat;
 	border: none;
 	cursor: pointer
 }
@@ -14335,9 +14320,8 @@ form #form_order_payment_card_number.unionpay {
 	margin-top: 20px
 }
 
-@
-supports (-webkit-appearance:-apple-pay-button) { .
-	apple-pay-button {display: inline-block;
+@supports (-webkit-appearance:-apple-pay-button) { 
+	.apple-pay-button {display: inline-block;
 	-webkit-appearance: -apple-pay-button
 }
 
@@ -14354,9 +14338,8 @@ supports (-webkit-appearance:-apple-pay-button) { .
 }
 
 }
-@
-supports not (-webkit-appearance:-apple-pay-button) { .
-	apple-pay-button ,.applepay-payment{display: none
+@supports not (-webkit-appearance:-apple-pay-button) { 
+	.apple-pay-button ,.applepay-payment{display: none
 }
 
 }
@@ -15074,8 +15057,7 @@ section#contact_no_form {
 	margin-right: 5px;
 }
 
-@
-supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
+@supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 	display:inline-block;
 	-webkit-appearance: -apple-pay-button;
 }
@@ -15093,8 +15075,7 @@ supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 }
 
 }
-@
-supports not (-webkit-appearance: -apple-pay-button) { .apple-pay-button
+@supports not (-webkit-appearance: -apple-pay-button) { .apple-pay-button
 	{ display:inline-block;
 	background-size: 100% 60%;
 	background-repeat: no-repeat;

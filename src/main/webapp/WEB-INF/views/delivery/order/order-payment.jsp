@@ -25,11 +25,13 @@
 		
 		
 		$('.icheckbox').on('click',function(){
-			if(!$(this).hasClass("checked")){
-				$(this).addClass("checked");
+			var thi = $(this);
+			
+			if(!thi.hasClass("checked")){
+				thi.addClass("checked");
 				$('#form_order_payment_contactno').removeAttr("disabled");
 			}else{
-				$(this).removeClass("checked");
+				thi.removeClass("checked");
 				$('#form_order_payment_contactno').attr("disabled","true");
 			}
 		});
