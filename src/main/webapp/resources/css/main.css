@@ -4977,7 +4977,7 @@ button.close {
 }
 
 .fa-flip-horizontal, .fa-flip-vertical, .fa-rotate-180, .fa-rotate-270,
-	.fa-rotate-90 {filter: progid:DXImageTransform.Microsoft.BasicImage(rotation= $rotation)}
+	.fa-rotate-90 {filter: progid:DXImageTransform.Microsoft.BasicImage(rotation= rotation)}
 
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right,
 	.carousel-control .icon-next, .carousel-control .icon-prev {
@@ -10248,11 +10248,7 @@ rotate(
 .icheckbox, .iradio {
 	margin: 0;
 	padding: 0;
-<<<<<<< HEAD
-	background: url(/resources/img/icheck_red2.png) no-repeat;
-=======
-	background: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icheck_red2.png) no-repeat;
->>>>>>> b15adb82325ab0353aa27a8950e8275c911b0852
+	background: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icheck_red2.png);
 	border: none;
 	cursor: pointer
 }
