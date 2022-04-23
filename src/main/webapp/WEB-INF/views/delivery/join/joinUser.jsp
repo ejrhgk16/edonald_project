@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/local.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -15,15 +17,14 @@
 	<div class="root">
 		<div class="wrap container">
 			<div class="global-header">
-				<script>	
-			/*<![CDATA[*/ 	
-				window.WOSPageVars = {	
-	            	'DURATION_OF_GDPR_DAY': 365	
-	            };
-				     		        
-				
-			/*]]>*/	
-			</script>
+				<script>
+					/*<![CDATA[*/
+					window.WOSPageVars = {
+						'DURATION_OF_GDPR_DAY' : 365
+					};
+
+					/*]]>*/
+				</script>
 				<!-- Begin Cookies Wrap -->
 
 				<!-- End Cookies Wrap -->
@@ -87,29 +88,22 @@
 									기타정보<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">이용약관</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">이용약관</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">개인정보 처리방침</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">개인정보
+											처리방침</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">자주 묻는 질문</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">자주
+											묻는 질문</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_blank">과일 칠러 판매 제외 매장</a></li>
+										class="dropdown-menu-item-target" href="" target="_blank">과일
+											칠러 판매 제외 매장</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_blank">영양정보/원산지 정보/기타 정보</a></li>
+										class="dropdown-menu-item-target" href="" target="_blank">영양정보/원산지
+											정보/기타 정보</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href=""
-										target="_self">모바일 웹</a></li>
+										class="dropdown-menu-item-target" href="" target="_self">모바일
+											웹</a></li>
 
 
 								</ul></li>
@@ -214,10 +208,9 @@
 					<div class="row">
 						<div class="form-column col-xs-9">
 
-							<form action="/kr/addCustomer.html" role="form"
-								class="form form-register" id="form_register"
-								name="form_register" data-required-symbol="*" method="post"
-								novalidate="novalidate">
+							<form action="" role="form" class="form form-register"
+								id="form_register" name="form_register" data-required-symbol="*"
+								method="post" novalidate="novalidate">
 								<div class="form-register error-container">
 									<p>표시된 필수 항목을 입력해 주세요.</p>
 								</div>
@@ -692,18 +685,14 @@
 											</div>
 										</div>
 									</div>
-									<div>
-
-									</div>
+									<div></div>
 								</fieldset>
 
 								<fieldset class="fieldset form-actions">
 									<div class="form-group">
-
-										<button id="register_button" type="submit"
-											class="btn btn-red btn-xl btn-submit"
-											onclick="          dataLayer.push({           'event':'trackEvent',           'vpv':'vpv_create_account',           'eventDetails.category':'registration',           'eventDetails.action':'click',           'eventDetails.label':'create_account'          });         ">계정
-											생성</button>
+								
+										<button id="register_button" type="button"
+											class="btn btn-red btn-xl btn-submit">계정 생성</button>
 
 
 									</div>
@@ -742,15 +731,13 @@
 						<div class="column">
 							<h3 class="list-group-title">메뉴</h3>
 							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="">추천 메뉴</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">버거 &amp; 세트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">스낵 &amp; 사이드</a>
-								</li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="">음료</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">추천
+										메뉴</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">버거
+										&amp; 세트</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">스낵
+										&amp; 사이드</a></li>
+								<li class="menu-item"><a class="menu-item-target" href="">음료</a></li>
 								<li class="menu-item"><a class="menu-item-target"
 									href="/kr/menu.html?daypartId=1&amp;catId=15">디저트</a></li>
 								<li class="menu-item"><a class="menu-item-target"
@@ -764,23 +751,17 @@
 						<div class="column">
 							<h3 class="list-group-title">기타정보</h3>
 							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">이용약관</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">개인정보 처리방침</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">자주 묻는 질문</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">과일 칠러 판매 제외 매장</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href=""
+								<li class="menu-item"><a class="menu-item-target" href=""
 									target="_self">모바일 웹</a></li>
 							</ul>
 						</div>
@@ -891,7 +872,7 @@
 												</div>
 												<div class="list-group-item textfield-list-group-item">
 													<label class="sr-only" for="form_login_modal_password">비밀번호</label>
-					
+
 
 													<input type="password" name="password"
 														id="form_login_modal_password"
@@ -1013,7 +994,7 @@
 			</div>
 		</div>
 	</div>
-												
+
 
 	<div>
 		<div id="register-gmal-reminder" class="modal-login modal fade"

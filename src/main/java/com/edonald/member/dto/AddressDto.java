@@ -8,6 +8,6 @@ public class AddressDto {
 	private String roadAddress;
 	private String jibunAddress;
 	private String detailAddress;
-	private String lat;
-	private String  lon;
+	private double lat;
+	private double  lon;
 }
