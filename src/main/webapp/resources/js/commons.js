@@ -6,12 +6,12 @@
 $(document).ready(function() {
 	//makeClone();
 	$(".swiper-slide").not(".swiper-slide-active").css("visibility", "hidden"); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
-
+	
 	//quickMenu	
-	var currentPosition = parseInt($(".aside").css("width")) + 200;
+	var currentPosition = parseInt($(".aside").css("width"));
 	$(window).scroll(function() {
-		var position = $(document).scrollTop() + $(window).innerHeight();
-		$(".aside").stop().animate({ "top": position + currentPosition + "px" }, 1);
+		var position = $(document).scrollTop() + 200;
+		$(".aside").animate({ "scrollTop": position + currentPosition + "px" }, 1);
 	});
 
 	$(".btnTop").click(function() {

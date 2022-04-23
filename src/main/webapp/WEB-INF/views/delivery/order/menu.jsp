@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../main.css">
-<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+ <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ <link rel="stylesheet" href="/resources/css/main.css">
+ <script type="text/javascript" src="/resources/js/main.js"></script>
 
 <script>
 	
@@ -35,6 +36,7 @@
 				addMenu(quantity, $(this));
 				
 			}
+			
 			<!-- 카트 추가 버튼을 수량이 있으면 활성화-->
 			if(quantity > 0){
 				$('.action-saveorder').removeClass('disabled');
@@ -66,10 +68,10 @@
 				
 			}else{
 				aaa = document.querySelector("#addedset-template").innerHTML;
-				aaa.find('.choices-column.col-xs-6');
+				
  				
-				var fff = document.querySelector("#addedset-choice-template").innerHTML;
-				kkk.append(fff);
+				//var fff = document.querySelector("#addedset-choice-template").innerHTML;
+				//kkk.append(fff);
 				
 				inputThing.append(aaa);
 				
