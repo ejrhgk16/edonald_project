@@ -10263,7 +10263,7 @@ rotate(
 .icheckbox, .iradio {
 	margin: 0;
 	padding: 0;
-	background: url(../img/icheck_red2.png) no-repeat;
+	background: url(/resources/img/icheck_red2.png) no-repeat;
 	border: none;
 	cursor: pointer
 }

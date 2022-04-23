@@ -8,7 +8,9 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/local.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=57c82c3d4e52c1b3bb9f7077877b01c3&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -213,51 +215,18 @@
 				<div class="page-content">
 					<div class="form-column">
 						<form method="post" role="form" class="form form_deliveryaddress"
-							id="form_deliveryaddress" data-required-symbol="*"
-							action="/kr/deliveryAddress.html">
-
+							id="form_deliveryaddress" action="/ed/joinUserPage">
+							<input type="hidden" id="lat" name="lat" value="">
+							<input type="hidden" id="lon" name="lon" value="">
 							<fieldset class="fieldset">
-
-
-
+					
 								<div class="fieldset-heading">
 									<h2 class="fieldset-title">배달 받을 주소를 한글로 입력해 주세요.</h2>
 									<p class="instructions">* 필수 항목</p>
 
 								</div>
 								<div class="iframe">
-									<input type="hidden" name="addressType" id="addressType"
-										value="0"> <input type="hidden" name="wosCity"
-										id="wosCity" value=""> <input type="hidden"
-										name="wosSuburb" id="wosSuburb" value=""> <input
-										type="hidden" name="wosDistrict" id="wosDistrict" value="">
-									<input type="hidden" name="wosGarden" id="wosGarden" value="">
-									<input type="hidden" name="wosState" id="wosState" value="">
-									<input type="hidden" name="wosStreet" id="wosStreet" value="">
-									<input type="hidden" name="wosStreetType" id="wosStreetType"
-										value=""> <input type="hidden" name="wosArea"
-										id="wosArea" value=""> <input type="hidden"
-										name="wosStreetLonNo" id="wosStreetLonNo" value=""> <input
-										type="hidden" name="wosBldg" id="wosBldg" value=""> <input
-										type="hidden" name="wosBlock" id="wosBlock" value="">
-									<input type="hidden" name="wosLevel" id="wosLevel" value="">
-									<input type="hidden" name="wosUnit" id="wosUnit" value="">
-									<input type="hidden" name="wosHouseNo" id="wosHouseNo" value="">
-									<input type="hidden" name="wosCompanyName" id="wosCompanyName"
-										value=""> <input type="hidden" name="wosDepartment"
-										id="wosDepartment" value=""> <input type="hidden"
-										name="wosRemarks" id="wosRemarks" value=""> <input
-										type="hidden" name="wosLatitude" id="wosLatitude" value="">
-									<input type="hidden" name="wosLongitude" id="wosLongitude"
-										value=""> <input type="hidden" name="wosLandmark"
-										id="wosLandmark" value=""> <input type="hidden"
-										name="wosZipCode" id="wosZipCode" value=""> <input
-										type="hidden" name="wosPhoneNo" id="wosPhoneNo" value="">
-									<input type="hidden" name="wosPhoneNoExtn" id="wosPhoneNoExtn"
-										value=""> <input type="hidden" name="wosOneLineAddr"
-										id="wosOneLineAddr" value=""> <input type="hidden"
-										name="jsonEditAddressRequest" id="jsonEditAddressRequest"
-										value="{&quot;RequestID&quot;:1,&quot;Language&quot;:&quot;ko-KR&quot;,&quot;Body&quot;:&quot;&quot;,&quot;ExternalMarketCode&quot;:&quot;KR&quot;,&quot;Application&quot;:&quot;WOI&quot;,&quot;MessageType&quot;:1}">
+									
 
 									<div class="flow"
 										style="position: absolute center; margin-right: 10px; padding-right: 10px;"
@@ -267,56 +236,131 @@
 											width="897" height="100" alt="맥딜리버리 주문단계">
 									</div>
 									<fieldset class="sBox">
-										<legend>맥딜리버리 가능여부 검색</legend>
 										<!-- 20191112 수정 yjs -->
-										<div class="frm frwWrap" align="center">
-											<span style="display: inline-block; margin: 10px 10px 10px 40px">
-												<input type="text" class="addr1" id="addr1"placeholder="주소를 선택해주세요." readonly=""  title="입력 된 주소" style="width:300px;">
+										<div class="frm frwWrap" style="margin: 10px 10px 10px 20px"
+											align="center">
+											<span> <input type="text" class="addr1" id="postcode" name="postcode"
+												placeholder="* 주소를 선택해주세요." readonly=""
+												style="width: 250px;">
 											</span>
 											<button type="button" class="btnMC btnM"
 												onclick="openApiPost()" title="주소찾기 새창 열림">주소찾기</button>
 										</div>
-										<div class="frm">
-											<input type="text" class="addr2" id="addr2" title="상세주소 입력" style="width:600px;"
-												placeholder="상세주소를 입력하세요.">
+										<div class="frm" style="margin: 10px 10px 0px 40px"
+											align="center">
+											<input type="text" class="addr2" id="roadAddress" name="roadAddress"
+												style="width: 370px;" placeholder="* 도로명주소">
 										</div>
-										<div class="frm">
-											<input type="text" class="addr2" id="addr2" title="상세주소 입력"
-												placeholder="상세주소를 입력하세요.">
+										<div class="frm" align="center"
+											style="margin: 10px 10px 10px 40px">
+											<input type="text" class="addr2" id="jibunAddress" name="jibunAddress"
+												style="width: 370px;" placeholder="* 지번주소">
 										</div>
 										<!-- //20191112 수정 yjs -->
-										<div class="frm">
-											<input type="text" class="addr2" id="addr2" title="상세주소 입력"
-												placeholder="상세주소를 입력하세요."> <input type="text"
-												class="addr2" id="addr3" title="참고항목 입력"
-												placeholder="상세주소를 입력하세요.">
+										<div class="frm" align="center"
+											style="margin: 10px 10px 10px 40px">
+											<input type="text" class="addr2" id="detailAddress" name="detailAddress" placeholder="* 상세주소를 입력하세요."> 
+											<input type="text"class="addr2" id="extraAddress" name="extraAddress" title="참고항목 입력하세요" placeholder="참고항목을 입력하세요.">
 										</div>
+										
+										<div>
+											<span id="guide" style="color:#999;display:none"></span>
+										</div>
+										
+										<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+										<script>
+											//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+											function openApiPost() {
+												new daum.Postcode(
+														{
+															oncomplete : function(
+																	data) {
+																// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+																// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+																// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+																var roadAddr = data.roadAddress; // 도로명 주소 변수
+																var extraRoadAddr = ''; // 참고 항목 변수
 
+																// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+																// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+																if (data.bname !== ''
+																		&& /[동|로|가]$/g
+																				.test(data.bname)) {
+																	extraRoadAddr += data.bname;
+																}
+																// 건물명이 있고, 공동주택일 경우 추가한다.
+																if (data.buildingName !== ''
+																		&& data.apartment === 'Y') {
+																	extraRoadAddr += (extraRoadAddr !== '' ? ', '
+																			+ data.buildingName
+																			: data.buildingName);
+																}
+																// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+																if (extraRoadAddr !== '') {
+																	extraRoadAddr = ' ('
+																			+ extraRoadAddr
+																			+ ')';
+																}
+
+																// 우편번호와 주소 정보를 해당 필드에 넣는다.
+																document
+																		.getElementById('postcode').value = data.zonecode;
+																document
+																		.getElementById("roadAddress").value = roadAddr;
+																document
+																		.getElementById("jibunAddress").value = data.jibunAddress;
+
+																// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+																if (roadAddr !== '') {
+																	document
+																			.getElementById("extraAddress").value = extraRoadAddr;
+																} else {
+																	document
+																			.getElementById("extraAddress").value = '';
+																}
+
+																var guideTextBox = document
+																		.getElementById("guide");
+																// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+																if (data.autoRoadAddress) {
+																	var expRoadAddr = data.autoRoadAddress
+																			+ extraRoadAddr;
+																	guideTextBox.innerHTML = '(예상 도로명 주소 : '
+																			+ expRoadAddr
+																			+ ')';
+																	guideTextBox.style.display = 'block';
+
+																} else if (data.autoJibunAddress) {
+																	var expJibunAddr = data.autoJibunAddress;
+																	guideTextBox.innerHTML = '(예상 지번 주소 : '
+																			+ expJibunAddr
+																			+ ')';
+																	guideTextBox.style.display = 'block';
+																} else {
+																	guideTextBox.innerHTML = '';
+																	guideTextBox.style.display = 'none';
+																}
+															}
+														}).open();
+											}
+										</script>
 									</fieldset>
 								</div>
-
 							</fieldset>
 
-							<input type="hidden" name="deliveryType" id="deliveryType"
-								value=""> <input type="hidden" name="selectedDate"
-								id="selectedDate" value=""> <input type="hidden"
-								name="selectedTime" id="selectedTime" value="">
 							<div id="guest_submit_button">
 								<fieldset class="fieldset form-actions">
 									<div class="form-group">
 
 										<button type="submit" id="submit_button" name="submit_button"
-											class="btn btn-red btn-xl btn-submit"
-											onclick="         dataLayer.push({          'event':'trackEvent',          'vpv':'vpv_confirm_delivery_address',          'eventDetails.category':'registration',          'eventDetails.action':'click',          'eventDetails.label':'confirm_delivery_address'         });">확인</button>
-
+											class="btn btn-red btn-xl btn-submit">확인</button>
 
 									</div>
 
 								</fieldset>
 							</div>
-							<input type="hidden" name="csrfValue"
-								value="32b852cabcd48f439cc26b34f2162528">
+
 						</form>
 					</div>
 				</div>

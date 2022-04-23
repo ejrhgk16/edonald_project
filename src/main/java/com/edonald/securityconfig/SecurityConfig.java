@@ -7,18 +7,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.antMatchers("/sample/all").permitAll()
-			.antMatchers("/sample/admin").access("hasRole('ROLE_ADMIN')");
-		
-		http.formLogin()
-			.loginPage("/loginpage")
-			.loginProcessingUrl("/login.do")
-			.successHandler(new LoginSuccessHandler());
+		http
+		.csrf().disable().authorizeRequests()
+		.antMatchers("/sample/all").permitAll()
+		.antMatchers("/sample/admin")
+		.access("hasRole('ROLE_ADMIN')");
+
+		http
+		.formLogin().loginPage("/loginpage")
+		.loginProcessingUrl("/login.do")
+		.successHandler(new LoginSuccessHandler());
 	}
-		
+
 }
