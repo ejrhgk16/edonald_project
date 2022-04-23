@@ -10249,11 +10249,9 @@ rotate(
 .icheckbox, .iradio {
 	margin: 0;
 	padding: 0;
-<<<<<<< HEAD
-	background: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icheck_red2.png);
-=======
+
 	background: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icheck_red2.png) no-repeat;
->>>>>>> b15adb82325ab0353aa27a8950e8275c911b0852
+
 	border: none;
 	cursor: pointer
 }
