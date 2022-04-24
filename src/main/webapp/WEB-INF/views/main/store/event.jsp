@@ -11,6 +11,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
 	<link rel="stylesheet" href="../css/common.css?t=2022012502"> 
 	<link rel="alternate" href="https://www.mcdonalds.co.kr">
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 <body>
 <div class="wrapper ">
