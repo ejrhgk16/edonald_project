@@ -5,10 +5,11 @@ import lombok.Data;
 @Data
 public class AddressDto {
 	private String user_email;
+	private String d_key;
 	private int postcode;
-	private String roadAddress;
-	private String jibunAddress;
-	private String detailAddress;
+	private String road_address;
+	private String jibun_address;
+	private String detail_address;
 	private double lat;
 	private double  lon;
 }

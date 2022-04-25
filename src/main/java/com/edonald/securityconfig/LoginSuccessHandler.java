@@ -15,12 +15,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		String auth = authentication.getAuthorities().toString();
+		System.out.println("auth  -- " + auth);
 		String url="";
-		if(auth.equals( "ROLE_MEMBER")) {
-			url="/delivery/";
-		}else if(auth.equals("ROLE_STORE_ADMIN")) {
+		if(auth.equals( "[ROLE_MEMBER]")) {
+			url="/ed/deliverHome";
+		}else if(auth.equals("[ROLE_STOREADMIN]")) {
 			url="/storeadmin/";
-		}else if(auth.equals("ROLE_HEAD_ADMIN")) {
+		}else if(auth.equals("[ROLE_HEADADMIN]")) {
 			url = "/headadmin/";
 	}
 		response.sendRedirect(url);

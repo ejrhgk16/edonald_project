@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+
+
 	console.log($(".menu-item-menu").attr("class"))
 	//상단 메뉴
 	$(".menu-item-menu").on("click", function(e) {

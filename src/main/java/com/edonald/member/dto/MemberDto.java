@@ -1,5 +1,8 @@
 package com.edonald.member.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -14,4 +17,5 @@ public class MemberDto {
 	private String role;
 	private int sms_agree;
 	private int terms_agree;
+	private List<AddressDto>addresList = new ArrayList<AddressDto>();
 }

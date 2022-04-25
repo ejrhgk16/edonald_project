@@ -15,14 +15,17 @@ public class CertifyServiceImpl implements CertifyService{
 	
 	@Override
 	public String certifyPhone(String user_phone) {
-		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(key, secret, "https://api.coolsms.co.kr");
+		//디비에서 중복확인 및 횟수 확인 추가 해야함
+		//포인트 다써버림
+		//DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(key, secret, "https://api.coolsms.co.kr");
 		int num = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
-		Message msg = new Message();
-		msg.setFrom("01039085470");
-		msg.setTo(user_phone);
-		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
-		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(msg));
-		return String.valueOf(num);
+//		Message msg = new Message();
+//		msg.setFrom("01039085470");
+//		msg.setTo(user_phone);
+//		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
+//		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(msg));
+//		return String.valueOf(num);
+		return "12345";
 
 		
 	}

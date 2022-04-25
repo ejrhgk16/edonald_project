@@ -15,11 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.service.CertifyService;
+import com.edonald.member.service.MemberService;
 
 @Controller
 public class JoinController {
 	@Autowired
-	CertifyService certifyService;
+	private CertifyService certifyService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("/ed/joinPage")
 	public String joinpage() {
@@ -28,7 +32,7 @@ public class JoinController {
 	
 	@PostMapping("/ed/joinUserPage")
 	public @ResponseBody String joinFindAdress(@RequestBody AddressDto addrDto, HttpServletRequest req) {
-		System.out.println("ab asdfasfd"+ addrDto.getJibunAddress());
+
 		HttpSession session = req.getSession();
 		session.setAttribute("addrDto", addrDto);
 		return "/ed/joinUserPage";
@@ -45,7 +49,7 @@ public class JoinController {
 	public String joinAddress2a(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		AddressDto dto = (AddressDto)session.getAttribute("addrDto");
-		System.out.println("sesssion test  "+dto.getJibunAddress());
+		System.out.println("sesssion test  "+dto.getJibun_address());
 		return "/delivery/join/joinUser";
 	}
 	
@@ -76,6 +80,12 @@ public class JoinController {
 		mv.setViewName("/delivery/join/joinCheckPhone");
 		mv.addObject("certifyNum", certifyNum);
 		return mv;
+	}
+	
+	@GetMapping("/ed/joinComplete")
+	public @ResponseBody void joinComplete(HttpServletRequest req) {
+		System.out.println("joincompl");
+		memberService.joinMember(req);
 	}
 	
 

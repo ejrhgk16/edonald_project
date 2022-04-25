@@ -35,6 +35,7 @@ $(document).ready(function() {
 		}
 	})
 
+
 	$("#register_button").on("click", function(e) {
 		e.preventDefault();
 		joinUserInfo();
@@ -118,9 +119,9 @@ function addr() {
 			roadAddr += extraAddr;
 			var data = {
 				postcode: postcode,
-				roadAddress: roadAddr,
-				jibunAddress: jibunAddr,
-				detailAddress: detailAddr,
+				road_address: roadAddr,
+				jibun_address: jibunAddr,
+				detail_address: detailAddr,
 				lon: result[0].x,
 				lat: result[0].y
 			};

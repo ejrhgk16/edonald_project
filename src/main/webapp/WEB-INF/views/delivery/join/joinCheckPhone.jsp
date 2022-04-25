@@ -16,7 +16,14 @@ $(document).ready(function(){
 		var certifyNum  = '${certifyNum}';
 		console.log(certifyNum);
 		if( certifyNum==$("#form_accountactivation_activationcode").val() ){
-			alert("인증완료");
+			$.ajax({
+				type : "GET",
+				url : "/ed/joinComplete",
+				success : function(){
+					alert("회원가입 완료. 로그인 해주세요");
+					location.href = "/ed/deliverHome";
+				}
+			});
 		}else{
 			alert("일치하지않습니다.");
 		}
@@ -260,7 +267,7 @@ $(document).ready(function(){
 												data-msg-required="인증코드가 필요합니다." aria-required="true">
 										</div>
 										<div class="form-group">
-											<button type="submit" id="joinComplete" class="btn btn-red btn-lg">확인</button>
+											<button type="button" id="joinComplete" class="btn btn-red btn-lg">확인</button>
 										</div>
 									</div>
 								</div>

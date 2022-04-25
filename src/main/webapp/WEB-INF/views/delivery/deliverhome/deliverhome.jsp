@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +14,9 @@
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/slide.js"></script>
+<script type="text/javascript">
+	var username = '{principal.username}'
+</script>
 
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Insert title here</title>
@@ -39,15 +48,31 @@
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
-							<li class="list-item"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
-								alt="Profile" width="20" class="profile-grey-avator"></li>
 
-							<li class="list-item">
-								<a class="list-item-target" href="#signin" data-toggle="modal"
-								data-target="#signin">로그인</a>
-							</li>
+							<c:choose>
+								<c:when test="${empty principal.username }">
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator"></li>
 
-							<li class="list-item"><a class="list-item-target track-order-flag" href="#signin"
+									<li class="list-item" id="loginText"><a
+										 href="/ed/deliverHome"
+										>로그인</a>
+										</li>	
+								</c:when>
+								<c:otherwise>
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator">
+										<b><span class="first-name">${principal.memberDto.user_name}</span></b>
+										</li>
+									<li class="list-item" ><a  href="/ed/logout.do">로그아웃</a>
+										</li>
+								</c:otherwise>
+							</c:choose>
+						
+							<li class="list-item"><a
+								class="list-item-target track-order-flag" href="#signin"
 								data-toggle="modal" data-target="#signin">주문 조회</a></li>
 
 						</ul>
@@ -56,7 +81,8 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
-							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
+							alt="McDelivery&amp;trade;">
 
 						</a>
 					</div>
@@ -244,13 +270,13 @@
 									<form method="post" accept-charset="utf-8" role="form"
 										id="form_login_masthead" name="form_login_masthead"
 										class="panel-home-masthead-form" data-required-symbol="false"
-										novalidate="novalidate" action="/kr/login.html">
+										novalidate="novalidate" action="/ed/memberLogin.do">
 										<fieldset class="form-credentials">
 											<div class="list-group textfield-list-group">
 												<div class="list-group-item textfield-list-group-item">
 													<label class="sr-only" for="form_login_masthead_username">Email</label>
 
-													<input type="text" autocomplete="off" name="userName"
+													<input type="text" autocomplete="off" name="username"
 														id="form_login_masthead_username"
 														class="required email list-group-form-control"
 														placeholder="아이디" value="" aria-required="true"
@@ -279,7 +305,7 @@
 										</fieldset>
 										<fieldset class="form-actions">
 
-											<button type="submit"
+											<button type="submit" id="edLogin"
 												class="btn btn-default btn-red btn-block btn-xl btn-submit">로그인</button>
 
 
@@ -354,7 +380,8 @@
 					<h1 class="section-title">맥딜리버리 이용 방법!</h1>
 					<p>
 						<a href="#signin" data-target="#signin" data-toggle="modal"> <img
-							class="img-block" alt="" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_ko.png">
+							class="img-block" alt=""
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_ko.png">
 						</a>
 					</p>
 				</section>
@@ -459,11 +486,13 @@
 			role="dialog" aria-labelledby="modal-title" aria-hidden="true"
 			tabindex="-1" style="display: none;">
 			<div class="modal-backdrop fade in" style="height: 754px;"></div>
-			
+
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<img class="logo" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="">
+						<img class="logo"
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
+							alt="">
 
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">
@@ -480,13 +509,10 @@
 								<ul id="signin-nav-tabs-login-fragment"
 									class="nav nav-tabs nav-tabs-login-fragment">
 									<li class="active"><a href="#modal-signin-tab-login"
-										data-toggle="tab"
-										>로그인</a>
-									</li>
+										data-toggle="tab">로그인</a></li>
 
 									<li class=""><a href="#modal-signin-tab-new"
-										data-toggle="tab">비회원
-											주문</a></li>
+										data-toggle="tab">비회원 주문</a></li>
 
 								</ul>
 								<div class="tab-content clearfix">
