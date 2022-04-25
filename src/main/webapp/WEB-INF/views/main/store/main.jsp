@@ -9,7 +9,7 @@
 	<meta name="description" id="description" contents="메뉴, 레스토랑, 프로모션 등 안내"/>
 	<meta name="keywords" contents="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
 	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
-	<link rel="stylesheet" href="../css/common.css"> 
+	<link rel="stylesheet" href="/resources/css/common.css"> 
 	<link rel="alternate" href="https://www.mcdonalds.co.kr">
 	<script type="text/javcascript" src="../css/jquery-3.6.0.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -70,7 +70,7 @@
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="../images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -204,7 +204,7 @@
 									    <label for="1">
 									        24시간
 									        <span class="icon">
-									            <img src="../images/store_service/1580887217994.png" alt="24시간" data-off="../images/store_service/1580887217994.png" data-on="../store_service/1580887222493.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887217994.png" alt="24시간" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887217994.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887222493.png">
 									        </span>
 									    </label>
 									</span>
@@ -214,7 +214,7 @@
 									    <label for="6">
 									        맥드라이브
 									        <span class="icon">
-									            <img src="../images/store_service/1580887501964.png" alt="맥드라이브" data-off="../images/store_service/1580887501964.png" data-on="../images/store_service/1580887505434.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887501964.png" alt="맥드라이브" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887501964.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887505434.png">
 									        </span>
 									    </label>
 									</span>
@@ -224,7 +224,7 @@
 									    <label for="2">
 									        맥딜리버리
 									        <span class="icon">
-									            <img src="../images/store_service/1580887371824.png" alt="맥딜리버리" data-off="../images/store_service/1580887371824.png" data-on="../images/store_service/1580887378094.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887371824.png" alt="맥딜리버리" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887371824.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887378094.png">
 									        </span>
 									    </label>
 									</span>
@@ -234,7 +234,7 @@
 									    <label for="4">
 									        맥모닝
 									        <span class="icon">
-									            <img src="../images/store_service/1580887410227.png" alt="맥모닝" data-off="../images/store_service/1580887410227.png" data-on="../images/store_service/1580887415001.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887410227.png" alt="맥모닝" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887410227.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887415001.png">
 									        </span>
 									    </label>
 									</span>
@@ -244,7 +244,7 @@
 									    <label for="3">
 									        주차
 									        <span class="icon">
-									            <img src="../images/store_service/1580887307761.png" alt="주차" data-off="../images/store_service/1580887307761.png" data-on="../images/store_service/1580887311487.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887307761.png" alt="주차" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887307761.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887311487.png">
 									        </span>
 									    </label>
 									</span>
@@ -254,7 +254,7 @@
 									    <label for="9">
 									        디카페인 커피
 									        <span class="icon">
-									            <img src="../images/store_service/1580887849368.png" alt="디카페인 커피" data-off="../images/store_service/1580887849368.png" data-on="../images/store_service/1580887855311.png">
+									            <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887849368.png" alt="디카페인 커피" data-off="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887849368.png" data-on="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/1580887855311.png">
 									        </span>
 									    </label>
 									</span>
@@ -455,12 +455,100 @@ function locate(){
 	
 }
 
+function setCookie( name, value, expiredays) { 
+	var todayDate = new Date(); 
+	todayDate.setDate( todayDate.getDate() + expiredays ); 
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function altEscapeTag(){
+	$("img").each(function (i,ob){
+		$(ob).attr("alt",$(ob).attr("alt").replace(/(<([^>]+)>)/ig,""));
+	});
+}
+
+$("#searchWord").on("keydown", function(event) {
+	if (event.keyCode == 13) {
+		search();
+	}
+});
+
 function search(){
-	$("#page").val(1);
+	var searchWord = $("#searchWord").val();
+	if(searchWord == "") {
+		alert("검색어를 입력해주세요");
+		return;
+	}
+	
+	$('#store').html("");
+	
+	$.ajax({
+		type : 'post',
+		url : 'searchStore.do',
+		data : {searchWord : searchWord},
+		dataType : 'json',
+		success : function(data) {
+			console.log(data);
+			
+			var content = "";
+			
+			if(data.length > 0) {
+				$('#noResult').attr("style", "display:none");
+			} else {
+				$('#noResult').attr("style", "display:block");
+			}
+			
+			for(var i = 0; i < data.length; i++) {
+				var title = data[i].store_name;
+				var lon = data[i].store_lon;
+				var lat = data[i].store_lat;
+				var latlng = new kakao.maps.LatLng(lat,lon);
+				var address = data[i].store_address;
+				var phone = data[i].store_phone;
+				
+				map.panTo(latlng);
+				
+				content += "<tr>";
+				content += "<td class='tdName'>";
+				content += "<dl class='name'>";
+				content += "<dt><strong class='tit'><a href='javascript:moveMap("+lat+","+lon+")'; title='지도보기'>"+title+"</a></strong></dt>";
+				content += "<dd>"+address+"</dd>";
+				content += "</dl>";
+				content += "</td>";
+				content += "<td>"+phone+"</td>";
+				content += "<td>24시간</td>";
+				content += "<td class='tdService'><div class='service'  style='text-align:right'>배달</div></td>";
+				content += "</tr>";
+			}
+			$('#store').append(content);
+			
+		},
+		
+	});
+};
+
+$("#storeSearch").click(function(){
+	/* $("#page").val(1);
 	$("#lat").val("NO");
 	$("#lng").val("NO");
-	go();
-}
+	go(); */
+	search();
+});
+	
 function page(page){
 	$("#page").val(page);
 	go();
