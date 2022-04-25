@@ -1,12 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./css/main.css">
-<link rel="stylesheet" type="text/css" href="./css/local.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/local.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#joinComplete").on("click", function(e){
+		e.preventDefault(); 
+		var certifyNum  = '${certifyNum}';
+		console.log(certifyNum);
+		if( certifyNum==$("#form_accountactivation_activationcode").val() ){
+			alert("인증완료");
+		}else{
+			alert("일치하지않습니다.");
+		}
+	})
+})
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -223,7 +239,7 @@
 						</div>
 						<div class="panel-body">
 							<p>
-								인증코드가 등록된 휴대전화 발송되었습니다: <strong>01039085470</strong>.
+								인증코드가 등록된 휴대전화 발송되었습니다: <strong>${memberDto.user_phone}</strong>.
 							</p>
 							<p>인증코드를 입력해주세요</p>
 							<p>
@@ -244,7 +260,7 @@
 												data-msg-required="인증코드가 필요합니다." aria-required="true">
 										</div>
 										<div class="form-group">
-											<button type="submit" class="btn btn-red btn-lg">확인</button>
+											<button type="submit" id="joinComplete" class="btn btn-red btn-lg">확인</button>
 										</div>
 									</div>
 								</div>

@@ -238,21 +238,36 @@
 										<div class="col-xs-6">
 											<div class="form-group">
 												<label class="field-label" for="form_register_gender">성별:</label>
-												<select name="gender" id="form_register_gender"
-													class="select-lg" tabindex="0" aria-disabled="false"
-													style="display: none;">
-													<option selected="selected" value=""></option>
-													<option value="Male">남</option>
-													<option value="Female">여</option>
-													<option value="Do Not Specify">선택 안함</option>
-												</select><span class="select-lg"><a
-													class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown"
-													id="form_register_gender-button" role="button" href="#nogo"
-													tabindex="0" aria-haspopup="true"
-													aria-owns="form_register_gender-menu" aria-disabled="false"
-													style="width: 296.25px;"><span
-														class="ui-selectmenu-status">&nbsp;</span><span
-														class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
+
+												<fieldset class="fieldset">
+													<div class="form-group">
+														<div class="radio">
+															<div class="iradio checked" style="position: relative;">
+																<input type="radio" name="preferredNotification"
+																	value="1" id="checkman"
+																	checked="checked"
+																	style="position: absolute; opacity: 0;">
+																<ins class="iCheck-helper"
+																	style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+															</div>
+															<label for="form_notification_channel_email"
+																class="radio-label">남 <span
+																id="man"></span></label>
+														</div>
+														<div class="radio">
+															<div class="iradio" style="position: relative;">
+															<input type="radio" name="preferredNotification"
+																		value="2" id="checkwoman"
+																	style="position: absolute; opacity: 0;">
+																<ins class="iCheck-helper"
+																	style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+															</div>
+															<label for="form_notification_channel_mobile"
+																class="radio-label">여<span
+																id="woman"></span></label>
+														</div>
+													</div>
+												</fieldset>
 
 											</div>
 										</div>
@@ -306,12 +321,7 @@
 											class="required-symbol">*</span>비밀번호:</label> <input type="password"
 											class="form-control input-lg required"
 											id="form_register_password" name="password"
-											autocomplete="off" data-rule-required="true"
-											data-rule-rangelength="${passLengthMin},${passLengthMax}"
-											data-rule-verifypassword="true"
-											data-msg-verifypassword="비밀번호는 문자, 숫자를 조합한 최소 8 글자 이상이어야 합니다."
-											data-msg-required="비밀번호를 입력해 주십시오."
-											data-msg-rangelength="비밀번호는 8에서 20글자이어야 됩니다." maxlength="20"
+											autocomplete="off"  maxlength="20"
 											value="" aria-required="true"> <label
 											for="form_register_password" class="control-hint">비밀번호는
 											문자, 숫자를 조합한 최소 8 글자 이상이어야 합니다.</label>
@@ -344,7 +354,7 @@
 													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
 											</div>
 											<label for="form_notification_channel_email"
-												class="radio-label">이메일 : <span
+												class="radio-label">이메일 <span
 												id="form_notification_channel_email_mirror"></span></label>
 										</div>
 										<div class="radio">
@@ -356,7 +366,7 @@
 													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
 											</div>
 											<label for="form_notification_channel_mobile"
-												class="radio-label">휴대폰번호 : <span
+												class="radio-label">휴대폰 <span
 												id="form_notification_channel_mobile_mirror"></span></label>
 										</div>
 									</div>
@@ -690,7 +700,7 @@
 
 								<fieldset class="fieldset form-actions">
 									<div class="form-group">
-								
+
 										<button id="register_button" type="button"
 											class="btn btn-red btn-xl btn-submit">계정 생성</button>
 
