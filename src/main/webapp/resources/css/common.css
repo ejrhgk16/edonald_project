@@ -598,13 +598,13 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .deliverySrch .rBox.ok {color:#ffc836; background:#264f36; border: 6px solid transparent;}
 .deliverySrch .rBox.fail {color:#ffc836; background:#bd0017; border: 6px solid transparent;}
 
-.deliverySrch .rBox:before{content:'';position:absolute;top:50%;left:-33px;width:7px;height:11px;margin:-5px 0 0 0;background:url(../images/common/bg_arrow.png) 0 0 no-repeat}
+.deliverySrch .rBox:before{content:'';position:absolute;top:50%;left:-33px;width:7px;height:11px;margin:-5px 0 0 0;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_arrow.png) 0 0 no-repeat}
 .deliverySrch .rBox p{position:relative;text-align:left}
 .deliverySrch .rBox p strong{padding-top:10px; position:relative;font-weight:600}
 .deliverySrch .rBox p span{position:relative}
 .deliverySrch .rBox p:before{content:'';display:block;width:259px;height:266px;}
 .deliverySrch .rBox .default{text-align:center}
-.deliverySrch .rBox .default:before{background:url(../images/store/bg_delivery_result_new.png) 0 0 no-repeat; background-size:cover;}
+.deliverySrch .rBox .default:before{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_delivery_result_new.png) 0 0 no-repeat; background-size:cover;}
 .deliverySrch .rBox .default strong{display:inline-block;border-bottom:1px solid #000}
 .deliverySrch .rBox .result{padding-top:40px}
 .deliverySrch .rBox .result:before{position:absolute;top:0;left:50%;margin-left:-127px}

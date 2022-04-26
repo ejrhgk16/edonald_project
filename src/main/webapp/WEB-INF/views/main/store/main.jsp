@@ -384,7 +384,7 @@ var mapContainer = document.getElementById('map'),
 	    var imageSize = new daum.maps.Size(54, 70); 
 	    
 	    // 마커 이미지를 생성합니다    
-	    var markerImage = new daum.maps.MarkerImage("../images/store/ico_marker.png", imageSize); 
+	    var markerImage = new daum.maps.MarkerImage("https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/ico_marker.png", imageSize); 
 	    
 	    // 마커를 생성합니다
 	    var marker = new daum.maps.Marker({

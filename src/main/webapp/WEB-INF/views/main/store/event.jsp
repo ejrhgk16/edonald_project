@@ -51,19 +51,19 @@
 							<li>
 								<a href="/kor/promotion/list.do" class="dth1  ">What’s New</a>
 								<ul class="depth2">
-									<li><a href="/kor/promotion/list.do" class="dth2">프로모션</a></li>
-									<li><a href="/kor/news/list.do" class="dth2">새로운 소식</a></li>
-									<!--  li><a href="/kor/kitchen.do" class="dth2">주방공개의 날</a></li -->
-								    <li><a href="/kor/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
+									<li><a href="/ed/promotion/list.do" class="dth2">프로모션</a></li>
+									<li><a href="/ed/news/list.do" class="dth2">새로운 소식</a></li>
+									<!--  li><a href="/ed/kitchen.do" class="dth2">주방공개의 날</a></li -->
+								    <li><a href="/ed/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
 								</ul>
 							</li>
 							<li>
 								<a href="/kor/story/main.do" class="dth1  ">Story</a>
 								<ul class="depth2">
-									<li><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/ed/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/ed/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/ed/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/ed/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -118,9 +118,9 @@
 					<div class="inner">
 						<h1 class="titDep1">매장찾기</h1>
 						<ul class="navPath">
-							<li><a href="/kor/main.do">Home</a></li>
-							<li><a href="/kor/store/main.do">Store</a></li>
-							<li><a href="/kor/store/main.do">매장찾기</a></li>
+							<li><a href="/ed/main.do">Home</a></li>
+							<li><a href="/ed/store/main.do">Store</a></li>
+							<li><a href="/ed/store/main.do">매장찾기</a></li>
 						</ul>
 					</div>
 				</div>
@@ -128,8 +128,8 @@
 				<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="/main/store/main.do" role="button">지역별</a></li>
-							<li><a href="/main/store/event.do" role="button" aria-selected="true">이벤트매장</a></li>
+							<li><a href="/ed/store/main.do" role="button">지역별</a></li>
+							<li><a href="/ed/store/event.do" role="button" aria-selected="true">이벤트매장</a></li>
 						</ul>
 						<div class="eventStore2">
 							<div class="topInfo">
