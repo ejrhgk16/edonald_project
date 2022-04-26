@@ -36,7 +36,7 @@
 html{margin:0;height:100%}
 body{height:100%;background:#fff;word-wrap:break-word;word-break:keep-all}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td,button{margin:0;padding:0}
-body,input,select,textarea,button,pre{font-family:SpeedeeK, Malgun Gothic,'筌띾쵐占썸�⑥쥓逾�', Dotum,'占쎈즻占쏙옙', Arial, sans-serif;color:#808080;font-size: 16px;font-weight: 500;line-height:1.9;}
+body,input,select,textarea,button,pre{font-family:SpeedeeK, Malgun Gothic,'嶺뚮씭理먨뜝�뜽占썩뫁伊볣�억옙', Dotum,'�뜝�럥利삣뜝�룞�삕', Arial, sans-serif;color:#808080;font-size: 16px;font-weight: 500;line-height:1.9;}
 section,nav,article,aside,hgroup,header,footer,iframe{display:block}
 form,fieldset,img,input,button {border:0 none;background:none}
 img {margin:0;padding:0;line-height:0;vertical-align:top;}
@@ -106,7 +106,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .formWrap input[type=checkbox] + label, .formWrap input[type=radio] + label{display:inline-block;padding-right:54px;line-height:34px;color:#292929}
 .formWrap input[type=checkbox] + label:before, .formWrap input[type=radio] + label:before{display:inline-block;content:'';position:absolute;right:0;top:0;width:34px;height:34px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_form.png) no-repeat}
 .formWrap input[type=checkbox]:checked + label:before{background-position:-34px 0}
-.formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label筌��닀�깂鸚뤄옙 筌��닂�삕占쎈た占쎈�싷옙湲억옙誘⒲럶�뜝�럩�렍冶⑤씮肄▼뜝�럥�뀘�뜝占� 筌��닂�삕占쎈た占쎈�싷옙源꾥�곗궪�삕�뜝占� 筌��с룉冶⑤씮肄∽옙嫄싷쭪占� */
+.formWrap.labelR input[type=checkbox] + label, .formWrap.labelR input[type=radio] + label{padding-right:0;padding-left:54px}/* label嶺뚳옙占쎈�占쎄퉪勇싲쨪�삕 嶺뚳옙占쎈땬占쎌굲�뜝�럥�걼�뜝�럥占쎌떣�삕疫뀁뼲�삕沃섃뮧�윾占쎈쐻占쎈윪占쎈젌�넼�뫀�뵰�굜�뼹�쐻占쎈윥占쎈�섓옙�쐻�뜝占� 嶺뚳옙占쎈땬占쎌굲�뜝�럥�걼�뜝�럥占쎌떣�삕繹먭쑤占쎄퀣沅わ옙�굲占쎈쐻�뜝占� 嶺뚳옙占싼곷즷�넼�뫀�뵰�굜�댙�삕椰꾩떣彛ゅ뜝占� */
 .formWrap.labelR input[type=checkbox] + label:before, .formWrap.labelR input[type=radio] + label:before{right:auto;left:0}
 .formWrap input[type=radio] + label{line-height:40px}
 .formWrap input[type=radio] + label:before{width:40px;height:40px;background-position:0 -44px}
@@ -161,7 +161,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .tabType01 li{display:inline-block;margin:0 40px;vertical-align:top}
 .tabType01 li a{display:block;height:40px;font-size:20px;line-height:39px}
 .tabType01 li a[aria-selected="true"]{color:#db0007;font-weight:600;border-bottom:1px solid #db0007}
-.tabCont, .subtabCont{display:none;position:relative}/* .tabMn 筌��꼻�삕占쎈뱦占쎈뮎占쎄맘占쎌몢亦낉옙 筌�醫묒삕獒뺤궪�삕 筌��꼹�궑�뜝�럩逾듸옙湲억쭖�끏�삕�뜝占� class */
+.tabCont, .subtabCont{display:none;position:relative}/* .tabMn 嶺뚳옙占쎄섶占쎌굲�뜝�럥諭��뜝�럥裕롥뜝�럡留섇뜝�럩紐㏘벧�굢�삕 嶺뚳옙�넫臾믪굲�뜏類ㅺ땔占쎌굲 嶺뚳옙占쎄섰占쎄텘占쎈쐻占쎈윪�얜벝�삕疫뀁뼲彛뽳옙�걦占쎌굲占쎈쐻�뜝占� class */
 
 /* table */
 .tableType01{border-top:2px solid #292929;border-bottom:1px solid #292929}
@@ -227,10 +227,10 @@ ul.notiTxt:before{display:none}
 .popLayer .layCont .scroll:after{content:'';display:block;height:55px}
 .popLayer .layClose{position:absolute;top:-44px;right:-44px;width:90px;height:90px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_close.png) 0 0 no-repeat}
 
-.popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 筌��닂�삕占쎈た野껊·占썲뜝�럥�뀘�뜝占� 筌��꼷�럮�뜝�럩逾듸옙嫄욤짆�뀧蹂⑹삕筌욁룂李됵㎖�닀�뵦冶⑤슣肄좑쭪類μ뵦 筌��꼷�룉�뜝�럩�넍�뜝���뿹冶⑤슣肄∽옙�깂鸚뤄옙 筌��닀�뵦�뜝�럩�넍�뜝�럩怡룟뜝�럩維귛뜝�룞�삕占쎈샬占쎈쳜占쎄퉬鈺곗궪�삕�뜝占� type */
+.popLayer.layerType02 .layCont .scroll{padding:60px 60px 5px}/* 嶺뚳옙占쎈땬占쎌굲�뜝�럥�걼�뇦猿듏룟뜝�뜴�쐻占쎈윥占쎈�섓옙�쐻�뜝占� 嶺뚳옙占쎄섭占쎈윯占쎈쐻占쎈윪�얜벝�삕椰꾩슕吏놅옙�㎬퉪�뫗�굲嶺뚯쉧猷귨㎕�맮�럷占쎈�占쎈덱�넼�뫀�뒩�굜醫묒�わ쭚關逾� 嶺뚳옙占쎄섭占쎈즷占쎈쐻占쎈윪占쎈꼵占쎈쐻占쏙옙占쎈예�넼�뫀�뒩�굜�댙�삕占쎄퉪勇싲쨪�삕 嶺뚳옙占쎈�占쎈덱占쎈쐻占쎈윪占쎈꼵占쎈쐻占쎈윪�〓짘�쐻占쎈윪泳�洹쏅쐻占쎈짗占쎌굲�뜝�럥�꺃�뜝�럥爾쒎뜝�럡�돩�댖怨쀪땔占쎌굲占쎈쐻�뜝占� type */
 .popLayer.layerType02 .btnArea{margin-top:0;padding-top:40px}
 
-.popLayer.layerType03 .layCont{border:0}/* 筌�醫륁뵥占쎌깂筌��닂�삕�겫�뙋�삕�뜝占� 筌��닂�삕獒뺤궛猿�占쎄뭅�뜝�럥占썬뀽�룾占썲뜝�럥�뀘�뜝占� 筌��닂�삕�겫�뿰�삕筌��꼷�럮筌욑옙 筌��닂�삕�겫�뙋�삕鈺곗�ｊ퉬鈺곗궪�삕�뜝占� type */
+.popLayer.layerType03 .layCont{border:0}/* 嶺뚳옙�넫瑜곷데�뜝�럩源귞춯占쏙옙�땬占쎌굲占쎄껀占쎈솇占쎌굲占쎈쐻�뜝占� 嶺뚳옙占쎈땬占쎌굲�뜏類ㅺ텦�뙼占썲뜝�럡萸낉옙�쐻占쎈윥�뜝�뜫�쏙옙猷얍뜝�뜴�쐻占쎈윥占쎈�섓옙�쐻�뜝占� 嶺뚳옙占쎈땬占쎌굲占쎄껀占쎈염占쎌굲嶺뚳옙占쎄섭占쎈윯嶺뚯쉻�삕 嶺뚳옙占쎈땬占쎌굲占쎄껀占쎈솇占쎌굲�댖怨쀯옙節딇돩�댖怨쀪땔占쎌굲占쎈쐻�뜝占� type */
 .popLayer.layerType03 .layCont .scroll{padding:0}
 .popLayer.layerType03 .layCont .scroll:after{display:none}
 .popLayer.layerType03 .layCont .scroll .contHead .img img{width:100%;border-radius:10px 10px 0 0}
@@ -261,9 +261,9 @@ ul.notiTxt:before{display:none}
 .header .hLogo a{display:block}
 .header .hMenu{height:100%;padding:52px 0}
 .header .hMenu .menu{position:absolute;top:0;left:0;right:0;text-align:center;background:#fff}
-/* 2021.05.31 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 */
+/* 2021.05.31 嶺뚳옙占쎈땬占쎌굲�뜝�럥占쏙퐦�삕泳�洹쏅쐻占쏙옙占쎄퉻占쎈쐻占쎈짗占쎌굲 */
 .header .hMenu .menu .depth1{display:inline-block;padding-left:0;text-align:left;vertical-align:top;margin-left:-136px;}
-/* 2021.05.31 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 筌��꼹�굩占쎌깂 */
+/* 2021.05.31 嶺뚳옙占쎈땬占쎌굲�뜝�럥占쏙퐦�삕泳�洹쏅쐻占쏙옙占쎄퉻占쎈쐻占쎈짗占쎌굲 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源� */
 .header .hMenu .menu .depth1 a{display:inline-block;vertical-align:top}
 .header .hMenu .menu .depth1>li{float:left}
 .header .hMenu .menu .depth1>li .dth1{position:relative;margin-right:85px;padding:0 10px;color:#292929;font-size:20px;line-height:140px;font-weight:600}
@@ -277,9 +277,9 @@ ul.notiTxt:before{display:none}
 .header .hMenu .menu .depth2>li .dth2:hover,
 .header .hMenu .menu .depth2>li .dth2:focus{color:#000;border-bottom:1px solid #000}
 .header .hMenu .util{position:relative;float:right;margin:0 0 0 50px}
-/*2021.5.31 筌��늿怡��뜝�럩逾듸옙嫄욕칰硫명뀬*/
+/*2021.5.31 嶺뚳옙占쎈듌�∽옙占쎈쐻占쎈윪�얜벝�삕椰꾩슃移곤쭖紐낅��*/
 .header .hMenu .util .renter{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;border-radius:48px;background:#db0007;}
-/*2021.5.31 筌��늿怡��뜝�럩逾듸옙嫄욕칰硫명뀬 筌��꼹�굩占쎌깂*/
+/*2021.5.31 嶺뚳옙占쎈듌�∽옙占쎈쐻占쎈윪�얜벝�삕椰꾩슃移곤쭖紐낅�� 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源�*/
 .header .hMenu .util .lang{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#264a36;border-radius:48px}
 .header .hMenu .util .recruit{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#d87e00;border-radius:48px}
 .header .hMenu .util .srch{margin-left:26px;width:36px;height:36px;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ico_search.png) 0 0 no-repeat}
@@ -296,7 +296,7 @@ ul.notiTxt:before{display:none}
 .header.fixed .hMenu .menu .depth1>li .dth1.current:before{bottom:25px}
 .header.fixed.open .hMenu .menu .depth1:before{top:80px}
 
-.header .dummy{height:100%;overflow:hidden}/* 筌��с럮�뜝�럡�뀬筌��닀�깂鸚룸뜆肄졾뜝�럩維녶뜝占� */
+.header .dummy{height:100%;overflow:hidden}/* 嶺뚳옙占싼곷윯占쎈쐻占쎈윞占쎈�х춯占쏙옙��占쎄퉪勇싲８�쐠�굜議얜쐻占쎈윪泳��끀�쐻�뜝占� */
 .header.fixed .dummy img{margin-top:-140px}
 
 .topSearch{display:inline-block}
@@ -362,23 +362,23 @@ ul.notiTxt:before{display:none}
 .mainEvent.basicSwiper{position:relative;max-width:1900px;margin:0 auto}
 .mainEvent .swiper li{position:relative;float:left;height:540px;overflow:hidden;text-align:center}
 .mainEvent .swiper li a{display:inline-block;margin:0 -100%;vertical-align:top}
-/* 2021.1.4 筌��닂�삕�걡遺억옙�뫅�삕占쎌깓�뜝�럩源ｏ옙嫄울옙�젾占쎈�믭옙�뜝�럩�넊�뜝占� */
+/* 2021.1.4 嶺뚳옙占쎈땬占쎌굲占쎄괌�겫�뼲�삕占쎈쳟占쎌굲�뜝�럩源볩옙�쐻占쎈윪繹먲퐦�삕椰꾩슱�삕占쎌졑�뜝�럥占쎈���삕占쎈쐻占쎈윪占쎈꼯占쎈쐻�뜝占� */
 .mainEvent .swiper li span{display:inline-block;margin:0 -100%;vertical-align:top}
-/* 2021.1.4 筌��닂�삕�걡遺억옙�뫅�삕占쎌깓�뜝�럩源ｏ옙嫄울옙�젾占쎈�믭옙�뜝�럩�넊�뜝占� 筌��꼹�굩占쎌깂 */
+/* 2021.1.4 嶺뚳옙占쎈땬占쎌굲占쎄괌�겫�뼲�삕占쎈쳟占쎌굲�뜝�럩源볩옙�쐻占쎈윪繹먲퐦�삕椰꾩슱�삕占쎌졑�뜝�럥占쎈���삕占쎈쐻占쎈윪占쎈꼯占쎈쐻�뜝占� 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源� */
 .mainEvent .swiper li img{height:100%}
-/* 2020.6.4 KV 筌��꼷怡룟뜝�럩�넍占쎄뭅�뜝�럩鍮곩뜝�럩逾드뜝�룞�삕占쎈た�뜝占� 筌��늿怡��뜝�럩逾듸옙嫄욕칰硫명뀬 */
+/* 2020.6.4 KV 嶺뚳옙占쎄섭�〓짘�쐻占쎈윪占쎈꼵�뜝�럡萸낉옙�쐻占쎈윪�뜮怨⑸쐻占쎈윪�얜뱶�쐻占쎈짗占쎌굲�뜝�럥�걼占쎈쐻�뜝占� 嶺뚳옙占쎈듌�∽옙占쎈쐻占쎈윪�얜벝�삕椰꾩슃移곤쭖紐낅�� */
 .mainEvent .swiper li video{width:100%;}
 .mainEvent .swiper li.video .video-box{width:1920px;overflow:hidden;margin:0 auto;}
 .mainEvent .swiper li.video .sound{position:absolute;left:30px;top:30px;width:30px;height:30px;background-image:url(../images/main/icon_sound_on.png);background-repeat:no-repeat;background-size:100% auto;font-size:0;}
 .mainEvent .swiper li.video .sound.off{background-image:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/icon_sound_off.png);}
-/* 2020.6.4 KV 筌��꼷怡룟뜝�럩�넍占쎄뭅�뜝�럩鍮곩뜝�럩逾드뜝�룞�삕占쎈た�뜝占� 筌��늿怡��뜝�럩逾듸옙嫄욕칰硫명뀬 筌��꼹�굩占쎌깂 */
+/* 2020.6.4 KV 嶺뚳옙占쎄섭�〓짘�쐻占쎈윪占쎈꼵�뜝�럡萸낉옙�쐻占쎈윪�뜮怨⑸쐻占쎈윪�얜뱶�쐻占쎈짗占쎌굲�뜝�럥�걼占쎈쐻�뜝占� 嶺뚳옙占쎈듌�∽옙占쎈쐻占쎈윪�얜벝�삕椰꾩슃移곤쭖紐낅�� 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源� */
 .mainEvent .indicator{position:absolute;left:50%;bottom:27px;width:366px;margin-left:-183px;padding-left:66px}
 .mainEvent .indicator .timer{display:block;position:relative;width:300px;height:6px;overflow:hidden;text-indent:-9999px;vertical-align:top;border-radius:6px;background:#fff}
 .mainEvent .indicator .timer .bar{position:absolute;top:0;left:0;height:100%;border-radius:6px;background:#ffbc0d}
-/* 2020.6.4 css 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 */
+/* 2020.6.4 css 嶺뚳옙占쎈땬占쎌굲�뜝�럥占쏙퐦�삕泳�洹쏅쐻占쏙옙占쎄퉻占쎈쐻占쎈짗占쎌굲 */
 .mainEvent .indicator .play{position:absolute;top:50%;left:0;width:36px;height:36px;margin-top:-18px;overflow:hidden;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_swiper_new.png) -92px 0 no-repeat}
 .mainEvent .indicator .play.pause{background-position:-92px -36px}
-/* 2020.6.4 css 筌��닂�삕占쎈�ｏ옙維귛뜝���깓�뜝�룞�삕 筌��꼹�굩占쎌깂 */
+/* 2020.6.4 css 嶺뚳옙占쎈땬占쎌굲�뜝�럥占쏙퐦�삕泳�洹쏅쐻占쏙옙占쎄퉻占쎈쐻占쎈짗占쎌굲 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源� */
 .mainEvent .ctrl{position:absolute;top:50%;width:90px;height:90px;margin-top:-45px;overflow:hidden;text-indent:-9999px;background:url(../images/main/bg_swiper_new.png) 0 0 no-repeat;z-index:1}
 .mainEvent .ctrl.prev{left:0}
 .mainEvent .ctrl.next{right:0;background-position:0 -90px}
@@ -529,7 +529,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .ingrInfo .ingrCon .txt b{color:#292929}
 
 /* store */
-.visualArea.bgStore01{color:#fff;background:url(/uploadFolder/images/store/bg_visual_store01.jpg) 50% 0% no-repeat}
+.visualArea.bgStore01{color:#fff;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/bg_visual_store01.jpg) 50% 0% no-repeat}
 .visualArea[class*="bgStore"] .inner{height:170px;margin:60px auto 0}
 
 .storeFind{position:static;margin-top:-20px; position:relative;}
@@ -686,7 +686,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .applyCont02 .swiperType02 .prmTxt dt{font-size:40px;font-weight:600;line-height:1;color:#ffbc0d}
 .applyCont02 .swiperType02 .prmTxt .sTit{margin:30px 0 20px;font-size:24px;line-height:1;color:#292929}
 
-/* 筌��늿彛у뜝�럡�뀬筌��꼹�궓�뜝�럩�넍占썲뜝�럥�뀘�솒袁딉옙�뜝�럩�넏�뜝占� 筌��늿�럮冶⑤Ŋ肄▼뜝�뜦苑볟뜝�럩�넍占쎄맘占쎄퉱占쎈뮎占쎄굻筌띿쉻�삕 layerpop */
+/* 嶺뚳옙占쎈듌壤쎪껊쐻占쎈윞占쎈�х춯占쏙옙瑗뱄옙沅볩옙�쐻占쎈윪占쎈꼵�뜝�뜴�쐻占쎈윥占쎈�섓옙�넂熬곷뵃�삕占쎈쐻占쎈윪占쎈꼷占쎈쐻�뜝占� 嶺뚳옙占쎈듌占쎈윯�넼�뫀흮�굜�뼹�쐻占쎈쑆�땻蹂잙쐻占쎈윪占쎈꼵�뜝�럡留섇뜝�럡�돮�뜝�럥裕롥뜝�럡援사춯�씮�돸占쎌굲 layerpop */
 .storeSch .schTop {color:#292929}
 .storeSch .schTop .schArea{margin-top:30px}
 .storeSch .schTop .schArea > div:after{display:block;content:'';clear:both}
@@ -720,7 +720,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .storeSch .schCon .noResult{margin-top:20px;padding:35px 0 30px;font-size:20px;border-top:2px solid #000;border-bottom:1px solid #000}
 .storeSch .schCon .noResult:before{width:195px;height:195px;background:url(../images/common/bg_noresult_s.png) 0 0 no-repeat}
 
-/* 筌��닀�깂鸚룸뜆肄좑쭪�눘彛�筌�醫륁뿹鸚룸씮肄좑쭪醫롮��筌��닀源숋쭪占� */
+/* 嶺뚳옙占쎈�占쎄퉪勇싲８�쐠�굜醫묒�わ옙�닔壤쏉옙嶺뚳옙�넫瑜곷예勇싲８�뵰�굜醫묒�ら넫濡�占쏙옙嶺뚳옙占쎈�繹먯닂彛ゅ뜝占� */
 .eventStore .topInfo {position:relative;width:780px;height:156px;margin:0 auto;text-align:center;color:#292929;border-radius:156px;background:#ffd566}
 .eventStore .topInfo:before {content:'';display:block;position:absolute;top:19px;left:-33px;width:149px;height:145px;background:url(../images/store/bg_storeList.png) 0 0 no-repeat}
 .eventStore .topInfo h2 {padding-top:40px;font-size:30px;font-weight:600;line-height:1.6}
@@ -730,7 +730,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .eventStore .storeList li {float:left;width:25%;padding:50px 0 50px 40px;border-bottom:1px solid #d1d1d1;background:url(../images/store/bg_ico_storeList.png) 0 50% no-repeat;font-size:20px;color:#292929}
 .eventStore .storeList li.noTi {height:139px;background:none}
 
-/* 筌��닀�깂鸚룸뜆肄좑쭪�눘彛�筌�醫륁뿹鸚룸씮肄좑쭪醫롮��筌��닀源숋쭪占�2 */
+/* 嶺뚳옙占쎈�占쎄퉪勇싲８�쐠�굜醫묒�わ옙�닔壤쏉옙嶺뚳옙�넫瑜곷예勇싲８�뵰�굜醫묒�ら넫濡�占쏙옙嶺뚳옙占쎈�繹먯닂彛ゅ뜝占�2 */
 .eventStore2 .topInfo {position:relative;width:780px;height:156px;margin:0 auto;text-align:center;color:#292929;border-radius:156px;background:#febaa5;}
 .eventStore2 .topInfo:before {content:'';display:block;position:absolute;top:19px;left:-33px;width:149px;height:145px;background:url(../images/store/bg_storeList2.png) 0 0 no-repeat}
 .eventStore2 .topInfo h2 {padding-top:40px;font-size:30px;font-weight:600;line-height:1.6}
@@ -926,7 +926,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .globalMc .pointTxt{width:970px;margin:70px auto 0;background:#da0000;border-radius:30px;text-align:center;color:#fff;line-height:60px}
 .globalMc .btnArea{padding-top:100px;border-top:1px solid #d1d1d1}
 
-.social{margin:0 0 340px -50px} /* 筌�醫묒삕占쎈샬占쎈쳜占쎄뭅�뜝�럥占썬끏�삕 筌��с럮�뜝�럩�넍占쎄굻�몭�먯삕 筌�醫묒삕�땻蹂⑹삕占쎈폖�뜝���깂鸚뤄옙 筌�醫묒삕占쎄퐪�뜝�럩�넍�뜝��嫄싧뜝�룞�삕 */
+.social{margin:0 0 340px -50px} /* 嶺뚳옙�넫臾믪굲�뜝�럥�꺃�뜝�럥爾쒎뜝�럡萸낉옙�쐻占쎈윥�뜝�뜫�걦占쎌굲 嶺뚳옙占싼곷윯占쎈쐻占쎈윪占쎈꼵�뜝�럡援삼옙紐�占쎈Ŋ�굲 嶺뚳옙�넫臾믪굲占쎈빝癰귘뫗�굲�뜝�럥�룚占쎈쐻占쏙옙占쎄퉪勇싲쨪�삕 嶺뚳옙�넫臾믪굲�뜝�럡�맚占쎈쐻占쎈윪占쎈꼵占쎈쐻占쏙옙椰꾩떑�쐻占쎈짗占쎌굲 */
 .social:after{content:'';display:block;clear:both}
 .social>div{float:left;width:559px;margin-left:50px}
 .social>div a{display:block}
@@ -953,7 +953,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .col2:after{display:block;content:'';clear:both}
 .col2 > *{float:left;width:50%}
  
-/*2022.1.12 筌��닂�삕獒뺣뙋�삕*/
+/*2022.1.12 嶺뚳옙占쎈땬占쎌굲�뜏類ｋ솇占쎌굲*/
 .contArea[data-background="food01"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_01_01.jpg) no-repeat center top;}
 .contArea[data-background="food02"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_02_01.jpg) no-repeat center top;}
 .contArea[data-background="food03"]{background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/bg_food_03.jpg) no-repeat center top;}
@@ -1023,7 +1023,7 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .competitive .division .yellowBox{background:#ffbc0d;padding:20px;border-radius:15px;font-size:14px;color:#292929;text-align:center}
 .competitive .division .socialList{margin:0 -40px;}
 .competitive .bottomArea #tab01 .txtInfo{text-align:left;}
-/*2022.1.12 筌��꼹�굩占쎌깂*/
+/*2022.1.12 嶺뚳옙占쎄섰占쎄뎀�뜝�럩源�*/
 
 .faqResult .sorting{padding:80px 0 60px;text-align:center;height:180px;}
 .faqResult .faqToggle{border-top:2px solid #292929;border-bottom:2px solid #292929}
@@ -1050,12 +1050,12 @@ p.nutrDesc{padding-top:35px;color:#292929}
 .crewList li .crewThumb{display:block;position:relative}
 .crewList li .crewThumb:hover:before{display:block;content:'';position:absolute;top:0;left:50%;width:248px;height:248px;margin:-1px 0 0 -124px;border-radius:125px;background:#ffbc0d;opacity:0.9}
 .crewList li .crewThumb:hover:after{display:block;content:'';position:absolute;top:50%;left:50%;width:47px;height:47px;margin:-23px 0 0 -23px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ico_crew_over.png) 0 0 no-repeat}
-/* 筌�醫륁굩筌욑옙筌��꼷彛ο쭪占쏙㎖�닀�깂鸚룸뜆肄▼뜝�뜦肉�占쎈�믭옙嫄울쭕�쉻�삕 layerpop */
+/* 嶺뚳옙�넫瑜곴뎀嶺뚯쉻�삕嶺뚳옙占쎄섭壤쎧우�ゅ뜝�룞�럷占쎈�占쎄퉪勇싲８�쐠�굜�뼹�쐻占쎈쑆�굢占썲뜝�럥占쎈���삕椰꾩슱彛뺧옙�돸占쎌굲 layerpop */
 .crewDetail .crewCont .tit{font-size:20px;font-weight:600;color:#292929}
 .crewDetail .crewCont .txt{margin-top:25px}
 .crewDetail .crewCont .crewInfo{margin-top:30px;padding-top:35px;border-top:1px solid #d1d1d1;color:#292929}
 
-/* 筌��닀�깂鸚룸씮肄∽옙源숋쭪占쏙㎖�늿�룒�뜝�럩�넍�뜝��嫄싷쭪占� */
+/* 嶺뚳옙占쎈�占쎄퉪勇싲８�뵰�굜�댙�삕繹먯닂彛ゅ뜝�룞�럷占쎈듌占쎈짂占쎈쐻占쎈윪占쎈꼵占쎈쐻占쏙옙椰꾩떣彛ゅ뜝占� */
 .inner.type02 .tabType01 {width:1168px;margin:0 auto 60px}
 .careerIntro {padding:80px 0;background:#f8f8f8}
 .careerIntro p {position:relative;width:1168px;margin:0 auto;padding-left:290px;font-size:20px;color:#292929}

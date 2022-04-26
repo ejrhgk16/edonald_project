@@ -8,7 +8,7 @@
 	<title>맥딜리버리</title>
 	<meta name="description" id="description" contents="메뉴, 레스토랑, 프로모션 등 안내"/>
 	<meta name="keywords" contents="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
-	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/favicon.ico">
 	<link rel="stylesheet" href="/resources/css/common.css"> 
 	<link rel="alternate" href="https://www.mcdonalds.co.kr">
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -21,7 +21,7 @@
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="../images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -194,7 +194,7 @@
 									</div>
 									<div class="ios">
 										<a href="https://apps.apple.com/kr/app/%EB%A7%A5%EB%94%9C%EB%A6%AC%EB%B2%84%EB%A6%AC/id1027699629 " target="_blank" title="새창열림">
-											<img src="../images/store/img_app_ios.png" alt="app store 맥딜리버리 앱 다운로드 QR코드"><br>
+											<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/img_app_ios.png" alt="app store 맥딜리버리 앱 다운로드 QR코드"><br>
 											<strong>아이폰 맥딜리버리 앱 다운</strong>
 										</a>
 									</div>
