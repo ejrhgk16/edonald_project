@@ -16,7 +16,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index2.jsp">관리자</a>
+            <a class="navbar-brand ps-3" href="index.jsp">관리자</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -71,20 +71,21 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index2.jsp">
+                            <a class="nav-link" href="index.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">관리</div>
-                            <a class="nav-link collapsed" href="usercheck.jsp" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                지점관리
+                                매장관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="usercheck.jsp">회원관리</a>
+                                    <a class="nav-link" href="layout-static.jsp">쿠폰관리</a>
+                                    <a class="nav-link" href="orderstate.jsp">주문관리</a>
                                 </nav>
                             </div>
                             
@@ -102,28 +103,24 @@
                                     
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                        	<a class="nav-link" href="notice.jsp">프로모션</a>
-                                        	<a class="nav-link" href="notice.jsp">새로운소식</a>
-                                        	<a class="nav-link" href="notice.jsp">이달의해피밀</a>
                                             <a class="nav-link" href="notice.jsp">공지사항</a>
                                             <a class="nav-link" href="banner.jsp">배너등록</a>
-                                            <a class="nav-link" href="qna.jsp">q＆a</a>
-                                            
+                                            <a class="nav-link" href="board2.html">qna</a>
+                                            <a class="nav-link" href="checkmenu.jsp">추천메뉴</a>
+                                            <a class="nav-link" href="burgerNset.jsp">버거n세트</a>
+                                            <a class="nav-link" href="board2.html">스낵n사이드</a>
+                                            <a class="nav-link" href="board2.html">음료</a>
+                                            <a class="nav-link" href="board2.html">디저트</a>
+                                            <a class="nav-link" href="board2.html">해피밀</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        메뉴관리
+                                        회원관리
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="checkmenu.jsp">추천메뉴</a>
-                                            <a class="nav-link" href="burgerNset.jsp">버거＆세트</a>
-                                            <a class="nav-link" href="snackNside.jsp">스낵＆사이드</a>
-                                            <a class="nav-link" href="drink.jsp">음료</a>
-                                            <a class="nav-link" href="dessert.jsp">디저트</a>
-                                            <a class="nav-link" href="happymeal.jsp">해피밀</a>
-                                            
+                                            <a class="nav-link" href="adminpage.jsp">회원관리</a>
                                         </nav>
                                     </div>
                                 </nav>
@@ -146,52 +143,30 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">프로모션</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">프로모션</li>
-                        </ol>
-                       
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                	프로모션
-                            </div>
-                            <div>
-                            <br>
-                           &nbsp;&nbsp;&nbsp;<button type="button" onclick="window.open('write.jsp');"class="btn btn-outline-dark">등록</button>
-                           
-                            </div>
-						<div class="card-body">
-							<table id="datatablesSimple">
-
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>조회수</th>
-										<th>등록일</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<c:forEach var="list" items="${list}">
-										<tr>
-											<td>${list.m_name}</td>
-											<td>${list.m_each}</td>
-											<td>${list.m_code}</td>
-											<td>${list.m_day}</td>
-										</tr>
-									</c:forEach>
-
-								</tbody>
-							</table>
-						</div>
-					</div>
+	<div class="row">
+		<div class="col-sm-12">
+		<hr>
+	      <h2>&nbsp;&nbsp;글쓰기</h2>
+	        <form action="writeAction" method = "POST" enctype="multipart/form-data">
+				<div class="form-group">
+				&nbsp;&nbsp;  <label for="usr">&nbsp;&nbsp;제목:</label>
+				  <input type="text" class="form-control" id="title" name = "title">
 				</div>
+			    <div class="form-group">
+			 &nbsp;&nbsp;     <input type="file" class="form-control-file border" name="file">
+			    </div>
+			    <div class="form-group">
+				  <label for="comment">&nbsp;&nbsp;&nbsp;내용:</label>
+				  <textarea class="form-control" rows="5" id="contents" name = "contents"></textarea>
+				</div>
+			 &nbsp;&nbsp;   <button type="submit" class="btn btn-primary">글쓰기</button>
+			  </form>
+		</div>
+	</div>
+</div>
+                            </div>
+                        </div>
+                    </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
