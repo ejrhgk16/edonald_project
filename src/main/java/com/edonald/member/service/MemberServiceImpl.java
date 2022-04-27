@@ -34,7 +34,6 @@ public class MemberServiceImpl implements MemberService{
 		addrDto.setD_key("d");
 		mapper.joinMemberInfo(memberDto);
 		mapper.joinMemberAddr(addrDto);
-
 	}
 
 }
