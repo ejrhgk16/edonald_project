@@ -29,4 +29,7 @@
 	<context:component-scan base-package="com.edonald.securityconfig" />
 	 <mybatis-spring:scan base-package="com.edonald.mapper"/>
 	 <mybatis-spring:scan base-package="com.edonald.member.dao"/>
+	 
+	 <!-- 나중에 백업해둔다음에 푸쉬할때 주의 -->
+	 <mybatis-spring:scan base-package="com.edonald.menu.dao"/>
 </beans>
