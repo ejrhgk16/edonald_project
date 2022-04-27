@@ -8,9 +8,10 @@
 	<title>매장찾기</title>
 	<meta name="description" id="description" contents="메뉴, 레스토랑, 프로모션 등 안내"/>
 	<meta name="keywords" contents="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
-	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
-	<link rel="stylesheet" href="../css/common.css?t=2022012502"> 
+	<link rel="shortcut icon" type="image/x-icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/favicon.ico">
+	<link rel="stylesheet" href="/resources/css/common.css"> 
 	<link rel="alternate" href="https://www.mcdonalds.co.kr">
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 <body>
 <div class="wrapper ">
@@ -21,7 +22,7 @@
 
 
 	<div class="headArea">
-				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="../images/common/logo.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="/" class="logo" title="메인으로 이동"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -50,19 +51,19 @@
 							<li>
 								<a href="/kor/promotion/list.do" class="dth1  ">What’s New</a>
 								<ul class="depth2">
-									<li><a href="/kor/promotion/list.do" class="dth2">프로모션</a></li>
-									<li><a href="/kor/news/list.do" class="dth2">새로운 소식</a></li>
-									<!--  li><a href="/kor/kitchen.do" class="dth2">주방공개의 날</a></li -->
-								    <li><a href="/kor/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
+									<li><a href="/ed/promotion/list.do" class="dth2">프로모션</a></li>
+									<li><a href="/ed/news/list.do" class="dth2">새로운 소식</a></li>
+									<!--  li><a href="/ed/kitchen.do" class="dth2">주방공개의 날</a></li -->
+								    <li><a href="/ed/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
 								</ul>
 							</li>
 							<li>
 								<a href="/kor/story/main.do" class="dth1  ">Story</a>
 								<ul class="depth2">
-									<li><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
-									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="/ed/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="/ed/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
+									<li><a href="/ed/story/competition/farmToRestaurant.do" class="dth2">맥도날드 품질 이야기</a></li>
+									<li><a href="/ed/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -117,9 +118,9 @@
 					<div class="inner">
 						<h1 class="titDep1">매장찾기</h1>
 						<ul class="navPath">
-							<li><a href="/kor/main.do">Home</a></li>
-							<li><a href="/kor/store/main.do">Store</a></li>
-							<li><a href="/kor/store/main.do">매장찾기</a></li>
+							<li><a href="/ed/main.do">Home</a></li>
+							<li><a href="/ed/store/main.do">Store</a></li>
+							<li><a href="/ed/store/main.do">매장찾기</a></li>
 						</ul>
 					</div>
 				</div>
@@ -127,8 +128,8 @@
 				<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li><a href="/kor/store/main.do" role="button">지역별</a></li>
-							<li><a href="/kor/store/event.do" role="button" aria-selected="true">이벤트매장</a></li>
+							<li><a href="/ed/store/main.do" role="button">지역별</a></li>
+							<li><a href="/ed/store/event.do" role="button" aria-selected="true">이벤트매장</a></li>
 						</ul>
 						<div class="eventStore2">
 							<div class="topInfo">
@@ -399,7 +400,7 @@
 					<li><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank" title="새창 열림">맥도날드 카카오스토리</a></li>
 					<li class="web_accessibility">
                        <a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-                        <img src="/kor/images/common/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+                        <img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/web_accessibility.svg" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
                     </a>
                     </li> 
 				</ul>
@@ -645,7 +646,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="/kor/images/story/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/story/img_crew_pop01.jpg" alt="목포 남악 DT점 김지웅 매니저"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">변화는 나의 자부심</h2>
@@ -663,7 +664,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="/kor/images/story/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/story/img_crew_pop02.jpg" alt="경희대점 권영미 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">매일 열정적일 수 있는 나만의 비결</h2>
@@ -681,7 +682,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="/kor/images/story/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/story/img_crew_pop03.jpg" alt="미아역점 이지혁 라이더"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">행복을 배달하는 사람으로.</h2>
@@ -699,7 +700,7 @@
 		<div class="layCont">
 			<div class="scroll crewDetail">
 				<div class="contHead">
-					<div class="img"><img src="/kor/images/story/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
+					<div class="img"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/story/img_crew_pop04.jpg" alt="석촌역점 이나라 크루"></div>
 				</div>
 				<div class="contBtm crewCont">
 					<h2 class="tit">맥도날드를 넘어, 나 자신의 변화까지</h2>
