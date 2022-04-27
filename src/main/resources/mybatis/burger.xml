@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edonald.menu.dao.BurgerMapper">
+	<select id="getBurgerInfo" resultType="com.edonald.menu.dto.BurgerDto">
+		select * from burger where burger_code = #{burger_code}
+	</select>
+	
+	
+	<!-- 이 밑부분은 xml 파일 싹다 다른곳으로 넘겨야할듯 menu 폴더 생성 필요해보임 -->
+	<select id="getBurgerSetInfo" resultType="com.edonald.menu.dto.BurgerSetDto">
+		select * from burger_set where burger_set_code = #{burger_set_code}
+	</select>
+	<select id="getBurgerSetInfo" resultType="com.edonald.menu.dto.DessertDto">
+		select * from dessert where dessert_code = #{dessert_code}
+	</select>
+	<select id="getDrinkInfo" resultType="com.edonald.menu.dto.DrinkDto">
+		select * from drink where drink_code = #{drink_code}
+	</select>
+	<select id="getEmorningInfo" resultType="com.edonald.menu.dto.EmorningDto">
+		select * from emorning where emorning_code = #{emorning_code}
+	</select>
+	<select id="getHappymealInfo" resultType="com.edonald.menu.dto.HappymealDto">
+		select * from happymeal where happymeal_code = #{happymeal_code}
+	</select>
+	<select id="getSideInfo" resultType="com.edonald.menu.dto.SideDto">
+		select * from side where side_code = #{side_code}
+	</select>
+</mapper>
