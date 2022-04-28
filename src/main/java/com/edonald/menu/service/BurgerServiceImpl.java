@@ -15,9 +15,8 @@ public class BurgerServiceImpl implements BurgerService {
 	private BurgerMapper mapper;
 	
 	@Override
-	public List<BurgerDto> listAll() {
-		// TODO Auto-generated method stub
-		return mapper.listAll();
+	public List<BurgerDto> listAll(int start,int end) {
+		return mapper.listAll(start, end);
 	}
 
 	@Override
@@ -42,6 +41,11 @@ public class BurgerServiceImpl implements BurgerService {
 	public void delete(int bno) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public int totalRecord() {
+		return mapper.totalRecord();
 	}
 
 }

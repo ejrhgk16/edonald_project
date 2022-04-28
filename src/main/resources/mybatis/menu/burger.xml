@@ -2,28 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edonald.menu.dao.BurgerMapper">
-	<select id="getBurgerInfo" resultType="com.edonald.menu.dto.BurgerDto">
-		select * from burger where burger_code = #{burger_code}
+	<select id="listAll" resultType="com.edonald.menu.dto.BurgerDto">
+		<![CDATA[ select b_seq, burger_name, burger_e_name,burger_btn_img_path, burger_kcal, burger_n_img_path, burger_detail_img_path, burger_detail_comment, burger_allergy 
+         from( select @rownum:=@rownum+1 as rn, bno, title, 
+         content, writer, regdate, updateDate from burger order by b_seq desc where rownum<= #{end} 
+          )where rn>(#{start}) ]]>
 	</select>
-	
-	
-	<!-- 이 밑부분은 xml 파일 싹다 다른곳으로 넘겨야할듯 menu 폴더 생성 필요해보임 -->
-	<select id="getBurgerSetInfo" resultType="com.edonald.menu.dto.BurgerSetDto">
-		select * from burger_set where burger_set_code = #{burger_set_code}
-	</select>
-	<select id="getBurgerSetInfo" resultType="com.edonald.menu.dto.DessertDto">
-		select * from dessert where dessert_code = #{dessert_code}
-	</select>
-	<select id="getDrinkInfo" resultType="com.edonald.menu.dto.DrinkDto">
-		select * from drink where drink_code = #{drink_code}
-	</select>
-	<select id="getEmorningInfo" resultType="com.edonald.menu.dto.EmorningDto">
-		select * from emorning where emorning_code = #{emorning_code}
-	</select>
-	<select id="getHappymealInfo" resultType="com.edonald.menu.dto.HappymealDto">
-		select * from happymeal where happymeal_code = #{happymeal_code}
-	</select>
-	<select id="getSideInfo" resultType="com.edonald.menu.dto.SideDto">
-		select * from side where side_code = #{side_code}
+	<select id="totalRecord" resultType="java.lang.Integer">
+		select count(*) from burger
 	</select>
 </mapper>
