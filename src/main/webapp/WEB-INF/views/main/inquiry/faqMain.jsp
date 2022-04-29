@@ -976,7 +976,7 @@ scale
 			<div class="headArea">
 				<strong class="hLogo"> <a href="http://www.mcdonalds.co.kr"
 					target="_blank" class="logo" title="메인으로 이동"> <img
-						src="./common/images/common/logo.png" alt="맥도날드">
+						src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/logo.png" alt="맥도날드">
 				</a>
 				</strong>
 				<nav class="hMenu">
@@ -1014,56 +1014,56 @@ scale
 									onclick="javascript:search('04','C');changeColor('04');">
 									<input type="checkbox" id="1" value="04" disabled=""> <label
 									for="1"> 메뉴 <span class="icon"> <img
-											src="./common/images/icon/ic_burger.png" alt="메뉴""="">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_burger.png" alt="메뉴""="">
 									</span>
 								</label>
 								</span> <span id="01" class="srvc"
 									onclick="javascript:search('01','C');changeColor('01');">
 									<input type="checkbox" id="2" value="01" disabled=""> <label
 									for="2"> 구매 <span class="icon"> <img
-											src="./common/images/icon/ic_cart.png" alt="카트">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_cart.png" alt="카트">
 									</span>
 								</label>
 								</span> <span id="02" class="srvc"
 									onclick="javascript:search('02','C');changeColor('02');">
 									<input type="checkbox" id="3" value="Y" disabled=""> <label
 									for="3"> 매장이용 <span class="icon"> <img
-											src="./common/images/icon/ic_home.png" alt="매장이용">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_home.png" alt="매장이용">
 									</span>
 								</label>
 								</span> <span id="03" class="srvc"
 									onclick="javascript:search('03','C');changeColor('03');">
 									<input type="checkbox" id="4" value="Y" disabled=""> <label
 									for="4"> 맥딜리버리 <span class="icon"> <img
-											src="./common/images/icon/ic_drive.png" alt="맥딜리버리">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_drive.png" alt="맥딜리버리">
 									</span>
 								</label>
 								</span> <span id="05" class="srvc"
 									onclick="javascript:search('05','C');changeColor('05');">
 									<input type="checkbox" id="5" value="Y" disabled=""> <label
 									for="5"> 채용 <span class="icon"> <img
-											src="./common/images/icon/ic_search.png" alt="채용">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_search.png" alt="채용">
 									</span>
 								</label>
 								</span> <span id="07" class="srvc"
 									onclick="javascript:search('07','C');changeColor('07');">
 									<input type="checkbox" id="6" value="Y" disabled=""> <label
 									for="6"> 프랜차이즈 <span class="icon"> <img
-											src="./common/images/icon/ic_handshake.png" alt="프랜차이즈">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_handshake.png" alt="프랜차이즈">
 									</span>
 								</label>
 								</span> <span id="09" class="srvc"
 									onclick="javascript:search('09','C');changeColor('09');">
 									<input type="checkbox" id="7" value="Y" disabled=""> <label
 									for="7"> 맥도날드앱 <span class="icon"> <img
-											src="./common/images/icon/ic_mcd.png" alt="맥도날드앱">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_mcd.png" alt="맥도날드앱">
 									</span>
 								</label>
 								</span> <span id="08" class="srvc"
 									onclick="javascript:search('08','C');changeColor('08');">
 									<input type="checkbox" id="8" value="Y" disabled=""> <label
 									for="8"> 기타 <span class="icon"> <img
-											src="./common/images/icon/ic_etc.png" alt="기타">
+											src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/ic_etc.png" alt="기타">
 									</span>
 								</label>
 								</span>

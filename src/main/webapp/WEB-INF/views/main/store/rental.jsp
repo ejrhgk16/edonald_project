@@ -8,9 +8,10 @@
 	<title>임차문의</title>
 	<meta name="description" id="description" contents="메뉴, 레스토랑, 프로모션 등 안내"/>
 	<meta name="keywords" contents="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
-	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
-	<link rel="stylesheet" href="../css/common.css"> 
+	<link rel="shortcut icon" type="image/x-icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/favicon.ico">
+	<link rel="stylesheet" href="/resources/css/common.css"> 
 	<link rel="alternate" href="https://www.mcdonalds.co.kr">
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 <body>
 <div class="wrapper ">
@@ -155,7 +156,7 @@
 							</tbody>
 						</table>
 						<div class="btnArea">
-							<a href="/down/RS_01_Mcd_Retail_spac_for_rent_Application.docx" class="btnMC btnL">제안서 양식 다운로드</a>
+							<a href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/store/RS_01_Mcd_Retail_spac_for_rent_Application+(1).docx" class="btnMC btnL">제안서 양식 다운로드</a>
 							<p class="txtInfo">위의 입지 제안서 양식을 다운로드하여 작성하신 후 담당자에게 보내 주세요.<br> <b>담당자 이메일 : <a href="mailto:realestate@kr.mcd.com">realestate@kr.mcd.com</a></b></p>
 						</div>
 						<h2 class="titDep3">건물임대</h2>

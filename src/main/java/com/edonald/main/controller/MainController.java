@@ -16,4 +16,13 @@ public class MainController {
 	public String mainMenuBurgermenu() {
 		return "main/menu/burgermenu";
 	}
+	
+	@RequestMapping(value = "/TEST.do", method = RequestMethod.GET)
+	public String inquiry() {
+		return "main/inquiry/inquiry";
+	}
+	@RequestMapping(value = "/TEST2.do", method = RequestMethod.GET)
+	public String faqMain() {
+		return "main/inquiry/faqMain";
+	}
 }

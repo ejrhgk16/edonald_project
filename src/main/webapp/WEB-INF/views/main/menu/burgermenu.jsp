@@ -168,6 +168,16 @@
 										</div>
 									</a>
 								</li>
+								<li>
+									<a data-seq="#"><!-- burger_code -->
+										<div class="thum">
+											<img src="#"><!-- burger_btn_img_path -->
+										</div>
+										<div class="name">
+											<strong class="ko">이름?</strong><!-- burger_name -->
+										</div>
+									</a>
+								</li>
 							</ul>
 							<div class="btnMore" id="btnMore">
 								<button type="button" class="more" onclick="more()">더보기</button>
