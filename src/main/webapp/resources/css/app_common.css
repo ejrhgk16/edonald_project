@@ -141,7 +141,7 @@ textarea{width:100%;padding:25px 30px;overflow-y:auto;color:#292929;border-radiu
 .btnS{min-width:100px;padding:0 25px;font-size:13px;line-height:34px;border-radius:34px}
 
 .btnMore{margin-top:80px;text-align:center}
-.btnMore .more{display:inline-block;width:90px;height:90px;overflow:hidden;vertical-align:top;text-indent:-9999px;background:url(../images/common/btn_more.png) 0 0 no-repeat}
+.btnMore .more{display:inline-block;width:90px;height:90px;overflow:hidden;vertical-align:top;text-indent:-9999px;background:url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/btn_more.png) 0 0 no-repeat}
 
 .btnPaging{margin-top:60px;text-align:center}
 .btnPaging a{display:inline-block;width:40px;height:40px;margin:0 3px;vertical-align:top;border:1px solid #d1d1d1;border-radius:5px;background:#fff}
