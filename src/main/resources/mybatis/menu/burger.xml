@@ -8,7 +8,8 @@
          content, writer, regdate, updateDate from burger order by b_seq desc where rownum<= #{end} 
           )where rn>(#{start}) ]]>
 	</select>
-	<select id="totalRecord" resultType="java.lang.Integer">
-		select count(*) from burger
-	</select>
+	
+	<insert id="insert">
+		INSERT INTO burger VALUES(#{burger_code},#{burger_name},#{burger_kcal},#{burger_img_path},#{burger_status},#{burger_n_img_path},#{category_code},#{burger_e_name},#{burger_detail_img_path},#{burger_price},#{burger_btn_img_path},#{burger_detail_comment},#{burger_allergy})
+	</insert>
 </mapper>
