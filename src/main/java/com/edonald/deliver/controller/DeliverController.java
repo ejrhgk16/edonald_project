@@ -13,8 +13,6 @@ public class DeliverController {
 	public String deliverhome() {
 		return "/delivery/deliverhome/deliverhome";
 	}
-	
-
 
 	
 }

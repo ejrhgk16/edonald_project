@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.edonald.menu.dao.BurgerMapper;
 import com.edonald.menu.dto.BurgerDto;
@@ -22,7 +23,7 @@ public class BurgerServiceImpl implements BurgerService {
 	@Override
 	public void insert(BurgerDto dto) {
 		// TODO Auto-generated method stub
-
+		mapper.insert(dto);
 	}
 
 	@Override

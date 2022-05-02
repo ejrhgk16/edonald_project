@@ -58,10 +58,8 @@ public class AwsS3 {
 	}
 
 	public void uploadToS3(PutObjectRequest putObjectRequest) {
-		System.out.println("awsS3UploadToS3");
 		try {
 			this.s3Client.putObject(putObjectRequest);
-			System.out.println("uploadcomplete : " + putObjectRequest.getKey());
 		} catch (AmazonServiceException e) {
 			e.printStackTrace();
 		} catch (SdkClientException e) {

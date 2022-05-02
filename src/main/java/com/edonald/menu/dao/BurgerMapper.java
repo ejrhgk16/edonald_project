@@ -3,6 +3,7 @@ package com.edonald.menu.dao;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.edonald.menu.dto.BurgerDto;
 

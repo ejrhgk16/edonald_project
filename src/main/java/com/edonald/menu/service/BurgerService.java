@@ -2,6 +2,8 @@ package com.edonald.menu.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.edonald.menu.dto.BurgerDto;
 
 public interface BurgerService {

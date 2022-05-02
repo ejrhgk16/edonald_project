@@ -10,6 +10,18 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO burger VALUES(#{burger_code},#{burger_name},#{burger_kcal},#{burger_img_path},#{burger_status},#{burger_n_img_path},#{category_code},#{burger_e_name},#{burger_detail_img_path},#{burger_price},#{burger_btn_img_path},#{burger_detail_comment},#{burger_allergy})
+		INSERT INTO burger VALUES(
+			#{burger_code},
+			#{burger_name},
+			#{burger_kcal},
+			#{burger_img_path},
+			#{burger_set_img_path},
+			#{burger_status},
+			#{category_code},
+			#{burger_type},
+			#{burger_price},
+			#{burger_allergy},
+			NULL
+			)
 	</insert>
 </mapper>

@@ -37,28 +37,17 @@
 			})
 		});
 		
+		$("#burger_name").change(function(){
+			var code = "b_"+$("#burger_name").val();
+			$("#burger_code").val(code); 
+		})
 		$("#cancle").on("click", function() {
 			location.href = "burger.mdo";
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
-			if ($("#burger_code").val() == "") {
-				alert("버거코드를 입력하세요.");
-				$("#burger_code").focus();
-				return false;
-			}
-			if (regExp.test($("#burger_code").val())) {
-				alert("공백을 사용할 수 없습니다.");
-				$("#burger_code").focus();
-				return false;
-			}
 			if ($("#burger_name").val() == "") {
 				alert("버거 이름을 입력하세요.");
-				$("#burger_name").focus();
-				return false;
-			}
-			if (regExp.test($("#burger_name").val())) {
-				alert("공백을 사용할 수 없습니다.");
 				$("#burger_name").focus();
 				return false;
 			}
@@ -82,34 +71,19 @@
 				$("#burger_price").focus();
 				return false;
 			}
-			if ($("#burger_type").val() == "") {
-				alert("분류를 입력하세요.");
-				$("#burger_type").focus();
-				return false;
-			}
-			if (regExp.test($("#burger_type").val())) {
-				alert("공백을 사용할 수 없습니다.");
-				$("#burger_type").focus();
-				return false;
-			}
-			if ($("#burger_regdate").val() == "") {
-				alert("버거 등록일을 입력하세요.");
-				$("#burger_regdate").focus();
-				return false;
-			}
-			if ($("#burger_detail").val() == "") {
-				alert("버거 상세설명을 입력하세요.");
-				$("#burger_detail").focus();
-				return false;
-			}
 			if ($("#burger_img").val() == "") {
 				alert("버거 이미지를 업로드하세요.");
 				$("#burger_img").focus();
 				return false;
 			}
-			if ($("#burger_detail_img").val() == "") {
-				alert("디테일 이미지를 업로드하세요.");
-				$("#burger_detail_img").focus();
+			if ($("#burger_set_img").val() == "") {
+				alert("세트 이미지를 업로드하세요.");
+				$("#burger_set_img").focus();
+				return false;
+			}
+			if ($("#burger_allergy").val() == "") {
+				alert("알레르기 정보를 입력하세요.");
+				$("#burger_allergy").focus();
 				return false;
 			}
 			$('#addBurger').submit();
@@ -197,7 +171,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">버거 등록</h3></div>
                                     <div class="card-body">
-                                        <form action="burgerRegister.mdo" method="post" id="addBurger" enctype="multipart/form-data">
+                                        <form action="/hadmin/burger/insert" method="post" id="addBurger" enctype="multipart/form-data">
                                         	<div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -230,6 +204,39 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        	 <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                    	<select class="form-select" id="burger_type" name="burger_type" aria-label="Default select example"
+                                                    		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
+                                                    		<option value="0">단품</option>
+															<option value="1">세트</option>
+															<option selected value="2">라지세트</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="category_code" name="category_code" aria-label="Default select example"
+                                                    		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
+                                                    		<option value="0">신제품</option>
+															<option value="1">치즈</option>
+															<option value="2">불고기</option>
+															<option value="3">오리지날</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="row mb-3">
+                                             	<div class="col-md-12">
+                                                   <div class="form-floating">
+                                                       <input class="form-control" id="burger_allergy" name="burger_allergy" type="text" placeholder="Enter allergy information" 
+                                                       	style="height: calc(3.5rem + 20px);"/>
+                                                       <label for="burger_allergy">알레르기 정보</label>
+                                                   </div>
+                                                </div>
+							           		</div>
+                                            <!-- 필요없을듯해서 일단 주석
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -248,21 +255,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                       
+                                            
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="burger_detail" name="burger_detail" type="text"/>
                                                 <label for="burger_detail">상세설명 / 판매시간</label>
                                             </div>
+                                             -->
                                             <div style="margin-top: 10px;">
 	                                            <button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>	
 	                                            <div class="dessert-container" id="burger-container" style="display:none;">
 	                                            	<img style="width:100%;" id="image">
                                             	</div>
                                             </div>
+                                            
                                             <div class="row mb-3" style="margin-top: 20px;">
                                                 <div class="input-group">
 									                <label class="input-group-btn">
 									                    <span class="btn btn-primary">
-									                        Upload <input type="file" name="file1" id="file1" style="display: none;" multiple>
+									                        Upload <input type="file" name="mainUploadFile" id="file1" style="display: none;" multiple>
 									                    </span>
 									                </label>
 									                <input type="text" id="burger_img" class="form-control" readonly>
@@ -280,10 +291,10 @@
                                                 <div class="input-group">
 									                <label class="input-group-btn">
 									                    <span class="btn btn-primary">
-									                        Upload <input type="file" name="file2" id="file2" style="display: none;" multiple>
+									                        Upload <input type="file" name="subUploadFile" id="file2" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="burger_detail_img" class="form-control" readonly>
+									                <input type="text" id="burger_set_img" class="form-control" readonly>
 								           		</div>
 								           		<small>디테일 이미지 : 사진크기 772*530</small>
                                             </div>
