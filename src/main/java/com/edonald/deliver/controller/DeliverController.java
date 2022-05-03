@@ -1,10 +1,6 @@
 package com.edonald.deliver.controller;
 
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
-=======
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.edonald.member.dto.AddressDto;
-
+import com.edonald.menu.service.BurgerService;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.oauthConfig.NaverLogin;
 
@@ -27,7 +23,8 @@ import com.edonald.oauthConfig.NaverLogin;
 public class DeliverController {
 	@Autowired
 	NaverLogin naverlogin;
-
+	@Autowired
+	private BurgerService bService;	
 	
 	@GetMapping("/ed/deliverHome")
 	public String deliverhome(Model model, HttpServletRequest req) {
@@ -38,7 +35,13 @@ public class DeliverController {
 		return "/delivery/deliverhome/deliverhome";
 	}
 
+	@GetMapping("/ed/deliverMenu")
+	public String delivermenu(Model model) {
+		model.addAttribute("list",bService.listAll());
+		return "/delivery/deliverhome/deliverMenu";
+	}
 	
+
 	@GetMapping("/ed/menuPage")
 	public String menuPage() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
