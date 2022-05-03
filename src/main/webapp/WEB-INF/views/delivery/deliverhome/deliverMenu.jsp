@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 
 
 
-<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 <!--[if lte IE 9]>
 				<link rel="stylesheet" href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/css/main-2.css" />
 		<![endif]-->
@@ -325,130 +326,77 @@
 									<div id="product-cards" class="product-cards"
 										data-equal-height=".product-card--standard .product-title, .product-card--standard .product-info">
 										<div class="row row-narrow">
+										<script type="text/javascript">
+										 function comma(str) {
+										     str = String(str);
+										     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+										 }
 
-											<div class="product-card product-card--standard">
-												<div class="panel panel-default panel-product">
-													<div class="panel-body">
-														<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/delivery/4941.png" class="img-block">
-														<h5 class="product-title" style="height: 30.8px;">아라비아따
-															리코타 치킨 버거</h5>
-														<div class="product-badges"></div>
-													</div>
-													<div class="panel-footer">
-														<div class="row row-narrow">
-															<div class="product-info" style="height: 78.3px;">
-																<div class="product-details">
-																	<div class="product-cost">
-																		가격 <span class="starting-price">₩ 9,000</span>
-																	</div>
-																	<div class="product-nutritional-info">
-
-																		<span class="text-default">948~1097 Kcal</span>
-																	</div>
-
-																	<div class="product-allergen-info">
-																		<div>
-																			<a href="#" class="action-link"
-																				data-toggle="html-popover" data-placement="bottom"
-																				data-html="true"
-																				data-content-selector=".popover-details"
-																				data-original-title="" title=""><i
-																				class="mcd icon mcd-allergen"></i> <span
-																				class="text-default">알레르기 정보</span></a>
-																			<div class="popover-details">
-																				<div class="popover-wrapper type-sans">
-																					<h4>아라비아따 리코타 치킨 버거</h4>
-																					<div>아라비아따 리코타 치킨 버거 (난류, 우유, 대두, 밀, 돼지고기,
-																						토마토, 닭고기), 후렌치 후라이 (대두), 케첩 (토마토)</div>
+										
+											<c:forEach items="${list}" var="list" varStatus="status">
+											var price = ${list.burger_price};
+											price = comma(price);
+											</script>
+												<div class="product-card product-card--standard">
+													<div class="panel panel-default panel-product">
+														<div class="panel-body">
+															<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.burger_img_path}" class="img-block">
+															<h5 class="product-title" style="height: 30.8px;">${list.burger_name}</h5>
+															<div class="product-badges"></div>
+														</div>
+														<div class="panel-footer">
+															<div class="row row-narrow">
+																<div class="product-info" style="height: 78.3px;">
+																	<div class="product-details">
+																		<div class="product-cost">
+																			가격 ₩ <span class="starting-price"><script type="text/javascript">document.write(price);</script></span>
+																		</div>
+																		<div class="product-nutritional-info">
+	
+																			<span class="text-default">${list.burger_kcal} Kcal</span>
+																		</div>
+	
+																		<div class="product-allergen-info">
+																			<div>
+																				<a href="#" class="action-link"
+																					data-toggle="html-popover" data-placement="bottom"
+																					data-html="true"
+																					data-content-selector=".popover-details"
+																					data-original-title="" title="">
+																					<i class="mcd icon mcd-allergen"></i> 
+																					<span class="text-default">알레르기 정보</span>
+																				</a>
+																				<div class="popover-details">
+																					<div class="popover-wrapper type-sans">
+																						<h4>${list.burger_name }</h4>
+																						<div>${list.burger_name } (${list.burger_allergy})</div>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
+	
 																	</div>
-
 																</div>
-															</div>
-															<div class="product-controls">
-																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-
-																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-																<a data-productid="789"
-																	class="btn btn-block action-create btn-yellow"
-																	href="../guest_address.html?from=browsemenu"
-																	onclick="onProductClick({ 'name':&quot;아라비아따 리코타 치킨 버거&quot;,'id':'4941','price':'9000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
-
+																<div class="product-controls">
+																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+	
+																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+																	<a data-productid="789"
+																		class="btn btn-block action-create btn-yellow"
+																		href="../guest_address.html?from=browsemenu"
+																		onclick="onProductClick({ 'name':&quot;아라비아따 리코타 치킨 버거&quot;,'id':'4941','price':'9000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
+	
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-
-											<div class="product-card product-card--standard">
-												<div class="panel panel-default panel-product">
-													<div class="panel-body">
-														<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/menu/delivery/7990.png" class="img-block">
-														<h5 class="product-title" style="height: 30.8px;">맥딜리버리
-															빅맥® 플러스팩</h5>
-														<div class="product-badges"></div>
-													</div>
-													<div class="panel-footer">
-														<div class="row row-narrow">
-															<div class="product-info" style="height: 78.3px;">
-																<div class="product-details">
-																	<div class="product-cost">
-																		가격 <span class="starting-price">₩ 13,000</span>
-																	</div>
-																	<div class="product-nutritional-info">
-
-
-
-																		<span class="text-default">1664~1812 Kcal</span>
-
-																	</div>
-
-																	<div class="product-allergen-info">
-																		<div>
-																			<a href="#" class="action-link"
-																				data-toggle="html-popover" data-placement="bottom"
-																				data-html="true"
-																				data-content-selector=".popover-details"
-																				data-original-title="" title=""><i
-																				class="mcd icon mcd-allergen"></i> <span
-																				class="text-default">알레르기 정보</span></a>
-																			<div class="popover-details">
-																				<div class="popover-wrapper type-sans">
-																					<h4>맥딜리버리 빅맥® 플러스팩</h4>
-																					<div>맥딜리버리 빅맥® 플러스팩 (난류, 우유, 대두, 밀, 쇠고기), 후렌치
-																						후라이 (대두), 케첩 (토마토), 에그 불고기 버거 (난류, 대두, 밀, 돼지고기,
-																						조개, 굴), 맥너겟® 6조각 (대두, 밀, 닭고기), 스위트칠리 소스 (토마토), 스위트
-																						앤 사워 소스 (대두, 밀, 아황산류), 케이준 소스 (난류, 대두), 오렌지 칠리 소스
-																						(토마토)</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-
-																</div>
-															</div>
-															<div class="product-controls">
-																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-
-
-																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-																<a data-productid="789"
-																	class="btn btn-block action-create btn-yellow"
-																	href="../guest_address.html?from=browsemenu"
-																	onclick="onProductClick({ 'name':&quot;맥딜리버리 빅맥® 플러스팩&quot;,'id':'7990','price':'13000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
-
-
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+												<script type="text/javascript">
+											</c:forEach>
+											</script>
+											
 										</div>
 									</div>
 

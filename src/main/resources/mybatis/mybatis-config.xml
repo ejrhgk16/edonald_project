@@ -11,5 +11,6 @@
  		<mapper resource="/mybatis/member.xml"></mapper>
  		<mapper resource="/mybatis/faq.xml"></mapper>
  		<mapper resource="/mybatis/menu/burger.xml"></mapper>
+ 		<mapper resource="/mybatis/menu/menu.xml"></mapper>
  	</mappers>
  </configuration>

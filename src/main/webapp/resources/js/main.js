@@ -97,10 +97,24 @@ $(document).ready(function() {
 		$("#rememberMe").css("display", "none");
 	});
 
-
-
+	//메뉴화면 알레르기 text 펼치기
+	$(document).on('click',".text-default",function(){
+		$('html').one('click',function(){
+			$('.popover.fade.bottom.in').remove();
+		})
+		var name = $(this).parent().parent().children('.popover-details').children().children('h4').text();
+		var detail = $(this).parent().parent().children('.popover-details').children().children('div').text();
+		var source = "<div class=\"popover fade bottom in\" role=\"tooltip\" id=\"popover928591\" style=\"top: 81.2969px; left: -88.3984px; display: block;\">";
+		source += "<div class=\"arrow\" style=\"left: 50%;\"></div>";
+		source += "<h3 class=\"popover-title\" style=\"display: none;\"></h3><div class=\"popover-content\">";
+		source += "<div class=\"popover-wrapper type-sans\">";
+		source += "<h4>"+name+"</h4>";
+		source += "<div>"+detail+"</div></div></div></div>";
+		$(this).parent().after(source);
+	})
 
 })
+	
 
 function noLogin() {//loginmodal show
 	$("#signin").attr("class", "modal-login modal fade signin-modal in");

@@ -3,12 +3,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edonald.menu.dao.BurgerMapper">
 	<select id="listAll" resultType="com.edonald.menu.dto.BurgerDto">
-		<![CDATA[ select b_seq, burger_name, burger_e_name,burger_btn_img_path, burger_kcal, burger_n_img_path, burger_detail_img_path, burger_detail_comment, burger_allergy 
-         from( select @rownum:=@rownum+1 as rn, bno, title, 
-         content, writer, regdate, updateDate from burger order by b_seq desc where rownum<= #{end} 
-          )where rn>(#{start}) ]]>
+		SELECT *  FROM burger b WHERE burger_status != 0 ORDER BY category_code,b_seq ASC
 	</select>
-	
 	<insert id="insert">
 		INSERT INTO burger VALUES(
 			#{burger_code},
