@@ -10,4 +10,14 @@ public class StoreManageController {
 	public String usercheck() {
 		return "/admin/hadmin/usercheck/usercheck";
 	}
+	
+	@GetMapping("/hadmin/storeUpdate")
+	public String store() {
+		return "/admin/hadmin/usercheck/storeUpdate";
+	}
+	
+	@GetMapping("/hadmin/store")
+	public String storeManage() {
+		return "/admin/hadmin/index2";
+	}
 }

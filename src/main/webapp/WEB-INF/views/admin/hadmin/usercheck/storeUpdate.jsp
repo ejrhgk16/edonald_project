@@ -12,7 +12,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 로그인</title>
-<link rel="stylesheet" href="css/adminStyles.css"> 
+<link rel="stylesheet" href="/resources/css/adminStyles.css"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-black">
@@ -139,7 +139,7 @@ function updateDo() {
 }
 </script>	
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../resources/js/scripts.js"></script>
+<script src="/resources/js/scripts.js"></script>
 
 </body>
 </html>
