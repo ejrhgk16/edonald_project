@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
@@ -1133,9 +1134,8 @@ scale
 											value="12B0000127"> <input type="hidden"
 											name="FAQ_TYPE_CD2" id="FAQ_TYPE_CD2" value=""> <input
 											type="hidden" name="SELECTED_DATA" id="SELECTED_DATA"
-											value=""> <input type="text"
-											placeholder="검색어를 입력해주세요." title="검색어 입력"
-											style="width: 720px" name="srchKeyword" id="srchKeyword"
+											value=""> 
+											<input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px" name="srchKeyword" id="srchKeyword"
 											onkeydown="javascript:if (event.keyCode == 13) {search('','S');}">
 									</form>
 									<button type="button" class="btnMC btnM"
@@ -1159,249 +1159,33 @@ scale
 										<div id="LIST_DIV" class="table03">
 											<table id="LIST_TB" width="100%" class="table01"
 												cellspacing="1">
-												<tbody>
+												<tbody class="tbody01">
 													<tr>
 														<th class="colresize" style="" width="7%"><span
 															onclick="">NO</span></th>
-														<th class="colresize" style="cursor: pointer" width="20%"><span
-															onclick="javascript:SELECTED_SORT_IDX[2] = 1 ; reqAll(10, 1);">분류</span></th>
-														<th class="colresize" style="cursor: pointer" width="80%"><span
-															onclick="javascript:SELECTED_SORT_IDX[2] = 2 ; reqAll(10, 1);">제목</span></th>
+														<th class="colresize" style="cursor: pointer" width="20%"><span>분류</span></th>
+														<th class="colresize" style="cursor: pointer" width="80%"><span>제목</span></th>
 													</tr>
-													<tr id="LIST_TR_ID1"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 0 ;rOver(this.id, 0, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',1);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',0);"
-														style="cursor: pointer" class="">
-														<td width="7%" align="center">1</td>
-														<td style="text-align: center; padding-left: 0px;">구매</td>
-														<td style="text-align: left; padding-left: 5px;">현금과
-															카드 혼합 결제가 가능한가요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID1_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">매장을 직접 방문하신 경우에는 구매금액에 대한 카드와 현금의
-																혼합 결제가 가능하나, 맥딜리버리 서비스, SOK 이용시에는 불가능합니다.</font></td>
-													</tr>
-													<tr id="LIST_TR_ID2"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 1 ;rOver(this.id, 1, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',2);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',1);"
-														style="cursor: pointer" class="">
-														<td width="7%" align="center">2</td>
-														<td style="text-align: center; padding-left: 0px;">구매</td>
-														<td style="text-align: left; padding-left: 5px;">단체
-															주문이 가능하나요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID2_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">단체 주문의 경우 여러 사정에 따라 가능 여부가 다를 수
-																있습니다.<br>단체 배달 서비스를 원하실 경우 맥딜리버리 주문 콜센터 1600-5252를
-																통해 확인이 가능하며, 가까운 매장에서 방문 구매를 원하실 경우 매장으로 최소 이틀 전 방문 또는
-																전화 문의 주시면 확인이 가능 합니다. (홈페이지 &gt; 매장찾기에서 해당 매장 검색)
-														</font></td>
-													</tr>
-													<tr id="LIST_TR_ID3"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 2 ;rOver(this.id, 2, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',3);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',2);"
-														style="cursor: pointer" class="">
-														<td width="7%" align="center">3</td>
-														<td style="text-align: center; padding-left: 0px;">구매</td>
-														<td style="text-align: left; padding-left: 5px;">현금
-															영수증을 발급받지 못했습니다. 어떻게 해야 하나요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID3_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">매장에서 제품 구매금액 결제 전 고객님이 따로 요청하시지 않은
-																경우에는 자동으로 현금영수증 자진발급 처리가 되고 있는 점 고객님의 너그러운 양해 부탁드립니다. <br>맥도날드에서는
-																국세청의 자진발급제도에 따라, 거래 당시 현금영수증을 챙기시지 못한 고객분들도 국세청 홈페이지를 통해
-																소비자의 거래분으로 전환시키실 수 있기 때문에 고객 불만을 해소하고 자 맥도날드에서도 현금영수증
-																자진발급을 시행하고 있습니다. 자진발급을 원하지 않으실 경우 제품 가격을 결제 전 먼저 현금영수증
-																발급을 요청해주시면 바로 발급을 해드리고 있습니다.<br>자진발급이 된 경우 계산 후
-																수령하신 영수증 내 현금영수증 자동발행 확인번호(010-000-1234)를 국세청
-																홈페이지(http://www.taxsave.go.kr )로 접속, <br>자진발급분
-																사용자등록에 이 번호를 넣으면 현금영수증 적립이 가능하며,<br>국세청 영수증
-																상담센터(1544-2020)의 상담원을 통해서도 전환 요청이 가능하오니 이용에 참조 부탁 드립니다.
-																<br>(현금 영수증 발급 요청에 대해서는 각 매장 카운터에 위치한 '계산 전 현금영수증
-																요청'에 대한 안내문을 통해 안내드리고 있습니다.)
-														</font></td>
-													</tr>
-													<tr id="LIST_TR_ID4"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 3 ;rOver(this.id, 3, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',4);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',3);"
-														style="cursor: pointer" class="tractive">
-														<td width="7%" align="center">4</td>
-														<td style="text-align: center; padding-left: 0px;">구매</td>
-														<td style="text-align: left; padding-left: 5px;">티
-															머니, 마이비 카드 결제가 가능한가요?</td>
-													</tr>
-													<tr style="display: none;" id="LIST_TR_ID4_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">티머니 카드의 경우, 일부 매장을 제외하고 결제
-																가능합니다.마이비 카드는 캐시비로 인수되어 신규 마이비 카드의 경우에는 사용이 불가하며 일부 기존
-																마이비 카드(카드 앞면에 마이비 기재)만 사용이 가능합니다.기존 마이비 카드 역시 2018년 7월
-																21일 이후에는 사용이 어려울 수 있는 점, 이용에 참고 부탁 드립니다.</font></td>
-													</tr>
-													<tr id="LIST_TR_ID5"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 4 ;rOver(this.id, 4, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',5);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',4);"
-														style="cursor: pointer">
-														<td width="7%" align="center">5</td>
-														<td style="text-align: center; padding-left: 0px;">구매</td>
-														<td style="text-align: left; padding-left: 5px;">맥모닝
-															판매시간은 어떻게 되나요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID5_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">전국적으로 판매되고 있는 맥모닝 세트와 브렉퍼스트 메뉴는 보다
-																맛있고 영양적으로도 우수한 다양한 메뉴를 선보이기 위해 저희 맥도날드가 준비한 아침 메뉴이며 오전
-																4시부터 오전 10시30분까지는 언제나 맛보실 수 있습니다. (맥딜리버리 이용 시 오전3시50분
-																~오전 10시20분)</font></td>
-													</tr>
-													<tr id="LIST_TR_ID6"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 5 ;rOver(this.id, 5, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',6);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',5);"
-														style="cursor: pointer">
-														<td width="7%" align="center">6</td>
-														<td style="text-align: center; padding-left: 0px;">매장이용</td>
-														<td style="text-align: left; padding-left: 5px;">매장에서
-															생일파티등의 행사를 진행하려고 하는데 가능할까요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID6_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">생일파티 여부는 희망 매장으로 최소 이주일전에 문의
-																부탁드립니다. 각 매장 상황에 따라 진행이 어려울 수 있는 점 참조 부탁드립니다. 매장 연락처는
-																홈페이지&gt; 매장찾기를 참고해주세요.</font></td>
-													</tr>
-													<tr id="LIST_TR_ID7"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 6 ;rOver(this.id, 6, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',7);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',6);"
-														style="cursor: pointer">
-														<td width="7%" align="center">7</td>
-														<td style="text-align: center; padding-left: 0px;">매장이용</td>
-														<td style="text-align: left; padding-left: 5px;">매장에서
-															와이파이 사용이 가능한가요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID7_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">와이파이 사용 가능 표시가 있는 매장에서는 이용 가능합니다.<br>다만
-																제한적으로 불가한 매장이 있으니 매장 이용 전에 미리 확인을 부탁 드립니다. <br>매장
-																연락처는 홈페이지 매장찾기&gt; 매장정보를 통해 확인하실 수 있습니다.
-														</font></td>
-													</tr>
-													<tr id="LIST_TR_ID8"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 7 ;rOver(this.id, 7, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',8);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',7);"
-														style="cursor: pointer">
-														<td width="7%" align="center">8</td>
-														<td style="text-align: center; padding-left: 0px;">매장이용</td>
-														<td style="text-align: left; padding-left: 5px;">우리
-															동네 근처의 맥도날드 매장을 알고 싶습니다</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID8_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">홈페이지 매장찾기에서 해당 지역을 클릭하시면 가까운 매장 정보
-																확인이 가능합니다.</font></td>
-													</tr>
-													<tr id="LIST_TR_ID9"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 8 ;rOver(this.id, 8, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',9);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',8);"
-														style="cursor: pointer" class="">
-														<td width="7%" align="center">9</td>
-														<td style="text-align: center; padding-left: 0px;">맥딜리버리</td>
-														<td style="text-align: left; padding-left: 5px;">평소
-															배달이 가능하였던 지역인데 오늘은 왜 안되나요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID9_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">맥딜리버리 서비스의 경우 기상 조건이나 매장 사정으로 인해
-																배달 서비스가 제한될 수 있으며 특히,폭우폭설시에는 제품 배송이 원활하지 못할 수 있습니다. 이는,
-																라이더의 안전상의 문제(날씨로 인한 사고)등을 예방하는 차원에서 일시적으로 배달이 중단되는 경우
-																이오니 고객님의 양해 부탁 드립니다.</font></td>
-													</tr>
-													<tr id="LIST_TR_ID10"
-														onmouseover="javascript:SELECTED_ROW_IDX[2] = 9 ;rOver(this.id, 9, LIST_DIV,2);"
-														onmouseout="javascript:rOut(this.id,2);"
-														onclick="javascript:changeClass(this.id, LIST_DIV,2);tableClickEvent('LIST_ON_CLICK',10);"
-														ondblclick="tableClickEvent('LIST_ON_DBL_CLICK',9);"
-														style="cursor: pointer" class="">
-														<td width="7%" align="center">10</td>
-														<td style="text-align: center; padding-left: 0px;">맥딜리버리</td>
-														<td style="text-align: left; padding-left: 5px;">맥딜리버리는
-															어떻게 이용하나요? 맥딜리버리 전화번호가 몇번 인가요? 배달의민족, 요기요, 쿠팡이츠에서 주문 가능
-															한가요?</td>
-													</tr>
-													<tr style="display: none" id="LIST_TR_ID10_DT">
-														<td
-															style="text-align: left; padding-left: 10px; padding-right: 10px;"><img
-															src="./common/images/customer/A.gif"></td>
-														<td colspan="3"
-															style="text-align: left; padding-left: 10px;; padding-right: 10px;"><font
-															color="#920000">맥딜리버리는 전화, 온라인, 맥딜리버리앱 또는 일부 외부 배달
-																채널(배달의민족, 요기요, 쿠팡이츠등)에서 이용 가능 합니다. (맥딜리버리 전화번호 1600-5252
-																/ 온라인 https://www.mcdelivery.co.kr / 앱스토어와 플레이스토어에서
-																맥딜리버리앱 다운로드)</font></td>
-													</tr>
+													<c:forEach items="${list}" var="list" varStatus="status">
+														<tr id="LIST_TR_ID${status.count}" style="cursor: pointer" class="list_td">
+															<td width="7%" align="center"><c:out value="${status.count }"/></td>
+															<td style="text-align: center; padding-left: 0px;">${list.faq_subject }</td>
+															<td style="text-align: left; padding-left: 5px;">${list.faq_title}</td>
+														</tr>
+														<tr style="display: none" id="LIST_TR_ID${status.count}_DT">
+															<td style="text-align: left; padding-left: 10px; padding-right: 10px;"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/main/A.gif"></td>
+															<td colspan="3" style="text-align: left; padding-left: 10px;; padding-right: 10px;">
+																<font color="#920000">${list.faq_content}</font>
+															</td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 										</div> <!--button type="button" class="btnMC btnM" onclick="morePage('','S');">
 					             	 +
 					            </button-->
 										<div class="btnMore" id="btnMore">
-											<button type="button" class="more"
-												onclick="morePage('','S');">더보기</button>
+											<button type="button" class="more">더보기</button>
 										</div>
 										<div id="LIST_PAGE_DIV" style="dispaly: none"></div>
 									</td>
@@ -1454,6 +1238,10 @@ scale
 			</div>
 		</div>
 	</div>
+	<form>
+		<input type="hidden" id="start" value="${data.start}">
+		<input type="hidden" id="end" value="${data.end}">
+ 	</form>
 </body>
 <whale-quicksearch translate="no"></whale-quicksearch>
 </html>

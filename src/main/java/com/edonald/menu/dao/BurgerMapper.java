@@ -9,10 +9,12 @@ import com.edonald.menu.dto.BurgerDto;
 @Repository
 public interface BurgerMapper {
 	
-	public List<BurgerDto> listAll(int start, int end);
+	public List<BurgerDto> listAll();
 	public void insert(BurgerDto dto);
+	
+	// 나중에할꺼
 	public BurgerDto read(int bno);
 	public void modify(BurgerDto dto);
 	public void delete(int bno);
-	public int totalRecord();
+
 }

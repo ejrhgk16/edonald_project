@@ -15,8 +15,8 @@ public class BurgerServiceImpl implements BurgerService {
 	private BurgerMapper mapper;
 	
 	@Override
-	public List<BurgerDto> listAll(int start,int end) {
-		return mapper.listAll(start, end);
+	public List<BurgerDto> listAll() {
+		return mapper.listAll();
 	}
 
 	@Override
@@ -43,9 +43,4 @@ public class BurgerServiceImpl implements BurgerService {
 
 	}
 	
-	@Override
-	public int totalRecord() {
-		return mapper.totalRecord();
-	}
-
 }

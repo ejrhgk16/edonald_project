@@ -18,14 +18,20 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="suffix" value=".jsp" />	
 	</beans:bean>
-	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 	
 	<context:component-scan base-package="com.edonald.member"/>
 	<context:component-scan base-package="com.edonald.ed" />
 	<context:component-scan base-package="com.edonald.main"/>
 	<context:component-scan base-package="com.edonald.deliver"/>
+<<<<<<< HEAD
 	<context:component-scan base-package="com.edonald.oauthConfig"/>
 
+=======
+	<context:component-scan base-package="com.edonald.menu"/>
+	<context:component-scan base-package="com.edonald.faq"/>
+	<context:component-scan base-package="com.edonald.hadmin"/>
+>>>>>>> af1e907fdb54350c83d2389a29a1dd19abdd5f36
 </beans:beans>
