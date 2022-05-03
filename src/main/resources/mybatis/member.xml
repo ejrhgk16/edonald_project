@@ -9,14 +9,23 @@
 	</insert>
 
 	<insert id="joinMemberInfo">
-	insert into user_info(user_email, user_password, user_name, user_gender, user_status, user_phone, auth, role, sms_agree, terms_agree, user_regdate)
-	values(#{user_email}, #{user_password}, #{user_name}, #{user_gender}, #{user_status}, #{user_phone}, #{auth}, #{role}, #{sms_agree}, #{terms_agree}, sysdate())
+	insert into user_info(user_email, user_password, user_name, user_gender, user_status, user_phone, oauth, role, sms_agree, terms_agree, user_regdate)
+	values(#{user_email}, #{user_password}, #{user_name}, #{user_gender}, #{user_status}, #{user_phone}, #{oauth}, #{role}, #{sms_agree}, #{terms_agree}, sysdate())
 	</insert>
 	
 	<select id="getMemberById" resultType="com.edonald.member.dto.MemberDto">
 		select * from user_info where user_email = #{username}
 	</select>
-		<select id="getAddress" resultType="com.edonald.member.dto.AddressDto">
+	<select id="getAddress" resultType="com.edonald.member.dto.AddressDto">
 		select * from user_address where user_email = #{username}
 	</select>
+	
+	<update id="OauthNaver">
+		update user_info set oauth=naver where user_email = #{user_email} 
+	</update>
+	
+	<select id="getAddressBySeq" resultType="com.edonald.member.dto.AddressDto">
+		select * from user_address where address_seq = #{address_seq}
+	</select>
+	
 </mapper>

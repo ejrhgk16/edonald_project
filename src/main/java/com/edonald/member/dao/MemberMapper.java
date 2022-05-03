@@ -13,4 +13,7 @@ public interface MemberMapper {
 	public void joinMemberInfo(MemberDto dto);
 	public MemberDto getMemberById(String username);
 	public List<AddressDto> getAddress(String username);
+	public void oauthNaver(String user_email);
+	public AddressDto getAddressBySeq(int address_seq);
+	
 }

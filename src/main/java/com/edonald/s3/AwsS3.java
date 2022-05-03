@@ -49,12 +49,11 @@ public class AwsS3 {
 		
 	}
 
-	//multipartFile »ç¿ë½Ã
+	//multipartFile 
 	public void upload(InputStream is, String key, String contentType, long contentLength) {
 		ObjectMetadata objectMetadata = new ObjectMetadata();
 		objectMetadata.setContentType(contentType);
 		objectMetadata.setContentLength(contentLength);
-
 		uploadToS3(new PutObjectRequest(this.bucket, key, is, objectMetadata));
 	}
 

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class AddressDto {
+	private int  address_seq;
 	private String user_email;
 	private String d_key;
 	private int postcode;

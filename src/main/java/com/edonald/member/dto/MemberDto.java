@@ -13,9 +13,12 @@ public class MemberDto {
 	private int user_gender;
 	private int user_status;
 	private String user_phone;
-	private String auth;
+	private String oauth;
 	private String role;
 	private int sms_agree;
 	private int terms_agree;
-	private List<AddressDto>addresList = new ArrayList<AddressDto>();
+	private List<AddressDto>addressList; 
+	//배달될 주소
+	private AddressDto deliverAddress;
+	
 }

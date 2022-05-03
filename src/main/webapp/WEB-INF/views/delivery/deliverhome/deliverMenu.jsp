@@ -19,13 +19,13 @@
 
 
 
-<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 <!--[if lte IE 9]>
 				<link rel="stylesheet" href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/css/main-2.css" />
 		<![endif]-->
 
 
-<link rel="stylesheet" href="./css/local.css">
+<link rel="stylesheet" href="/resources/css/local.css">
 
 </head>
 <body class="country-82 lang-ko page-menu">
