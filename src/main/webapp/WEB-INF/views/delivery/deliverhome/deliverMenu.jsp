@@ -366,6 +366,7 @@
 																					<i class="mcd icon mcd-allergen"></i> 
 																					<span class="text-default">알레르기 정보</span>
 																				</a>
+																			
 																				<div class="popover-details">
 																					<div class="popover-wrapper type-sans">
 																						<h4>${list.burger_name }</h4>

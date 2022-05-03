@@ -1,4 +1,4 @@
-package com.edonald.menu.service;
+package com.edonald.hadmin.serivce;
 
 import java.io.IOException;
 import java.io.InputStream;

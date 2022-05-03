@@ -102,6 +102,7 @@ $(document).ready(function() {
 		$('html').one('click',function(){
 			$('.popover.fade.bottom.in').remove();
 		})
+		var name = $('')
 		var name = $(this).parent().parent().children('.popover-details').children().children('h4').text();
 		var detail = $(this).parent().parent().children('.popover-details').children().children('div').text();
 		var source = "<div class=\"popover fade bottom in\" role=\"tooltip\" id=\"popover928591\" style=\"top: 81.2969px; left: -88.3984px; display: block;\">";

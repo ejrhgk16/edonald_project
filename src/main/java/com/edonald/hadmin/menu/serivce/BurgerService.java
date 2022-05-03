@@ -1,4 +1,4 @@
-package com.edonald.menu.service;
+package com.edonald.hadmin.menu.serivce;
 
 import java.util.List;
 

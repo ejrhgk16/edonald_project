@@ -1,4 +1,4 @@
-package com.edonald.menu.service;
+package com.edonald.hadmin.menu.serivce;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.edonald.menu.dao.BurgerMapper;
+import com.edonald.hadmin.menu.dao.BurgerMapper;
 import com.edonald.menu.dto.BurgerDto;
 
 @Service

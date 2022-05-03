@@ -1,4 +1,4 @@
-package com.edonald.menu.dao;
+package com.edonald.hadmin.menu.dao;
 
 import java.util.List;
 
