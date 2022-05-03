@@ -1,40 +1,116 @@
 package com.edonald.member.service;
 
+import java.net.http.HttpRequest;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.member.dto.SecurityUser;
+import com.edonald.oauthConfig.NaverLogin;
+import com.edonald.securityconfig.SecurityUserDetailService;
+import com.google.gson.JsonObject;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
+	@Autowired
+	NaverLogin naverlogin;
+	@Autowired
+	SecurityUserDetailService userDetailService;
+
 	@Override
-	public void joinMember(HttpServletRequest req ) {
+	public void joinMember(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		AddressDto addrDto = (AddressDto)session.getAttribute("addrDto");
-		MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
+		AddressDto addrDto = (AddressDto) session.getAttribute("addrDto");
+		MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
 		String password = memberDto.getUser_password();
 		String encodePassword = encoder.encode(password);
 		memberDto.setUser_password(encodePassword);
-		memberDto.setAuth("edonald");
+		memberDto.setOauth("edonald");
 		memberDto.setRole("ROLE_MEMBER");
 		memberDto.setUser_status(1);
 		addrDto.setUser_email(memberDto.getUser_email());
 		addrDto.setD_key("d");
 		mapper.joinMemberInfo(memberDto);
 		mapper.joinMemberAddr(addrDto);
+	}
+
+	@Override
+	public String naverLogin(JsonObject res, HttpServletRequest req) {
+		String email = res.get("email").getAsString();
+		String id = res.get("id").getAsString();
+		String name = res.get("name").getAsString();
+		System.out.println("name  " + name);
+		String phone = res.get("mobile").getAsString();
+		System.out.println("phone  " + phone);
+		phone = phone.replace("-", "");
+		
+		
+		String gender = res.get("gender").getAsString();
+		int user_gender = 1;
+		if (gender.equals("F"))
+			user_gender = 2;
+		
+		HttpSession session = req.getSession();
+		MemberDto member = mapper.getMemberById(email);
+		
+		if (member == null) {
+			MemberDto mem = new MemberDto();
+			mem.setUser_email(email);
+			mem.setUser_gender(user_gender);
+			mem.setRole("ROLE_MEMBER");
+			mem.setOauth("naver");
+			mem.setUser_name(name);
+			mem.setUser_status(1);
+			mem.setUser_phone(phone);
+			mapper.joinMemberInfo(mem);
+			session.setAttribute("memberDto", mem);
+			return "redirect:/ed/joinPage";
+		} else if (member != null && member.getOauth().equals("edonald")) {
+			mapper.oauthNaver(email);
+			SecurityUser naverDto = (SecurityUser)userDetailService.loadUserByUsername(email);
+			Authentication authentication = new UsernamePasswordAuthenticationToken(naverDto, naverDto.getPassword(), naverDto.getAuthorities());
+			SecurityContext context = SecurityContextHolder.getContext();
+			context.setAuthentication(authentication);
+			return "redirect:/ed/deliverHome";
+			
+		}else {
+			UserDetails naverDto = (UserDetails)userDetailService.loadUserByUsername(email);
+			Authentication authentication = new UsernamePasswordAuthenticationToken(naverDto, naverDto.getPassword(), naverDto.getAuthorities());
+			SecurityContext context = SecurityContextHolder.getContext();
+			context.setAuthentication(authentication);
+			return "redirect:/ed/deliverHome";
+		}
 
 	}
+
+	@Override
+	public void joinAddressNaver(AddressDto dto) {
+		mapper.joinMemberAddr(dto);
+	}
+
+	@Override
+	public AddressDto getAddressById(int address_seq) {
+		return mapper.getAddressBySeq(address_seq);
+	}
+	
+	
 
 }

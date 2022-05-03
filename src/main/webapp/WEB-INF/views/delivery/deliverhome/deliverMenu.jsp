@@ -26,7 +26,7 @@
 		<![endif]-->
 
 
-<link rel="stylesheet" href="./css/local.css">
+<link rel="stylesheet" href="/resources/css/local.css">
 
 </head>
 <body class="country-82 lang-ko page-menu">

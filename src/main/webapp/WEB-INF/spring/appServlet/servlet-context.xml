@@ -26,7 +26,11 @@
 	<context:component-scan base-package="com.edonald.ed" />
 	<context:component-scan base-package="com.edonald.main"/>
 	<context:component-scan base-package="com.edonald.deliver"/>
+
+	<context:component-scan base-package="com.edonald.oauthConfig"/>
+
 	<context:component-scan base-package="com.edonald.menu"/>
 	<context:component-scan base-package="com.edonald.faq"/>
 	<context:component-scan base-package="com.edonald.hadmin"/>
+
 </beans:beans>

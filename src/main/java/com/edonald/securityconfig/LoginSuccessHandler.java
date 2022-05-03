@@ -18,6 +18,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		System.out.println("auth  -- " + auth);
 		String url="";
 		if(auth.equals( "[ROLE_MEMBER]")) {
+			System.out.println("로그인 성공");
 			url="/ed/deliverHome";
 		}else if(auth.equals("[ROLE_STOREADMIN]")) {
 			url="/storeadmin/";

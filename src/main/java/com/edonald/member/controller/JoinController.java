@@ -5,6 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.CertifyService;
 import com.edonald.member.service.MemberService;
+import com.edonald.securityconfig.SecurityUserDetailService;
 
 @Controller
 public class JoinController {
@@ -24,9 +31,11 @@ public class JoinController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private SecurityUserDetailService userDetailService;
 	
 	@GetMapping("/ed/joinPage")
-	public String joinpage() {
+	public String joinpage( ) {
 		return "/delivery/join/joinAddress";
 	}
 	
@@ -35,13 +44,21 @@ public class JoinController {
 
 		HttpSession session = req.getSession();
 		session.setAttribute("addrDto", addrDto);
+		MemberDto mem = (MemberDto)session.getAttribute("memberDto");
+		if(mem != null) {
+			addrDto.setUser_email(mem.getUser_email());
+			memberService.joinAddressNaver(addrDto);
+			SecurityUser naverDto = (SecurityUser)userDetailService.loadUserByUsername(mem.getUser_email());
+			Authentication authentication = new UsernamePasswordAuthenticationToken(naverDto, naverDto.getPassword(), naverDto.getAuthorities());
+			SecurityContext context = SecurityContextHolder.getContext();
+			context.setAuthentication(authentication);
+			return "/ed/deliverHome";
+		}
 		return "/ed/joinUserPage";
 	}
 	
 	@GetMapping("/ed/joinUserPage")
 	public String joinAdress2Page(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-
 		return "/delivery/join/joinUser";
 	}
 	
