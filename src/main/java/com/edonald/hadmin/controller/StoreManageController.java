@@ -20,4 +20,9 @@ public class StoreManageController {
 	public String storeManage() {
 		return "/admin/hadmin/index2";
 	}
+	
+	@GetMapping("/hadmin/storeRegister")
+	public String storeRegister() {
+		return "/admin/hadmin/usercheck/storeRegister";
+	}
 }

@@ -195,7 +195,6 @@
 						<div>
 							<br> &nbsp;&nbsp;&nbsp;
 							 <button type="button" onclick="window.open('admincreate.jsp');"class="btn btn-outline-dark">등록</button>
-
 						</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
