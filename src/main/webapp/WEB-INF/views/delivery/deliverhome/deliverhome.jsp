@@ -36,16 +36,34 @@
 								e.preventDefault();
 								$(".ui-selectmenu-menu").attr("class", "ui-selectmenu-menu address-picker hide-default-error")
 								var addr_seq = $(this).children("input[name=addr]").val();
-								var url = "/member/selectAddress?address_seq="+addr_seq;
-								window.location.href = url;
+								window.location.href = "/member/selectAddress?address_seq="+addr_seq;
 							});
-
+							
+							$(document).on("click", ".action-orderinadvance", function(e) {
+								e.preventDefault();
+								$(this).attr("class", "menu-item menu-item-menu selected");
+								var store = '${principal.memberDto.deliverStore}';
+								var principal = '${principal}'
+								
+								if('${principal}' == ""){
+									window.location.href = "/ed/menuPage";
+									return
+								}else if('${principal.memberDto.deliverStore}' != ""){
+									alert('${principal.memberDto.deliverStore}')
+									window.location.href = "/ed/menuPage";
+									return
+								}else{
+									alert("현재 배달가능한 지점이 없습니다");
+									return;
+								}
+							});
+				
 							$(document).on("click",".menu-item-menu", function(e) {
 								e.preventDefault();
 								$(this).attr("class", "menu-item menu-item-menu selected");
 								var store = '${principal.memberDto.deliverStore}';
 								var principal = '${principal}'
-								alert(store)
+								
 								if('${principal}' == ""){
 									window.location.href = "/ed/menuPage";
 									return
@@ -300,17 +318,14 @@
 													</ul>								
 												</div>
 												<a class="action-secondary action-link action-addaddress"
-													href="/kr/address.html"><i class="fa fa-caret-right"></i>
+													href="/ed/addAddressPage"><i class="fa fa-caret-right"></i>
 													주소 추가하기</a>
 											</div>
 
 											<fieldset class="form-actions">
-												<p class="address-status error">죄송합니다. 선택하신 주소는 매장 사정으로
-													인하여 일시적으로 배달중단 또는 배달 외 주소 상태입니다.</p>
-
 												<p class="action-advance-order">
-													<a href="#deliveryOptions" data-toggle="modal"
-														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">예약주문</a>
+													<a href="#deliveryOptions" data-toggle="modal" id="homeOrderBtn"
+														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
 												</p>
 
 												<hr class="fading-divider">

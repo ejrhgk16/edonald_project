@@ -56,7 +56,7 @@ public class MemberController {
 		return url;
 	 }
 	 
-	 //@RequestMapping(value="/member/selectAddress", produces = "application/text; charset=UTF-8", method=RequestMethod.GET)
+	// @RequestMapping(value="/member/selectAddress", produces = "application/text; charset=UTF-8", method=RequestMethod.GET)
 	 @GetMapping("/member/selectAddress")
 	 public String  selectAddress(@RequestParam int address_seq,  Authentication authentication ) {
 		 SecurityUser securityUser= (SecurityUser)authentication.getPrincipal();
@@ -70,6 +70,9 @@ public class MemberController {
 		 AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
 
 			List<StoreDto> nearStoreList = mapper.getNearStoreList(addrDto);
+			if(nearStoreList.isEmpty()) {
+				securityUser.getMemberDto().setDeliverStore(null);
+			}
 			for (StoreDto s : nearStoreList) {
 				System.out.println("sssss" + s.getStore_address());
 				if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
@@ -78,8 +81,21 @@ public class MemberController {
 					break;
 				}
 			}
-		 
 		 return "/delivery/deliverhome/deliverhome";
-
 	 }
+	 
+	 @GetMapping("/ed/addAddressPage")
+	 public String addAddressPage() {
+		 return "/delivery/join/addAddress";
+	 }
+	 
+	 @PostMapping("/ed/addAddress")
+	 public @ResponseBody void addAddress(Authentication authentication, AddressDto addr) {
+			SecurityUser user = (SecurityUser) authentication.getPrincipal();
+			System.out.println("주소추가 !!! "+user.getMemberDto().getUser_name());
+			
+			
+	 }
+	 
+	 
 }
