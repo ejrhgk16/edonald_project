@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.edonald.menu.dto.BurgerDto;
+import com.edonald.hadmin.dto.MenuDto;
 
 @Repository
 public interface DeliveryMenuMapper {
-	public List<BurgerDto> bList();
+	public List<MenuDto> bList();
+	public List<String> getBlockMenuList(int store_code);// '준비중' 처리를 위한
 }

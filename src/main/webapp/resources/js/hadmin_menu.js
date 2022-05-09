@@ -12,8 +12,8 @@ $(document).ready(function() {
 			url: url,
 			type: 'post',
 			data: {
-				burger_code: code,
-				burger_status: status
+				code: code,
+				status: status
 			},
 			success: function(data) {
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
 	
 	$(document).on('click','.btnModify',function(){	
 		var code = $(this).parent().parent().children('.list_seq').text();
-		var url = "/hadmin/register/"+$('#menuType').text()+"?b_seq="+code;
+		var url = "/hadmin/register/"+$('#menuType').text()+"?seq="+code;
 		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
 	})
 

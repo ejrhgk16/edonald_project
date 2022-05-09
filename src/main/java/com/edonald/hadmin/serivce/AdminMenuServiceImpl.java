@@ -1,4 +1,4 @@
-package com.edonald.hadmin.menu.serivce;
+package com.edonald.hadmin.serivce;
 
 import java.util.List;
 
@@ -6,48 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.edonald.hadmin.menu.dao.BurgerMapper;
-import com.edonald.menu.dto.BurgerDto;
-
+import com.edonald.hadmin.dao.AdminMenuMapper;
+import com.edonald.hadmin.dto.MenuDto;
 @Service
-public class BurgerServiceImpl implements BurgerService {
+public class AdminMenuServiceImpl implements AdminMenuService {
 	
 	@Autowired
-	private BurgerMapper mapper;
+	private AdminMenuMapper mapper;
 	
 	@Override
-	public List<BurgerDto> listAll() {
+	public List<MenuDto> listAll() {
 		return mapper.listAll();
 	}
 	
 	@Override
-	public BurgerDto getMenu(String b_seq) {
-		return mapper.getMenu(b_seq);
+	public MenuDto getMenu(String seq) {
+		return mapper.getMenu(seq);
 	}
 
 	@Override
-	public void insert(BurgerDto dto) {
+	public void insert(MenuDto dto) {
 		// TODO Auto-generated method stub
 		mapper.insert(dto);
 	}
 	@Override
-	public void updateStatus(String burger_code,int burger_status) {
-		mapper.updateStatus(burger_code, burger_status);
+	public void updateStatus(String code,int status) {
+		mapper.updateStatus(code, status);
 	}
 	
 	@Override
-	public void update(BurgerDto dto) {
+	public void update(MenuDto dto) {
 		mapper.update(dto);
 	}
 	
 	@Override
-	public BurgerDto read(int bno) {
+	public MenuDto read(int bno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void modify(BurgerDto dto) {
+	public void modify(MenuDto dto) {
 		// TODO Auto-generated method stub
 
 	}

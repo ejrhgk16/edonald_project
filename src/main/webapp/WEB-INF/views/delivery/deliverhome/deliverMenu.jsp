@@ -334,14 +334,14 @@
 
 										
 											<c:forEach items="${list}" var="list" varStatus="status">
-											var price = ${list.burger_price};
+											var price = ${list.price};
 											price = comma(price);
 											</script>
 												<div class="product-card product-card--standard">
 													<div class="panel panel-default panel-product">
 														<div class="panel-body">
-															<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.burger_img_path}" class="img-block">
-															<h5 class="product-title" style="height: 30.8px;">${list.burger_name}</h5>
+															<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.img_path}" class="img-block">
+															<h5 class="product-title" style="height: 30.8px;">${list.name}</h5>
 															<div class="product-badges"></div>
 														</div>
 														<div class="panel-footer">
@@ -353,7 +353,7 @@
 																		</div>
 																		<div class="product-nutritional-info">
 	
-																			<span class="text-default">${list.burger_kcal} Kcal</span>
+																			<span class="text-default">${list.kcal} Kcal</span>
 																		</div>
 	
 																		<div class="product-allergen-info">
@@ -369,8 +369,8 @@
 																			
 																				<div class="popover-details">
 																					<div class="popover-wrapper type-sans">
-																						<h4>${list.burger_name }</h4>
-																						<div>${list.burger_name } (${list.burger_allergy})</div>
+																						<h4>${list.name }</h4>
+																						<div>${list.name } (${list.allergy})</div>
 																					</div>
 																				</div>
 																			</div>

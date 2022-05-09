@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.edonald.hadmin.menu.serivce.BurgerService;
+import com.edonald.hadmin.dto.MenuDto;
+import com.edonald.hadmin.serivce.AdminMenuService;
 import com.edonald.hadmin.serivce.FileUploadService;
-import com.edonald.menu.dto.BurgerDto;
 
 @Controller
 public class HadminController {
 	@Autowired
-	private BurgerService bService;
+	private AdminMenuService bService;
 	@Autowired
 	private FileUploadService fService; 
 	
@@ -32,15 +32,15 @@ public class HadminController {
 	}
 	
 	@RequestMapping(value = "/hadmin/burger/updateStatus.do", method = RequestMethod.POST)
-	public String updateStatus(String burger_code, int burger_status) {
-		bService.updateStatus(burger_code,burger_status);
+	public String updateStatus(String code, int status) {
+		bService.updateStatus(code,status);
 		return "admin/hadmin/menu/burgerNset2";
 	}
 	
 	@RequestMapping(value = "/hadmin/register/burger", method = RequestMethod.GET)
-	public String hadminRegisterBurger(Model model, String b_seq) {
-		if(b_seq != null) {
-			model.addAttribute("dto",bService.getMenu(b_seq));
+	public String hadminRegisterBurger(Model model, String seq) {
+		if(seq != null) {
+			model.addAttribute("dto",bService.getMenu(seq));
 			model.addAttribute("pageSetting","수정");
 		}
 		return "admin/hadmin/menu/burgerRegister";
@@ -48,33 +48,31 @@ public class HadminController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/hadmin/burger/insert", method = RequestMethod.POST)
-	public String insert(BurgerDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
+	public String insert(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
-		dto.setBurger_img_path(fService.fileUpload(mainUploadFile, path));
-		dto.setBurger_set_img_path(fService.fileUpload(subUploadFile, path));
+		dto.setImg_path(fService.fileUpload(mainUploadFile, path));
+		dto.setSet_img_path(fService.fileUpload(subUploadFile, path));
 		bService.insert(dto);
-	return "등록완료";
+		return "등록완료";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/hadmin/burger/update", method = RequestMethod.POST)
-	public String update(BurgerDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
+	public String update(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
-		dto.setBurger_status(1);
+		dto.setStatus(1);
 		if(mainUploadFile.getOriginalFilename().equals("")) {
 		}else {
-			dto.setBurger_img_path(fService.fileUpload(mainUploadFile, path));
+			dto.setImg_path(fService.fileUpload(mainUploadFile, path));
 		}
 		if(subUploadFile.getOriginalFilename().equals("")) {
 		}else {
-			dto.setBurger_set_img_path(fService.fileUpload(subUploadFile, path));
+			dto.setSet_img_path(fService.fileUpload(subUploadFile, path));
 		}
 		bService.update(dto);
 		return "수정완료";
 	}
 	
-	
-
 	
 	@RequestMapping(value = "/temp", method = RequestMethod.GET)
 	public String temp() {

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edonald.deliver.dao.DeliveryMenuMapper;
-import com.edonald.menu.dto.BurgerDto;
+import com.edonald.hadmin.dto.MenuDto;
 
 @Service
 public class DeliveryMenuServiceImpl implements DeliveryMenuService {
@@ -15,7 +15,7 @@ public class DeliveryMenuServiceImpl implements DeliveryMenuService {
 	private DeliveryMenuMapper mapper;
 	
 	@Override
-	public List<BurgerDto> bList() {
+	public List<MenuDto> bList() {
 		return mapper.bList();
 	}
 

@@ -179,15 +179,15 @@
 								<tbody>
 									<c:forEach var="list" items="${list}" varStatus="status">
 										<tr>
-											<td class="list_seq" hidden>${list.b_seq}</td>
-											<td class="list_code">${list.burger_code}</td>
-											<td>${list.burger_name}</td>
-											<td>${list.burger_price} 원</td>
-											<td>${list.burger_kcal} kcal</td>
+											<td class="list_seq" hidden>${list.seq}</td>
+											<td class="list_code">${list.code}</td>
+											<td>${list.name}</td>
+											<td>${list.price} 원</td>
+											<td>${list.kcal} kcal</td>
 				                            <td>
-				                                <select name="burger_status" class="status_selecter">
-				                                    <option value="1" <c:if test="${list.burger_status eq 1}">selected="selected"</c:if>>활성화</option>
-				                                    <option value="0" <c:if test="${list.burger_status eq 0}">selected="selected"</c:if>>비활성화</option>
+				                                <select name="status" class="status_selecter">
+				                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
+				                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
 				                                </select>
 				                            </td>
 				                            <td>
