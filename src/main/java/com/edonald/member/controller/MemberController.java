@@ -1,6 +1,7 @@
 package com.edonald.member.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.edonald.hadmin.dto.StoreDto;
+import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
@@ -38,6 +41,8 @@ public class MemberController {
 	private NaverLogin naverLogin;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MemberMapper mapper;
 	
 	 @RequestMapping(value="/ed/naverCallback", method= {RequestMethod.GET,RequestMethod.POST})
 	 public String naverLogin(@RequestParam String code, @RequestParam String state, HttpServletRequest req, HttpSession session) throws IOException {
@@ -51,8 +56,9 @@ public class MemberController {
 		return url;
 	 }
 	 
-	 @RequestMapping(value="/member/selectAddress", produces = "application/text; charset=UTF-8", method=RequestMethod.GET)
-	 public @ResponseBody String  selectAddress(@RequestParam int address_seq,  Authentication authentication ) {
+	 //@RequestMapping(value="/member/selectAddress", produces = "application/text; charset=UTF-8", method=RequestMethod.GET)
+	 @GetMapping("/member/selectAddress")
+	 public String  selectAddress(@RequestParam int address_seq,  Authentication authentication ) {
 		 SecurityUser securityUser= (SecurityUser)authentication.getPrincipal();
 		 System.out.println("principal "+securityUser.getMemberDto().getUser_email());
 		 AddressDto addr=memberService.getAddressById(address_seq);
@@ -60,7 +66,20 @@ public class MemberController {
 		 securityUser.getMemberDto().setDeliverAddress(addr);
 		 String changeAddr =securityUser.getMemberDto().getDeliverAddress().getRoad_address();
 		 System.out.println("주소 바뀜??" + securityUser.getMemberDto().getDeliverAddress().getRoad_address());
-		 return changeAddr;
+			
+		 AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
+
+			List<StoreDto> nearStoreList = mapper.getNearStoreList(addrDto);
+			for (StoreDto s : nearStoreList) {
+				System.out.println("sssss" + s.getStore_address());
+				if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
+					System.out.println("ss2222" + s.getStore_address());
+					securityUser.getMemberDto().setDeliverStore(s);
+					break;
+				}
+			}
+		 
+		 return "/delivery/deliverhome/deliverhome";
 
 	 }
 }

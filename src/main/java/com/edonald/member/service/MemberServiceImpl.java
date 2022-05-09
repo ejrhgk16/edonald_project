@@ -1,6 +1,7 @@
 package com.edonald.member.service;
 
 import java.net.http.HttpRequest;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
@@ -92,10 +94,11 @@ public class MemberServiceImpl implements MemberService {
 			return "redirect:/ed/deliverHome";
 			
 		}else {
-			UserDetails naverDto = (UserDetails)userDetailService.loadUserByUsername(email);
+			SecurityUser naverDto = (SecurityUser)userDetailService.loadUserByUsername(email);
 			Authentication authentication = new UsernamePasswordAuthenticationToken(naverDto, naverDto.getPassword(), naverDto.getAuthorities());
 			SecurityContext context = SecurityContextHolder.getContext();
 			context.setAuthentication(authentication);
+			
 			return "redirect:/ed/deliverHome";
 		}
 
@@ -107,10 +110,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public AddressDto getAddressById(int address_seq) {
+	public AddressDto getAddressById(int address_seq) { 
 		return mapper.getAddressBySeq(address_seq);
+	}
+
+
+		
+		
 	}
 	
 	
 
-}

@@ -1,10 +1,13 @@
 package com.edonald.member.service;
 
 import java.net.http.HttpRequest;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.MemberDto;
 import com.google.gson.JsonObject;
 
 public interface MemberService {

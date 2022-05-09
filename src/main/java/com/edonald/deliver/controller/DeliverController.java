@@ -49,10 +49,10 @@ public class DeliverController {
 	
 
 	@GetMapping("/ed/menuPage")
-	public String menuPage() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
-		SecurityUser user = (SecurityUser) authentication.getPrincipal();
-		System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());		
+	public String menuPage(Authentication authentication) {
+		//Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
+		//SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		//System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());		
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	

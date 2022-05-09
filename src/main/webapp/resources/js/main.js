@@ -2,11 +2,8 @@ $(document).ready(function() {
 	
 
 
-	console.log($(".menu-item-menu").attr("class"))
 	//상단 메뉴
-	$(".menu-item-menu").on("click", function(e) {
-		$(this).attr("class", "menu-item menu-item-menu selected");
-	});
+
 	$(".menu-item-support").on("click", function(e) {
 		if ($(this).attr("class") == "menu-item menu-item-support dropdown open") {
 			$(this).attr("class", "menu-item menu-item-support dropdown");

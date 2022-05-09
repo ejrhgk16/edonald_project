@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edonald.hadmin.dao.StoreManageMapper">
+	<insert id="insertStore">
+		insert into store_list(store_address, store_name,
+		store_phone, store_delivery, store_driverthru, store_status,
+		store_code, store_log, store_lat)
+		values(#{store_address},
+		#{store_name}, #{store_phone}, #{store_delivery}, #{store_driverthru},
+		#{store_status}, #{store_code}, #{store_log}, #{store_lat})
+	</insert>
+
+	<select id="getTotalNum" resultType="int">
+		SELECT COUNT(store_code)
+		FROM store_list
+		WHERE 1=1
+	</select>
+
+	<select id="getStoreList" resultType="com.edonald.hadmin.dto.StoreDto">
+		SELECT * FROM (SELECT row_number() over(ORDER BY s.store_code ASC)rnum, s.* FROM store_list s
+		 WHERE 1=1
+		<if test="search != null"> AND s.store_name like CONCAT('%',#{search},'%') </if>
+		<![CDATA[ 
+		ORDER BY rnum ASC ) list 
+		where rnum>(#{pageNum}-1)*#{amount} and rnum<= #{pageNum} * #{amount}]]>
+	</select>
+
+
+</mapper>
