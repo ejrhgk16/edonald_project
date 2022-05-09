@@ -40,7 +40,7 @@ function addr() {
 			};
 			$.ajax({
 				type: "POST",
-				url: "/ed/addAddress",
+				url: "/member/addAddress",
 				data: JSON.stringify(data),
 				contentType: "application/json; charset=utf-8",
 				success: function(res) {

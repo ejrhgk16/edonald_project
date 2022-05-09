@@ -318,7 +318,7 @@
 													</ul>								
 												</div>
 												<a class="action-secondary action-link action-addaddress"
-													href="/ed/addAddressPage"><i class="fa fa-caret-right"></i>
+													href="/member/addAddressPage"><i class="fa fa-caret-right"></i>
 													주소 추가하기</a>
 											</div>
 

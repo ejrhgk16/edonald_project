@@ -69,7 +69,7 @@ public class MemberController {
 			
 		 AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
 
-			List<StoreDto> nearStoreList = mapper.getNearStoreList(addrDto);
+			List<StoreDto> nearStoreList = memberService.getNearStoreList(addrDto);
 			if(nearStoreList.isEmpty()) {
 				securityUser.getMemberDto().setDeliverStore(null);
 			}
@@ -84,17 +84,24 @@ public class MemberController {
 		 return "/delivery/deliverhome/deliverhome";
 	 }
 	 
-	 @GetMapping("/ed/addAddressPage")
+	 @GetMapping("/member/addAddressPage")
 	 public String addAddressPage() {
 		 return "/delivery/join/addAddress";
 	 }
 	 
-	 @PostMapping("/ed/addAddress")
-	 public @ResponseBody void addAddress(Authentication authentication, AddressDto addr) {
+	 @PostMapping("/member/addAddress")
+	 public @ResponseBody String addAddress(Authentication authentication, @RequestBody AddressDto addr) {
 			SecurityUser user = (SecurityUser) authentication.getPrincipal();
 			System.out.println("주소추가 !!! "+user.getMemberDto().getUser_name());
-			
-			
+			System.out.println("주소" + addr.getDetail_address());
+			addr.setUser_email(user.getMemberDto().getUser_email());
+			addr.setD_key("n");
+			System.out.println("로드 " + addr.getRoad_address());
+			System.out.println("주소" + addr.getDetail_address());
+			memberService.addAddress(addr);
+			List<AddressDto>addrList = memberService.getAddressList(user.getMemberDto().getUser_email()) ;
+			user.getMemberDto().setAddressList(addrList);
+			return "/ed/deliverHome";
 	 }
 	 
 	 

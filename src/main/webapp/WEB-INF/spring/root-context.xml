@@ -27,7 +27,6 @@
 		</bean>
 	
 	<context:component-scan base-package="com.edonald.securityconfig" />
-	 <mybatis-spring:scan base-package="com.edonald.mapper"/>
 	 <mybatis-spring:scan base-package="com.edonald.member.dao"/>
 	 <mybatis-spring:scan base-package="com.edonald.faq.dao"/>
 	 <mybatis-spring:scan base-package="com.edonald.hadmin.dao"/>

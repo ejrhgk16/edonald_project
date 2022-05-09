@@ -15,4 +15,7 @@ public interface MemberService {
 	public String naverLogin(JsonObject res, HttpServletRequest req);
 	public void joinAddressNaver(AddressDto dto);
 	public AddressDto getAddressById(int address_seq);
+	public void addAddress(AddressDto addr);
+	public List<AddressDto>getAddressList(String username);
+	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
 }

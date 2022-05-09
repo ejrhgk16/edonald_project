@@ -109,9 +109,28 @@ public class MemberServiceImpl implements MemberService {
 		mapper.joinMemberAddr(dto);
 	}
 
+	
 	@Override
 	public AddressDto getAddressById(int address_seq) { 
 		return mapper.getAddressBySeq(address_seq);
+	}
+
+	@Override
+	public void addAddress(AddressDto addr) {
+		mapper.joinMemberAddr(addr);
+		
+	}
+
+	@Override
+	public List<AddressDto> getAddressList(String username) {
+		// TODO Auto-generated method stub
+		return mapper.getAddress(username);
+	}
+
+	@Override
+	public List<StoreDto> getNearStoreList(AddressDto deliverAddress) {
+		// TODO Auto-generated method stub
+		return mapper.getNearStoreList(deliverAddress);
 	}
 
 

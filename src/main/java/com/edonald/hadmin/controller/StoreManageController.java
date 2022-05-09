@@ -61,7 +61,7 @@ public class StoreManageController {
 	@PostMapping("/hadmin/storeRegister") 
 	public @ResponseBody void  storeRegisterDo(@RequestBody StoreDto storeDto) {
 		System.out.println(storeDto.getStore_driverthru());
-		//storeManageService.registerStore(storeDto);
+		storeManageService.registerStore(storeDto);
 	}
 	
 	
