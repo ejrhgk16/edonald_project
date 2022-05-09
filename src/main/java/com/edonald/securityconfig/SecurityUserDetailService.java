@@ -37,6 +37,9 @@ public class SecurityUserDetailService implements UserDetailsService {
 			}
 			
 			List<StoreDto> nearStoreList = mapper.getNearStoreList(memberDto.getDeliverAddress());
+			if(nearStoreList.isEmpty()) {
+				memberDto.setDeliverStore(null);
+			}
 			for (StoreDto s : nearStoreList) {
 				if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
 					memberDto.setDeliverStore(s);
