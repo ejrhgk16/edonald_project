@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+
 	$(".dataTable-dropdown").remove();
 	$(".dataTable-info").remove();
 	var	storeBtn = '<div><button type="button" onclick="storeRegPop()" class="btn btn-outline-dark" id="newStoreBtn">지점추가하기</button></div>'
@@ -17,6 +19,61 @@ $(document).ready(function(){
 		var option = 'width=500, height=600, top=30, left=30, resizable=no, scrollbars=no, location=no';
 		window.open(url, name, option);
 	})
+		
+    	$(document).on("click", ".page-item", function(e){
+    		e.preventDefault();//a 태그를 클릭해도 페이지이동이 없게만듬
+    		var pageNum= $(this).children().attr("href");
+    		var url ="/hadmin/storePage?pageNum=" +  pageNum
+    		listPaging(url);
+   })
+   
+   function listPaging(urla){
+		$.ajax({
+			type: "GET",
+			url:urla,
+			dataType : 'json',
+			success : function(res){
+				var html =""
+				$.each(res, function(index, item){
+					html = html +  '<tr class="text-center">';
+					html= html + '<td>'+ item.store_code +'</td>';
+					html= html + '<td>'+ item.store_name +'</td>';
+					html= html + '<td>'+ item.store_phone +'</td>';
+					if(item.store_status == 1){
+						html= html + '<td>영업중</td>';
+					}else{
+						html= html + '<td>영업종료</td>';
+					}
+					html= html + '<td>';
+					if(item.store_delivery == 1){
+						html = html + "딜리버리/";
+					}
+					if(item.store_driverthru == 1){
+						html = html + "드라이버쓰루";
+					}
+					html=html+'</td></tr>';
+				});
+				$("tbody").html(html);
+
+				var pagenation="";
+				var pageMaker =  + 2;
+				console.log('${pageMaker.prev}' == 'true');
+				if('${pageMaker.prev}' == 'true'){
+					var a = parseInt('${pageMaker.startPage}')-1;
+					pagenation = pagenation + '<li class="page-item"><a class="page-link" href="' + a + '">prev</a></li> ';
+				}
+				for(var i=parseInt('${pageMaker.startPage}'); i<=parseInt('${pageMaker.endPage}'); i++) {
+					pagenation = pagenation + '<li class="page-item"><a class="page-link" href="' + i + '">'+i+'</a></li>';
+				}
+				if('${pageMaker.next}' == 'true'){
+					var p = parseInt('${pageMaker.endPage}')+1;
+					pagenation = pagenation + '<li class="page-item"><a class="page-link" href="' + p + '">prev</a></li> ';
+				}
+				$(".pagination").html(pagenation);
+				
+			}
+})
+	}
 	
 	function storeRegPop(){
 		window.open('/hadmin/storeRegister');
@@ -231,36 +288,65 @@ $(document).ready(function(){
 							<i class="fas fa-table me-1"></i>가게운영 현황
 						</div>
 
-						<form action="">
 							<div class="card-body">
 								<table id="datatablesSimple">
-									<thead>
-										<tr>
-											<th>seq</th>
-											<th>지점명</th>
-											<th>지점전화번호</th>
-											<th>지점상태</th>
+									<thead >
+										<tr >
+											<th width="100" class="text-center">지점번호</th>
+											<th class="text-center">지점명</th>
+											<th class="text-center">지점전화번호</th>
+											<th class="text-center">지점상태</th>
+											<th class="text-center">이용 서비스</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${orderCancel}" var="orderCancel">
-
-											<fmt:formatDate var="orderDate"
-												value="${orderCancel.order_date}"
-												pattern="yyyy.MM.dd HH:mm:ss" />
-											<tr>
-												<td>${orderCancel.order_seq}</td>
-												<td>${orderDate}</td>
-												<td>${orderCancel.user_address}</td>
-												<td>${orderCancel.user_name}</td>
+										<c:forEach items="${storeList}" var="storeList">
+											<tr class="text-center">
+												<td>${storeList.store_code}</td>
+												<td>${storeList.store_name}</td>
+												<td>${storeList.store_phone}</td>
+												<c:choose>
+												<c:when test="${storeList.store_status == 1}">
+												<td>영업중</td>
+												</c:when>
+												<c:otherwise>
+												<td>영업종료</td>
+												</c:otherwise>
+												</c:choose>
+												<td>
+												<c:if test="${storeList.store_delivery == 1}">
+												딜리버리/ 
+												</c:if>
+												<c:if test="${storeList.store_driverthru == 1}">
+												드라이브쓰루
+												</c:if>
+												</td>
 											</tr>
-
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>
-						</form>
+								
+						<ul class="pagination" >
+							<c:if test="${pageMaker.prev}">
+								<li class="page-item"><a class="page-link"
+									href="${pageMaker.startPage -1 }">prev</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage }">
+								<li class="page-item"><a class="page-link" href="${num}">${num} </a></li>
+							</c:forEach>
+							<c:if test="${pageMaker.next}">
+								<li class="page-item"><a class="page-link"
+									href="${pageMaker.endPage +1 }">next</a></li>
+							</c:if>
+						</ul>
 					</div>
+					<form id="actionForm" action="/board/list" method="get">
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"> 
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+					</form>
+							</div>
+
 
 				</div>
 			</main>

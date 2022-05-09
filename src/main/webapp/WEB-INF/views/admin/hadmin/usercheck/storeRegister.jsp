@@ -14,9 +14,8 @@
 <meta name="author" content="" />
 <title>관리자 로그인</title>
 <link rel="stylesheet" href="/resources/css/adminStyles.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=57c82c3d4e52c1b3bb9f7077877b01c3&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -26,33 +25,41 @@
 							var store_address = $("#store_address").val();
 							var store_name = $("#store_name").val();
 							var store_phone = $("#store_phone").val();
-							var store_drivethru = 0;
-							if($("input:checkbox[id='driveThru']").is(":checked")==true){
-								store_drivethru = 1;
+							var store_driverthru = 0;
+							if($("input:checkbox[id='driverThru']").is(":checked")==true){
+								console.log("dasdasd");
+								store_driverthru = 1;
 							}
 							var store_delivery = 0;
 							if( $("input:checkbox[id='delivery']").is(":checked") == true){
 								store_delivery = 1;
 							}
-
-							var data = {
-									store_address : store_address,
-									store_name : store_name,
-									store_phone : store_phone,
-									store_drivethru : store_drivethru,
-									store_delivery : store_delivery
-								}
 							
+							var geocoder = new kakao.maps.services.Geocoder();
+							geocoder.addressSearch(store_address, function(result, status) {
+								if (status === kakao.maps.services.Status.OK) {
+									var data = {
+											store_address : store_address,
+											store_name : store_name,
+											store_phone : store_phone,
+											store_driverthru : store_driverthru,
+											store_delivery : store_delivery,
+											store_log: result[0].x,
+											store_lat: result[0].y
+									};
 							$.ajax({
 								type : "POST",
-								url : "/hadmin/registerStore",
+								url : "/hadmin/storeRegister",
 								data : JSON.stringify(data),
 								contentType: "application/json; charset=utf-8",
 								success : function(){
-									alert("등록성공")
+									//alert("등록성공")
+									//window.close()
 								}
 							});
-						});
+						};
+							});
+			})
 			})
 </script>
 </head>
@@ -100,7 +107,7 @@
 										<div align="center">
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="driveThru" value="option2"> <label
+													id="driverThru" value="option2"> <label
 													class="form-check-label" for="inlineCheckbox1">드라이브쓰루</label>
 											</div>
 											

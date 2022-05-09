@@ -28,4 +28,10 @@
 		select * from user_address where address_seq = #{address_seq}
 	</select>
 	
+	<select id = "getNearStoreList" resultType="com.edonald.hadmin.dto.StoreDto">
+		<![CDATA[ SELECT *  from store_list
+		where ST_DISTANCE_SPHERE(POINT(#{lon}, #{lat}), POINT(store_log, store_lat)) < 3000
+		ORDER BY ST_DISTANCE_SPHERE(POINT(#{lon}, #{lat}), POINT(store_log, store_lat))]]>
+	</select>
+	
 </mapper>

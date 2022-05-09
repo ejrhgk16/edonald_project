@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 
@@ -15,5 +16,6 @@ public interface MemberMapper {
 	public List<AddressDto> getAddress(String username);
 	public void oauthNaver(String user_email);
 	public AddressDto getAddressBySeq(int address_seq);
+	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
 	
 }

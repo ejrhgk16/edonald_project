@@ -3,6 +3,8 @@ package com.edonald.member.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.edonald.hadmin.dto.StoreDto;
+
 import lombok.Data;
 
 @Data
@@ -20,5 +22,6 @@ public class MemberDto {
 	private List<AddressDto>addressList; 
 	//배달될 주소
 	private AddressDto deliverAddress;
+	private StoreDto deliverStore;
 	
 }

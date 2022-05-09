@@ -35,32 +35,28 @@
 							$(".ui-selectmenu-item-selected").on("click", function(e){
 								e.preventDefault();
 								$(".ui-selectmenu-menu").attr("class", "ui-selectmenu-menu address-picker hide-default-error")
-								if($(this).children("input[name=select]").val() == "true"){
-									console.log("취ㅏ소 ");
-									
-									return false;
-								}else{
-									var $list = $(".ui-selectmenu-item-selected");
-									for(var i = 0; i <$list.length; i++ ){
-										$list.eq(i).children("input[name=select]").val("false");	
-									}
-									$(this).children("input[name=select]").val("true");
-								}
-								
-
 								var addr_seq = $(this).children("input[name=addr]").val();
-								$.ajax({
-									type: "GET",
-									url: "/member/selectAddress?address_seq="+addr_seq,
-									dataType : "text",
-									success: function(res) {
-										console.log("바뀐주소"+ res);
-										$(".ui-selectmenu-status").text(res);
-									},
-								error : function(){
-									console.log("에러11");
+								var url = "/member/selectAddress?address_seq="+addr_seq;
+								window.location.href = url;
+							});
+
+							$(document).on("click",".menu-item-menu", function(e) {
+								e.preventDefault();
+								$(this).attr("class", "menu-item menu-item-menu selected");
+								var store = '${principal.memberDto.deliverStore}';
+								var principal = '${principal}'
+								alert(store)
+								if('${principal}' == ""){
+									window.location.href = "/ed/menuPage";
+									return
+								}else if('${principal.memberDto.deliverStore}' != ""){
+									alert('${principal.memberDto.deliverStore}')
+									window.location.href = "/ed/menuPage";
+									return
+								}else{
+									alert("현재 배달가능한 지점이 없습니다");
+									return;
 								}
-								})
 							});
 								
 					});
