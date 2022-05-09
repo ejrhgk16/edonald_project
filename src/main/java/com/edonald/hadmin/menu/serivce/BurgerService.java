@@ -8,8 +8,11 @@ import com.edonald.menu.dto.BurgerDto;
 
 public interface BurgerService {
 	public List<BurgerDto> listAll();
+	public List<BurgerDto> list();
+	public BurgerDto getMenu(String b_seq);
 	public void insert(BurgerDto dto);
-	
+	public void updateStatus(String burger_code,int burger_status);	
+	public void update(BurgerDto dto);
 	//나중에 할꺼
 	public BurgerDto read(int bno);
 	public void modify(BurgerDto dto);

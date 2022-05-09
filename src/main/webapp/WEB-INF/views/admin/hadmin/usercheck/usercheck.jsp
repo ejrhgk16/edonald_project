@@ -4,11 +4,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
 <title>관리자 모드</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
@@ -216,27 +214,27 @@
 								</thead>
 								<tbody>
 										<tr th:each="users : ${userList}">
-                        <form th:action="@{/user/change/{id}(id=${users.id})}" method="post" class="d-flex">
-                            <td th:text="${users.getId()}">1</td>
-                            <td th:text="${users.getName()}">name</td>
-                            <td th:text="${users.getUsername()}">username</td>
-                            <td th:text="${users.getRole()}">role</td>
-                            <td th:text="${users.getRole()}">00지점</td>
-                            <td th:text="${users.getEmail()}">ddd@ddd.ddd</td>
-                            <td th:text="${users.getMoney()}">yes</td>
-                            <td th:text="${users.getCreateDate()}">yes</td>
-                            <td>
-                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                                    삭제
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                                    정지
-                                </button>
-                            </td>
-                            </form>
-                    </tr>
+					                        <form th:action="@{/user/change/{id}(id=${users.id})}" method="post" class="d-flex">
+					                            <td th:text="${users.getId()}">1</td>
+					                            <td th:text="${users.getName()}">name</td>
+					                            <td th:text="${users.getUsername()}">username</td>
+					                            <td th:text="${users.getRole()}">role</td>
+					                            <td th:text="${users.getRole()}">00지점</td>
+					                            <td th:text="${users.getEmail()}">ddd@ddd.ddd</td>
+					                            <td th:text="${users.getMoney()}">yes</td>
+					                            <td th:text="${users.getCreateDate()}">yes</td>
+					                            <td>
+					                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+					                                    삭제
+					                                </button>
+					                            </td>
+					                            <td>
+					                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+					                                    정지
+					                                </button>
+					                            </td>
+					                            </form>
+					                    </tr>
 								</tbody>
 							</table>
 						</div>

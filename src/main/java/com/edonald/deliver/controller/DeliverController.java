@@ -43,7 +43,7 @@ public class DeliverController {
 
 	@GetMapping("/ed/deliverMenu")
 	public String delivermenu(Model model) {
-		model.addAttribute("list",bService.listAll());
+		model.addAttribute("list",bService.list());
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	

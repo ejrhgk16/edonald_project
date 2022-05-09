@@ -15,27 +15,42 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		$("#burger_code").blur(function(){
-			var code = $('#burger_code').val();
-			$.ajax({
-				type : "get",
-				url : "bcodeChk.mdo",
-				data : {"b_code" : code},
-				success : function(data){
-					console.log("중복 확인 : " + data);
-					if (data == 1) {
-						$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
-						$("#burger_code").focus();
-						return false;
-					}else{
-						$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
-					}
-				},
-				error : function(){
-
-				}
-			})
-		});
+		$(function(){
+			var set = $('.pageSetting').text();
+			if(set =="수정"){
+				$('.card-header').children('h3').text("버거 수정");
+				$('#submit').text("버거 수정");
+				$('#burger-container').children().remove();
+				$('#burger-detail-container').children().remove();
+				var link ="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/" ;
+				var src = $('#burger_img').val();
+				var srcSet = $('#burger_set_img').val();
+				$('#burger-container').prepend('<img style="width:100%;" id="image" src="'+link+src+'">');
+				$('#burger-detail-container').prepend('<img style="width:100%;" id="image" src="'+link+srcSet+'">');
+			}
+		})
+		
+//		$("#burger_code").blur(function(){
+//			var code = $('#burger_code').val();
+//			$.ajax({
+//				type : "get",
+//				url : "bcodeChk.mdo",
+//				data : {"b_code" : code},
+//				success : function(data){
+//					console.log("중복 확인 : " + data);
+//					if (data == 1) {
+//						$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
+//						$("#burger_code").focus();
+//						return false;
+//					}else{
+//						$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
+//					}
+//				},
+//				error : function(){
+//
+//				}
+//			})
+//		});
 		
 		$("#burger_name").change(function(){
 			var code = "b_"+$("#burger_name").val();
@@ -86,7 +101,30 @@
 				$("#burger_allergy").focus();
 				return false;
 			}
-			$('#addBurger').submit();
+			alert("클릭");
+			var url ="";
+			var set = $('.pageSetting').text();
+			if(set=="수정"){
+				url = "/hadmin/burger/update";
+			}else{
+			 	url = "/hadmin/burger/insert";
+			}
+			var form = $('#addBurger')[0];
+			var formData = new FormData(form);
+			$.ajax({
+				url: url,
+				type: 'post',
+				processData: false,
+				contentType: false,
+				data: formData,
+				success: function(data) {
+					opener.location.reload();
+					window.open("about:blank","_self").close();
+				},
+				error: function() {
+					alert("중복이름입니다.");
+				}
+			});
 		});
 
 		$('#file1').on('fileselect', function(event, numFiles, label) {
@@ -176,14 +214,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="burger_code" name="burger_code" type="text" placeholder="Enter your first name" 
-                                                        	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299)</label><span id="codetxt"></span>
+                                                        	style="height: calc(3.5rem + 50px);" value="${dto.burger_code }"/>
+                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299)</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="burger_name" name="burger_name" type="text" placeholder="Enter your first name" 
-                                                        	style="height: calc(3.5rem + 20px);"/>
+                                                        	style="height: calc(3.5rem + 20px);" value="${dto.burger_name }"/>
                                                         <label for="burger_name">버거 이름</label>
                                                     </div>
                                                 </div>
@@ -192,14 +230,14 @@
                                                  <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="burger_kcal" name="burger_kcal" type="text" placeholder="Enter your first name" 
-                                                        	style="height: calc(3.5rem + 20px);"/>
+                                                        	style="height: calc(3.5rem + 20px);" value="${dto.burger_kcal }"/>
                                                         <label for="burger_kcal">버거 칼로리</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="burger_price" name="burger_price" type="text" placeholder="Enter your first name" 
-                                                        	style="height: calc(3.5rem + 20px);"/>
+                                                        	style="height: calc(3.5rem + 20px);" value="${dto.burger_price }"/>
                                                         <label for="burger_price">버거 가격</label>
                                                     </div>
                                                 </div>
@@ -231,7 +269,7 @@
                                              	<div class="col-md-12">
                                                    <div class="form-floating">
                                                        <input class="form-control" id="burger_allergy" name="burger_allergy" type="text" placeholder="Enter allergy information" 
-                                                       	style="height: calc(3.5rem + 20px);"/>
+                                                       	style="height: calc(3.5rem + 20px);" value="${dto.burger_allergy }"/>
                                                        <label for="burger_allergy">알레르기 정보</label>
                                                    </div>
                                                 </div>
@@ -276,7 +314,7 @@
 									                        Upload <input type="file" name="mainUploadFile" id="file1" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="burger_img" class="form-control" readonly>
+									                <input type="text" id="burger_img" class="form-control" value="${dto.burger_img_path }" readonly>
 								           		</div>
 								           		<small>기본 이미지 : 사진크기 240*180</small>
                                             </div>
@@ -294,7 +332,7 @@
 									                        Upload <input type="file" name="subUploadFile" id="file2" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="burger_set_img" class="form-control" readonly>
+									                <input type="text" id="burger_set_img" value="${dto.burger_set_img_path }" class="form-control" readonly>
 								           		</div>
 								           		<small>디테일 이미지 : 사진크기 772*530</small>
                                             </div>
@@ -302,6 +340,7 @@
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">버거 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>
                                             </div>
+                                            <input id="b_seq" name="b_seq" type="hidden" value="${dto.b_seq }">
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
@@ -328,6 +367,10 @@
                 </footer>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>	
+        <script src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
+        <div>	
+	        <p class="pageSetting" hidden>${pageSetting}</p>
+	        <p class="burgerType" hidden>${dto.burger_type }</p>
+     	</div>
     </body>
 </html>
