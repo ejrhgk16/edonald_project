@@ -12,7 +12,6 @@ import com.edonald.menu.dto.BurgerDto;
 public interface BurgerMapper {
 	
 	public List<BurgerDto> listAll();
-	public List<BurgerDto> list();
 	public BurgerDto getMenu(String b_seq);
 	public void insert(BurgerDto dto);
 	public void updateStatus(@Param("burger_code")String burger_code,@Param("burger_status") int burger_status);

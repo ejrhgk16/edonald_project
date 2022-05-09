@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.edonald.deliver.service.DeliveryMenuService;
 import com.edonald.hadmin.menu.serivce.BurgerService;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
@@ -29,7 +30,7 @@ public class DeliverController {
 	@Autowired
 	NaverLogin naverlogin;
 	@Autowired
-	private BurgerService bService;	
+	private DeliveryMenuService dService;	
 	
 	
 	@GetMapping("/ed/deliverHome")
@@ -43,7 +44,7 @@ public class DeliverController {
 
 	@GetMapping("/ed/deliverMenu")
 	public String delivermenu(Model model) {
-		model.addAttribute("list",bService.list());
+		model.addAttribute("list",dService.bList());
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	

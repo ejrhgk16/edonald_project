@@ -12,6 +12,7 @@
  		<mapper resource="/mybatis/faq.xml"></mapper>
  		<mapper resource="/mybatis/menu/burger.xml"></mapper>
  		<mapper resource="/mybatis/menu/menu.xml"></mapper>
+ 		<mapper resource="/mybatis/menu/deliverymenu.xml"></mapper>
  		<mapper resource="/mybatis/hadmin.xml"></mapper>
  	</mappers>
  </configuration>

@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edonald.hadmin.menu.dao.BurgerMapper">
-	<select id="list" resultType="com.edonald.menu.dto.BurgerDto">
-		SELECT *  FROM burger b WHERE burger_status != 0 ORDER BY category_code,b_seq ASC
-	</select>
 	<select id="getMenu" resultType="com.edonald.menu.dto.BurgerDto">
 		SELECT * FROM burger where b_seq = #{b_seq}
 	</select>

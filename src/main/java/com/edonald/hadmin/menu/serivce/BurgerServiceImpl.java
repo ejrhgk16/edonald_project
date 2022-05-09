@@ -21,11 +21,6 @@ public class BurgerServiceImpl implements BurgerService {
 	}
 	
 	@Override
-	public List<BurgerDto> list(){
-		return mapper.list();
-	}
-	
-	@Override
 	public BurgerDto getMenu(String b_seq) {
 		return mapper.getMenu(b_seq);
 	}
