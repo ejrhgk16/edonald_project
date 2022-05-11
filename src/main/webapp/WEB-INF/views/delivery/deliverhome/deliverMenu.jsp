@@ -1,12 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on("click", ".action-create",  function(e){
+			e.preventDefault();
+			var menu_code =  $(this).attr("href");
+	
+			if('${principal}' == ""){
+				alert("로그인을 해주세요");
+				window.location.href = "/ed/deliverHome"
+			}else{
+				$(this).next(".menuInfo").submit();
+				
+			}
+			
+		})
+	})
+</script>
+
 
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,15 +82,22 @@
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
-
-							<li class="list-item"><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
-								alt="Profile" width="20" class="profile-grey-avator"></li>
-
-							<li class="list-item"
-								onclick="console.log('signin_topright'); dataLayer.push({          'event': 'trackEvent',          'vpv': 'vpv_signin_topright',          'eventDetails.category': 'signin',          'eventDetails.action': 'click',          'eventDetails.label': 'signin_topright'         });">
-								<a class="list-item-target" href="#signin" data-toggle="modal"
-								data-target="#signin">로그인</a>
-							</li>
+							<c:choose>
+								<c:when test="${empty principal.username }">
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator"></li>
+									<li class="list-item" id="loginText"><a
+										href="/ed/deliverHome">로그인</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator"> <b><span
+											class="first-name">${principal.memberDto.user_name}</span></b></li>
+									<li class="list-item"><a href="/ed/logout.do">로그아웃</a></li>
+								</c:otherwise>
+							</c:choose>
 
 							<li class="list-item"><a
 								class="list-item-target track-order-flag" href="#signin"
@@ -384,11 +415,24 @@
 	
 																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
 																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-																	<a data-productid="789"
-																		class="btn btn-block action-create btn-yellow"
-																		href="../guest_address.html?from=browsemenu"
-																		onclick="onProductClick({ 'name':&quot;아라비아따 리코타 치킨 버거&quot;,'id':'4941','price':'9000.0','brand':'McDonalds','cat':&quot;추천 메뉴&quot;,'variant':'','url':'#signin'})">Order</a>
-	
+
+																		<a data-productid="789" class="btn btn-block action-create btn-yellow" href="${list.code}">													
+																		Order
+																		</a>
+																		
+																		<form action="/member/orderMenu" method="post" class="menuInfo">
+																			<input type="hidden" name="code" value="${list.code}">
+																			<input type="hidden" name="name" value="${list.name}">
+																			<input type="hidden" name="kcal" value="${list.kcal}">
+																			<input type="hidden" name="img_path" value="${list.img_path}">
+																			<input type="hidden" name="status" value="${list.status}">
+																			<input type="hidden" name="type" value="${list.type}">
+																			<input type="hidden" name="price" value="${list.price}">
+																			<input type="hidden" name="allergy" value="${list.allergy}">
+																			<input type="hidden" name="seq" value="${list.seq}">
+
+																		</form>
+																	
 																</div>
 															</div>
 														</div>

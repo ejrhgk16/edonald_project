@@ -47,7 +47,6 @@ public class StoreManageController {
 	public @ResponseBody List<StoreDto>storePage(Model model,StorePageCriteria cri) {
 		List<StoreDto>storeList = storeManageService.getStoreList(cri);
 		StorePageDto storePage = new StorePageDto(cri, storeManageService.getTotalNum());
-		System.out.println(cri.getSearch() + "    --  searc");
 		model.addAttribute("pageMaker", storePage);
 		return storeList;
 	}

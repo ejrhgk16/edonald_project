@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 
+
 	$(".secondary-menu-item").mouseover(function() {
 		if ($(this).attr("class") == "secondary-menu-item") {
 			$(this).attr("class", "secondary-menu-item :focus");
