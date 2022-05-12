@@ -1,6 +1,7 @@
 package com.edonald.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,9 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.CartDto;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.member.dto.OrderListDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.MemberService;
 import com.edonald.oauthConfig.NaverLogin;
@@ -47,75 +50,101 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private MemberMapper mapper;
-	
-	 @RequestMapping(value="/ed/naverCallback", method= {RequestMethod.GET,RequestMethod.POST})
-	 public String naverLogin(@RequestParam String code, @RequestParam String state, HttpServletRequest req, HttpSession session) throws IOException {
-		 OAuth2AccessToken token = naverLogin.getAccessToken(session, code, state);
-		 String result = naverLogin.getUserProfile(token);
-		JsonParser parser =  new JsonParser();
-		JsonElement element= parser.parse(result);
+
+	@RequestMapping(value = "/ed/naverCallback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String naverLogin(@RequestParam String code, @RequestParam String state, HttpServletRequest req,
+			HttpSession session) throws IOException {
+		OAuth2AccessToken token = naverLogin.getAccessToken(session, code, state);
+		String result = naverLogin.getUserProfile(token);
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(result);
 		JsonObject object = element.getAsJsonObject();
 		JsonObject response = object.getAsJsonObject("response");
 		String url = memberService.naverLogin(response, req);
 		return url;
-	 }
-	 
-	// @RequestMapping(value="/member/selectAddress", produces = "application/text; charset=UTF-8", method=RequestMethod.GET)
-	 @GetMapping("/member/selectAddress")
-	 public String  selectAddress(@RequestParam int address_seq,  Authentication authentication ) {
-		 SecurityUser securityUser= (SecurityUser)authentication.getPrincipal();
-		 System.out.println("principal "+securityUser.getMemberDto().getUser_email());
-		 AddressDto addr=memberService.getAddressById(address_seq);
-		 System.out.println("바꿀 주소 : "+ addr.getRoad_address());
-		 securityUser.getMemberDto().setDeliverAddress(addr);
-		 String changeAddr =securityUser.getMemberDto().getDeliverAddress().getRoad_address();
-		 System.out.println("주소 바뀜??" + securityUser.getMemberDto().getDeliverAddress().getRoad_address());
-			
-		 AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
+	}
 
-			List<StoreDto> nearStoreList = memberService.getNearStoreList(addrDto);
-			if(nearStoreList.isEmpty()) {
-				securityUser.getMemberDto().setDeliverStore(null);
+	// @RequestMapping(value="/member/selectAddress", produces = "application/text;
+	// charset=UTF-8", method=RequestMethod.GET)
+	@GetMapping("/member/selectAddress")
+	public String selectAddress(@RequestParam int address_seq, Authentication authentication) {
+		SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
+		System.out.println("principal " + securityUser.getMemberDto().getUser_email());
+		AddressDto addr = memberService.getAddressById(address_seq);
+		System.out.println("바꿀 주소 : " + addr.getRoad_address());
+		securityUser.getMemberDto().setDeliverAddress(addr);
+		String changeAddr = securityUser.getMemberDto().getDeliverAddress().getRoad_address();
+		System.out.println("주소 바뀜??" + securityUser.getMemberDto().getDeliverAddress().getRoad_address());
+
+		AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
+
+		List<StoreDto> nearStoreList = memberService.getNearStoreList(addrDto);
+		if (nearStoreList.isEmpty()) {
+			securityUser.getMemberDto().setDeliverStore(null);
+		}
+		for (StoreDto s : nearStoreList) {
+			System.out.println("sssss" + s.getStore_address());
+			if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
+				System.out.println("ss2222" + s.getStore_address());
+				securityUser.getMemberDto().setDeliverStore(s);
+				break;
 			}
-			for (StoreDto s : nearStoreList) {
-				System.out.println("sssss" + s.getStore_address());
-				if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
-					System.out.println("ss2222" + s.getStore_address());
-					securityUser.getMemberDto().setDeliverStore(s);
-					break;
-				}
-			}
-		 return "/delivery/deliverhome/deliverhome";
-	 }
-	 
-	 @GetMapping("/member/addAddressPage")
-	 public String addAddressPage() {
-		 return "/delivery/join/addAddress";
-	 }
-	 
-	 @PostMapping("/member/addAddress")
-	 public @ResponseBody String addAddress(Authentication authentication, @RequestBody AddressDto addr) {
-			SecurityUser user = (SecurityUser) authentication.getPrincipal();
-			System.out.println("주소추가 !!! "+user.getMemberDto().getUser_name());
-			System.out.println("주소" + addr.getDetail_address());
-			addr.setUser_email(user.getMemberDto().getUser_email());
-			addr.setD_key("n");
-			System.out.println("로드 " + addr.getRoad_address());
-			System.out.println("주소" + addr.getDetail_address());
-			memberService.addAddress(addr);
-			List<AddressDto>addrList = memberService.getAddressList(user.getMemberDto().getUser_email()) ;
-			user.getMemberDto().setAddressList(addrList);
-			return "/ed/deliverHome";
-	 }
-	 
-	 @PostMapping("/member/orderMenu")
-	 public ModelAndView orderMenu(MenuDto menuDto) {
-		 System.out.println("ordermenu controller!!");
-		 System.out.println("menu  " + menuDto.getName());
-		 ModelAndView mav = new ModelAndView();
-		 mav.addObject("menuDto", menuDto);
-		 mav.setViewName("/delivery/order/menu");
-		 return mav;
-	 }
-	 
+		}
+		return "/delivery/deliverhome/deliverhome";
+	}
+
+	@GetMapping("/member/addAddressPage")
+	public String addAddressPage() {
+		return "/delivery/join/addAddress";
+	}
+
+	@PostMapping("/member/addAddress")
+	public @ResponseBody String addAddress(Authentication authentication, @RequestBody AddressDto addr) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		System.out.println("주소추가 !!! " + user.getMemberDto().getUser_name());
+		System.out.println("주소" + addr.getDetail_address());
+		addr.setUser_email(user.getMemberDto().getUser_email());
+		addr.setD_key("n");
+		System.out.println("로드 " + addr.getRoad_address());
+		System.out.println("주소" + addr.getDetail_address());
+		memberService.addAddress(addr);
+		List<AddressDto> addrList = memberService.getAddressList(user.getMemberDto().getUser_email());
+		user.getMemberDto().setAddressList(addrList);
+		return "/ed/deliverHome";
+	}
+
+	@PostMapping("/member/orderMenu")
+	public ModelAndView orderMenu(MenuDto menuDto) {
+		System.out.println("ordermenu controller!!");
+		System.out.println("menu  " + menuDto.getName());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("menuDto", menuDto);
+		mav.setViewName("/delivery/order/menu");
+		return mav;
+	}
+
+	@PostMapping("/member/cartAdd")
+	public String cartAdd(CartDto cartDto, HttpServletRequest req, Authentication authentication) {
+		System.out.println("cartAdd ! ");
+		String menu_type = cartDto.getMenu_type();
+		int plusPrice = 0;
+		if(menu_type.equals("burger")) {
+			plusPrice= memberService.calcPriceBurger(cartDto);	
+		}
+		HttpSession session = req.getSession();
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		if (orderListDto == null) {
+			orderListDto = new OrderListDto();
+			orderListDto.setTotal_price(plusPrice);
+			orderListDto.getCartList().add(cartDto);
+			session.setAttribute("orderListDto", orderListDto);
+		}else {
+			int orignTotalPrice = orderListDto.getTotal_price();
+			int newTotalPrice = orignTotalPrice + plusPrice;
+			orderListDto.setTotal_price(newTotalPrice);
+			orderListDto.getCartList().add(cartDto);
+		}
+		return "redirect:/ed/menuPage";
+	}
+
 }

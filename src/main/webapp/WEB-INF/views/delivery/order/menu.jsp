@@ -13,25 +13,53 @@
 	
 	$(document).ready(function(){
 		$(document).on("click", "input[name=select-choice]", function(){
-			if($(".menuSelect").html() == null){
-				addMenu();
+			var setCheck = $(this).parent().parent().attr("class");
+			if($(".menuSelect").html() != null){
+				$(".menuSelect").remove();
+				addMenu(setCheck);
+			}else{
+				addMenu(setCheck);
 			}
-			
-			
 		});
 		
-	
+		$(document).on("click", "#cartAddBtn",  function(){
+			alert("click");
+			$("#cartAdd").submit();
+		});
 		
+		//$('input:radio[name=select-choice]').is(':checked');
 	});	
-	function addMenu(){
+	
+	function addMenu(setCheck){
+		console.log(setCheck);
 		var html = '<div class="menuSelect"><hr> '
-		html += '<div class="header-title-column"><h3 class="item-title">세트          <a href="#" class="action-delete">x</a></h3></div>'
-		html += '<br><div class="item-name item-id-1411" data-display-order="2" >해쉬브라운'
-		html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div>' 
-		html += '<div class="item-name item-id-1411" data-display-order="2" >콜라'
-		html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div></div><br>' 
+		if(setCheck == 'Single'){
+			$('input[name=comp_type]').val("single");
+			setCheck = "단품";
+			html = html + '<div class="header-title-column"><h3 class="item-title">'+ setCheck+ '</h3><br></div>'
 			$("#added-sets").append(html);
-	}	
+			return ;
+		}else {
+			$('input[name=comp1_name]').val("후렌치 후라이");
+			$('input[name=comp2_name]').val("콜라");
+			if(setCheck == 'Set'){
+				$('intput[name=comp_type]').val("set");
+				setCheck = "세트"
+			}else{setCheck="라지세트"
+				$('input[name=comp_type]').val("large_set");
+			}
+				html = html + '<div class="header-title-column"><h3 class="item-title">'+ setCheck+'</h3></div>'
+				html += '<br><div class="item-name item-id-1411" data-display-order="2" >해쉬브라운'
+				html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div>' 
+				html += '<div class="item-name item-id-1411" data-display-order="2" >콜라'
+				html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div><br></div>'
+				
+				$("#added-sets").append(html);
+				return;
+		}
+
+	}
+	
 	
 
 </script>
@@ -87,7 +115,7 @@
 												</tr>
 											</thead>
 											<tbody>
-													<tr class="largeSet">
+													<tr class="LargeSet">
 														<td class="controls-column" align="center">
 															<input type="radio" name="select-choice" id="choice-1411" value="1411" data-cartname="해쉬브라운" style="width:25px;height:25px;">
 														</td>
@@ -127,7 +155,7 @@
 													</tr>
 											
 												
-												<tr class="set">
+												<tr class="Set">
 													<td class="controls-column"  align="center">
 															<input type="radio" name="select-choice" id="choice-1411" value="1411" data-cartname="해쉬브라운" style="width:25px;height:25px;">
 													</td>
@@ -161,7 +189,7 @@
 
 
 												</tr>
-												<tr class="noneSet">
+												<tr class="Single">
 													<td class="controls-column" align="center">
 																<input type="radio" name="select-choice" id="choice-1411" value="1411" data-cartname="해쉬브라운" style="width:25px;height:25px;">
 	
@@ -229,8 +257,22 @@
 							<div id="cost-section" class="clearfix"></div>
 						</div>
 						<div class="media-right text-center">
-							<button
-								class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder disabled">
+						<input type="hidden" name="comp1_name" value="123123">
+						<form action="/member/cartAdd" method="post" id="cartAdd">
+							<input type="hidden" name="cart_product_code" value="${menuDto.seq}">
+							<input type="hidden" name="cart_product_name"  value="${menuDto.name}">
+							<input type="hidden" name="cart_product_price"  value="${menuDto.price}">
+							<input type="hidden"  name="cart_product_quant" value="1">
+							<input type="hidden" name="menu_type"  value="${menuDto.type}">
+							<input type="hidden"  name="comp_type" value="">
+							<input type="hidden" name="comp1_name" value="">
+							<input type="hidden" name="comp2_name" value="">
+							<input type="hidden" name="comp3_name" value="">
+							<input type="hidden" name="comp4_name" value="">
+							<input type="hidden" name="comp5_name" value="">
+						</form>
+							<button id="cartAddBtn"
+								class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder">
 								<i class="mcd icon mcd-bag"></i> 카트에 추가
 							</button>
 						</div>
@@ -269,17 +311,8 @@
 							<h2>??contact.address.title_ko_KR??</h2>
 						</div>
 						<p>??contact.address.desc_ko_KR??</p>
-						<form method="post" class="form" role="form"
-							id="form_contactnumber" novalidate="novalidate">
-							<div class="form-group">
-								<label class="error" style="display: none;"></label> <input
-									type="text"
-									class="form-control input-lg required number digit-only"
-									name="contact_number" id="contact_number"
-									data-rule-verifyphoneno="true" data-rule-number="true"
-									placeholder="숫자만 입력" value="">
+						<form method="post" class="form" role="form" id="form_contactnumber" novalidate="novalidate">
 
-							</div>
 							<div class="form-group">
 								<button id="form_contact_number-confirmBtn" type="submit"
 									class="btn btn-default btn-red btn-lg text-ucase">Submit</button>

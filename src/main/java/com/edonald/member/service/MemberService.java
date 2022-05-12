@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.CartDto;
 import com.edonald.member.dto.MemberDto;
 import com.google.gson.JsonObject;
 
@@ -18,4 +20,5 @@ public interface MemberService {
 	public void addAddress(AddressDto addr);
 	public List<AddressDto>getAddressList(String username);
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
+	public int calcPriceBurger(CartDto dto);
 }
