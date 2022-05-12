@@ -22,8 +22,7 @@
 			#{price},
 			#{allergy},
 			NULL,
-			#{type},
-			NULL
+			#{type},0,0,0,0,0
 			) 
 	</insert>
 	<update id="update">
@@ -36,6 +35,15 @@
 			price = #{price},
 			allergy = #{allergy},
 			type = #{type}
+		WHERE seq = #{seq}
+	</update>
+	<update id="updateSubstitue">
+		UPDATE menu SET
+			sub_to = #{sub_to},
+			sub_pl = #{sub_pl},
+			sub_ls = #{sub_ls},
+			sub_s = #{sub_s},
+			sub_em = #{sub_em}
 		WHERE seq = #{seq}
 	</update>
 </mapper>

@@ -46,15 +46,52 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('.btnRegister').on('click',function(){	
-		var url = "/hadmin/register/menu";
-		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
+	$(document).on('change','.form-check-input', function(){
+		var btn = $(this).parent().parent().parent().children().children('.btnModify');
+		btn.text("저장");
 	})
 	
-	$(document).on('click','.btnModify',function(){	
-		var seq = $(this).parent().parent().children('.list_seq').text();
-		var url = "/hadmin/register/menu?seq="+seq;
-		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
+	$('.btnRegister').on('click',function(){	
+		
+			var url = "/hadmin/register/menu";
+			window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
+		
+		
+	})
+	
+	$(document).on('click','.btnModify',function(){
+		var seq = $(this).parent().parent().children('.list_seq').text();	
+		if($(this).text()=="수정"){
+			var url = "/hadmin/register/menu?seq="+seq;
+			window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
+		}else{
+			var url = "/hadmin/updateSubstitue.do";
+			var sub_to = $(this).parent().parent().children().children().children('.sub_to').is(':checked');
+			var sub_pl = $(this).parent().parent().children().children().children('.sub_pl').is(':checked');
+			var sub_ls = $(this).parent().parent().children().children().children('.sub_ls').is(':checked');
+			var sub_s = $(this).parent().parent().children().children().children('.sub_s').is(':checked');
+			var sub_em = $(this).parent().parent().children().children().children('.sub_em').is(':checked');
+			if(sub_to){sub_to = 1;}else{sub_to = 0;}
+			if(sub_pl){sub_pl = 1;}else{sub_pl = 0;}
+			if(sub_ls){sub_ls = 1;}else{sub_ls = 0;}
+			if(sub_s){sub_s = 1;}else{sub_s = 0;}
+			if(sub_em){sub_em = 1;}else{sub_em = 0;}
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data:{
+					seq: seq,
+					sub_to: sub_to,
+					sub_pl: sub_pl,
+					sub_ls: sub_ls,
+					sub_s: sub_s,
+					sub_em: sub_em
+				},
+				success: function(){},
+				error: function(){alert("error");}
+			});
+			$(this).text("수정");
+		}
 	})
 
 });

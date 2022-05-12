@@ -1,6 +1,9 @@
 package com.edonald.deliver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.edonald.deliver.service.DeliveryMenuService;
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.SecurityUser;
@@ -50,7 +55,10 @@ public class DeliverController {
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	
-	
+	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
+	public @ResponseBody List<MenuDto> menuPageDo(String type) {
+		return dService.bList(type);
+	}
 
 	
 }

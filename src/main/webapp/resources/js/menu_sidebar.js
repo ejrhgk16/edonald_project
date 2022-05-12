@@ -30,6 +30,11 @@ $(document).ready(function() {
 		}
 	});
 
+	// 메뉴 이동
+	$('.secondary-menu-item-target').on('click',function(){
+		menuRequest($(this).attr('data-value'));
+	})
+	
 	//sidebar 아침메뉴 일반메뉴 변경 
 	$(".primary-menu-item").eq(1).on("click", function(e) {
 		e.preventDefault();
@@ -83,3 +88,57 @@ $(document).ready(function() {
 
 
 })
+function menuRequest(type){
+	var url = "/ed/menuPage.do";
+	$.ajax({
+		url: url,
+		type: 'get',
+		data:{
+			type: type
+		},
+		success: function(result){
+			var html = "<div class=\"row row-narrow changebox\">";
+			$.each(result,function(index,item){
+				var price = comma(item.price);
+				html += "<div class=\"product-card product-card--standard\">";
+				html += "<div class=\"panel panel-default panel-product\">";
+				html += "<div class=\"panel-body\">";
+				html += "<img src=\"https://edonaldfile.s3.ap-northeast-2.amazonaws.com/"+item.img_path+"\" class=\"img-block\">";
+				html += "<h5 class=\"product-title\" style=\"height: 30.8px;\">"+item.name+"</h5>";
+				html += "<div class=\"product-badges\"></div></div>";
+				html += "<div class=\"panel-footer\"><div class=\"row row-narrow\">";
+				html += "<div class=\"product-info\" style=\"height: 78.3px;\">";
+				html += "<div class=\"product-details\"><div class=\"product-cost\">";
+				html += "가격 ₩ <span class=\"starting-price\">"+price+"</span></div>";
+				html += "<div class=\"product-nutritional-info\"><span class=\"text-default\">"+item.kcal+" Kcal</span></div>";
+				html += "<div class=\"product-allergen-info\"><div>";
+				html += "<a href=\"#\" class=\"action-link\" data-toggle=\"html-popover\" data-placement=\"bottom\" data-html=\"true\" data-content-selector=\".popover-details\" data-original-title=\"\" title=\"\">";
+				html += "<i class=\"mcd icon mcd-allergen\"></i><span class=\"text-default\">알레르기 정보</span></a>";
+				html += "<div class=\"popover-details\"><div class=\"popover-wrapper type-sans\"><h4>"+item.name+"</h4>";
+				html += "<div>"+item.name+" "+item.allergy+"</div></div></div></div></div></div></div>";
+				html += "<div class=\"product-controls\">";	
+				html += "<a data-productid=\"789\" class=\"btn btn-block action-create btn-yellow\" href=\"\">Order</a>";
+				html += "<form action=\"/member/orderMenu\" method=\"post\" class=\"menuInfo\">";
+				html += "<input type=\"hidden\" name=\"name\" value=\""+item.name+"\">";
+				html += "<input type=\"hidden\" name=\"kcal\" value=\""+item.kcal+"\">";
+				html += "<input type=\"hidden\" name=\"img_path\" value=\""+item.img_path+"\">";
+				html += "<input type=\"hidden\" name=\"status\" value=\""+item.status+"\">";
+				html += "<input type=\"hidden\" name=\"type\" value=\""+item.type+"\">";
+				html += "<input type=\"hidden\" name=\"price\" value=\""+item.price+"\">";
+				html += "<input type=\"hidden\" name=\"allergy\" value=\""+item.allergy+"\">";
+				html += "<input type=\"hidden\" name=\"seq\" value=\""+item.seq+"\">";
+				html += "</form></div></div></div></div></div>";
+				
+			});
+			html += "</div>"
+			$('div.row.row-narrow.changebox').html(html);
+			
+		},
+		error: function(){alert("error");}
+	});
+}
+
+ function comma(str) {
+     str = String(str);
+     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+ }

@@ -79,6 +79,12 @@ public class HadminController {
 		return "수정완료";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/hadmin/updateSubstitue.do", method = RequestMethod.POST)
+	public void updateSubstitue(MenuDto dto) {
+		bService.updateSubstitue(dto);
+	}
+	
 	@RequestMapping(value = "/temp", method = RequestMethod.GET)
 	public String temp() {
 		return "admin/hadmin/usercheck/usercheck";

@@ -39,6 +39,10 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 		mapper.update(dto);
 	}
 	
+	public void updateSubstitue(MenuDto dto) {
+		mapper.updateSubstitue(dto);
+	}
+	
 	@Override
 	public MenuDto read(int bno) {
 		// TODO Auto-generated method stub

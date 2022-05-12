@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
-
-
+	menuRequest("burger");
+	
 	//상단 메뉴
 
 	$(".menu-item-support").on("click", function(e) {
@@ -93,6 +93,7 @@ $(document).ready(function() {
 		$("#rememberMe").attr("class", "modal-rememberme modal fade");
 		$("#rememberMe").css("display", "none");
 	});
+	
 
 	//메뉴화면 알레르기 text 펼치기
 	$(document).on('click',".text-default",function(){
