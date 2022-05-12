@@ -268,26 +268,26 @@
 												메뉴</span><i class="fa fa-angle-right"></i></a>
 										<ul class="secondary-menu">
 											<li class="secondary-menu-item selected"><a
-												class="secondary-menu-item-target" href="#"><i
+												class="secondary-menu-item-target" href="#" data-value="package"><i
 													class="fa fa-circle"></i> <span>추천 메뉴</span></a></li>
 											<li class="secondary-menu-item "><a
-												class="secondary-menu-item-target" href="#"><i
+												class="secondary-menu-item-target" href="#" data-value="burger"><i
 													class="fa fa-circle"></i> <span>버거 &amp; 세트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=13"><i class="fa fa-circle"></i>
+												href="?daypartId=1&amp;catId=13" data-value="side"><i class="fa fa-circle"></i>
 													<span>스낵 &amp; 사이드</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=14"><i class="fa fa-circle"></i>
+												href="?daypartId=1&amp;catId=14" data-value="drink"><i class="fa fa-circle"></i>
 													<span>음료</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=15"><i class="fa fa-circle"></i>
+												href="?daypartId=1&amp;catId=15" data-value="dessert"><i class="fa fa-circle"></i>
 													<span>디저트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=16"><i class="fa fa-circle"></i>
+												href="?daypartId=1&amp;catId=16" data-value="happymeal"><i class="fa fa-circle"></i>
 													<span>해피밀®</span></a></li>
 
 										</ul></li>
@@ -356,14 +356,8 @@
 								<div class="col-xs-8">
 									<div id="product-cards" class="product-cards"
 										data-equal-height=".product-card--standard .product-title, .product-card--standard .product-info">
-										<div class="row row-narrow">
-										<script type="text/javascript">
-										 function comma(str) {
-										     str = String(str);
-										     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-										 }
-
-										
+										<div class="row row-narrow changebox">
+											<script>
 											<c:forEach items="${list}" var="list" varStatus="status">
 											var price = ${list.price};
 											price = comma(price);

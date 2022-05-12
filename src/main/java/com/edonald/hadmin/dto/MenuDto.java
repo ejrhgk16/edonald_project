@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class MenuDto {
 	private String name;			// 이름
-	private int kcal;			// 칼로리 
+	private String kcal;			// 칼로리 
 	private String img_path;		// 딜리버리 이미지
 	private String set_img_path; // 세트 이미지 *
 	private int status;			// 제품상태 

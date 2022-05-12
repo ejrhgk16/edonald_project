@@ -171,33 +171,56 @@
 										<th scope="col">상품이름</th>
 										<th scope="col">가격</th>
 										<th scope="col">칼로리</th>
-										<th scope="col">상태</th>							
+										<th scope="col">상태</th>	
+										<th scope="col">투게더팩</th>
+										<th scope="col">플러스팩</th>
+										<th scope="col">라지세트</th>
+										<th scope="col">세트</th>
+										<th scope="col">이모닝</th>				
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="list" items="${list}" varStatus="status">
-										<form action="/hadmin/updateSub.do" id="sub_${list.seq}">
-											<tr>
-												<td class="list_seq" hidden>${list.seq}</td>
-												<td>${list.name}</td>
-												<td>${list.price} 원</td>
-												<td>${list.kcal} kcal</td>
-					                            <td>
-					                                <select name="status" class="status_selecter">
-					                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
-					                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
-					                                </select>
-					                            </td>
-					                            <td>
-					                            	<div class="form-check">
-													  <input class="form-check-input" type="checkbox" value="" id="">
-													</div>
-					                            </td>
-					                            <td>
-					                            	<button type="button" class="btn btn-outline-dark btnModify">수정</button>
-					                            </td>
-											</tr>
-										</form>
+										<tr>
+											<td class="list_seq" hidden>${list.seq}</td>
+											<td>${list.name}</td>
+											<td>${list.price} 원</td>
+											<td>${list.kcal} kcal</td>
+				                            <td>
+				                                <select name="status" class="status_selecter">
+				                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
+				                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
+				                                </select>
+				                            </td>
+				                            <td>
+				                            	<div class="form-check">
+												  <input class="form-check-input sub_to" type="checkbox" value="to" id="sub_to_${list.seq}" <c:if test="${list.sub_to eq 1}">checked="checked"</c:if>>
+												</div>
+				                            </td>
+				                            <td>
+				                            	<div class="form-check">
+												  <input class="form-check-input sub_pl" type="checkbox" value="pl" id="sub_pl_${list.seq}" <c:if test="${list.sub_pl eq 1}">checked="checked"</c:if>>
+												</div>
+				                            </td>
+				                            <td>
+				                            	<div class="form-check">
+												  <input class="form-check-input sub_ls" type="checkbox" value="ls" id="sub_ls_${list.seq}" <c:if test="${list.sub_ls eq 1}">checked="checked"</c:if>>
+												</div>
+				                            </td>
+				                            <td>
+				                            	<div class="form-check">
+												  <input class="form-check-input sub_s" type="checkbox" value="s" id="sub_s_${list.seq}" <c:if test="${list.sub_s eq 1}">checked="checked"</c:if>>
+												</div>
+				                            </td>
+				                            <td>
+				                            	<div class="form-check">
+												  <input class="form-check-input sub_em" type="checkbox" value="em" id="sub_em_${list.seq}" <c:if test="${list.sub_em eq 1}">checked="checked"</c:if>>
+												</div>
+				                            </td>
+				                            <td>
+				                            	<button type="button" class="btn btn-outline-dark btnModify">수정</button>
+				                            </td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>

@@ -10,6 +10,7 @@ public interface AdminMenuService {
 	public void insert(MenuDto dto);
 	public void updateStatus(String seq,int status);	
 	public void update(MenuDto dto);
+	public void updateSubstitue(MenuDto dto);
 	//나중에 할꺼
 	public MenuDto read(int bno);
 	public void modify(MenuDto dto);

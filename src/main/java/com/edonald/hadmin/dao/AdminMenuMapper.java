@@ -16,7 +16,7 @@ public interface AdminMenuMapper {
 	public void insert(MenuDto dto);
 	public void updateStatus(@Param("seq")String seq,@Param("status") int status);
 	public void update(MenuDto dto);
-	
+	public void updateSubstitue(MenuDto dto);
 	
 	// 나중에할꺼
 	public MenuDto read(int bno);
