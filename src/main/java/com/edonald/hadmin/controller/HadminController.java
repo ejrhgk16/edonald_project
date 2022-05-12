@@ -25,19 +25,20 @@ public class HadminController {
 		return "admin/hadmin/index2";
 	}
 	
-	@RequestMapping(value = "/hadmin/burgerMenu", method = RequestMethod.GET)
-	public String hadminBurgerMenu(Model model) {
-		model.addAttribute("list",bService.listAll());
+	@RequestMapping(value = "/hadmin/menu", method = RequestMethod.GET)
+	public String hadminBurgerMenu(Model model,String type) {
+		model.addAttribute("list",bService.listAll(type));
+		model.addAttribute("type",type);
 		return "admin/hadmin/menu/burgerNset2";
 	}
 	
-	@RequestMapping(value = "/hadmin/burger/updateStatus.do", method = RequestMethod.POST)
-	public String updateStatus(String code, int status) {
-		bService.updateStatus(code,status);
+	@RequestMapping(value = "/hadmin/updateStatus.do", method = RequestMethod.POST)
+	public String updateStatus(String seq, int status) {
+		bService.updateStatus(seq,status);
 		return "admin/hadmin/menu/burgerNset2";
 	}
 	
-	@RequestMapping(value = "/hadmin/register/burger", method = RequestMethod.GET)
+	@RequestMapping(value = "/hadmin/register/menu", method = RequestMethod.GET)
 	public String hadminRegisterBurger(Model model, String seq) {
 		if(seq != null) {
 			model.addAttribute("dto",bService.getMenu(seq));
@@ -47,17 +48,22 @@ public class HadminController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/hadmin/burger/insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/hadmin/insert", method = RequestMethod.POST)
 	public String insert(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
+		dto.setStatus(1);
 		dto.setImg_path(fService.fileUpload(mainUploadFile, path));
-		dto.setSet_img_path(fService.fileUpload(subUploadFile, path));
+		if(subUploadFile.getOriginalFilename().equals("")) {
+			dto.setSet_img_path("");
+		}else {
+			dto.setSet_img_path(fService.fileUpload(subUploadFile, path));
+		}
 		bService.insert(dto);
 		return "등록완료";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/hadmin/burger/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/hadmin/update", method = RequestMethod.POST)
 	public String update(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
 		dto.setStatus(1);
@@ -72,7 +78,6 @@ public class HadminController {
 		bService.update(dto);
 		return "수정완료";
 	}
-	
 	
 	@RequestMapping(value = "/temp", method = RequestMethod.GET)
 	public String temp() {

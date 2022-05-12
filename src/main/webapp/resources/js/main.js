@@ -110,7 +110,8 @@ $(document).ready(function() {
 		source += "<div>"+detail+"</div></div></div></div>";
 		$(this).parent().after(source);
 	})
-
+	
+	//메뉴화면 
 })
 	
 

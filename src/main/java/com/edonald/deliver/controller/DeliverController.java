@@ -43,11 +43,10 @@ public class DeliverController {
 	
 
 	@GetMapping("/ed/menuPage")
-	public String menuPage(Authentication authentication, Model model) {
-
+	public String menuPage(Authentication authentication, Model model, String type) {
 //		SecurityUser user = (SecurityUser) authentication.getPrincipal();
-//		System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());	
-		model.addAttribute("list",dService.bList());
+//		System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());
+		model.addAttribute("list",dService.bList(type));
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	

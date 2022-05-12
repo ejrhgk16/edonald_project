@@ -416,12 +416,11 @@
 																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
 																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
 
-																		<a data-productid="789" class="btn btn-block action-create btn-yellow" href="${list.code}">													
+																		<a data-productid="789" class="btn btn-block action-create btn-yellow" href="">													
 																		Order
 																		</a>
 																		
 																		<form action="/member/orderMenu" method="post" class="menuInfo">
-																			<input type="hidden" name="code" value="${list.code}">
 																			<input type="hidden" name="name" value="${list.name}">
 																			<input type="hidden" name="kcal" value="${list.kcal}">
 																			<input type="hidden" name="img_path" value="${list.img_path}">
@@ -430,7 +429,7 @@
 																			<input type="hidden" name="price" value="${list.price}">
 																			<input type="hidden" name="allergy" value="${list.allergy}">
 																			<input type="hidden" name="seq" value="${list.seq}">
-
+																			
 																		</form>
 																	
 																</div>

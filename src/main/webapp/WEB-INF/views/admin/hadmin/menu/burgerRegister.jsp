@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>버거 등록</title>
+        <title>메뉴 등록</title>
         <link href="${pageContext.request.contextPath}/resources/css/adminStyles.css" rel="stylesheet" />
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -15,11 +15,12 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		// 메뉴 수정 시 
 		$(function(){
 			var set = $('.pageSetting').text();
 			if(set =="수정"){
-				$('.card-header').children('h3').text("버거 수정");
-				$('#submit').text("버거 수정");
+				$('.card-header').children('h3').text("메뉴 수정");
+				$('#submit').text("메뉴 수정");
 				$('#burger-container').children().remove();
 				$('#burger-detail-container').children().remove();
 				var link ="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/" ;
@@ -27,7 +28,18 @@
 				var srcSet = $('#set_img').val();
 				$('#burger-container').prepend('<img style="width:100%;" id="image" src="'+link+src+'">');
 				$('#burger-detail-container').prepend('<img style="width:100%;" id="image" src="'+link+srcSet+'">');
+			}else{
+				$('#seq').remove();
 			}
+		})
+		
+		if($('.menuType').text() != ""){
+			$('#type').val($('.menuType').text()).attr("selected", "selected");
+			typeChanger();
+			$('#category_code').val($('.category').text()).attr("selected","selected");
+		}
+		$('#type').on("change",function(){
+			typeChanger();
 		})
 		
 //		$("#burger_code").blur(function(){
@@ -52,22 +64,18 @@
 //			})
 //		});
 		
-		$("#name").change(function(){
-			var code = "b_"+$("#name").val();
-			$("#code").val(code); 
-		})
 		$("#cancle").on("click", function() {
 			location.href = "burger.mdo";
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
 			if ($("#name").val() == "") {
-				alert("버거 이름을 입력하세요.");
+				alert("이름을 입력하세요.");
 				$("#name").focus();
 				return false;
 			}
 			if ($("#kcal").val() == "") {
-				alert("버거 칼로리를 입력하세요.");
+				alert("칼로리를 입력하세요.");
 				$("#kcal").focus();
 				return false;
 			}
@@ -77,7 +85,7 @@
 				return false;
 			}
 			if ($("#price").val() == "") {
-				alert("버거 가격을 입력하세요.");
+				alert("가격을 입력하세요.");
 				$("#price").focus();
 				return false;
 			}
@@ -87,13 +95,8 @@
 				return false;
 			}
 			if ($("#img").val() == "") {
-				alert("버거 이미지를 업로드하세요.");
+				alert("이미지를 업로드하세요.");
 				$("#img").focus();
-				return false;
-			}
-			if ($("#set_img").val() == "") {
-				alert("세트 이미지를 업로드하세요.");
-				$("#set_img").focus();
 				return false;
 			}
 			if ($("#allergy").val() == "") {
@@ -101,13 +104,12 @@
 				$("#allergy").focus();
 				return false;
 			}
-			alert("클릭");
 			var url ="";
 			var set = $('.pageSetting').text();
 			if(set=="수정"){
-				url = "/hadmin/burger/update";
+				url = "/hadmin/update";
 			}else{
-			 	url = "/hadmin/burger/insert";
+			 	url = "/hadmin/insert";
 			}
 			var form = $('#addBurger')[0];
 			var formData = new FormData(form);
@@ -181,22 +183,66 @@
 		var img = $('#burger-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
-			$('#slideBtn').text("버거 미리보기 취소");
+			$('#slideBtn').text("메뉴 미리보기 취소");
 		} else {
 			img.attr("style", "display:none;");
-			$('#slideBtn').text("버거 미리보기");
+			$('#slideBtn').text("메뉴 미리보기");
 		}
 	};
 	function slideDButton() {
 		var img = $('#burger-detail-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
-			$('#slideDBtn').text("버거 미리보기 취소");
+			$('#slideDBtn').text("메뉴 미리보기 취소");
 		} else {
 			img.attr("style", "display:none;");
-			$('#slideDBtn').text("버거 미리보기");
+			$('#slideDBtn').text("메뉴 미리보기");
 		}
 	};
+	function typeChanger(){
+		var type = $('#type option:selected').val();
+		$('#category_code').children().remove();
+		if (type == 'burger'){
+			$('#category_code').append("<option value=\"0\">신제품</option>");
+			$('#category_code').append("<option value=\"1\">오리지날</option>");
+			$('#category_code').append("<option value=\"2\">치즈</option>");
+			$('#category_code').append("<option value=\"3\">불고기</option>");
+			$('#category_code').append("<option value=\"4\">새우</option>");
+			$('#category_code').append("<option value=\"9\">기타</option>");
+		}else if(type == 'side'){
+			$('#category_code').append("<option value=\"10\">신제품</option>");
+			$('#category_code').append("<option value=\"11\">스낵랩</option>");
+			$('#category_code').append("<option value=\"12\">치즈스틱</option>");
+			$('#category_code').append("<option value=\"13\">이너겟</option>");
+			$('#category_code').append("<option value=\"14\">치킨텐더</option>");
+			$('#category_code').append("<option value=\"15\">소스</option>");
+			$('#category_code').append("<option value=\"19\">기타</option>");
+		}else if(type == 'drink'){
+			$('#category_code').append("<option value=\"20\">신제품</option>");
+			$('#category_code').append("<option value=\"21\">커피</option>");
+			$('#category_code').append("<option value=\"22\">라떼</option>");
+			$('#category_code').append("<option value=\"23\">주스</option>");
+			$('#category_code').append("<option value=\"24\">디카페인</option>");
+			$('#category_code').append("<option value=\"25\">쉐이크</option>");
+			$('#category_code').append("<option value=\"29\">기타</option>");
+		}else if(type == 'dessert'){
+			$('#category_code').append("<option value=\"30\">신제품</option>");
+			$('#category_code').append("<option value=\"31\">맥플러리</option>");
+			$('#category_code').append("<option value=\"32\">아이스크림</option>");
+			$('#category_code').append("<option value=\"39\">기타</option>");
+		}else if(type == 'happymeal'){
+			$('#category_code').append("<option value=\"40\">해피밀</option>");
+		}else if(type == 'emorning'){
+			$('#category_code').append("<option value=\"50\">신제품</option>");
+			$('#category_code').append("<option value=\"51\">머핀</option>");
+			$('#category_code').append("<option value=\"52\">핫케익</option>");
+			$('#category_code').append("<option value=\"55\">소스</option>");
+			$('#category_code').append("<option value=\"59\">기타</option>");
+		}else if(type == 'package'){
+			$('#category_code').append("<option value=\"61\">플러스팩</option>");
+			$('#category_code').append("<option value=\"62\">투게더팩</option>");
+		}
+	}
 </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>
@@ -207,22 +253,15 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">버거 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">메뉴 등록</h3></div>
                                     <div class="card-body">
                                         <form action="/hadmin/burger/insert" method="post" id="addBurger" enctype="multipart/form-data">
                                         	<div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="code" name="code" type="text" placeholder="Enter your first name" 
-                                                        	style="height: calc(3.5rem + 50px);" value="${dto.code }"/>
-                                                        <label for="code">버거 코드 - 단품(100~199),세트(200~299)</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="name" name="name" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);" value="${dto.name }"/>
-                                                        <label for="name">버거 이름</label>
+                                                        <label for="name">메뉴 이름</label>
                                                     </div>
                                                 </div>
                                              </div>
@@ -231,14 +270,14 @@
                                                     <div class="form-floating">
                                                         <input class="form-control" id="kcal" name="kcal" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);" value="${dto.kcal }"/>
-                                                        <label for="kcal">버거 칼로리</label>
+                                                        <label for="kcal">메뉴 칼로리</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="price" name="price" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);" value="${dto.price }"/>
-                                                        <label for="price">버거 가격</label>
+                                                        <label for="price">메뉴 가격</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,9 +286,13 @@
                                                     <div class="form-floating mb-3 mb-md-0">
                                                     	<select class="form-select" id="type" name="type" aria-label="Default select example"
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
-                                                    		<option value="0">단품</option>
-															<option value="1">세트</option>
-															<option selected value="2">라지세트</option>
+                                                    		<option selected value="burger">버거</option>
+                                                    		<option value="side">사이드</option>
+                                                    		<option value="drink">음료</option>
+                                                    		<option value="dessert">디저트</option>
+															<option value="happymeal">해피밀</option>
+															<option value="emorning">이모닝</option>
+															<option value="package">패키지</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -258,9 +301,11 @@
                                                         <select class="form-select" id="category_code" name="category_code" aria-label="Default select example"
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
                                                     		<option value="0">신제품</option>
-															<option value="1">치즈</option>
-															<option value="2">불고기</option>
-															<option value="3">오리지날</option>
+                                                    		<option value="1">오리지날</option>
+															<option value="2">치즈</option>
+															<option value="3">불고기</option>
+															<option value="4">새우</option>
+															<option value="9">기타</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -337,7 +382,7 @@
 								           		<small>디테일 이미지 : 사진크기 772*530</small>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">버거 등록</a></div>
+                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">메뉴 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>
                                             </div>
                                             <input id="seq" name="seq" type="hidden" value="${dto.seq }">
@@ -370,7 +415,8 @@
         <script src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
         <div>	
 	        <p class="pageSetting" hidden>${pageSetting}</p>
-	        <p class="burgerType" hidden>${dto.type }</p>
+	        <p class="menuType" hidden>${dto.type }</p>
+	        <p class="category" hidden>${dto.category_code }</p>
      	</div>
     </body>
 </html>

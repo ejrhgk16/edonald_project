@@ -15,8 +15,8 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 	private AdminMenuMapper mapper;
 	
 	@Override
-	public List<MenuDto> listAll() {
-		return mapper.listAll();
+	public List<MenuDto> listAll(String type) {
+		return mapper.listAll(type);
 	}
 	
 	@Override
@@ -30,8 +30,8 @@ public class AdminMenuServiceImpl implements AdminMenuService {
 		mapper.insert(dto);
 	}
 	@Override
-	public void updateStatus(String code,int status) {
-		mapper.updateStatus(code, status);
+	public void updateStatus(String seq,int status) {
+		mapper.updateStatus(seq, status);
 	}
 	
 	@Override

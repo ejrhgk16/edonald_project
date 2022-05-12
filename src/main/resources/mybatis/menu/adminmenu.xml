@@ -6,37 +6,36 @@
 		SELECT * FROM menu WHERE seq = #{seq}
 	</select>
 	<select id="listAll" resultType="com.edonald.hadmin.dto.MenuDto">
-		SELECT * FROM menu m ORDER BY status DESC,category_code,seq ASC
+		SELECT * FROM menu m WHERE type = #{type} ORDER BY status DESC,category_code,seq ASC
 	</select>
 	<update id="updateStatus">
-		UPDATE menu SET status = #{status} WHERE code = #{code}
+		UPDATE menu SET status = #{status} WHERE seq = #{seq}
 	</update>
 	<insert id="insert">
 		INSERT INTO menu VALUES(
-			#{code},
 			#{name},
 			#{kcal},
 			#{img_path},
 			#{set_img_path},
 			#{status},
 			#{category_code},
-			#{type},
 			#{price},
 			#{allergy},
+			NULL,
+			#{type},
 			NULL
 			) 
 	</insert>
 	<update id="update">
 		UPDATE menu SET 
-			code = #{code},
 			name = #{name},
 			kcal = #{kcal},
 			<if test="img_path != null">img_path = #{img_path},</if>
 			<if test="set_img_path != null">set_img_path = #{set_img_path},</if>
 			category_code = #{category_code},
-			type = #{type},
 			price = #{price},
-			allergy = #{allergy}
+			allergy = #{allergy},
+			type = #{type}
 		WHERE seq = #{seq}
 	</update>
 </mapper>

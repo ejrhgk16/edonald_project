@@ -15,8 +15,8 @@ public class DeliveryMenuServiceImpl implements DeliveryMenuService {
 	private DeliveryMenuMapper mapper;
 	
 	@Override
-	public List<MenuDto> bList() {
-		return mapper.bList();
+	public List<MenuDto> bList(String type) {
+		return mapper.bList(type);
 	}
 
 }

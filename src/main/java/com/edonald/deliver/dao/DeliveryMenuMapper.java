@@ -8,6 +8,6 @@ import com.edonald.hadmin.dto.MenuDto;
 
 @Repository
 public interface DeliveryMenuMapper {
-	public List<MenuDto> bList();
+	public List<MenuDto> bList(String type);
 	public List<String> getBlockMenuList(int store_code);// '준비중' 처리를 위한
 }

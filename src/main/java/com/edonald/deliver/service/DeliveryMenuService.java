@@ -5,5 +5,5 @@ import java.util.List;
 import com.edonald.hadmin.dto.MenuDto;
 
 public interface DeliveryMenuService {
-	public List<MenuDto> bList();
+	public List<MenuDto> bList(String type);
 }

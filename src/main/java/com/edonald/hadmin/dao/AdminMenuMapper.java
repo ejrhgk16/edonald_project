@@ -11,10 +11,10 @@ import com.edonald.hadmin.dto.MenuDto;
 @Repository
 public interface AdminMenuMapper {
 	
-	public List<MenuDto> listAll();
+	public List<MenuDto> listAll(String type);
 	public MenuDto getMenu(String seq);
 	public void insert(MenuDto dto);
-	public void updateStatus(@Param("code")String code,@Param("status") int status);
+	public void updateStatus(@Param("seq")String seq,@Param("status") int status);
 	public void update(MenuDto dto);
 	
 	

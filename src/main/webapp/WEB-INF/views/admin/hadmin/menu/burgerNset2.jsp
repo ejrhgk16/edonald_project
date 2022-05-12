@@ -14,7 +14,7 @@
  		<script type="text/javascript" src="/resources/js/hadmin_menu.js"></script>
     </head>
     <body class="sb-nav-fixed">
-    	<p id="menuType" hidden>burger</p>
+    	<p id="menuType" hidden>${type}</p>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.jsp">관리자</a>
@@ -168,32 +168,36 @@
 
 								<thead>
 									<tr>
-										<th scope="col">상품코드</th>
 										<th scope="col">상품이름</th>
 										<th scope="col">가격</th>
 										<th scope="col">칼로리</th>
-										<th scope="col">상태</th>										
-										
+										<th scope="col">상태</th>							
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="list" items="${list}" varStatus="status">
-										<tr>
-											<td class="list_seq" hidden>${list.seq}</td>
-											<td class="list_code">${list.code}</td>
-											<td>${list.name}</td>
-											<td>${list.price} 원</td>
-											<td>${list.kcal} kcal</td>
-				                            <td>
-				                                <select name="status" class="status_selecter">
-				                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
-				                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
-				                                </select>
-				                            </td>
-				                            <td>
-				                            	<button type="button" class="btn btn-outline-dark btnModify">수정</button>
-				                            </td>
-										</tr>
+										<form action="/hadmin/updateSub.do" id="sub_${list.seq}">
+											<tr>
+												<td class="list_seq" hidden>${list.seq}</td>
+												<td>${list.name}</td>
+												<td>${list.price} 원</td>
+												<td>${list.kcal} kcal</td>
+					                            <td>
+					                                <select name="status" class="status_selecter">
+					                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
+					                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
+					                                </select>
+					                            </td>
+					                            <td>
+					                            	<div class="form-check">
+													  <input class="form-check-input" type="checkbox" value="" id="">
+													</div>
+					                            </td>
+					                            <td>
+					                            	<button type="button" class="btn btn-outline-dark btnModify">수정</button>
+					                            </td>
+											</tr>
+										</form>
 									</c:forEach>
 								</tbody>
 							</table>
