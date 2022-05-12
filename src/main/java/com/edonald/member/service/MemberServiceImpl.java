@@ -16,9 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.CartDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.oauthConfig.NaverLogin;
@@ -123,14 +125,26 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<AddressDto> getAddressList(String username) {
-		// TODO Auto-generated method stub
 		return mapper.getAddress(username);
 	}
 
 	@Override
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress) {
-		// TODO Auto-generated method stub
 		return mapper.getNearStoreList(deliverAddress);
+	}
+
+	@Override
+	public int calcPriceBurger(CartDto dto) {
+		
+		//제품 수량 증가시킬때 hidden값으로 list의 번호를 같이 넘겨줌
+		//장바구니 제품을 삭제할 때 list를 다시 그려줌
+		int price = dto.getCart_product_price();
+		String comp_type = dto.getComp_type();
+		int qty = dto.getCart_product_quant();
+		
+		if(comp_type.equals("set")) {price += 1700;}
+		if(comp_type.equals("large_set")) {price += 2300;}
+		return price*qty;	
 	}
 
 
