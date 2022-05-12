@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	menuRequest("burger");
+	menuRequest("burger",1);
 	
 	//상단 메뉴
 

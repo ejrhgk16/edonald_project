@@ -32,11 +32,13 @@ $(document).ready(function() {
 
 	// 메뉴 이동
 	$('.secondary-menu-item-target').on('click',function(){
-		menuRequest($(this).attr('data-value'));
+		var type = $(this).attr('data-value');
+		var daypartId = $('#daypartId').text();
+		menuRequest(type,daypartId);
 	})
 	
 	//sidebar 아침메뉴 일반메뉴 변경 
-	$(".primary-menu-item").eq(1).on("click", function(e) {
+/*	$(".primary-menu-item").eq(1).on("click", function(e) {
 		e.preventDefault();
 		var partId = $(this).children(".primary-menu-item-target").attr("href");
 		var len = $(".secondary-menu").children();
@@ -69,7 +71,33 @@ $(document).ready(function() {
 			$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
 		}
 	});
-
+*/	
+	
+	$(".primary-menu-item").eq(1).on("click", function(e) {
+		e.preventDefault();
+		var partId = $(this).children(".primary-menu-item-target").attr("href");
+		console.log(partId);
+		if (partId == "?daypartId=1") {
+			$(".secondary-menu-item").children("a").eq(1).children("span").text("버거 & 세트");
+			$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
+			$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=1");
+			$(".primary-menu-item.selected").children("a").children("span").text("일반 메뉴");
+			$(this).children(".primary-menu-item-target").attr("href", "?daypartId=2");
+			$(this).children(".primary-menu-item-target").children("span").text("아침 메뉴");
+			$("#daypartId").text("1");
+			menuRequest("burger",1);
+		} else {
+			$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
+			$(".secondary-menu-item").children("a").eq(1).attr("data-value","burger");
+			$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=2");
+			$(".primary-menu-item.selected").children("a").children("span").text("아침 메뉴");
+			$(this).children(".primary-menu-item-target").attr("href", "?daypartId=1");
+			$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
+			$("#daypartId").text("2");
+			menuRequest("emorning",2);
+		}
+	});
+	
 	$(window).scroll(function() {
 		if ($(".popover.fade.right.in").attr("style") != "") {
 			$(".popover.fade.right.in").attr("style", "");
@@ -88,13 +116,14 @@ $(document).ready(function() {
 
 
 })
-function menuRequest(type){
+function menuRequest(type, daypartId){
 	var url = "/ed/menuPage.do";
 	$.ajax({
 		url: url,
 		type: 'get',
 		data:{
-			type: type
+			type: type,
+			daypartId: daypartId
 		},
 		success: function(result){
 			var html = "<div class=\"row row-narrow changebox\">";

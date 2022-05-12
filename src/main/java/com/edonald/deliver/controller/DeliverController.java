@@ -2,7 +2,9 @@ package com.edonald.deliver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -48,16 +50,19 @@ public class DeliverController {
 	
 
 	@GetMapping("/ed/menuPage")
-	public String menuPage(Authentication authentication, Model model, String type) {
+	public String menuPage(Authentication authentication, Model model) {
 //		SecurityUser user = (SecurityUser) authentication.getPrincipal();
 //		System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());
-		model.addAttribute("list",dService.bList(type));
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	
 	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
-	public @ResponseBody List<MenuDto> menuPageDo(String type) {
-		return dService.bList(type);
+	public @ResponseBody List<MenuDto> menuPageDo(String type, String daypartId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("daypartId", daypartId);
+		System.out.println(map);
+		return dService.bList(map);
 	}
 
 	

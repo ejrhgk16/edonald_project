@@ -267,10 +267,10 @@
 										class="primary-menu-item-target" href="?daypartId=1"><span>일반
 												메뉴</span><i class="fa fa-angle-right"></i></a>
 										<ul class="secondary-menu">
-											<li class="secondary-menu-item selected"><a
-												class="secondary-menu-item-target" href="#" data-value="package"><i
-													class="fa fa-circle"></i> <span>추천 메뉴</span></a></li>
 											<li class="secondary-menu-item "><a
+												class="secondary-menu-item-target" href="#" data-value="package"><i
+													class="fa fa-circle"></i> <span>패키지 메뉴</span></a></li>
+											<li class="secondary-menu-item selected"><a
 												class="secondary-menu-item-target" href="#" data-value="burger"><i
 													class="fa fa-circle"></i> <span>버거 &amp; 세트</span></a></li>
 											<li class="secondary-menu-item "><a
@@ -934,5 +934,6 @@
 			</div>
 		</div>
 	</div>
+	<div id="daypartId" hidden>1</div>
 </body>
 </html>

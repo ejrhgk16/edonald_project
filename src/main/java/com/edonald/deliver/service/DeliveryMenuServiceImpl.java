@@ -1,6 +1,7 @@
 package com.edonald.deliver.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class DeliveryMenuServiceImpl implements DeliveryMenuService {
 	private DeliveryMenuMapper mapper;
 	
 	@Override
-	public List<MenuDto> bList(String type) {
-		return mapper.bList(type);
+	public List<MenuDto> bList(Map<String, String> map) {
+		return mapper.bList(map);
 	}
 
 }
