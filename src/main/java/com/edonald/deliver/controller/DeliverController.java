@@ -61,7 +61,6 @@ public class DeliverController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("daypartId", daypartId);
-		System.out.println(map);
 		return dService.bList(map);
 	}
 
