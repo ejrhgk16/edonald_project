@@ -43,7 +43,7 @@
 			$('input[name=comp1_name]').val("후렌치 후라이");
 			$('input[name=comp2_name]').val("콜라");
 			if(setCheck == 'Set'){
-				$('intput[name=comp_type]').val("set");
+				$('input[name=comp_type]').val("set");
 				setCheck = "세트"
 			}else{setCheck="라지세트"
 				$('input[name=comp_type]').val("large_set");

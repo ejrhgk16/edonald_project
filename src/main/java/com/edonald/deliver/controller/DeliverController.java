@@ -27,6 +27,8 @@ import com.edonald.deliver.service.DeliveryMenuService;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.MemberDto;
+import com.edonald.member.dto.OrderListDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.oauthConfig.NaverLogin;
 
@@ -50,9 +52,20 @@ public class DeliverController {
 	
 
 	@GetMapping("/ed/menuPage")
-	public String menuPage(Authentication authentication, Model model) {
-//		SecurityUser user = (SecurityUser) authentication.getPrincipal();
-//		System.out.println("네이버로그인 시큐리티 연동 조인단에서 " + user.getUsername());
+	public String menuPage(Authentication authentication, HttpSession session) {
+		if(authentication != null && session.getAttribute("orderListDto") == null) {
+			 SecurityUser user = (SecurityUser)authentication.getPrincipal();
+			 MemberDto memberDto = user.getMemberDto();
+			 String user_address = memberDto.getDeliverAddress().getRoad_address();
+			 user_address = user_address + " - "+ memberDto.getDeliverAddress();
+			OrderListDto orderListDto  = new OrderListDto();
+			orderListDto.setUser_address(user_address);
+			orderListDto.setStore_code(memberDto.getDeliverStore().getStore_code());
+			orderListDto.setUser_email(memberDto.getUser_email());
+			orderListDto.setUser_type(1); //1회원 2 비회원
+			orderListDto.setUser_phone(memberDto.getUser_phone());
+			session.setAttribute("orderListDto", orderListDto);
+		}
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	
@@ -61,6 +74,7 @@ public class DeliverController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("daypartId", daypartId);
+		
 		return dService.bList(map);
 	}
 

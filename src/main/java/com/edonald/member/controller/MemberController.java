@@ -124,26 +124,22 @@ public class MemberController {
 	}
 
 	@PostMapping("/member/cartAdd")
-	public String cartAdd(CartDto cartDto, HttpServletRequest req, Authentication authentication) {
+	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication) {
 		System.out.println("cartAdd ! ");
 		String menu_type = cartDto.getMenu_type();
 		int plusPrice = 0;
-		if(menu_type.equals("burger")) {
-			plusPrice= memberService.calcPriceBurger(cartDto);	
+		if (menu_type.equals("burger")) {
+			plusPrice = memberService.calcPriceBurger(cartDto);
+			System.out.println("plus price  " + plusPrice);
 		}
-		HttpSession session = req.getSession();
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		if (orderListDto == null) {
-			orderListDto = new OrderListDto();
-			orderListDto.setTotal_price(plusPrice);
-			orderListDto.getCartList().add(cartDto);
-			session.setAttribute("orderListDto", orderListDto);
-		}else {
-			int orignTotalPrice = orderListDto.getTotal_price();
-			int newTotalPrice = orignTotalPrice + plusPrice;
-			orderListDto.setTotal_price(newTotalPrice);
-			orderListDto.getCartList().add(cartDto);
-		}
+		int orignTotalPrice = orderListDto.getTotal_price();
+		System.out.println("total  :  "+orignTotalPrice);
+		int newTotalPrice = orignTotalPrice + plusPrice;
+		orderListDto.setTotal_price(newTotalPrice);
+		orderListDto.getCartList().add(cartDto);
+		OrderListDto orderListDto2 = (OrderListDto) session.getAttribute("orderListDto");
+		System.out.println(orderListDto2.getTotal_price());
 		return "redirect:/ed/menuPage";
 	}
 

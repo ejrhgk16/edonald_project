@@ -140,6 +140,8 @@ public class MemberServiceImpl implements MemberService {
 		//장바구니 제품을 삭제할 때 list를 다시 그려줌
 		int price = dto.getCart_product_price();
 		String comp_type = dto.getComp_type();
+		System.out.println("ct  -- "+comp_type);
+		System.out.println("comp1 -- " + dto.getComp1_name());
 		int qty = dto.getCart_product_quant();
 		
 		if(comp_type.equals("set")) {price += 1700;}
