@@ -1,6 +1,5 @@
 package com.edonald.member.service;
 
-import java.net.http.HttpRequest;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

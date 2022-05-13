@@ -34,7 +34,6 @@ $(document).ready(function() {
 	$('.secondary-menu-item-target').on('click',function(){
 		var type = $(this).attr('data-value');
 		var daypartId = $('#daypartId').text();
-		console.log(type+","+daypartId);
 		menuRequest(type,daypartId);
 	})
 	

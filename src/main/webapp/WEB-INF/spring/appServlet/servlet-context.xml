@@ -30,5 +30,6 @@
 
 	<context:component-scan base-package="com.edonald.faq"/>
 	<context:component-scan base-package="com.edonald.hadmin"/>
+	<context:component-scan base-package="com.edonald.sadmin"/>
 
 </beans:beans>

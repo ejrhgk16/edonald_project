@@ -183,13 +183,15 @@
 									<c:forEach var="list" items="${list}" varStatus="status">
 										<tr>
 											<td class="list_seq" hidden>${list.seq}</td>
-											<td>${list.name}</td>
-											<td>${list.price} 원</td>
-											<td>${list.kcal} kcal</td>
+											<td class="each-menu">${list.name}</td>
+											<td class="each-menu">${list.price} 원</td>
+											<td class="each-menu">${list.kcal} kcal</td>
 				                            <td>
 				                                <select name="status" class="status_selecter">
-				                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>활성화</option>
 				                                    <option value="0" <c:if test="${list.status eq 0}">selected="selected"</c:if>>비활성화</option>
+				                                    <option value="1" <c:if test="${list.status eq 1}">selected="selected"</c:if>>오후메뉴</option>
+				                                    <option value="2" <c:if test="${list.status eq 2}">selected="selected"</c:if>>오전메뉴</option>
+				                                    <option value="3" <c:if test="${list.status eq 3}">selected="selected"</c:if>>일반메뉴</option>
 				                                </select>
 				                            </td>
 				                            <td>
