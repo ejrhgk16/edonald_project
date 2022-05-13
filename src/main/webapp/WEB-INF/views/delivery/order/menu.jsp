@@ -21,22 +21,51 @@
 				addMenu(setCheck);
 			}
 		});
-		
+
 		$(document).on("click", "#cartAddBtn",  function(){
 			alert("click");
 			$("#cartAdd").submit();
 		});
 		
-		//$('input:radio[name=select-choice]').is(':checked');
+		$(document).on("click", ".action-increase", function(){
+			var qty = $(".form-control").val();
+			qty = parseInt(qty);
+			qty += 1;
+			if(qty > 10){
+				alert("최대 수량은 10개입니다");
+			}else{
+				$(".form-control").val(qty);
+				$("input[name=cart_product_quant]").val(qty);
+
+			}
+		})
+		
+		$(document).on("click", ".action-decrease ", function(){
+			var qty = $(".form-control").val();
+			qty = parseInt(qty);
+			qty -= 1;
+			if(qty < 1){
+				alert("최소 한 개 선택하세요");
+			}else{
+				$(".form-control").val(qty);
+				$("input[name=cart_product_quant]").val(qty);
+			}
+		})
+	
 	});	
 	
 	function addMenu(setCheck){
 		console.log(setCheck);
-		var html = '<div class="menuSelect"><hr> '
+		var html = '<div class="menuSelect"><hr>' 
+		var btnHtml  =''
+				btnHtml += '<div class="input-group item-quantity item-quantity-picker" align="left">'
+				btnHtml += '<span class="input-group-btn"><button type="button" class="btn btn-decrease action-decrease btn-black">-</button></span>'
+				btnHtml += '<input type="number" value="1" min="0" max="10" class="form-control" maxlength="1" readonly="true">'
+				btnHtml +=	'<span class="input-group-btn"><button type="button" class="btn btn-increase action-increase btn-black">+</button></span></div>'
 		if(setCheck == 'Single'){
 			$('input[name=comp_type]').val("single");
 			setCheck = "단품";
-			html = html + '<div class="header-title-column"><h3 class="item-title">'+ setCheck+ '</h3><br></div>'
+			html = html + '<div class="header-title-column" align="center"><h3 class="item-title">'+ setCheck+ '</h3></div><br>'+btnHtml+'</div>' 
 			$("#added-sets").append(html);
 			return ;
 		}else {
@@ -48,11 +77,11 @@
 			}else{setCheck="라지세트"
 				$('input[name=comp_type]').val("large_set");
 			}
-				html = html + '<div class="header-title-column"><h3 class="item-title">'+ setCheck+'</h3></div>'
-				html += '<br><div class="item-name item-id-1411" data-display-order="2" >해쉬브라운'
+				html = html + '<div class="header-title-column" align="center"><h3 class="item-title">'+ setCheck+'</h3></div>'
+				html += '<br><div class="item-name item-id-1411" data-display-order="2" align="center" >해쉬브라운'
 				html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div>' 
-				html += '<div class="item-name item-id-1411" data-display-order="2" >콜라'
-				html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div><br></div>'
+				html += '<div class="item-name item-id-1411" data-display-order="2" align="center" >콜라'
+				html +=' <a href="#" data-toggle="modal" class="action-change">변경</a> </div>'+btnHtml+'</div>'
 				
 				$("#added-sets").append(html);
 				return;

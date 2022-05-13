@@ -110,7 +110,8 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href=""> <img
-							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
+							alt="McDelivery&amp;trade;">
 
 						</a>
 					</div>
@@ -268,27 +269,29 @@
 												메뉴</span><i class="fa fa-angle-right"></i></a>
 										<ul class="secondary-menu">
 											<li class="secondary-menu-item "><a
-												class="secondary-menu-item-target" href="#" data-value="package"><i
-													class="fa fa-circle"></i> <span>패키지 메뉴</span></a></li>
+												class="secondary-menu-item-target" href="#"
+												data-value="package"><i class="fa fa-circle"></i> <span>패키지
+														메뉴</span></a></li>
 											<li class="secondary-menu-item selected"><a
-												class="secondary-menu-item-target" href="#" data-value="burger"><i
-													class="fa fa-circle"></i> <span>버거 &amp; 세트</span></a></li>
+												class="secondary-menu-item-target" href="#"
+												data-value="burger"><i class="fa fa-circle"></i> <span>버거
+														&amp; 세트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=13" data-value="side"><i class="fa fa-circle"></i>
-													<span>스낵 &amp; 사이드</span></a></li>
+												href="?daypartId=1&amp;catId=13" data-value="side"><i
+													class="fa fa-circle"></i> <span>스낵 &amp; 사이드</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=14" data-value="drink"><i class="fa fa-circle"></i>
-													<span>음료</span></a></li>
+												href="?daypartId=1&amp;catId=14" data-value="drink"><i
+													class="fa fa-circle"></i> <span>음료</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=15" data-value="dessert"><i class="fa fa-circle"></i>
-													<span>디저트</span></a></li>
+												href="?daypartId=1&amp;catId=15" data-value="dessert"><i
+													class="fa fa-circle"></i> <span>디저트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=16" data-value="happymeal"><i class="fa fa-circle"></i>
-													<span>해피밀®</span></a></li>
+												href="?daypartId=1&amp;catId=16" data-value="happymeal"><i
+													class="fa fa-circle"></i> <span>해피밀®</span></a></li>
 
 										</ul></li>
 
@@ -362,93 +365,223 @@
 											var price = ${list.price};
 											price = comma(price);
 											</script>
-												<div class="product-card product-card--standard">
-													<div class="panel panel-default panel-product">
-														<div class="panel-body">
-															<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.img_path}" class="img-block">
-															<h5 class="product-title" style="height: 30.8px;">${list.name}</h5>
-															<div class="product-badges"></div>
-														</div>
-														<div class="panel-footer">
-															<div class="row row-narrow">
-																<div class="product-info" style="height: 78.3px;">
-																	<div class="product-details">
-																		<div class="product-cost">
-																			가격 ₩ <span class="starting-price"><script type="text/javascript">document.write(price);</script></span>
-																		</div>
-																		<div class="product-nutritional-info">
-	
-																			<span class="text-default">${list.kcal} Kcal</span>
-																		</div>
-	
-																		<div class="product-allergen-info">
-																			<div>
-																				<a href="#" class="action-link"
-																					data-toggle="html-popover" data-placement="bottom"
-																					data-html="true"
-																					data-content-selector=".popover-details"
-																					data-original-title="" title="">
-																					<i class="mcd icon mcd-allergen"></i> 
-																					<span class="text-default">알레르기 정보</span>
-																				</a>
-																			
-																				<div class="popover-details">
-																					<div class="popover-wrapper type-sans">
-																						<h4>${list.name }</h4>
-																						<div>${list.name } (${list.allergy})</div>
-																					</div>
+											<div class="product-card product-card--standard">
+												<div class="panel panel-default panel-product">
+													<div class="panel-body">
+														<img
+															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.img_path}"
+															class="img-block">
+														<h5 class="product-title" style="height: 30.8px;">${list.name}</h5>
+														<div class="product-badges"></div>
+													</div>
+													<div class="panel-footer">
+														<div class="row row-narrow">
+															<div class="product-info" style="height: 78.3px;">
+																<div class="product-details">
+																	<div class="product-cost">
+																		가격 ₩ <span class="starting-price"><script
+																				type="text/javascript">document.write(price);</script></span>
+																	</div>
+																	<div class="product-nutritional-info">
+
+																		<span class="text-default">${list.kcal} Kcal</span>
+																	</div>
+
+																	<div class="product-allergen-info">
+																		<div>
+																			<a href="#" class="action-link"
+																				data-toggle="html-popover" data-placement="bottom"
+																				data-html="true"
+																				data-content-selector=".popover-details"
+																				data-original-title="" title=""> <i
+																				class="mcd icon mcd-allergen"></i> <span
+																				class="text-default">알레르기 정보</span>
+																			</a>
+
+																			<div class="popover-details">
+																				<div class="popover-wrapper type-sans">
+																					<h4>${list.name }</h4>
+																					<div>${list.name }(${list.allergy})</div>
 																				</div>
 																			</div>
 																		</div>
-	
 																	</div>
-																</div>
-																<div class="product-controls">
-																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-	
-																	<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
-																	<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
 
-																		<a data-productid="789" class="btn btn-block action-create btn-yellow" href="">													
-																		Order
-																		</a>
-																		
-																		<form action="/member/orderMenu" method="post" class="menuInfo">
-																			<input type="hidden" name="name" value="${list.name}">
-																			<input type="hidden" name="kcal" value="${list.kcal}">
-																			<input type="hidden" name="img_path" value="${list.img_path}">
-																			<input type="hidden" name="status" value="${list.status}">
-																			<input type="hidden" name="type" value="${list.type}">
-																			<input type="hidden" name="price" value="${list.price}">
-																			<input type="hidden" name="allergy" value="${list.allergy}">
-																			<input type="hidden" name="seq" value="${list.seq}">
-																			
-																		</form>
-																	
 																</div>
+															</div>
+															<div class="product-controls">
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+
+																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
+																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
+
+																<a data-productid="789"
+																	class="btn btn-block action-create btn-yellow" href="">
+																	Order </a>
+
+																<form action="/member/orderMenu" method="post"
+																	class="menuInfo">
+																	<input type="hidden" name="name" value="${list.name}">
+																	<input type="hidden" name="kcal" value="${list.kcal}">
+																	<input type="hidden" name="img_path"
+																		value="${list.img_path}"> <input type="hidden"
+																		name="status" value="${list.status}"> <input
+																		type="hidden" name="type" value="${list.type}">
+																	<input type="hidden" name="price" value="${list.price}">
+																	<input type="hidden" name="allergy"
+																		value="${list.allergy}"> <input type="hidden"
+																		name="seq" value="${list.seq}">
+
+																</form>
+
 															</div>
 														</div>
 													</div>
 												</div>
+											</div>
 											<script type="text/javascript">
 											</c:forEach>
 											</script>
-											
+
 										</div>
 									</div>
 
 								</div>
 								<div class="col-xs-4">
-									<div class="panel panel-basic panel-narrow">
-										<div class="panel-section-group">
-											<section class="panel-section how-it-works">
-												<a href="#signin" data-toggle="modal" data-target="#signin"><img
-													src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_portrait_ko.png"></a>
-											</section>
+									<c:choose>
+										<c:when test="${empty principal }">
+											<div class="panel panel-basic panel-narrow">
+												<div class="panel-section-group">
+													<section class="panel-section how-it-works">
+														<a href="#signin" data-toggle="modal"
+															data-target="#signin"><img
+															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_portrait_ko.png"></a>
+													</section>
+												</div>
+											</div>
+										</c:when>
 
-										</div>
-									</div>
+										<c:otherwise>
+											<div id="order-widget"
+												class="panel panel-basic panel-narrow order-summary">
+												<div class="panel-heading">
+													<h3 class="text-center">내 주문 정보</h3>
+												</div>
+												<div class="panel-section-group">
+													<section class="panel-section section-delivery-address">
+														<table class="table-default table-delivery-address">
+															<tbody>
+																<tr>
+																	<th scope="row">배달 주소:
+																		<div>
+																			<a href="#" data-target="#deliveryOptions"
+																				data-toggle="modal"
+																				class="action-link action-edit action-edit-address">변경</a>
+																		</div>
+																	</th>
+																	<td>
+																		<div>${orderListDto.user_address}</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</section>
+													<section class="panel-section section-cost-breakdown">
+																<script>
+																		var total_price = ${orderListDto.total_price};
+																		total_price = comma(total_price);
+																		var deliver_cost = ${orderListDto.deliverCost};
+																		deliver_cost = comma(deliver_cost);
+															</script>
+														<table class="table-default table-cost">
+															<tfoot class="total">
+																<tr>
+
+																	<th scope="row">총 주문합계:</th>
+																	<td><span><script>₩ document.write(total_price)</script></span></td>
+																</tr>
+															</tfoot>
+															<tbody>
+																<tr>
+																	<th scope="row">소액 주문비:</th>
+																	<td>₩ document.write(deliver_cost)</td>
+																</tr>
+															</tbody>
+														</table>
+														<p class="notes">최소 주문 금액 : ₩ 3,000</p>
+														<fieldset class="form-actions text-center">
+															<div class="form-group">
+																<a href="#" id="order-widget-submit"
+																	class="btn btn-red btn-block btn-xl">결제</a>
+															</div>
+														</fieldset>
+													</section>
+													<section class="panel-section section-promocode">
+														<div>
+															 <span>쿠폰코드 입력</span> 
+															<div id="enter-promocode" class="collapse in"
+																aria-expanded="true" style="">
+																<form class="form-promocode" role="form"
+																	id="form_promocode" name="form_promocode" method="post"
+																	accept-charset="UTF-8" action="/kr/applyCoupon.html">
+
+																	<div class="form-group">
+																		<div class="input-group">
+																			<input type="text" name="couponCode" id="couponCode"
+																				class="form-control">
+																			<div class="input-group-btn">
+																				<button type="submit" class="btn btn-red">
+																					적용</button>
+																			</div>
+																		</div>
+																		<label for="enter-promocode" class="control-hint"></label>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</section>
+													<section class="panel-section section-order-items">
+														<h3>주문 세부사항</h3>
+														<div class="empty-template">추가된 항목이 없습니다.</div>
+
+														<form class="order-items item-list" action="" method="DELETE">
+															<c:forEach items="${orderListDto.cartList}" var="cartItem" varStatus="num">
+															<div class="order-item list-item ${num.index}">
+																<div>
+																	<div>
+																		<div class="item-heading clearfix">
+																		<div class="quantity">${cartItem.cart_product_quant}</div>
+																			<div class="picture">
+																				<img alt="" class="img-block" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${cartItem.cart_product_img_path}">
+																			</div>
+																			<div class="details">
+																				<h5 class="product-name">${cartItem.cart_product_name}</h5>
+																				<ul>
+																				</ul>
+																			</div>
+																		</div>
+																		<div class="item-body clearfix">
+																			<div style="padding : 20px 0px 0px 10px">
+																				<button style="border: 0">삭제</button>
+																				<input type="hidden" name="index" value="{num.index}">
+																				<script>
+																					var calc_price = ${cartItem.calc_price};
+																					calc_price = comma(calc_price);
+																				</script>
+																				<span class="cost" >₩ document.write(calc_price)</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															</c:forEach>
+														</form>
+													</section>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>

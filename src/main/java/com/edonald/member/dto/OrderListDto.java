@@ -28,4 +28,5 @@ public class OrderListDto {
 	private String cupon_title;
 	private Date time_esti;//배달 예상 시간
 	private List<CartDto>cartList =new ArrayList<CartDto>();
+	private int deliverCost;//배달비 2500
 }

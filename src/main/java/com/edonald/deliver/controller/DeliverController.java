@@ -64,8 +64,11 @@ public class DeliverController {
 			orderListDto.setUser_email(memberDto.getUser_email());
 			orderListDto.setUser_type(1); //1회원 2 비회원
 			orderListDto.setUser_phone(memberDto.getUser_phone());
+			orderListDto.setDeliverCost(2500);
 			session.setAttribute("orderListDto", orderListDto);
 		}
+		
+		
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	

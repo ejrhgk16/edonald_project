@@ -22,4 +22,5 @@ public class CartDto {
 	private String comp8_name;
 	private String comp_type;
 	private String menu_type;
+	private int calc_price;
 }

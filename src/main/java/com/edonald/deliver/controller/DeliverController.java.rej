@@ -1,0 +1,13 @@
+diff a/src/main/java/com/edonald/deliver/controller/DeliverController.java b/src/main/java/com/edonald/deliver/controller/DeliverController.java	(rejected hunks)
+@@ -55,7 +55,10 @@
+ 		return "/delivery/deliverhome/deliverMenu";
+ 	}
+ 	
+-	
++	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
++	public @ResponseBody List<MenuDto> menuPageDo(String type) {
++		return dService.bList(type);
++	}
+ 
+ 	
+ }
