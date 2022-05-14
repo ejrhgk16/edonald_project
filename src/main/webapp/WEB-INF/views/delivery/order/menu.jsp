@@ -23,7 +23,6 @@
 		});
 
 		$(document).on("click", "#cartAddBtn",  function(){
-			alert("click");
 			$("#cartAdd").submit();
 		});
 		
@@ -64,6 +63,8 @@
 				btnHtml +=	'<span class="input-group-btn"><button type="button" class="btn btn-increase action-increase btn-black">+</button></span></div>'
 		if(setCheck == 'Single'){
 			$('input[name=comp_type]').val("single");
+			$('input[name=cart_product_img_path]').val("${menuDto.img_path}");
+			console.log($('input[name=cart_product_img_path]').val())
 			setCheck = "단품";
 			html = html + '<div class="header-title-column" align="center"><h3 class="item-title">'+ setCheck+ '</h3></div><br>'+btnHtml+'</div>' 
 			$("#added-sets").append(html);
@@ -71,6 +72,8 @@
 		}else {
 			$('input[name=comp1_name]').val("후렌치 후라이");
 			$('input[name=comp2_name]').val("콜라");
+			$('input[name=cart_product_img_path]').val("${menuDto.set_img_path}");
+			console.log($('input[name=cart_product_img_path]').val())
 			if(setCheck == 'Set'){
 				$('input[name=comp_type]').val("set");
 				setCheck = "세트"
@@ -287,11 +290,13 @@
 						</div>
 						<div class="media-right text-center">
 						<input type="hidden" name="comp1_name" value="123123">
-						<form action="/member/cartAdd" method="post" id="cartAdd">
+						<form action="/order/cart/add" method="post" id="cartAdd">
 							<input type="hidden" name="cart_product_code" value="${menuDto.seq}">
 							<input type="hidden" name="cart_product_name"  value="${menuDto.name}">
 							<input type="hidden" name="cart_product_price"  value="${menuDto.price}">
 							<input type="hidden"  name="cart_product_quant" value="1">
+							<input type="hidden"  name="cart_product_img_path" value="">
+							
 							<input type="hidden" name="menu_type"  value="${menuDto.type}">
 							<input type="hidden"  name="comp_type" value="">
 							<input type="hidden" name="comp1_name" value="">

@@ -1,7 +1,10 @@
 package com.edonald.order.service;
 
+import org.springframework.stereotype.Service;
+
 import com.edonald.order.dto.CartDto;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
 	@Override

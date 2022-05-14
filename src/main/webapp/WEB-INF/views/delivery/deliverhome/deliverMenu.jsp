@@ -30,17 +30,58 @@
 		$(document).on("click", "#delBtn", function(e){
 				e.preventDefault();
 				var index = $("input[name=cartIndex]").val();
+				var url = "/order/cart/del?cartIndex="+index
 				console.log(index);
 				$.ajax({ 
 					type: "GET",
-					url: "/order/cartDel", 
-					dataType: "text", 
+					url: url, 
+					dataType: "json", 
 					error: function() { alert('통신실패!!'); }, 
-					success: function(data) { 
+					success: function(res) {
+						console.log(res);
+						var cart = '';
+						$.each(res.cartList, function(index, item){
+							 cart += cartView(item, index);
+						})
+						
+						var total_price = res.total_price;
+						if(!total_price){total_price = 0}
+						total_price ='₩ '+comma(total_price);
+
+						
+						var deliver_cost = res.deliverCost;
+						if(!deliver_cost){deliver_cost = 0}
+						deliver_cost = '₩ '+comma(deliver_cost);
+						console.log(deliver_cost)
+						
+						$(".order-items").html(cart);
+						$("#totalCost").text(total_price);
+						$("#deliverCost").text(deliver_cost);
+						
 					} 
-				
-				
 		})
+		})
+		
+		function cartView(item, index){
+			var cart = '<div class="order-item list-item"><div><div><div class="item-heading clearfix">';
+			cart += '<div class="quantity">'+item.cart_product_quant+'</div><div class="picture">'
+			cart += '<img alt="" class="img-block" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/'+item.cart_product_img_path+'"></div>'
+			cart += '<div class="details"><h5 class="product-name">'+ item.cart_product_name+' '+item.comp_type+'</h5><ul>'
+			if(item.comp1_name){cart+='<li>'+item.comp1_name+'</li>'}
+			if(item.comp2_name){cart+='<li>'+item.comp2_name+'</li>'}
+			if(item.comp3_name){cart+='<li>'+item.comp3_name+'</li>'}
+			if(item.comp4_name){cart+='<li>'+item.comp4_name+'</li>'}
+			if(item.comp5_name){cart+='<li>'+item.comp5_name+'</li>'}
+			if(item.comp6_name){cart+='<li>'+item.comp6_name+'</li>'}
+			if(item.comp7_name){cart+='<li>'+item.comp7_name+'</li>'}
+			if(item.comp8_name){cart+='<li>'+item.comp8_name+'</li>'}
+			cart += '</ul></div></div><div class="item-body clearfix"><div style="padding : 20px 0px 0px 10px">'
+			cart += '<button id="delBtn" style="border: 0">삭제</button><input type="hidden" name="cartIndex" value="'+index+'">'
+			var calc_price = item.calc_price;
+			calc_price = '₩ '+ comma(calc_price)
+			cart += '<span class="cost" >'+calc_price+'</span></div></div></div></div></div>'
+			return cart;
+		}
 		
 	})
 </script>
@@ -434,7 +475,7 @@
 																	class="btn btn-block action-create btn-yellow" href="">
 																	Order </a>
 
-																<form action="/member/orderMenu" method="post"
+																<form action="/order/orderMenu" method="post"
 																	class="menuInfo">
 																	<input type="hidden" name="name" value="${list.name}">
 																	<input type="hidden" name="kcal" value="${list.kcal}">
@@ -512,15 +553,14 @@
 														<table class="table-default table-cost">
 															<tfoot class="total">
 																<tr>
-
 																	<th scope="row">총 주문합계:</th>
-																	<td><span><script>document.write(total_price);</script></span></td>
+																	<td><span id="totalCost"><script>document.write(total_price);</script></span></td>
 																</tr>
 															</tfoot>
 															<tbody>
 																<tr>
 																	<th scope="row">소액 주문비:</th>
-																	<td><script>document.write(deliver_cost)</script></td>
+																	<td><span id="deliverCost"><script>document.write(deliver_cost)</script></span></td>
 																</tr>
 															</tbody>
 														</table>
@@ -558,8 +598,6 @@
 													</section>
 													<section class="panel-section section-order-items">
 														<h3>주문 세부사항</h3>
-														<div class="empty-template">추가된 항목이 없습니다.</div>
-
 														<form class="order-items item-list" action="" method="DELETE">
 															<c:forEach items="${orderListDto.cartList}" var="cartItem" varStatus="status">
 															<div class="order-item list-item ${status.index}">
@@ -571,9 +609,33 @@
 																				<img alt="" class="img-block" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${cartItem.cart_product_img_path}">
 																			</div>
 																			<div class="details">
-																				<h5 class="product-name">${cartItem.cart_product_name}</h5>
+																				<h5 class="product-name">${cartItem.cart_product_name} ${cartItem.comp_type}</h5>
 																				<ul>
-																				</ul>
+																						<c:if test="${!empty cartItem.comp1_name}">
+																							<li>${cartItem.comp1_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp2_name}">
+																							<li>${cartItem.comp2_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp3_name}">
+																							<li>${cartItem.comp3_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp4_name}">
+																							<li>${cartItem.comp4_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp5_name}">
+																							<li>${cartItem.comp5_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp6_name}">
+																							<li>${cartItem.comp6_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp7_name}">
+																							<li>${cartItem.comp7_name}</li>
+																						</c:if>
+																						<c:if test="${!empty cartItem.comp8_name}">
+																							<li>${cartItem.comp8_name}</li>
+																						</c:if>
+																					</ul>
 																			</div>
 																		</div>
 																		<div class="item-body clearfix">
@@ -704,348 +766,8 @@
 		</div>
 
 	</div>
-	<div id="loading-view" class="loading-view hidden">
-		<div class="loading">
-			<span class="loading-icon"></span>
-		</div>
-	</div>
 
 
-
-	<div id="signin" class="modal-login modal fade signin-modal"
-		role="dialog" aria-labelledby="modal-title" aria-hidden="true"
-		tabindex="-1">
-		<div class="modal-backdrop fade in" style="height: 754px;"></div>
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-
-
-
-					<img class="logo" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="">
-
-
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-
-					<h2 id="modal-title">주문을 하시려면 로그인하시기 바랍니다.</h2>
-
-
-
-
-					<div class="row">
-						<div class="col-xs-offset-3 col-xs-6">
-							<ul id="signin-nav-tabs-login-fragment"
-								class="nav nav-tabs nav-tabs-login-fragment">
-								<li class="active"><a href="#modal-signin-tab-login"
-									data-toggle="tab"
-									onclick="dataLayer.push({               'event': 'trackEvent',               'eventDetails.category': 'sign in modal',               'eventDetails.action': 'click popup modal',               'eventDetails.label': 'sign in'              });">로그인</a>
-								</li>
-
-								<li class=""><a href="#modal-signin-tab-new"
-									data-toggle="tab"
-									onclick="dataLayer.push({               'event': 'trackEvent',               'eventDetails.category': 'sign in modal',               'eventDetails.action': 'click popup modal',               'eventDetails.label': 'i am new'              });">비회원
-										주문</a></li>
-
-
-							</ul>
-							<div class="tab-content clearfix">
-								<div class="tab-pane active" id="modal-signin-tab-login">
-									<form action="#" method="post" accept-charset="utf-8"
-										role="form" id="form_login_modal" name="form_login_modal"
-										class="form-login-modal form-login"
-										data-required-symbol="false" novalidate="novalidate">
-
-										<fieldset class="form-credentials">
-											<div class="list-group textfield-list-group">
-												<div class="list-group-item textfield-list-group-item">
-													<label class="sr-only" for="form_login_modal_username">아이디</label>
-													<input type="text" name="userName"
-														id="form_login_modal_username"
-														class="required email list-group-form-control"
-														placeholder="아이디" value="" aria-required="true">
-												</div>
-												<div class="list-group-item textfield-list-group-item">
-													<label class="sr-only" for="form_login_modal_password">비밀번호</label>
-
-
-													<input type="password" name="password"
-														id="form_login_modal_password"
-														class="required list-group-form-control"
-														placeholder="비밀번호" autocomplete="off" maxlength="20"
-														value="" aria-required="true">
-												</div>
-											</div>
-											<label id="errorTips" style="display: none;"></label>
-											<div class="checkbox">
-												<div class="icheckbox" style="position: relative;">
-													<input type="checkbox" name="rememberMe"
-														id="modal_login_rememberme" value="true"
-														style="position: absolute; opacity: 0;">
-													<ins class="iCheck-helper"
-														style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-												</div>
-												<input type="hidden" name="_rememberMe" value="on">
-												<label for="modal_login_rememberme" class="checkbox-label">자동
-													로그인</label>
-											</div>
-										</fieldset>
-										<fieldset class="form-actions">
-
-											<button type="button"
-												class="isLoginSuccessGtmEnabled btn btn-default btn-red btn-block btn-xl btn-submit">로그인</button>
-
-
-											<p class="action-forgot-password">
-												<a class="action-link" href="">비밀번호 찾기</a>
-											</p>
-
-
-										</fieldset>
-									</form>
-
-									<div
-										class="frament-new-user section-border-top margin-bottom-0 centered-text">
-
-										<a class="btn btn-block btn-red btn-xl"
-											onclick="                   dataLayer.push({                    'event':'trackEvent',                    'eventDetails.category':'i am new',                    'eventDetails.action':'click popup modal',                    'eventDetails.label':'register now'                   });                  "
-											href=""> <span>회원가입</span>
-										</a>
-
-
-									</div>
-									<a href="#member-benefits" class="h5 text-link"
-										data-toggle="html-popover" data-container="body"
-										data-placement="top" data-html="true"
-										data-content-selector="#member-benefits"
-										data-original-title="" title=""> <span
-										class="text-default">회원가입 하시고 다양한 혜택을 누리세요</span> <i
-										class="mcd icon mcd-detail"></i>
-									</a>
-									<div id="member-benefits"
-										class="popover-wrapper popover-details">
-										<div class="popover-wrapper">
-											<h5 class="text-default">신규 계정 생성</h5>
-											<div class="guest-order-note"
-												style="max-width: 300px !important; width: 300px !important;">맥딜리버리
-												회원에게만 제공되는 할인 및 프로모션 혜택을 누리고, 지난 주문 내역을 검색하거나 즐겨찾기 메뉴를 이용해서
-												더 빠르고 편리하게 맥딜리버리를 이용하세요.</div>
-										</div>
-									</div>
-
-
-								</div>
-								<div class="tab-pane " id="modal-signin-tab-new">
-
-									<div class="frament-guest-order">
-										<div class="guest-order-header">회원가입하지 않고 주문하기</div>
-										<div class="guest-order-note">온라인 결제로 즉시 주문</div>
-										<a class="btn btn-block btn-red btn-xl"
-											onclick="dataLayer.push(               {                'event': 'trackEvent',                'eventDetails.category': 'i am new',                'eventDetails.action': 'click popup modal',                'eventDetails.label': 'guest order'               });"
-											href="">비회원 주문</a>
-									</div>
-								</div>
-
-							</div>
-
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="trackOrder" class="modal-trackorder modal fade"
-		data-backdrop="static" role="dialog"
-		aria-labelledby="trackorder-title" aria-hidden="true" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 id="trackorder-title">주문 조회</h1>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>주문 번호를 입력하시면 고객님의 주문의 진행상황을 확인하실 수 있습니다.</p>
-					<form action="/kr/searchOrder.html" method="post" role="form"
-						id="form_trackOrder" name="form_trackOrder"
-						class="form form-track-order" novalidate="novalidate">
-
-						<div class="form-group">
-							<label class="field-label" for="form_trackOrder_orderNum">주문
-								번호:</label> <input type="text" class="form-control input-lg required"
-								id="form_trackOrder_orderNum" name="orderNum"
-								aria-required="true">
-						</div>
-						<div class="form-group">
-							<button type="submit"
-								class="btn btn-default btn-red btn-lg text-ucase">확인</button>
-						</div>
-						<input type="hidden" name="csrfValue"
-							value="59a76edb4778114cb3a1ecdcd891bc82">
-					</form>
-					<p class="note">주문 관련 문의사항은 맥딜리버리 콜센터로연락하시기 바랍니다1600-5252.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="alertCartCleared-signin" data-backdrop="static"
-		class="modal-cartcleared modal-alert modal fade" role="dialog"
-		aria-labelledby="cartcleared-title" aria-hidden="true" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 id="cartcleared-title">이전 선택한 메뉴는 취소됩니다.</h1>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="alert-content">
-						<p>진행하시겠습니까?</p>
-						<p>
-							<button data-dismiss="modal" aria-hidden="true"
-								class="btn btn-default btn-black btn-lg text-ucase">
-								아니오</button>
-							<button data-switch-modal="#signin" data-toggle="modal"
-								aria-hidden="true"
-								class="btn btn-default btn-red btn-lg text-ucase"
-								onclick="dataLayer.push({                          'event' : 'trackEvent',                          'eventDetails.category': 'cart clearance',                          'eventDetails.action': 'cart is cleared',                          'eventDetails.label': 'guest signin'                         });">
-								예</button>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="alertCartCleared-changeaddress" data-backdrop="static"
-		class="modal-cartcleared modal-alert modal fade" role="dialog"
-		aria-labelledby="cartcleared-title" aria-hidden="true" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 id="cartcleared-title">이전 선택한 메뉴는 취소됩니다.</h1>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="alert-content">
-						<p>진행하시겠습니까?</p>
-						<p>
-							<button data-dismiss="modal" aria-hidden="true"
-								class="btn btn-default btn-black btn-lg text-ucase">
-								아니오</button>
-							<button
-								data-dismiss-trigger="changeaddress.cartcleared.action.yes"
-								aria-hidden="true"
-								class="btn btn-default btn-red btn-lg text-ucase"
-								onclick="dataLayer.push({                           'event' : 'trackEvent',                           'eventDetails.category': 'cart clearance',                           'eventDetails.action': 'cart is cleared',                           'eventDetails.label': 'change delivery address'                          });">
-								예</button>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-	<!-- 
-	[#trackOrder.modal] -->
-
-	<!-- [/#trackOrder.modal] -->
-
-
-	<!-- [countdowntimer.modal] -->
-	<div id="countdowntimer" data-alert-type="modal" data-backdrop="static"
-		data-keyboard="false"
-		class="modal-countdowntimer modal-alert alert-session-timeout modal-alert modal fade"
-		role="dialog" aria-labelledby="countdowntimer-title"
-		aria-hidden="true" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header"></div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-xs-3 timer-wrapper">
-							<div class="time-disclaimer">세션 만료까지</div>
-
-
-							<div class="time timer text-din timer-clock session-timer">14:23</div>
-
-
-							<div class="time-disclaimer">세션 만료까지 _분 남았습니다</div>
-
-						</div>
-						<div class="col-xs-8 timer-wrapper">
-							<div class="alert-content text-left">
-								<h1 id="countdowntimer-title">아직도 주문 중이신가요?</h1>
-
-
-								<p>일시적으로 중단되었습니다. 주문을 계속하시려면 계속 버튼을 눌러주세요.</p>
-
-								<p>
-									<button type="button"
-										data-dismiss-trigger="session.action.continue"
-										aria-hidden="true" class="btn btn-red btn-lg text-ucase">
-										계속</button>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- [/countdowntimer.modal] -->
-
-	<!-- [#signin.modal] -->
-
-	<!-- [/#signin.modal] -->
-
-	<div id="rememberMe" class="modal-rememberme modal fade"
-		data-backdrop="static" role="dialog"
-		aria-labelledby="rememberme-title" aria-hidden="true" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 id="rememberme-title">자동 로그인</h1>
-					<button type="button" class="close close-rememberMe"
-						data-dismiss="modal" aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>입력하신 정보로 웹사이트에 자동 로그인 됩니다. 공공장소에 있는 컴퓨터에서는 개인정보가 유출될 수 있으니
-						사용을 자제해 주시기 바랍니다.</p>
-					<div class="form-group">
-						<button id="btnRememberMeCancel"
-							class="btn btn-default btn-black btn-lg text-ucase">취소</button>
-						<button id="btnRememberMeAgree"
-							class="btn btn-default btn-red btn-lg text-ucase">동의</button>
-					</div>
-					<p class="note">맥딜리버리 채널을 이용한 주문 관련 문의 사항은 맥딜리버리 콜센터
-						(1600-5252) 를 이용해 주시기 바랍니다.</p>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="popover fade right in" role="tooltip"
 		style="top: 365.034px; left: 127.602px; display: none;">

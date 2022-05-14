@@ -19,5 +19,5 @@ public interface MemberService {
 	public void addAddress(AddressDto addr);
 	public List<AddressDto>getAddressList(String username);
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
-	public int calcPriceBurger(CartDto dto);
+
 }
