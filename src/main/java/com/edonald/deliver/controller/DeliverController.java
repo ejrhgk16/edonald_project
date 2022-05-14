@@ -28,9 +28,9 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
-import com.edonald.member.dto.OrderListDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.oauthConfig.NaverLogin;
+import com.edonald.order.dto.OrderListDto;
 
 @Controller
 public class DeliverController {
@@ -57,7 +57,7 @@ public class DeliverController {
 			 SecurityUser user = (SecurityUser)authentication.getPrincipal();
 			 MemberDto memberDto = user.getMemberDto();
 			 String user_address = memberDto.getDeliverAddress().getRoad_address();
-			 user_address = user_address + " - "+ memberDto.getDeliverAddress();
+			 user_address = user_address + " - "+ memberDto.getDeliverAddress().getDetail_address();
 			OrderListDto orderListDto  = new OrderListDto();
 			orderListDto.setUser_address(user_address);
 			orderListDto.setStore_code(memberDto.getDeliverStore().getStore_code());

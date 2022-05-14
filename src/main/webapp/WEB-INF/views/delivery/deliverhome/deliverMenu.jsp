@@ -23,11 +23,25 @@
 				alert("로그인을 해주세요");
 				window.location.href = "/ed/deliverHome"
 			}else{
-				$(this).next(".menuInfo").submit();
-				
+				$(this).next(".menuInfo").submit();	
 			}
-			
 		})
+		
+		$(document).on("click", "#delBtn", function(e){
+				e.preventDefault();
+				var index = $("input[name=cartIndex]").val();
+				console.log(index);
+				$.ajax({ 
+					type: "GET",
+					url: "/order/cartDel", 
+					dataType: "text", 
+					error: function() { alert('통신실패!!'); }, 
+					success: function(data) { 
+					} 
+				
+				
+		})
+		
 	})
 </script>
 
@@ -489,23 +503,24 @@
 													</section>
 													<section class="panel-section section-cost-breakdown">
 																<script>
-																		var total_price = ${orderListDto.total_price};
-																		total_price = comma(total_price);
-																		var deliver_cost = ${orderListDto.deliverCost};
-																		deliver_cost = comma(deliver_cost);
+																		var total_price = '${orderListDto.total_price}';
+																		total_price ='₩ '+comma(total_price);
+																	
+																		var deliver_cost = '${orderListDto.deliverCost}';
+																		deliver_cost = '₩ '+comma(deliver_cost);
 															</script>
 														<table class="table-default table-cost">
 															<tfoot class="total">
 																<tr>
 
 																	<th scope="row">총 주문합계:</th>
-																	<td><span><script>₩ document.write(total_price)</script></span></td>
+																	<td><span><script>document.write(total_price);</script></span></td>
 																</tr>
 															</tfoot>
 															<tbody>
 																<tr>
 																	<th scope="row">소액 주문비:</th>
-																	<td>₩ document.write(deliver_cost)</td>
+																	<td><script>document.write(deliver_cost)</script></td>
 																</tr>
 															</tbody>
 														</table>
@@ -546,8 +561,8 @@
 														<div class="empty-template">추가된 항목이 없습니다.</div>
 
 														<form class="order-items item-list" action="" method="DELETE">
-															<c:forEach items="${orderListDto.cartList}" var="cartItem" varStatus="num">
-															<div class="order-item list-item ${num.index}">
+															<c:forEach items="${orderListDto.cartList}" var="cartItem" varStatus="status">
+															<div class="order-item list-item ${status.index}">
 																<div>
 																	<div>
 																		<div class="item-heading clearfix">
@@ -563,13 +578,14 @@
 																		</div>
 																		<div class="item-body clearfix">
 																			<div style="padding : 20px 0px 0px 10px">
-																				<button style="border: 0">삭제</button>
-																				<input type="hidden" name="index" value="{num.index}">
+																				<button id="delBtn" style="border: 0">삭제</button>
+																				<input type="hidden" name="cartIndex" value="${status.index}">
 																				<script>
 																					var calc_price = ${cartItem.calc_price};
-																					calc_price = comma(calc_price);
+																					console.log(calc_price);
+																					calc_price ='₩ '+ comma(calc_price);
 																				</script>
-																				<span class="cost" >₩ document.write(calc_price)</span>
+																				<span class="cost" ><script>document.write(calc_price);</script> </span>
 																			</div>
 																		</div>
 																	</div>

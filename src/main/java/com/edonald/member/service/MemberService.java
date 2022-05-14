@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
-import com.edonald.member.dto.CartDto;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.order.dto.CartDto;
 import com.google.gson.JsonObject;
 
 public interface MemberService {

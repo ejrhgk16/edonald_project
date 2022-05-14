@@ -29,12 +29,12 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
-import com.edonald.member.dto.CartDto;
 import com.edonald.member.dto.MemberDto;
-import com.edonald.member.dto.OrderListDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.MemberService;
 import com.edonald.oauthConfig.NaverLogin;
+import com.edonald.order.dto.CartDto;
+import com.edonald.order.dto.OrderListDto;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.oauth.OAuth20Service;
 import com.google.gson.JsonArray;
@@ -113,35 +113,6 @@ public class MemberController {
 		return "/ed/deliverHome";
 	}
 
-	@PostMapping("/member/orderMenu")
-	public ModelAndView orderMenu(MenuDto menuDto) {
-		System.out.println("ordermenu controller!!");
-		System.out.println("menu  " + menuDto.getName());
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("menuDto", menuDto);
-		mav.setViewName("/delivery/order/menu");
-		return mav;
-	}
-
-	@PostMapping("/member/cartAdd")
-	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication) {
-
-		String menu_type = cartDto.getMenu_type();
-		int plusPrice = 0; 
-		if (menu_type.equals("burger")) {
-			plusPrice = memberService.calcPriceBurger(cartDto); //수량, 세트 여부 -> 제품가격 계산
-			cartDto.setCalc_price(plusPrice);
-		}
-		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		int orignTotalPrice = orderListDto.getTotal_price();
-		int newTotalPrice = orignTotalPrice + plusPrice;
-		orderListDto.setTotal_price(newTotalPrice);
-		if(newTotalPrice > 13000) {
-			orderListDto.setDeliverCost(0);
-		}
-		orderListDto.getCartList().add(cartDto);
-
-		return "redirect:/ed/menuPage";
-	}
+	
 
 }

@@ -1,4 +1,4 @@
-package com.edonald.member.dto;
+package com.edonald.order.dto;
 
 import lombok.Data;
 
