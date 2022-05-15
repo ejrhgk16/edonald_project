@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edonald.sadmin.dao.SadminMenuMapper">
+	<select id="listAll" resultType="com.edonald.hadmin.dto.MenuDto">
+		SELECT * FROM menu m WHERE status != 0 AND type = #{type} ORDER BY status DESC,category_code,seq ASC
+	</select>
+	<insert id="insertBlock">
+		INSERT INTO block_order_list VALUES(#{store},null,#{seq})
+	</insert>
+	<delete id="deleteBlock">
+		DELETE FROM block_order_list WHERE store_code = #{store} AND m_seq = #{seq}
+	</delete>
+</mapper>

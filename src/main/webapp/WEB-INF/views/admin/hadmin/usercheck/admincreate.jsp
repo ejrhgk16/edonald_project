@@ -17,6 +17,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="/resources/js/hadminjoin.js"></script>
 </head>
 <body class="bg-black">
 	<div id="layoutAuthentication"
@@ -28,7 +30,7 @@
 						<div class="col-lg-7">
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header">
-									<h3 class="text-center font-weight-light my-4">매장 등록</h3>
+									<h3 class="text-center font-weight-light my-4">지점장 등록</h3>
 								</div>
 								<div class="card-body">
 
@@ -39,15 +41,15 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_id" class="form-control"
-														value="${storeDetail.admin_id}" id="inputFirstName"
+														value="${storeDetail.admin_id}" id="inputId"
 														type="text" placeholder="Enter your first name" /> <label
-														for="inputFirstName">아이디</label>
+														for="inputFirstName">이메일</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating">
 													<input name="admin_name" class="form-control"
-														value="${storeDetail.admin_name}" id="inputLastName"
+														value="${storeDetail.admin_name}" id="inputName"
 														type="text" placeholder="Enter your last name" /> <label
 														for="inputLastName">이름</label>
 												</div>
@@ -57,20 +59,17 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_password" class="form-control"
-														value="${storeDetail.admin_password}" id="inputFirstName"
+														value="${storeDetail.admin_password}" id="inputPassword"
 														type="password" placeholder="Enter your first name" /> <label
 														for="inputFirstName">비밀번호</label>
 												</div>
 											</div>
-										</div>
-
-										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_password" class="form-control"
-														value="${storeDetail.admin_password}" id="inputFirstName"
+														value="${storeDetail.admin_password}" id="inputPasswordCheck"
 														type="password" placeholder="Enter your first name" /> <label
-														for="inputFirstName">성별</label>
+														for="inputFirstName">비밀번호 확인</label>
 												</div>
 											</div>
 										</div>
@@ -78,7 +77,7 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="store_code" class="form-control"
-														value="${storeDetail.store_code}" id="inputFirstName"
+														value="${storeDetail.store_code}" id="inputPhone"
 														type="text" placeholder="Enter your first name" /> <label
 														for="inputFirstName">전화번호</label>
 												</div>
@@ -86,9 +85,21 @@
 											<div class="col-md-6">
 												<div class="form-floating">
 													<input name="store_phone" class="form-control"
-														value="${storeDetail.store_phone}" id="inputLastName"
+														value="${storeDetail.store_phone}" id="storeCode"
 														type="text" placeholder="Enter your last name" /> <label
 														for="inputLastName">매장번호</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<div class="container">
+														<select class="form-control" id="inputGender">
+														  <option value="1">남자</option>
+														  <option value="2">여자</option>
+														</select>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -128,14 +139,6 @@
 			</footer>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function updateDo() {
-			alert("등록하시겠습니까?");
-			var storeupdateForm = document.getElementById("admincreate");
-			storeupdateForm.action = "";
-			storeupdateForm.submit();
-		}
-	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

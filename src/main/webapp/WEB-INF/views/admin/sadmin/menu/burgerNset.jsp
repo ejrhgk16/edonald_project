@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
         <title>지점장</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+ 		<script type="text/javascript" src="/resources/js/hadmin_menu.js"></script>
     </head>
     <body class="sb-nav-fixed">
+    	<p id="menuType" hidden>${type}</p>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.jsp">지점장</a>
@@ -144,7 +144,6 @@
 									<tr>
 										<th>상품이름</th>
 										<th>가격</th>
-										<th>코드</th>
 										<th>칼로리</th>
 										<th>상태</th>										
 										
@@ -154,16 +153,16 @@
 
 									<c:forEach var="list" items="${list}">
 										<tr>
-											<td>${list.b_name}</td>
-											<td>${list.b_price}</td>
-											<td>${list.b_code}</td>
-											<td>${list.b_kcal}</td>
-                            <td>
-                                <select name="role">
-                                    <option value="ROLE_SELLER">활성화</option>
-                                    <option value="ROLE_USER">비활성화</option>
-                                </select>
-                            </td>
+											<td class="list_seq" hidden>${list.seq }</td>
+											<td>${list.name}</td>
+											<td>${list.price}</td>
+											<td>${list.kcal}</td>
+				                            <td>
+				                                <select name="status_store" class="status_selecter_store">
+				                                    <option value="1">활성화</option>
+				                                    <option value="0">비활성화</option>
+				                                </select>
+				                            </td>
 										</tr>
 									</c:forEach>
 
@@ -188,8 +187,8 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="/resources/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="/resources/js/datatables-simple-demo.js"></script>
     </body>
 </html>

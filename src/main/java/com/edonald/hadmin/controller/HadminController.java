@@ -1,6 +1,9 @@
 package com.edonald.hadmin.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.serivce.AdminMenuService;
 import com.edonald.hadmin.serivce.FileUploadService;
+import com.edonald.hadmin.serivce.StoreManageService;
+import com.edonald.member.dto.MemberDto;
 
 @Controller
 public class HadminController {
@@ -19,12 +24,31 @@ public class HadminController {
 	private AdminMenuService bService;
 	@Autowired
 	private FileUploadService fService; 
+	@Autowired
+	private StoreManageService sService;
+	
 	
 	@RequestMapping(value = "/hadmin/index", method = RequestMethod.GET)
 	public String hadminIndex() {
 		return "admin/hadmin/index2";
 	}
 	
+	
+// sadmin 회원 가입
+	@RequestMapping(value = "/hadmin/createSadmin", method = RequestMethod.GET)
+	public String hadminCreateSadmin() {
+		return "admin/hadmin/usercheck/admincreate";
+	}
+	
+	@ResponseBody
+	@RequestMapping( value = "/hadmin/createSadmin.do",method = RequestMethod.POST)
+	public String hadminCreate(MemberDto dto) {
+		String msg = sService.joinSadmin(dto);
+		String result = "{ \"msg\":\"" +msg+"\"}";
+		return result;
+	}
+
+// 메뉴 관리 
 	@RequestMapping(value = "/hadmin/menu", method = RequestMethod.GET)
 	public String hadminBurgerMenu(Model model,String type) {
 		model.addAttribute("list",bService.listAll(type));

@@ -45,6 +45,35 @@ $(document).ready(function() {
 			}
 		});
 	});
+	// 작업 중 .. 지점장 메뉴 활성화 비활성화 ajax 이벤트
+	$(document).on('change', '.status_selecter_store', function() {
+		var seq = $(this).parent().parent().children('.list_seq').text();
+		var store = '미완';
+		var status = $(this).val();
+		var url ="/sadmin/blockMenu.do";
+		var type = "";
+		if(status == 0){
+			type = "DELETE";
+		}else{
+			type = "GET";
+		}
+		
+		$.ajax({
+			url: url,
+			type: type,
+			data: {
+				seq: seq,
+				store: store
+			},
+			success: function(data) {
+				alert("ok");
+			},
+			error: function() {
+				alert("error");
+			}
+		});
+	});
+
 	
 	$('.btnRegister').on('click',function(){	
 		var url = "/hadmin/register/menu";

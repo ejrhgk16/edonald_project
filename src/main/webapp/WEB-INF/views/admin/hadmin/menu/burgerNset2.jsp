@@ -30,7 +30,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#">정상 영업</a></li>
     <li><a class="dropdown-item" href="#">영업 종료</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><a class="dropdown-item" href="#">영업 준비중</a></li>
   </ul>
 </div>
                 </div>
@@ -171,12 +171,12 @@
 										<th scope="col">상품이름</th>
 										<th scope="col">가격</th>
 										<th scope="col">칼로리</th>
-										<th scope="col">상태</th>	
-										<th scope="col">투게더팩</th>
-										<th scope="col">플러스팩</th>
-										<th scope="col">라지세트</th>
-										<th scope="col">세트</th>
-										<th scope="col">이모닝</th>				
+										<th scope="col" width="100">상태</th>	
+										<th scope="col" width="100">투게더팩</th>
+										<th scope="col" width="100">플러스팩</th>
+										<th scope="col" width="100">라지세트</th>
+										<th scope="col" width="100">세트</th>
+										<th scope="col" width="100">이모닝</th>				
 									</tr>
 								</thead>
 								<tbody>
@@ -195,28 +195,38 @@
 				                                </select>
 				                            </td>
 				                            <td>
-				                            	<div class="form-check">
-												  <input class="form-check-input sub_to" type="checkbox" value="to" id="sub_to_${list.seq}" <c:if test="${list.sub_to eq 1}">checked="checked"</c:if>>
+				                            	<div class="form-check text-center">
+				                            		<label>
+												  		<input class="form-check-input sub_to" type="checkbox" value="to" id="sub_to_${list.seq}" <c:if test="${list.sub_to eq 1}">checked="checked"</c:if>>
+											  		</label>
 												</div>
 				                            </td>
 				                            <td>
-				                            	<div class="form-check">
+				                            	<div class="form-check text-center">
+				                            	<label>
 												  <input class="form-check-input sub_pl" type="checkbox" value="pl" id="sub_pl_${list.seq}" <c:if test="${list.sub_pl eq 1}">checked="checked"</c:if>>
+												 </label>
 												</div>
 				                            </td>
 				                            <td>
-				                            	<div class="form-check">
+				                            	<div class="form-check text-center">
+				                            	<label>
 												  <input class="form-check-input sub_ls" type="checkbox" value="ls" id="sub_ls_${list.seq}" <c:if test="${list.sub_ls eq 1}">checked="checked"</c:if>>
+												 </label>
 												</div>
 				                            </td>
 				                            <td>
-				                            	<div class="form-check">
+				                            	<div class="form-check text-center">
+				                            	<label>
 												  <input class="form-check-input sub_s" type="checkbox" value="s" id="sub_s_${list.seq}" <c:if test="${list.sub_s eq 1}">checked="checked"</c:if>>
+												 </label>
 												</div>
 				                            </td>
 				                            <td>
-				                            	<div class="form-check">
+				                            	<div class="form-check text-center">
+				                            	<label>
 												  <input class="form-check-input sub_em" type="checkbox" value="em" id="sub_em_${list.seq}" <c:if test="${list.sub_em eq 1}">checked="checked"</c:if>>
+												 </label>
 												</div>
 				                            </td>
 				                            <td>

@@ -19,6 +19,7 @@ public class MemberDto {
 	private String role;
 	private int sms_agree;
 	private int terms_agree;
+	private int store_code;
 	private List<AddressDto>addressList; 
 	//배달될 주소
 	private AddressDto deliverAddress;

@@ -26,5 +26,13 @@
 		where rnum>(#{pageNum}-1)*#{amount} and rnum<= #{pageNum} * #{amount}]]>
 	</select>
 
+	<insert id="joinSadmin">
+		INSERT INTO user_info(user_email, user_password, user_name, user_gender, user_status, user_phone, oauth, role, user_regdate, store_code)
+		VALUES(#{user_email}, #{user_password}, #{user_name}, #{user_gender}, 1, #{user_phone}, 'edonald', 'ROLE_SADMIN', sysdate(), #{store_code})
+	</insert>
+	
+	<select id="checkDupl" resultType="string">
+		SELECT user_email FROM user_info WHERE user_email = #{user_email}
+	</select>
 
 </mapper>
