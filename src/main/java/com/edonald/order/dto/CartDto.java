@@ -20,7 +20,7 @@ public class CartDto {
 	private String comp6_name;
 	private String comp7_name;
 	private String comp8_name;
-	private String comp_type;
-	private String menu_type;
+	private String comp_type;//세트 라지세트 인지
+	private String menu_type;//버거인지
 	private int calc_price;
 }

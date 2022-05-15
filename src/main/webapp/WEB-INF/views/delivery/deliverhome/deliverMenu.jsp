@@ -15,6 +15,20 @@
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$(document).on("click", "#order-widget-submit", function(e){
+			e.preventDefault();
+			var totalPrice = $("#totalC").val();
+			if(parseInt(totalPrice) < 5500){
+				alert("3천원 이상 주문해야합니다");
+				return;
+			}else{
+				window.location.href="/order/orderCheck";
+			}
+			
+			
+			
+		})
+		
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
 			var menu_code =  $(this).attr("href");
@@ -57,7 +71,7 @@
 						$(".order-items").html(cart);
 						$("#totalCost").text(total_price);
 						$("#deliverCost").text(deliver_cost);
-						
+						$("#totalC").val(res.total_price);
 					} 
 		})
 		})
@@ -286,26 +300,7 @@
 									<i class="fa mcd mcd-close"></i>
 								</button>
 							</div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-xs-3 timer-wrapper">
-										<div class="time-disclaimer">해당 매장의 영업은 다음 시간 후 종료됩니다:</div>
-										<div class="time timer text-din timer-clock storeclose-timer"></div>
-									</div>
-									<div class="col-xs-8 timer-wrapper">
-										<div class="alert-content text-left">
-											<h1 id="countdowntimer-title">배달 가능 시간</h1>
-											<p>해당 지역의 매장은 오후 0 까지 배달 가능합니다.</p>
-											<p>지금 주문을 완료해 주십시오.</p>
-											<p>
-												<button data-dismiss="modal" aria-hidden="true"
-													class="btn btn-red btn-lg text-ucase"
-													data-dismiss-trigger="storeclose.action.continue">계속</button>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -570,32 +565,10 @@
 																<a href="#" id="order-widget-submit"
 																	class="btn btn-red btn-block btn-xl">결제</a>
 															</div>
+															<input type="hidden" id="totalC" value="${orderListDto.total_price}">
 														</fieldset>
 													</section>
-													<section class="panel-section section-promocode">
-														<div>
-															 <span>쿠폰코드 입력</span> 
-															<div id="enter-promocode" class="collapse in"
-																aria-expanded="true" style="">
-																<form class="form-promocode" role="form"
-																	id="form_promocode" name="form_promocode" method="post"
-																	accept-charset="UTF-8" action="/kr/applyCoupon.html">
-
-																	<div class="form-group">
-																		<div class="input-group">
-																			<input type="text" name="couponCode" id="couponCode"
-																				class="form-control">
-																			<div class="input-group-btn">
-																				<button type="submit" class="btn btn-red">
-																					적용</button>
-																			</div>
-																		</div>
-																		<label for="enter-promocode" class="control-hint"></label>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</section>
+													
 													<section class="panel-section section-order-items">
 														<h3>주문 세부사항</h3>
 														<form class="order-items item-list" action="" method="DELETE">

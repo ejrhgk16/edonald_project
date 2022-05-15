@@ -147,10 +147,11 @@ function menuRequest(type, daypartId){
 				html += "<div>"+item.name+" "+item.allergy+"</div></div></div></div></div></div></div>";
 				html += "<div class=\"product-controls\">";	
 				html += "<a data-productid=\"789\" class=\"btn btn-block action-create btn-yellow\" href=\"\">Order</a>";
-				html += "<form action=\"/member/orderMenu\" method=\"post\" class=\"menuInfo\">";
+				html += "<form action=\"/order/orderMenu\" method=\"post\" class=\"menuInfo\">";
 				html += "<input type=\"hidden\" name=\"name\" value=\""+item.name+"\">";
 				html += "<input type=\"hidden\" name=\"kcal\" value=\""+item.kcal+"\">";
 				html += "<input type=\"hidden\" name=\"img_path\" value=\""+item.img_path+"\">";
+				html += "<input type=\"hidden\" name=\"set_img_path\" value=\""+item.set_img_path+"\">";
 				html += "<input type=\"hidden\" name=\"status\" value=\""+item.status+"\">";
 				html += "<input type=\"hidden\" name=\"type\" value=\""+item.type+"\">";
 				html += "<input type=\"hidden\" name=\"price\" value=\""+item.price+"\">";

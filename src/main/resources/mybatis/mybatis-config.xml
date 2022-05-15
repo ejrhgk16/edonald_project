@@ -9,5 +9,6 @@
  		<mapper resource="/mybatis/menu/adminmenu.xml"></mapper>
  		<mapper resource="/mybatis/menu/deliverymenu.xml"></mapper>
  		<mapper resource="/mybatis/hadmin.xml"></mapper>
+ 		<mapper resource="/mybatis/order.xml"></mapper>
  	</mappers>
  </configuration>

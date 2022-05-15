@@ -20,9 +20,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		if(auth.equals( "[ROLE_MEMBER]")) {
 			System.out.println("로그인 성공");
 			url="/ed/deliverHome";
-		}else if(auth.equals("[ROLE_STOREADMIN]")) {
+		}else if(auth.equals("[ROLE_SADMIN]")) {
 			url="/storeadmin/";
-		}else if(auth.equals("[ROLE_HEADADMIN]")) {
+		}else if(auth.equals("[ROLE_HADMIN]")) {
 			url = "/headadmin/";
 	}
 		response.sendRedirect(url);
