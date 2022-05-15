@@ -8,7 +8,7 @@
  		<mapper resource="/mybatis/faq.xml"></mapper>
  		<mapper resource="/mybatis/menu/adminmenu.xml"></mapper>
  		<mapper resource="/mybatis/menu/deliverymenu.xml"></mapper>
- 		<mapper resource="/mybatis/hadmin/storemanage.xml"></mapper>
- 		<mapper resource="/mybatis/sadmin.xml"></mapper>
+ 		<mapper resource="/mybatis/hadmin.xml"></mapper>
+ 		<mapper resource="/mybatis/order.xml"></mapper>
  	</mappers>
  </configuration>

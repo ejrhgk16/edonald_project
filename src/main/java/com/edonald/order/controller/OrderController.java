@@ -92,7 +92,32 @@ public class OrderController {
 		
 		return orderListDto;
 	}
+	@GetMapping("/order/orderCheck")
+	public String orderCheck() {
+		return "/delivery/order/order-review-confirmation";
+	}
+
+	@GetMapping("/order/payment2")
+	public String payment2() {
+		return "/delivery/order/order-payment2";
+	}
+	
+	@GetMapping("/order/payment")
+	public String payment(HttpSession session, @RequestParam(value="order_comment" ,required = false) String order_comment ) {
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		System.out.println(order_comment + "  ordercomment");
+		orderListDto.setOrder_comment(order_comment);
+		return "/delivery/order/order-payment";
+	}
+	
+	@GetMapping("/order/payment/cnum")
+	public String createNumber() {
+		
+	
+	}
+	
+	
+	}
 	
 	
 	
-}

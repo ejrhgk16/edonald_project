@@ -31,5 +31,5 @@
 	 <mybatis-spring:scan base-package="com.edonald.faq.dao"/>
 	 <mybatis-spring:scan base-package="com.edonald.hadmin.dao"/>
 	 <mybatis-spring:scan base-package="com.edonald.deliver.dao"/>
-	 <mybatis-spring:scan base-package="com.edonald.sadmin.dao"/>
+	 <mybatis-spring:scan base-package="com.edonald.order.dao"/>
 </beans>

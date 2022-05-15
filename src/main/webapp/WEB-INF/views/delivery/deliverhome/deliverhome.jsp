@@ -49,7 +49,6 @@
 									window.location.href = "/ed/menuPage";
 									return
 								}else if('${principal.memberDto.deliverStore}' != ""){
-									alert('${principal.memberDto.deliverStore}')
 									window.location.href = "/ed/menuPage";
 									return
 								}else{
