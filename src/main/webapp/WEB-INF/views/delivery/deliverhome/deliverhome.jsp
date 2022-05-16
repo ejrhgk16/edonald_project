@@ -75,7 +75,13 @@
 									return;
 								}
 							});
-								
+							<!-- 권한 확인 후 버튼 활성화 -->
+							if ($('#role').val() == 'ROLE_SADMIN'){
+								var html = "";
+								html += "<p class=\"action-sadmin\">";
+								html += "<a id=\"sadminBtn\" href=\"/sadmin/index\" class=\"btn btn-red btn-block btn-xl\">관리자 사이트로</a></p>"
+								$('.form-actions').html(html);
+							}
 					});
 </script>
 
@@ -334,7 +340,7 @@
 														주문 조회
 													</a>
 												</p>
-
+												
 											</fieldset>
 											<input type="hidden" name="csrfValue"
 												value="0a238eea9cae586bd5f72eed2d19a687">
@@ -755,5 +761,7 @@
 
 
 	</div>
+	<input id="role" type="hidden" value="${principal.memberDto.role }" />
+	<input type="hidden" value="${principal.memberDto.user_name }" />
 </body>
 </html>
