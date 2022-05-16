@@ -3,6 +3,10 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edonald.order.dao.OrderMapper">
 	<select id="checkOrderNum" resultType="com.edonald.order.dto.OrderNumDto">
-	select * from check_order_num where order_num = #{order_num} and order_date = #{order_date}
+	select * from check_order_num where order_num = #{order_num} and order_date = date_format(sysdate( ), '%Y-%m-%d' )
 	</select>
+	
+	<insert id="insertOrderNum">
+		insert into check_order_num(user_phone, order_num, order_date)  values(#{user_phone}, #{order_num}, #{order_date}) 
+	</insert>
 </mapper>

@@ -10,8 +10,9 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
-
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script type="text/javascript" src="/resources/js/order.js"></script>
 <script>
 	$(document).ready(function(){
 		var total_price = '${orderListDto.total_price}';
@@ -25,8 +26,15 @@
 		
 		$("#confirmBtnCashless").on("click", function(){
 			var payment_type = $(".iradio.checked").next().text();
+			console.log(payment_type);
 			if(payment_type == "신용카드 / 간편결제 / 기타*"){
-				
+				$.ajax({
+					type : "GET",
+					url : "/order/payment/cnum",
+					success : function(data){	
+						   requestPay(data);
+					}
+				})
 			}
 		})
 		

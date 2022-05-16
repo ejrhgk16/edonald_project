@@ -65,6 +65,7 @@ public class DeliverController {
 			orderListDto.setUser_type(1); //1회원 2 비회원
 			orderListDto.setUser_phone(memberDto.getUser_phone());
 			orderListDto.setDeliverCost(2500);
+			orderListDto.setPostcode(memberDto.getDeliverAddress().getPostcode());
 			session.setAttribute("orderListDto", orderListDto);
 		}
 		

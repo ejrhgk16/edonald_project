@@ -26,7 +26,10 @@ public class OrderListDto {
 	private String user_email;
 	private String exactcash;
 	private String cupon_title;
+	private int postcode;
 	private Date time_esti;//배달 예상 시간
 	private List<CartDto>cartList =new ArrayList<CartDto>();
 	private int deliverCost;//배달비 2500
+	
+	
 }

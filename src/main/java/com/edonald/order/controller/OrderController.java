@@ -1,14 +1,18 @@
 package com.edonald.order.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
+import com.edonald.order.dto.OrderNumDto;
+import com.edonald.order.dto.PayInfoDto;
 import com.edonald.order.service.OrderService;
 
 @Controller
@@ -106,15 +112,51 @@ public class OrderController {
 	public String payment(HttpSession session, @RequestParam(value="order_comment" ,required = false) String order_comment ) {
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		System.out.println(order_comment + "  ordercomment");
+		if(orderListDto.getCupone_code() == null) {
+			orderListDto.setFinal_price(orderListDto.getTotal_price());
+		}
 		orderListDto.setOrder_comment(order_comment);
 		return "/delivery/order/order-payment";
 	}
 	
 	@GetMapping("/order/payment/cnum")
-	public String createNumber() {
+	public @ResponseBody OrderListDto createNumber(HttpSession session) {
+		OrderListDto dto = (OrderListDto) session.getAttribute("orderListDto");
+		String orderNum = orderService.createOrderNum(dto.getUser_phone());
+		dto.setMerchanuid(orderNum);
+		return dto;
+	}
+	
+	@PostMapping("/order/payment/check")
+	public  @ResponseBody ResponseEntity<String> paycheck(PayInfoDto payInfoDto, HttpSession session)throws IOException{
+		String token = orderService.getToken();
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		int amount = orderService.paymentInfo(payInfoDto.getImp_uid(), token);
+		String merchanuid = payInfoDto.getMerchant_uid();
+		try {
+			if(amount != orderListDto.getFinal_price()) {
+				System.out.println("결제금액");
+				orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "결제금액 오류");
+				return new ResponseEntity<String>("결제금액 오류", HttpStatus.BAD_REQUEST);
+			}
+			System.out.println("주문번호  " + merchanuid);
+			OrderNumDto orderNumDto = orderService.orderNumCheck(merchanuid);
+			if(!merchanuid.equals(orderNumDto.getOrder_num())) {
+				System.out.println("주문번호");
+				orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
+				return new ResponseEntity<String>("주문번호 오류", HttpStatus.BAD_REQUEST);
+			}
+			return new ResponseEntity<String>("주문이 완료되었습니다 !", HttpStatus.OK);
 		
+		}catch(Exception e) {
+			System.out.println("결제그냥");
+			e.printStackTrace();
+			orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
+			return new ResponseEntity<String>("결제 오류", HttpStatus.BAD_REQUEST);
+		}
 	
 	}
+	
 	
 	
 	}
