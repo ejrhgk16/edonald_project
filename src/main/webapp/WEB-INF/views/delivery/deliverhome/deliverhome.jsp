@@ -80,7 +80,8 @@
 								var html = "";
 								html += "<p class=\"action-sadmin\">";
 								html += "<a id=\"sadminBtn\" href=\"/sadmin/index\" class=\"btn btn-red btn-block btn-xl\">관리자 사이트로</a></p>"
-								$('.form-actions').html(html);
+								$('.panel-home-masthead-form').html(html);
+								$('div.panel-heading').html("<h4>환영합니다 ${principal.memberDto.user_name} 지점장님</h4>");
 							}
 					});
 </script>

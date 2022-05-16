@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +19,7 @@
  		<script type="text/javascript" src="/resources/js/hadmin_menu.js"></script>
     </head>
     <body class="sb-nav-fixed">
-    	<p id="menuType" hidden>${type}</p>
+    	<p class="menuType" hidden>${type}</p>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.jsp">지점장</a>
@@ -160,7 +166,7 @@
 				                            <td>
 				                                <select name="status_store" class="status_selecter_store">
 				                                    <option value="1">활성화</option>
-				                                    <option value="0">비활성화</option>
+				                                    <option value="0" <c:if test="${list.block_status != 0}">selected</c:if>>비활성화</option>
 				                                </select>
 				                            </td>
 										</tr>

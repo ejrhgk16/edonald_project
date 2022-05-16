@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-	var menuType = $('#menuType').text();
+	var menuType = $('.menuType').text();
 	if(menuType == 'burger'){
 		menuType = "버거";
 	}else if(menuType == 'side'){
@@ -48,25 +48,19 @@ $(document).ready(function() {
 	// 작업 중 .. 지점장 메뉴 활성화 비활성화 ajax 이벤트
 	$(document).on('change', '.status_selecter_store', function() {
 		var seq = $(this).parent().parent().children('.list_seq').text();
-		var store = '미완';
 		var status = $(this).val();
-		var url ="/sadmin/blockMenu.do";
+		var url ="/sadmin/blockMenu.do?seq="+seq;
 		var type = "";
 		if(status == 0){
-			type = "DELETE";
-		}else{
 			type = "GET";
+		}else{
+			type = "DELETE";
 		}
-		
 		$.ajax({
 			url: url,
 			type: type,
-			data: {
-				seq: seq,
-				store: store
-			},
 			success: function(data) {
-				alert("ok");
+				
 			},
 			error: function() {
 				alert("error");
@@ -115,5 +109,6 @@ $(document).ready(function() {
 		});
 		
 	})
-
+	
+	
 });

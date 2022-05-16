@@ -14,7 +14,7 @@
  		<script type="text/javascript" src="/resources/js/hadmin_menu.js"></script>
     </head>
     <body class="sb-nav-fixed">
-    	<p id="menuType" hidden>${type}</p>
+    	<p class="menuType" hidden>${type}</p>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.jsp">관리자</a>

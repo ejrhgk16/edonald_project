@@ -20,6 +20,7 @@ public class MenuDto {
 	private int sub_s;				// 세트
 	private int sub_em;				// 이모닝
 	
+	private int block_status;		// 지점장 block filter
 	
 //	private String burger_n_img_path;	// 영양 정보 이미지 *
 //	private String burger_e_name; 		// 영어이름 *

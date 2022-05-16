@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>   
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,26 +14,26 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/resurces/js/sadmin_common.js" ></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.jsp">지점장</a>
+            <a class="navbar-brand ps-3" href="index.jsp">${principal.memberDto.deliverStore.store_name}</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
               <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    매장상태
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">정상 영업</a></li>
-    <li><a class="dropdown-item" href="#">영업 종료</a></li>
-    <li><a class="dropdown-item" href="#">영업 준비중</a></li>
-  </ul>
-</div>
+					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					    매장상태
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					    <li><a class="dropdown-item store_status">정상 영업</a></li>
+					    <li><a class="dropdown-item store_status">영업 종료</a></li>
+					  </ul>
+					</div>
                 </div>
  <!--               <div class="container">
 	<h2>선택(select) 상자</h2>
@@ -79,12 +85,13 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="checkmenu.jsp">추천메뉴</a>
-                                            <a class="nav-link" href="burgerNset.jsp">버거＆세트</a>
-                                            <a class="nav-link" href="snackNside.jsp">스낵＆사이드</a>
-                                            <a class="nav-link" href="drink.jsp">음료</a>
-                                            <a class="nav-link" href="dessert.jsp">디저트</a>
-                                            <a class="nav-link" href="happymeal.jsp">해피밀</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=package">추천메뉴</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=burger">버거＆세트</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=side">스낵＆사이드</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=drink">음료</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=dessert">디저트</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=happymeal">해피밀</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=emorning">이모닝</a>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">관리</div>
