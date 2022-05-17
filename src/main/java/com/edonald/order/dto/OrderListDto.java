@@ -1,6 +1,7 @@
 package com.edonald.order.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class OrderListDto {
 	private int order_seq;
 	private int user_type;
 	private String user_name;
-	private Date order_date;
-	private Date delivery_time;
+	private Timestamp order_date;
+	private Timestamp delivery_time;
 	private String user_address;
 	private String user_phone;
 	private int order_status;
@@ -30,6 +31,6 @@ public class OrderListDto {
 	private Date time_esti;//배달 예상 시간
 	private List<CartDto>cartList =new ArrayList<CartDto>();
 	private int deliverCost;//배달비 2500
-	
+	private String payment_type;
 	
 }

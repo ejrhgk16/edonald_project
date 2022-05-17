@@ -112,6 +112,11 @@ public class MemberController {
 		user.getMemberDto().setAddressList(addrList);
 		return "/ed/deliverHome";
 	}
+	
+	@GetMapping("/member/trackOrder")
+	public String trackOrder() {
+		return "/delivery/mypage/trackorder";
+	}
 
 	
 

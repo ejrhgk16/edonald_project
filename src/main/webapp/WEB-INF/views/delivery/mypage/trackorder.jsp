@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Track Order</title>
-<link rel="stylesheet" href="kor/css/main.css">
-<link rel="stylesheet" href="kor/css/local.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="/resources/css/local.css">
 </head>
 <body>
 <div class="root">
@@ -26,35 +27,15 @@
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
-							
-							
-					
-					
-							
-						
-						
 							<li class="list-item">
 								<img src="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/img/icon_profile_blue.png" alt="Profile" width="20" class="profile-avator">
 								<b><span class="first-name">양원재</span></b>
 							</li>
-						
-					
-									
-					
-						
-							
-							
-							
+
 						<li class="list-item">
-							
-								<a class="list-item-target" onclick="          dataLayer.push({           'event':'logout'          });         " href="/kr/signout.html">로그아웃</a>
-							
-							
+								<a class="list-item-target"  href="/kr/signout.html">로그아웃</a>
 						</li>
 
-
-							
-							
 								<li class="list-item"><a class="list-item-target" href="/kr/trackorder.html">주문 조회</a></li>
 							
 						</ul>
@@ -73,14 +54,6 @@
 							<li class="menu-item menu-item-menu"> <a class="menu-item-target" href="/kr/menu.html"> <i class="fa mcd mcd-burger icon"></i> 메뉴
 							</a></li>
 
-
-							
-
-
-
-							
-							
-							
 						<li class="menu-item menu-item-account dropdown selected">
 							<a class="menu-item-target dropdown-toggle" href="" data-toggle="dropdown">
 								<i class="fa fa-user icon"></i> 
@@ -284,10 +257,10 @@
 								
 								<p>2022/03/25 14:30</p>
 							</td>
-							<td class="order-received complete"><h4>주문 접수</h4><div><i class="mcd icon mcd-ord-rev"></i></div></td>
-							<td class="in-progress complete"><h4>준비 중</h4><div><i class="mcd icon mcd-in-progress"></i></div></td>
-							<td class="in-delivery complete"><h4>배달 중</h4><div><i class="mcd icon mcd-in-deliver"></i></div></td>
-							<td class="delivered complete"><h4>배달 완료</h4><div><i class="mcd icon mcd-delivered"></i></div></td>
+							<td class="order-received complete"><h6>주문 접수</h6><div><img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/free-icon-document-177256.png"></div></td>
+							<td class="in-progress complete"><h6>준비 중</h6><div><i class="mcd icon mcd-in-progress"></i></div></td>
+							<td class="in-delivery complete"><h6>배달 중</h6><div><i class="mcd icon mcd-in-deliver"></i></div></td>
+							<td class="delivered complete"><h6>배달 완료</h6><div><i class="mcd icon mcd-delivered"></i></div></td>
 						</tr>
 					
 					

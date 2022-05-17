@@ -217,9 +217,8 @@
 																		<li>${cartItem.comp8_name}</li>
 																	</c:if>
 																</ul> <script>
-															var calc_price = ${cartItem.calc_price};
+															var calc_price = '${cartItem.calc_price}';
 															calc_price ='₩ '+ comma(calc_price);
-															
 															</script>
 															</td>
 															<td class="cost">

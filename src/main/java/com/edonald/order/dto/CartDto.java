@@ -11,7 +11,7 @@ public class CartDto {
 	private  int cart_product_price;
 	private int cart_product_quant;
 	private int order_seq;
-	private String merchnuid;
+	private String merchanuid;
 	private String comp1_name;
 	private String comp2_name;
 	private String comp3_name;
