@@ -146,7 +146,11 @@ function menuRequest(type, daypartId){
 				html += "<div class=\"popover-details\"><div class=\"popover-wrapper type-sans\"><h4>"+item.name+"</h4>";
 				html += "<div>"+item.name+" "+item.allergy+"</div></div></div></div></div></div></div>";
 				html += "<div class=\"product-controls\">";	
-				html += "<a data-productid=\"789\" class=\"btn btn-block action-create btn-yellow\" href=\"\">Order</a>";
+				if(item.block_status == 0){
+					html += "<a data-productid=\"789\" class=\"btn btn-block action-create btn-yellow\" href=\"\">Order</a>";
+				}else{
+					html += "<a data-productid=\"789\" class=\"btn btn-block btn-gray\">준비중</a>";
+				}
 				html += "<form action=\"/order/orderMenu\" method=\"post\" class=\"menuInfo\">";
 				html += "<input type=\"hidden\" name=\"name\" value=\""+item.name+"\">";
 				html += "<input type=\"hidden\" name=\"kcal\" value=\""+item.kcal+"\">";

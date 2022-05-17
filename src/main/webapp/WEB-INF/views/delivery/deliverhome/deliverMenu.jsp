@@ -421,7 +421,7 @@ ${orderListDto.store_code }
 														<img
 															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/${list.img_path}"
 															class="img-block">
-														<h5 class="product-title" style="height: 30.8px;">${list.name}${list.getBlock_status}</h5>
+														<h5 class="product-title" style="height: 30.8px;">${list.name} ${list.block_status}</h5>
 														<div class="product-badges"></div>
 													</div>
 													<div class="panel-footer">
@@ -465,12 +465,12 @@ ${orderListDto.store_code }
 
 																<!-- MDSAP-11470 - INC10164449 Google Analytics data is missing due to incorrect implementation. -->
 																<!-- Point 1:  productClick - needs to be fixed. Pricing should not show currency or commas. The implementation can be found in Global GTM implementation guide page 26 and 27 -->
-																<c:if test="${list.getBlock_status == 0}">
+																<c:if test="${list.block_status == 0}">
 																<a data-productid="789"
 																	class="btn btn-block action-create btn-yellow" href="">
 																	Order </a>
 																</c:if>
-																<c:if test="${list.getBlock_status == 1}">
+																<c:if test="${list.block_status == 0}">
 																<a data-productid="789"
 																	class="btn btn-block btn-gray" href="">
 																	준비중 </a>
