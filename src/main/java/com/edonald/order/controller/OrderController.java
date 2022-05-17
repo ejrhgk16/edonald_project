@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -120,8 +121,9 @@ public class OrderController {
 	}
 	
 	@GetMapping("/order/payment/cnum")
-	public @ResponseBody OrderListDto createNumber(HttpSession session) {
+	public @ResponseBody OrderListDto createNumber(HttpSession session, @RequestParam String payment_type) {
 		OrderListDto dto = (OrderListDto) session.getAttribute("orderListDto");
+		dto.setPayment_type(payment_type);
 		String orderNum = orderService.createOrderNum(dto.getUser_phone());
 		dto.setMerchanuid(orderNum);
 		return dto;
@@ -157,8 +159,20 @@ public class OrderController {
 	
 	}
 	
+	@GetMapping("/order/payment/complete")
+	public String payComplete(HttpSession session, Model model) {
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		session.removeAttribute("orderListDto");
+		orderService.orderComplete(orderListDto);
+		model.addAttribute("orderListDto", orderListDto);
+		return "/delivery/order/receipt";
+	}
 	
-	
+	@GetMapping("/order/payment/complete3")
+	public String payComplete2() {
+		return "/delivery/order/receipt";
+	}
+
 	}
 	
 	

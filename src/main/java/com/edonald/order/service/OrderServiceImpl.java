@@ -7,8 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -170,13 +172,26 @@ public class OrderServiceImpl implements OrderService {
 		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 		br.close();
 		conn.disconnect();
-
 	}
 
 	@Override
 	public OrderNumDto orderNumCheck(String merchanuid) {
 		OrderNumDto dto = orderMapper.checkOrderNum(merchanuid);
 		return dto;
+	}
+
+	@Override
+	public void orderComplete(OrderListDto dto) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		// SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss"); >> string으로 변환해줌 select할 때 사용하면될 듯
+		OrderListDto orderListDto = dto;
+		orderListDto.setOrder_date(timestamp);
+		List<CartDto>cartList = orderListDto.getCartList();
+		for(CartDto cart : cartList) {
+			cart.setMerchanuid(orderListDto.getMerchanuid());
+			orderMapper.insertCartInfo(cart);
+		}
+		orderMapper.insertOrderInfo(orderListDto);
 	}
 	
 	

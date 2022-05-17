@@ -17,47 +17,60 @@
 	$(document).ready(function(){
 		var total_price = '${orderListDto.total_price}';
 		if(!total_price){total_price = 0}
-		total_price ='₩ '+comma(total_price);
+		
+	total_price = '₩ ' + comma(total_price);
 		var deliver_cost = '${orderListDto.deliverCost}';
-		if(!deliver_cost){deliver_cost = 0}
-		deliver_cost = '₩ '+comma(deliver_cost);
+		if (!deliver_cost) {
+			deliver_cost = 0
+		}
+		deliver_cost = '₩ ' + comma(deliver_cost);
 		$("#totalCost").text(total_price);
 		$("#deliverCost").text(deliver_cost);
-		
-		$("#confirmBtnCashless").on("click", function(){
-			var payment_type = $(".iradio.checked").next().text();
+
+		$("#confirmBtnCashless").on("click", function() {
+			var payment_type = $(".iradio.checked").children("#payment_type").val();
 			console.log(payment_type);
-			if(payment_type == "신용카드 / 간편결제 / 기타*"){
+			if (payment_type == "온라인결제") {
 				$.ajax({
 					type : "GET",
-					url : "/order/payment/cnum",
-					success : function(data){	
-						   requestPay(data);
+					url : "/order/payment/cnum?payment_type=" + payment_type,
+					success : function(data) {
+						requestPay(data);
 					}
 				})
+			} else {
+				$.ajax({
+					type : "GET",
+					url : "/order/payment/cnum?payment_type=" + payment_type,
+					success : function(data) {
+						if(data !=null){
+							location.href = "/order/payment/complete";
+						}
+						
+					}
+					})
 			}
-		})
-		
-		
-		$('.iradio').on('click',function(){
+			})
+
+		$('.iradio').on('click', function() {
 			var temp = $(this).find(">input").attr('data-target');
-			$(temp).attr('style','display');
+			$(temp).attr('style', 'display');
 			$('.iradio.checked').removeClass('checked');
 			$(this).addClass("checked");
 			$
 		});
-				
-		$('.icheckbox').on('click',function(){
-			if($(this).attr("class") == "icheckbox checked"){
+
+		$('.icheckbox').on('click', function() {
+			if ($(this).attr("class") == "icheckbox checked") {
 				$(this).removeClass("checked");
-				$('#form_order_payment_contactno').attr("disabled",true);
-			}else{
+				$('#form_order_payment_contactno').attr("disabled", true);
+			} else {
 				$(this).addClass("checked");
-				$('#form_order_payment_contactno').attr("disabled",false);
+				$('#form_order_payment_contactno').attr("disabled", false);
 			}
 		});
-		
-		$('.iradio').focus(function(){
+
+		$('.iradio').focus(function() {
 			$(this).addClass("hover");
 		});
 	});
@@ -245,6 +258,7 @@
 													data-pay-type="  online-payment ">
 													<div class="radio">
 														<div class="iradio checked" style="position: relative;">
+															<input type="hidden" id="payment_type" value="온라인결제">
 															<input type="radio" class="toggle-payment-type"
 																data-target="#payment_mode_creditcard"
 																data-thirdparty="false" name="form_order_payment_type"
@@ -267,6 +281,7 @@
 														<!-- MDSAP-14098: samsinha: Disabled cash for Guest User -->
 														<div class="radio">
 															<div class="iradio" style="position: relative;">
+																<input type="hidden" id="payment_type" value="현장현금결제">
 																<input checked="checked" type="radio"
 																	class="toggle-payment-type"
 																	data-target="#payment_mode_cash"
@@ -286,6 +301,7 @@
 														<!-- MDSAP-14098: samsinha: Disabled cash for Guest User -->
 														<div class="radio">
 															<div class="iradio" style="position: relative;">
+															<input type="hidden" id="payment_type" value="현장오만원권결제">
 																<input type="radio" class="toggle-payment-type"
 																	data-target="#payment_mode_largecash"
 																	data-thirdparty="false" name="form_order_payment_type"
@@ -302,6 +318,7 @@
 													<div class="col-xs-3" data-pay-type=" normal-payment ">
 														<div class="radio">
 															<div class="iradio" style="position: relative;">
+															<input type="hidden" id="payment_type" value="현장수표결제">
 																<input type="radio" class="toggle-payment-type"
 																	data-target="#payment_mode_cheque"
 																	data-thirdparty="false" name="form_order_payment_type"
@@ -319,6 +336,7 @@
 													<div class="col-xs-3 last" data-pay-type=" normal-payment ">
 														<div class="radio">
 															<div class="iradio" style="position: relative;">
+															<input type="hidden" id="payment_type" value="현장카드결제">
 																<input type="radio" class="toggle-payment-type"
 																	id="form_order_payment_type_credit_card_machine"
 																	name="form_order_payment_type" value="7"

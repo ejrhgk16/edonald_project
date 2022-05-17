@@ -9,4 +9,15 @@
 	<insert id="insertOrderNum">
 		insert into check_order_num(user_phone, order_num, order_date)  values(#{user_phone}, #{order_num}, #{order_date}) 
 	</insert>
+	
+		<insert id="insertOrderInfo">
+		insert into order_list(user_type, user_name, order_date, user_address, user_phone, order_status, total_price, discount, final_price, order_comment, store_code, cupone_code, merchanuid, user_email, cupon_title, postcode, payment_type)
+										  values(#{user_type}, #{user_name}, #{order_date}, #{user_address}, #{user_phone}, #{order_status}, #{total_price}, #{discount}, #{final_price},  #{order_comment},  #{store_code},  #{cupone_code}, #{merchanuid}, #{user_email}, #{cupon_title}, #{postcode}, #{payment_type}) 
+	</insert>
+	
+		<insert id="insertCartInfo">
+		insert into cart_list(cart_product_code, cart_product_name, cart_product_img_path, cart_product_price, cart_product_quant, merchanuid, comp1_name, comp2_name, comp3_name, comp4_name, comp5_name, comp6_name, comp7_name, comp8_name, menu_type, comp_type)  
+		values(#{cart_product_code}, #{cart_product_name}, #{cart_product_img_path}, #{cart_product_price}, #{cart_product_quant}, #{merchanuid}, #{comp1_name}, #{comp2_name}, #{comp3_name}, #{comp4_name}, #{comp5_name}, #{comp6_name}, #{comp7_name}, #{comp8_name}, #{menu_type}, #{comp_type}) 
+	</insert>
+	
 </mapper>

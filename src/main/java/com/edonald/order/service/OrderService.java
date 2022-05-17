@@ -13,4 +13,5 @@ public interface OrderService {
 	public int paymentInfo(String imp_uid, String access_token)throws IOException ;
 	public void payMentCancle(String access_token, String imp_uid, int amount, String reason)throws IOException;
 	public OrderNumDto orderNumCheck(String merchanuid);
+	public void orderComplete(OrderListDto dto);//주문정보를 디비에 저장
 }
