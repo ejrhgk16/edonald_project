@@ -16,4 +16,5 @@ public interface SadminMapper {
 	public void insertBlock(Map<String, String> map);
 	public void deleteBlock(Map<String, String> map);
 	public StoreDto getStore(@Param("store_code") int store_code);
+	public void updateStoreStatus(Map<String, String> map);
 }

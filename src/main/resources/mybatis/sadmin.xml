@@ -17,4 +17,7 @@
 	<select id="getStore" resultType="com.edonald.hadmin.dto.StoreDto">
 		SELECT * FROM store_list WHERE store_code = #{store_code}
 	</select>
+	<update id="updateStoreStatus">
+		UPDATE store_list SET store_status = #{store_status} WHERE store_code = #{store_code}
+	</update>
 </mapper>

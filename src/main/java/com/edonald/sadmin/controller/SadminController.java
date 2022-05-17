@@ -21,6 +21,7 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.order.dto.OrderListDto;
 import com.edonald.sadmin.service.SadminMenuService;
 import com.edonald.sadmin.service.SadminService;
 
@@ -92,4 +93,15 @@ public class SadminController {
 		sService.deleteBlock(map);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/sadmin/storeStatus.do", method = RequestMethod.GET)
+	public void sadminStoreStatus(Authentication authentication,@RequestParam("store_status") String store_status) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = (MemberDto) user.getMemberDto();
+		String store_code = Integer.toString(sessionDto.getStore_code());
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("store_status", store_status);
+		map.put("store_code", store_code);
+		service.updateStoreStatus(map);
+	}
 }

@@ -16,8 +16,12 @@ public class DeliveryMenuServiceImpl implements DeliveryMenuService {
 	private DeliveryMenuMapper mapper;
 	
 	@Override
-	public List<MenuDto> bList(Map<String, String> map) {
-		return mapper.bList(map);
+	public List<MenuDto> mList(Map<String, String> map) {
+		return mapper.mList(map);
+	}
+	@Override
+	public List<Integer> getBlockMenuList(int store_code){
+		return mapper.getBlockMenuList(store_code);
 	}
 
 }

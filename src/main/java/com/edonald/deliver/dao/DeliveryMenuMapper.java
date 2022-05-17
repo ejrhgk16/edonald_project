@@ -9,6 +9,6 @@ import com.edonald.hadmin.dto.MenuDto;
 
 @Repository
 public interface DeliveryMenuMapper {
-	public List<MenuDto> bList(Map<String, String> map);
-	public List<String> getBlockMenuList(int store_code);// '준비중' 처리를 위한
+	public List<MenuDto> mList(Map<String, String> map);
+	public List<Integer> getBlockMenuList(int store_code);// '준비중' 처리를 위한
 }
