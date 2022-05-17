@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <!-- Spring Security Login Session 처리 -->
@@ -14,7 +15,9 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="/resurces/js/sadmin_common.js" ></script>
+        <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="/resources/js/sadmin_common.js" ></script>
+        
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -27,7 +30,8 @@
                 <div class="input-group">
                     <div class="dropdown">
 					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-					    매장상태
+					    <c:if test="${principal.memberDto.deliverStore.store_status == 0}">영업 종료</c:if>
+					    <c:if test="${principal.memberDto.deliverStore.store_status == 1}">정상 영업</c:if>
 					  </button>
 					  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					    <li><a class="dropdown-item store_status">정상 영업</a></li>

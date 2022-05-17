@@ -8,7 +8,7 @@
 	</select>
  -->	
  
- 	<select id="bList" resultType="com.edonald.hadmin.dto.MenuDto">
+ 	<select id="mList" resultType="com.edonald.hadmin.dto.MenuDto">
 		SELECT * FROM menu b WHERE 
 		<if test="daypartId == '1'.toString">( status = 1 OR status = 3 ) AND</if>
 		<if test="daypartId == '2'.toString">( status = 2 OR status = 3 ) AND</if>
@@ -16,7 +16,7 @@
 	</select>
 	
 	<!-- 이거 메뉴화며에 '준비중' 처리 할려고 작성해둔것 -->
-	<select id="getBlockMenuList" resultType="string">
-		SELECT menu_code FROM block_order_list WHERE store_code = #{store_code};
+	<select id="getBlockMenuList" resultType="int">
+		SELECT m_seq FROM block_order_list WHERE store_code = #{store_code};
 	</select>
 </mapper>
