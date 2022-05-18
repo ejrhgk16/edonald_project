@@ -15,5 +15,6 @@ public interface OrderService {
 	public OrderNumDto orderNumCheck(String merchanuid);
 	public void orderComplete(OrderListDto dto);//주문정보를 디비에 저장
 	public OrderListDto getOrderInfo(String merchanuid);
+	public OrderListDto getOrderListDto(String merchanuid);
 	
 }

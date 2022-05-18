@@ -175,7 +175,7 @@
 					
 									<tr class="">
 										<td class="order-id"><h4>주문 번호:</h4>
-											<p><a href="/order/orderfind?merchanuid=${list.merchanuid }">${list.merchanuid}</a></p></td>
+											<p><a href="/order/search/orderDetail?merchanuid=${list.merchanuid }">${list.merchanuid}</a></p></td>
 										<td class="est-time">
 										<c:choose>
 												<c:when test="${list.order_status eq '4' }">

@@ -1,9 +1,10 @@
 $(document).ready(function() {
+	
 	$("#nomembertrackorder").on("click", function(e){
 		e.preventDefault();
-		var inputString = prompt('주문번호를 입력하세요');
-		 alert(inputString);
-	})
+		var mercahnuid = prompt('주문번호를 입력하세요');
+		window.location.href="/delivery/mypage/trackorder?merchanuid="+mercahnuid;
+			})
 	
 
 	//상단 메뉴
