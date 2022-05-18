@@ -1,7 +1,23 @@
 $(document).ready(function() {
 	
+	var date = new Date();
+	var time = date.getHours();
+	if(time >= 8 && time <= 12){
+		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
+		$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
+		$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=2");
+		$(".primary-menu-item.selected").children("a").children("span").text("아침 메뉴");
+		$(this).children(".primary-menu-item-target").attr("href", "?daypartId=1");
+		$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
+		$("#daypartId").text("2");
+		menuRequest("emorning",2);
+	}else{
+		menuRequest("burger",1);
+	}
+
+	
 	$("#nomembertrackorder").on("click", function(e){
-		e.preventDefault();
+			e.preventDefault();
 		var mercahnuid = prompt('주문번호를 입력하세요');
 		window.location.href="/delivery/mypage/trackorder?merchanuid="+mercahnuid;
 			})
