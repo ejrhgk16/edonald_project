@@ -9,6 +9,7 @@ import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.order.dto.CartDto;
+import com.edonald.order.dto.OrderListDto;
 import com.google.gson.JsonObject;
 
 public interface MemberService {
@@ -19,5 +20,6 @@ public interface MemberService {
 	public void addAddress(AddressDto addr);
 	public List<AddressDto>getAddressList(String username);
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
+	public List<OrderListDto> getOrderList(String user_email);
 
 }

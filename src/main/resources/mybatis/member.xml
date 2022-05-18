@@ -34,4 +34,8 @@
 		ORDER BY ST_DISTANCE_SPHERE(POINT(#{lon}, #{lat}), POINT(store_log, store_lat))]]>
 	</select>
 	
+	<select id="getOrderList" resultType="com.edonald.order.dto.OrderListDto">
+	select * from order_list where user_email = #{user_email} order by order_seq
+	</select>
+	
 </mapper>
