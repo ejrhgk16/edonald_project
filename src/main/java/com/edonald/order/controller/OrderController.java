@@ -168,10 +168,16 @@ public class OrderController {
 		return "/delivery/order/receipt";
 	}
 	
-	@GetMapping("/order/payment/complete3")
-	public String payComplete2() {
+	
+	
+	@GetMapping("/order/orderfind")
+	public String orderfind(@RequestParam String merchanuid, Model model) {
+		OrderListDto orderListDto = orderService.getOrderInfo(merchanuid);
+		model.addAttribute("orderListDto", orderListDto);
+		model.addAttribute("memberOrderFind", "find");
 		return "/delivery/order/receipt";
 	}
+	
 
 	}
 	

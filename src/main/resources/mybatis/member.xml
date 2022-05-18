@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="getOrderList" resultType="com.edonald.order.dto.OrderListDto">
-	select * from order_list where user_email = #{user_email} order by order_seq
+	select * from order_list where user_email = #{user_email} order by order_seq desc
 	</select>
 	
 </mapper>

@@ -175,7 +175,7 @@
 					
 									<tr class="">
 										<td class="order-id"><h4>주문 번호:</h4>
-											<p><a href="/ed/orderfind=${list.merchanuid }">${list.merchanuid}</a></p></td>
+											<p><a href="/order/orderfind?merchanuid=${list.merchanuid }">${list.merchanuid}</a></p></td>
 										<td class="est-time">
 										<c:choose>
 												<c:when test="${list.order_status eq '4' }">
@@ -217,7 +217,7 @@
 												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 off.png">
+												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>

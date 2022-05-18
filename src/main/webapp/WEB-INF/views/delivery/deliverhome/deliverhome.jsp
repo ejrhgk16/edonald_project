@@ -15,6 +15,7 @@
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/slide.js"></script>
+<script type="text/javascript" src="/resources/js/ordefind.js"></script>
 <script type="text/javascript">
 	var username = '{principal.username}'
 					$(document).ready(function() {
@@ -192,56 +193,8 @@
 						</ul>
 					</div>
 				</div>
-
-				<div
-					class="alert alert-warning alert-dismissable inline-alert type-flama hidden alert-menuswitch-timeout"
-					data-dismiss-trigger="wos.menuswitch.warning1.closed">
-					<button type="button" class="close" data-hide="inline-alert"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-					<p>
-						<i class="fa fa-exclamation text-white icon"></i> <span><span
-							class="text-primary timer menuswitch-timer"></span> 분 후 아침 메뉴
-							주문으로 전환됩니다. 주문을 완료해 주세요.</span>
-					</p>
-				</div>
-
-				<!-- Start of Session time out warning -->
-
-				<!-- End of Session time out warning -->
-				<!-- [countdownmenuswitchtimer.modal] -->
-				<div id="countdownmenuswitchtimer" data-alert-type="modal"
-					data-backdrop="static" data-keyboard="false"
-					class="modal-countdownmenuswitchtimer modal-alert alert-menuswitch-timeout modal-alert modal fade"
-					role="dialog" aria-labelledby="countdownmenuswitchtimer-title"
-					aria-hidden="true" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header"></div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-xs-3 timer-wrapper">
-										<div class="time-disclaimer">메뉴 변경 시간까지...</div>
-										<div class="time timer text-din timer-clock menuswitch-timer"></div>
-										<div class="time-disclaimer"></div>
-									</div>
-									<div class="col-xs-8 timer-wrapper">
-										<div class="alert-content text-left">
-											<h1 id="countdownmenuswitchtimer-title">곧 메뉴가 변경됩니다!</h1>
-											<p>곧 아침 메뉴로 전환됩니다. 제한 시간 내에 주문을 완료해 주세요.</p>
-											<p>
-												<button type="button"
-													data-dismiss-trigger="menuswitch.action.ok"
-													aria-hidden="true" class="btn btn-red btn-lg text-ucase">확인</button>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
+				
 
 			</div>
 			<div class="main" role="main">
@@ -336,7 +289,7 @@
 
 												<hr class="fading-divider">
 												<p class="action-track-order">
-													<a href="#trackOrder" data-toggle="modal"
+													<a href="#trackOrder" data-toggle="modal" id="membertrackorder"
 														class="action-link"> <i class="fa fa-caret-right"></i>
 														주문 조회
 													</a>
@@ -412,12 +365,13 @@
 														class="btn btn-default btn-red btn-block btn-xl btn-submit">로그인</button>
 
 													<div>
+													
 														<a href="${naverUrl}"> <img
 															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/naverbtn.png">
 														</a>
 													</div>
-													<p class="action-forgot-password ">
-														<a class="action-link" href="">비밀번호 찾기</a>
+													<p class="action-forgot-password " align="left">
+														<a class="action-link" href=""><b>비밀번호 찾기</b></a>
 													</p>
 												</fieldset>
 												<input type="hidden" name="csrfValue"
@@ -431,14 +385,7 @@
 													style="margin-bottom: 4px;"
 													onclick="             dataLayer.push({              'event':'trackEvent',              'vpv':'vpv_enter_delivery_address',              'eventDetails.category':'registration',              'eventDetails.action':'click',              'eventDetails.label':'register_homepage'             });             dataLayer.push({              'event':'trackEvent',              'eventDetails.category':'i am new',              'eventDetails.action':'click home page',              'eventDetails.label':'register now'             });            "
 													href=""> <span>회원가입</span>
-												</a> <a href="#member-benefits" class="h5 text-link"
-													data-toggle="html-popover" data-container="body"
-													data-placement="top" data-html="true"
-													data-content-selector="#member-benefits"
-													data-original-title="" title=""> <span
-													class="text-default">회원가입 하시고 다양한 혜택을 누리세요</span> <i
-													class="mcd icon mcd-detail"></i>
-												</a>
+												</a> 
 												<div id="member-benefits"
 													class="popover-wrapper popover-details">
 													<div class="popover-wrapper">
@@ -457,11 +404,18 @@
 											<div class="frament-guest-order">
 												<div class="guest-order-header">회원가입하지 않고 주문하기</div>
 												<div class="guest-order-note">온라인 결제로 즉시 주문</div>
-
+																		
+													<hr class="fading-divider">
 												<a class="btn btn-block btn-red btn-xl"
-													onclick="dataLayer.push(          {           'event': 'trackEvent',           'eventDetails.category': 'i am new',           'eventDetails.action': 'click home page',           'eventDetails.label': 'guest order'                   });"
 													href="">비회원 주문</a>
+			
+												<a class="btn btn-block btn-red btn-xl"
+													href="">주문조회</a>
+
 											</div>
+											
+											
+				
 										</div>
 									</div>
 
@@ -759,6 +713,10 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+	
 
 
 	</div>

@@ -1,7 +1,11 @@
 $(document).ready(function() {
+	$("#nomembertrackorder").on("click", function(e){
+		e.preventDefault();
+		var inputString = prompt('주문번호를 입력하세요');
+		 alert(inputString);
+	})
 	
-	menuRequest("burger",1);
-	
+
 	//상단 메뉴
 
 	$(".menu-item-support").on("click", function(e) {
@@ -39,9 +43,11 @@ $(document).ready(function() {
 	//login modal
 	var $loginTabs = $("#signin-nav-tabs-login-fragment").children();
 	$loginTabs.eq(0).on("click", function(e) {
+
 		LoginTabEvent(0, 1, e, $loginTabs)
 	})
 	$loginTabs.eq(1).on("click", function(e) {
+
 		LoginTabEvent(1, 0, e, $loginTabs)
 	})
 	

@@ -98,11 +98,7 @@ public class DeliverController {
 		return mList;
 	}
 	
-	@GetMapping("/ed/orderfind")
-	public String orderfind(@RequestParam String merchanuid, Model model) {
-		
-		return "";
-	}
+
 	
 	
 

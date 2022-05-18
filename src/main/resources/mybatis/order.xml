@@ -20,4 +20,12 @@
 		values(#{cart_product_code}, #{cart_product_name}, #{cart_product_img_path}, #{cart_product_price}, #{cart_product_quant}, #{merchanuid}, #{comp1_name}, #{comp2_name}, #{comp3_name}, #{comp4_name}, #{comp5_name}, #{comp6_name}, #{comp7_name}, #{comp8_name}, #{menu_type}, #{comp_type}) 
 	</insert>
 	
+	<select id="getOrderInfoByUid" resultType="com.edonald.order.dto.OrderListDto">
+	select * from order_list where merchanuid = #{merchanuid}
+	</select>
+	
+	<select id="getCartListByUid" resultType="com.edonald.order.dto.CartDto">
+	select * from cart_list where merchanuid = #{merchanuid}
+	</select>
+	
 </mapper>
