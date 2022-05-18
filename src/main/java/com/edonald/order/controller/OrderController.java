@@ -170,13 +170,19 @@ public class OrderController {
 	
 	@GetMapping("/order/search/check")
 	public @ResponseBody ResponseEntity<String> merchanuidCheck(@RequestParam String merchanuid){
-		
+		OrderListDto orderListDto = orderService.getOrderListDto(merchanuid);
+		if(orderListDto == null) {
+			return new ResponseEntity<String>("주문번호가 틀렸습니다", HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}
 	}
 	
 	@GetMapping("/order/search/trackorder")
 	public String ordertrack(@RequestParam String merchanuid, Model model) {
 		OrderListDto orderListDto = orderService.getOrderListDto(merchanuid);
 		model.addAttribute("orderList", orderListDto);
+		model.addAttribute("nologinTarckOrder", "nologin");
 		return "/delivery/mypage/trackorder";
 	}
 	

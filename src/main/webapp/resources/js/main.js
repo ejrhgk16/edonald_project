@@ -2,8 +2,19 @@ $(document).ready(function() {
 	
 	$("#nomembertrackorder").on("click", function(e){
 		e.preventDefault();
-		var mercahnuid = prompt('주문번호를 입력하세요');
-		window.location.href="/delivery/mypage/trackorder?merchanuid="+mercahnuid;
+		var merchanuid = prompt('주문번호를 입력하세요');
+		console.log(merchanuid);
+		$.ajax({
+			type : "GET",
+			url : "/order/search/check?merchanuid="+merchanuid,
+			success : function(){
+				window.location.href="/order/search/trackorder?merchanuid="+merchanuid;
+			},
+			error : function(res){
+				console.log(res);
+				alert(res);
+			}	
+		})
 			})
 	
 

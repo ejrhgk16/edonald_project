@@ -16,8 +16,8 @@
 	</insert>
 	
 		<insert id="insertCartInfo">
-		insert into cart_list(cart_product_code, cart_product_name, cart_product_img_path, cart_product_price, cart_product_quant, merchanuid, comp1_name, comp2_name, comp3_name, comp4_name, comp5_name, comp6_name, comp7_name, comp8_name, menu_type, comp_type)  
-		values(#{cart_product_code}, #{cart_product_name}, #{cart_product_img_path}, #{cart_product_price}, #{cart_product_quant}, #{merchanuid}, #{comp1_name}, #{comp2_name}, #{comp3_name}, #{comp4_name}, #{comp5_name}, #{comp6_name}, #{comp7_name}, #{comp8_name}, #{menu_type}, #{comp_type}) 
+		insert into cart_list(cart_product_code, cart_product_name, cart_product_img_path, cart_product_price, cart_product_quant, merchanuid, comp1_name, comp2_name, comp3_name, comp4_name, comp5_name, comp6_name, comp7_name, comp8_name, menu_type, comp_type, calc_price)  
+		values(#{cart_product_code}, #{cart_product_name}, #{cart_product_img_path}, #{cart_product_price}, #{cart_product_quant}, #{merchanuid}, #{comp1_name}, #{comp2_name}, #{comp3_name}, #{comp4_name}, #{comp5_name}, #{comp6_name}, #{comp7_name}, #{comp8_name}, #{menu_type}, #{comp_type}, #{calc_price}) 
 	</insert>
 	
 	<select id="getOrderInfoByUid" resultType="com.edonald.order.dto.OrderListDto">

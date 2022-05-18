@@ -15,7 +15,6 @@
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/slide.js"></script>
-<script type="text/javascript" src="/resources/js/ordefind.js"></script>
 <script type="text/javascript">
 	var username = '{principal.username}'
 					$(document).ready(function() {
@@ -410,7 +409,7 @@
 													href="">비회원 주문</a>
 			
 												<a class="btn btn-block btn-red btn-xl"
-													href="">주문조회</a>
+													href="" id="nomembertrackorder">주문조회</a>
 
 											</div>
 											

@@ -198,6 +198,12 @@ public class OrderServiceImpl implements OrderService {
 	public OrderListDto getOrderInfo(String merchanuid) {
 		OrderListDto orderListDto = orderMapper.getOrderInfoByUid(merchanuid);
 		List<CartDto> cartList = orderMapper.getCartListByUid(merchanuid);
+		for(CartDto dto : cartList) {
+			String menu_type = dto.getMenu_type();
+			if(menu_type.equals("burger")) {
+				dto.setCalc_price(calcPriceBurger(dto));
+			}
+		}
 		orderListDto.setCartList(cartList);
 		return orderListDto;
 	}
