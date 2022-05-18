@@ -102,6 +102,17 @@ public class DeliverController {
 	}
 	
 
+	@RequestMapping(value= "/ed/PIPP", method = RequestMethod.GET)
+	public String personalInformationProcessingPolicy() {
+		return "/delivery/info/userInfo";
+	}
+	@RequestMapping(value= "/ed/TaC", method = RequestMethod.GET)
+	public String termsAndConditions() {
+		return "/delivery/info/useInfo";
+	}
+	
+	
+
 	
 	
 

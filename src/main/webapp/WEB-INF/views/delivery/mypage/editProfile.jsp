@@ -1,12 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>editProfile</title>
-<link rel="stylesheet" href="kor/css/main.css">
-<link rel="stylesheet" href="kor/css/local.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/local.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script>
+$(document).ready(function(){
+
+	var gender = $('#hGender').text();
+	if(gender == '2'){
+		$('.iradio').eq(0).attr("class","iradio");
+		$('.iradio').eq(1).attr("class","iradio checked");
+	}
+	//성별체크
+	var $icheck = $(".iCheck-helper")
+	$icheck.eq(0).on("click", function() {
+		$(this).parent().attr("class", "iradio checked");
+		$icheck.eq(1).parent().attr("class", "iradio");
+	})
+	$icheck.eq(1).on("click", function() {
+		$(this).parent().attr("class", "iradio checked");
+		$icheck.eq(0).parent().attr("class", "iradio");
+	})
+	
+	//수정
+	$('#changeaccout').on('click',function(){
+		var name = $('#form_accountsetting_firstname').val();
+		var gender = $('.iradio.checked').children('input').val();
+		var phone = $('#form_accountsetting_contactno').val();
+		var url = "/member/changedAccount.do";
+		var user_password = prompt("비밀번호 : ");
+		
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				user_name : name,
+				user_gender : gender,
+				user_phone : phone,
+				user_password : user_password
+			},
+			success : function(res){
+				if(res == "/ed/deliverHome"){
+					location.href = res;
+				}else{
+					alert("잘못된 입력입니다.");
+				}
+			},
+			error : function(){
+				alert("error");
+			}
+		})
+	})
+	
+})
+</script>
 </head>
 <body>
 <div class="root">
@@ -271,7 +329,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12">
-							<form action="/kr/updateProfile.html" method="post" role="form" data-form-sync="#form_consentnewnumber" class="form form-register" id="form_accountsetting" name="form_accountsetting" autocomplete="off" data-required-symbol="*" novalidate="novalidate">
+							<form action="" method="post" role="form" data-form-sync="#form_consentnewnumber" class="form form-register" id="form_accountsetting" name="form_accountsetting" autocomplete="off" data-required-symbol="*" novalidate="novalidate">
 								<div class="form-register error-container">
 									<p>표시된 필수 항목을 입력해 주세요.</p>
 								</div>
@@ -290,7 +348,7 @@
 															 
 															 
 															 
-																 <input type="text" class="form-control input-lg required no-special-characters" id="form_accountsetting_firstname" name="firstName" value="양원재" aria-required="true">
+																 <input type="text" class="form-control input-lg required no-special-characters" id="form_accountsetting_firstname" name="firstName" value="${principal.memberDto.user_name}" aria-required="true">
 															 
 														 
 														 
@@ -304,25 +362,42 @@
 							
 										
 											<div class="row">
-												<div class="col-xs-6">
-													 <div class="form-group">
-														 <label class="field-label" for="form_accountsetting_gender">성별:</label>
-														 
-															 <select name="gender" id="form_accountsetting_gender" class="select-lg" aria-disabled="false" tabindex="0" style="display: none;">
-																 <option value=""></option>
-																 <option selected="selected" value="Male">남</option>
-																 <option value="Female">여</option>
-																 <option value="Do Not Specify">선택 안함</option>
-															 </select><span class="select-lg"><a class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown" id="form_accountsetting_gender-button" role="button" href="#nogo" tabindex="0" aria-haspopup="true" aria-owns="form_accountsetting_gender-menu" aria-disabled="false" style="width: 359.162px;"><span class="ui-selectmenu-status">남</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
-															 
-															 
-																 
-															 
-														 
-														 
-													</div> 
-												</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="field-label" for="form_register_gender">성별:</label>
+
+												<fieldset class="fieldset">
+													<div class="form-group">
+														<div class="radio">
+															<div class="iradio checked" style="position: relative;">
+																<input type="radio" name="preferredNotification"
+																	value="1" id="checkman"
+																	style="position: absolute; opacity: 0;">
+																<ins class="iCheck-helper"
+																	style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+															</div>
+															<label for="form_notification_channel_email"
+																class="radio-label">남 <span
+																id="man"></span></label>
+														</div>
+														<div class="radio">
+															<div class="iradio" style="position: relative;">
+															<input type="radio" name="preferredNotification"
+																		value="2" id="checkwoman"
+																	style="position: absolute; opacity: 0;">
+																<ins class="iCheck-helper"
+																	style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+															</div>
+															<label for="form_notification_channel_mobile"
+																class="radio-label">여<span
+																id="woman"></span></label>
+														</div>
+													</div>
+												</fieldset>
+
 											</div>
+										</div>
+									</div>
 										
 									
 									
@@ -333,183 +408,18 @@
 												<div class="col-xs-12">
 													 <div class="form-group">
 														 <label class="field-label" for="form_accountsetting_contactno"><span class="required-symbol">*</span>휴대전화 번호:</label>
-																 <input type="text" class="form-control input-lg required number digit-only" maxlength="11" id="form_accountsetting_contactno" name="contactNo" placeholder="숫자만 입력" value="01024954502" aria-required="true">
+																 <input type="text" class="form-control input-lg required number digit-only" maxlength="11" id="form_accountsetting_contactno" name="contactNo" placeholder="숫자만 입력" value="${principal.memberDto.user_phone}" aria-required="true">
 													</div> 
 												</div>
 											</div>
-										
-									
-									<div class="row">
-										<div class="col-xs-6">
-											<div class="form-group">
-												<label class="field-label" for="form_account_preferred_lang">언어 선택:</label>
-												<select id="form_account_preferred_lang" class="select-lg" name="preferredLanguage" aria-disabled="false" tabindex="0" style="display: none;">
-													<option selected="selected" value="ko">한국어</option>
-													<option value="en">English</option>
-												</select><span class="select-lg"><a class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown" id="form_account_preferred_lang-button" role="button" href="#nogo" tabindex="0" aria-haspopup="true" aria-owns="form_account_preferred_lang-menu" aria-disabled="false" style="width: 359.162px;"><span class="ui-selectmenu-status">한국어</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
-											</div>
-										</div>
-									</div>
 									
 								</fieldset>
 								
-								<!-- START Notification Channel -->																																																																																																																																																																																																																																																																																																																																																															
-								<div class="fieldset-heading">
-								<h2 class="fieldset-title">인증방법</h2>
-								<p class="instructions">선택하신 경로를 패스워드를 리셋을 위해 사용됩니다.</p>
-								</div>
+								
 								<fieldset class="fieldset">
-									<div class="form-group">
-										<div class="radio">
-											<div class="iradio" style="position: relative;">
-												<input type="radio" id="form_notification_channel_email" name="preferredNotificationChannel" value="1-16047811" style="position: absolute; opacity: 0;">
-												<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-											</div>
-											<label for="form_notification_channel_email" class="radio-label">
-								    					이메일: 
-						    					<span id="form_notification_channel_email_mirror">yang852039@naver.com</span>
-						    				</label>
-								    	</div>
-								    			
-								    		
-						    			
-										
-											
-												
-								    			<div class="radio">
-													<div class="iradio checked" style="position: relative;">
-													<input type="radio" id="form_notification_channel_mobile" name="preferredNotificationChannel" checked="checked" value="2-16047812" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-													<label for="form_notification_channel_mobile" class="radio-label">
-									    				휴대폰번호 : 
-									    				<span id="form_notification_channel_mobile_mirror">01024954502</span>
-								    				</label>
-								    			</div>
-								    		
-						    			
-									</div>
-								</fieldset>
-															
-								<!-- END Notification Channel -->
- 								<fieldset class="fieldset">
-
-	<fieldset class="fieldset">
-		<div class="fieldset-heading">
-			<h2 class="fieldset-title">이용약관</h2>
-		</div>
-	<div class="checkall-toggle">
-		<div class="form-group">
-			<div class="checkbox">
-				<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_checkall" id="form_register_checkall" data-check-rules="all-children" data-child-selector=".checkbox-list-tnc input:checkbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-					<label class="checkbox-label type-sans" for="form_register_checkall"><span>전체 동의</span> <span class="instructions">(개별 선택 가능)</span>
-					</label>
-				</div>
-			</div>
-			<hr>
-				<div class="checkbox-list checkbox-list-tnc">
-					<div class="form-group">
-						<div class="checkbox">
-							<div class="icheckbox checked" style="position: relative;"><input type="checkbox" name="form_register_agreetnc" value="1" id="form_register_agreetnc" data-rule-required="true" data-msg-required="*필수항목입니다." checked="checked" required="required" aria-required="true" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-							<label class="checkbox-label type-sans" for="form_register_agreetnc"><span><span class="text-gray-dark"><a href="support-tnc.html#TnC_01" target="_blank">이용약관</a>을 확인했으며, 이에 동의합니다.</span></span> <span class="instructions">(필수)</span>
-							</label>
-						</div>
-					</div>
-
-					<div class="checkall-toggle"> 
-						<div class="form-group">
-							<div class="checkbox">
-								<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent" id="form_register_reviewconsent" data-check-rules="any-children" data-child-selector=".checkbox-list-reviewconsent input:checkbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-									<label class="checkbox-label type-sans" for="form_register_reviewconsent">이용약관을 확인했으며, 이에 동의합니다.</label>
-								</div>
-								<div class="checkbox-list checkbox-indent checkbox-list-reviewconsent">
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox checked" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_personaldata_one" value="1" id="form_register_reviewconsent_personaldata_one" data-rule-required="true" data-msg-required="*필수항목입니다." checked="checked" required="required" aria-required="true" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_personaldata_one">
-												<span><a href="support-privacy.html#policy_02" target="_blank">개인정보 수집 및 이용</a></span>
-												<span class="instructions">(필수)</span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_personaldata_two" value="1" id="form_register_reviewconsent_personaldata_two" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_personaldata_two">
-												<span><a href="support-privacy.html#policy_02" target="_blank">개인정보 수집 및 이용</a></span>
-												<span class="instructions">(선택)</span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_outsourcepersonaldata" value="1" id="form_register_reviewconsent_outsourcepersonaldata" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_outsourcepersonaldata">
-												<span><a href="support-privacy.html#policy_04" target="_blank">개인정보 취급 위탁</a></span>
-												<span class="instructions">(선택)</span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox checked" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_tranferpersonaldata_one" value="1" id="form_register_reviewconsent_tranferpersonaldata_one" data-rule-required="true" data-msg-required="*필수항목입니다." checked="checked" required="required" aria-required="true" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_tranferpersonaldata_one">
-												<span><a href="support-privacy.html#policy_05" target="_blank">개인정보 제3자 제공</a></span>
-												<span class="instructions">(필수)</span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_tranferpersonaldata_2" value="1" id="form_register_reviewconsent_tranferpersonaldata_2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_tranferpersonaldata_2">
-												<span><a href="support-privacy.html#policy_05" target="_blank">개인정보 제3자 제공</a></span>
-												<span class="instructions">(선택)</span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="checkbox checkbox-small">
-											<div class="icheckbox" style="position: relative;"><input type="checkbox" name="form_register_reviewconsent_tranferpersonaldata_3" value="1" id="form_register_reviewconsent_tranferpersonaldata_3" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-											<label class="checkbox-label type-sans" for="form_register_reviewconsent_tranferpersonaldata_3">
-												<span><a href="support-privacy.html#policy_04" target="_blank">개인정보 국외 이전 동의</a></span>
-												<span class="instructions">(선택)</span>
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<div class="icheckbox checked" style="position: relative;"><input type="checkbox" name="form_register_agreeage" value="1" id="form_register_agreeage" data-rule-required="true" data-msg-required="*필수항목입니다." checked="checked" required="required" aria-required="true" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-								<label class="checkbox-label type-sans" for="form_register_agreeage"><span><span class="text-gray-dark">만 14세 이상입니다.</span></span> <span class="instructions">(필수)</span>
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<div class="icheckbox" style="position: relative;">
-								<input type="checkbox" name="form_register_subscribe" value="1" id="form_register_subscribe" style="position: absolute; opacity: 0;">
-								<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-								<label class="checkbox-label type-sans" for="form_register_subscribe"><span>맥도날드 관련 정보와 프로모션에 대해 이메일 및 SMS/MMS/DM/SNS 수신에 동의합니다.</span> <span class="instructions">(선택)</span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-			</fieldset>
-		
-</fieldset>  
-								
-								<fieldset class="fieldset">									
-									
-								</fieldset>
-								<fieldset class="fieldset form-actions">
-									<div class="form-group">
-										<button type="submit" class="btn btn-red btn-xl btn-submit">수정사항 저장</button>
-										
-											<button id="deleteaccount" class="btn btn-red btn-xl btn-submit">회원 탈퇴</button>
-										
-										
+									<div>
+										<button type="button" id="changeaccout" class="btn btn-red btn-xl">수정사항 저장</button>
+										<button type="button" id="deleteaccount" class="btn btn-red btn-xl">회원 탈퇴</button>
 									</div>
 								</fieldset>
 							<input type="hidden" name="csrfValue" value="31f3648ed912ae77500a4df46a38a325">
@@ -1546,7 +1456,7 @@
 
 <div class="ui-selectmenu-menu hide-default-error" style="z-index: 1042; top: 0px; left: 0px;"><ul class="ui-widget ui-widget-content ui-selectmenu-menu-dropdown ui-corner-bottom" aria-hidden="true" role="listbox" aria-labelledby="form_deliveryoptions_time-button" id="form_deliveryoptions_time-menu" aria-disabled="false" tabindex="0" aria-activedescendant="ui-selectmenu-item-21" style="width: 0px; height: 283.333px;"><li role="presentation" class="ui-selectmenu-item-selected ui-selectmenu-item-focus"><a href="#nogo" tabindex="-1" role="option" aria-selected="true" id="ui-selectmenu-item-21">배달 받으실 시간을 선택해 주세요</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">13:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">14:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">14:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">14:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">14:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">15:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">15:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">15:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">15:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">16:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">16:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">16:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">16:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">17:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">17:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">17:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">17:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">18:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">18:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">18:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">18:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">19:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">19:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">19:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">19:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">20:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">20:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">20:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">20:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">21:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">21:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">21:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">21:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">22:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">22:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">22:30:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">22:45:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">23:00:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">23:15:00</a></li><li role="presentation"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">23:30:00</a></li><li role="presentation" class="ui-corner-bottom"><a href="#nogo" tabindex="-1" role="option" aria-selected="false">23:45:00</a></li></ul></div>
 
-
+<div id="hGender" hidden>${principal.memberDto.user_gender}</div>
 
 </body>
 </html>

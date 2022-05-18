@@ -19,5 +19,7 @@ public interface MemberMapper {
 	public AddressDto getAddressBySeq(int address_seq);
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
 	public List<OrderListDto>getOrderList(String user_email);
-	
+	public void changeAccount(MemberDto dto);
+	public void changePassword(MemberDto dto);
+	public String getEncodePassword(MemberDto dto);
 }

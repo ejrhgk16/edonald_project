@@ -38,4 +38,13 @@
 	select * from order_list where user_email = #{user_email} order by order_seq desc
 	</select>
 	
+	<update id="changeAccount">
+		UPDATE user_info SET user_name = #{user_name}, user_phone = #{user_phone} , user_gender = #{user_gender} WHERE user_email = #{user_email};
+	</update>
+	<update id="changePassword">
+		UPDATE user_info SET user_password = #{user_password} WHERE user_email =#{user_email};
+	</update>
+	<select id="getEncodePassword" resultType="String">
+		SELECT user_password FROM user_info WHERE user_email = #{user_email}
+	</select>
 </mapper>

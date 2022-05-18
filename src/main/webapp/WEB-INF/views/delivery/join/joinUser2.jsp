@@ -380,7 +380,7 @@
 										</div>
 										<div class="checkall-toggle">
 											<div class="form-group">
-												<div id="allChecked" class="checkbox">
+												<div class="checkbox">
 													<div class="icheckbox" style="position: relative;">
 														<input type="checkbox" name="form_register_checkall"
 															id="form_register_checkall"
@@ -411,7 +411,7 @@
 														<label class="checkbox-label type-sans"
 															for="form_register_agreetnc"><span><span
 																class="text-gray-dark"><a
-																	href="/ed/TaC" target="_blank">이용약관</a>을
+																	href="support-tnc.html#TnC_01" target="_blank">이용약관</a>을
 																	확인했으며, 이에 동의합니다.</span></span> <span class="instructions">(필수)</span>
 														</label>
 													</div>
@@ -452,7 +452,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_personaldata_one">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_02"
 																			target="_blank">개인정보 수집 및 이용</a></span> <span
 																		class="instructions">(필수)</span>
 																	</label>
@@ -471,7 +471,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_personaldata_two">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_02"
 																			target="_blank">개인정보 수집 및 이용</a></span> <span
 																		class="instructions">(선택)</span>
 																	</label>
@@ -490,7 +490,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_outsourcepersonaldata">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_04"
 																			target="_blank">개인정보 취급 위탁</a></span> <span
 																		class="instructions">(선택)</span>
 																	</label>
@@ -512,7 +512,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_tranferpersonaldata_one">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_05"
 																			target="_blank">개인정보 제3자 제공</a></span> <span
 																		class="instructions">(필수)</span>
 																	</label>
@@ -531,7 +531,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_tranferpersonaldata_2">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_05"
 																			target="_blank">개인정보 제3자 제공</a></span> <span
 																		class="instructions">(선택)</span>
 																	</label>
@@ -550,7 +550,7 @@
 																	</div>
 																	<label class="checkbox-label type-sans"
 																		for="form_register_reviewconsent_tranferpersonaldata_3">
-																		<span><a href="/ed/PIPP"
+																		<span><a href="support-privacy.html#policy_04"
 																			target="_blank">개인정보 국외 이전 동의</a></span> <span
 																		class="instructions">(선택)</span>
 																	</label>

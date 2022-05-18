@@ -10173,7 +10173,7 @@ rotate(
 .checkbox-small-sprite, .checkbox.checkbox-small .icheckbox, .checkbox.checkbox-small .icheckbox.checked,
 	.checkbox.checkbox-small .icheckbox.checked.disabled, .checkbox.checkbox-small .icheckbox.disabled,
 	.checkbox.checkbox-small .icheckbox.hover {
-	background-image: url(../img/sprite-checkbox-small.png);
+	background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/sprite-checkbox-small.png);
 	background-repeat: no-repeat
 }
 

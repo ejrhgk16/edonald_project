@@ -163,7 +163,29 @@
 								class="menu-item-target dropdown-toggle" href="#signin"
 								data-toggle="modal" data-target="#signin"> <i
 									class="fa fa-user icon"></i> 마이 페이지
-							</a></li>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-item">
+									
+									<a class="dropdown-menu-item-target" href="/kr/trackorder.html">주문 조회</a>
+								</li>
+								<li class="dropdown-menu-item">
+									<a class="dropdown-menu-item-target" href="/kr/account-order-history.html">주문 내역</a>
+								</li>
+								<li class="dropdown-menu-item">
+									<a class="dropdown-menu-item-target" href="/kr/account-favourites.html">즐겨찾기 메뉴</a>
+								</li>
+								<li class="dropdown-menu-item">
+									<a class="dropdown-menu-item-target" href="/kr/addressBook.html">주소록</a>
+								</li>
+								
+								<li class="dropdown-menu-item">
+									<a class="dropdown-menu-item-target" href="/member/changeAccount">계정 설정</a>
+								</li>
+								<li class="dropdown-menu-item">
+									<a class="dropdown-menu-item-target" href="/member/changePassword">비밀번호 변경</a>
+								</li>
+							</ul></li>
 
 							<li class="menu-item menu-item-support dropdown "><a
 								class="menu-item-target dropdown-toggle" href="#"

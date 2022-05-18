@@ -1,21 +1,5 @@
 $(document).ready(function() {
 	
-	var date = new Date();
-	var time = date.getHours();
-	if(time >= 8 && time <= 12){
-		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
-		$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
-		$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=2");
-		$(".primary-menu-item.selected").children("a").children("span").text("아침 메뉴");
-		$(this).children(".primary-menu-item-target").attr("href", "?daypartId=1");
-		$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
-		$("#daypartId").text("2");
-		menuRequest("emorning",2);
-	}else{
-		menuRequest("burger",1);
-	}
-
-	
 	$("#nomembertrackorder").on("click", function(e){
 		e.preventDefault();
 		var merchanuid = prompt('주문번호를 입력하세요');
@@ -32,20 +16,21 @@ $(document).ready(function() {
 			}	
 		})
 		})
-
+	
 	
 
 	//상단 메뉴
 
-	$(".menu-item-support").on("click", function(e) {
+	$('.menu-item.dropdown').on("click", function() {
 		if ($(this).attr("class") == "menu-item menu-item-support dropdown open") {
 			$(this).attr("class", "menu-item menu-item-support dropdown");
 			$(this).attr("aria-expanded", "false");
-			$(".dropdown-menu").css("display", "none");
+			$(this).parent(".dropdown-menu").css("display", "none");
 		} else {
+			$('.menu-item.dropdown').attr("class","menu-item menu-item-support dropdown");
 			$(this).attr("class", "menu-item menu-item-support dropdown open");
 			$(this).attr("aria-expanded", "true");
-			$(".dropdown-menu").css("display", "inline-block");
+			$(this).parent(".dropdown-menu").css("display", "inline-block");
 		}
 	});
 	$(".menu-item.menu-item-account.dropdown").on("click", function(e) {
@@ -111,7 +96,7 @@ $(document).ready(function() {
 			$('input[name=_rememberMe]').val("on");
 			$("#rememberMe").attr("aria-hidden", "false");
 			$("#rememberMe").attr("class", "modal-rememberme modal fade in");
-			$("#rememberMe").css("display", "block");
+//			$("#rememberMe").css("display", "block");
 		}
 	})
 

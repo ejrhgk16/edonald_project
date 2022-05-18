@@ -21,5 +21,6 @@ public interface MemberService {
 	public List<AddressDto>getAddressList(String username);
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress);
 	public List<OrderListDto> getOrderList(String user_email);
-
+	public String changeAccount(MemberDto sessionDto,MemberDto dto);
+	public String changePassword(MemberDto sessionDto,MemberDto dto,String checkPassword);
 }

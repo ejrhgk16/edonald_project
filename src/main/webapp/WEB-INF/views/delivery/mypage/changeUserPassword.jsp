@@ -1,12 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<!-- Spring Security Login Session 처리 -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>changeUserPassword</title>
-<link rel="stylesheet" href="kor/css/main.css">
-<link rel="stylesheet" href="kor/css/local.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/local.css">
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script>
+$(document).ready(function(){
+	$('#btn-submit').on('click',function(){
+		var url = "/member/changedPassword.do";
+		var user_password = $('#form_accountsetting_newpassword').val();
+		var user_passwordcheck = $('#form_accountsetting_reenterpassword').val();
+		var checkPassword = $('#form_accountsetting_oldpassword').val();
+		if(user_password != user_passwordcheck){
+			alert("새 비밀번호를 확인하세요.");
+		}else{
+			$.ajax({
+				url:url,
+				type:'POST',
+				data:{
+					user_password: user_password,
+					checkPassword: checkPassword
+				},
+				success:function(res){
+					if(res != "fail"){
+						location.href = res;
+					}
+				},
+				error:function(){
+					alert("error");
+				}
+			})
+		}
+	})
+})
+</script>
 </head>
 <body>
 <div class="root">
@@ -28,12 +65,7 @@
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
 							
-							
-					
-					
-							
-						
-						
+				
 							<li class="list-item">
 								<img src="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/img/icon_profile_blue.png" alt="Profile" width="20" class="profile-avator">
 								<b><span class="first-name">양원재</span></b>
@@ -271,7 +303,7 @@
 						<fieldset class="fieldset">									
 							<div class="form-group">
 								
-								<label class="field-label" for="form_accountsetting_oldpassword"><span class="required-symbol">*</span>??form.account.oldpassword.label_ko_KR??</label>
+								<label class="field-label" for="form_accountsetting_oldpassword"><span class="required-symbol">*</span>기존 비밀번호</label>
 								<input type="password" class="form-control input-lg" id="form_accountsetting_oldpassword" name="oldPassword" autocomplete="off" data-rule-required="true" maxlength="20" value="" aria-required="true">
 							</div>
 							<div class="form-group">
@@ -290,7 +322,7 @@
 						</fieldset>
 						<fieldset class="fieldset form-actions">
 							<div class="form-group">
-								<button type="submit" class="btn btn-red btn-xl btn-submit" id="btn-submit">비밀번호 저장</button>
+								<button type="button" class="btn btn-red btn-xl btn-submit" id="btn-submit">비밀번호 저장</button>
 							</div>
 						</fieldset>	
 					<input type="hidden" name="csrfValue" value="31f3648ed912ae77500a4df46a38a325"></form>

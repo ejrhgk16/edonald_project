@@ -109,8 +109,4 @@ public class HadminController {
 		bService.updateSubstitue(dto);
 	}
 	
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
-	public String temp() {
-		return "admin/hadmin/usercheck/usercheck";
-	}
 }
