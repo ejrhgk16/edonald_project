@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-
-
+	
+	
 	$(".secondary-menu-item").mouseover(function() {
 		if ($(this).attr("class") == "secondary-menu-item") {
 			$(this).attr("class", "secondary-menu-item :focus");
@@ -76,7 +76,6 @@ $(document).ready(function() {
 	$(".primary-menu-item").eq(1).on("click", function(e) {
 		e.preventDefault();
 		var partId = $(this).children(".primary-menu-item-target").attr("href");
-		console.log(partId);
 		if (partId == "?daypartId=1") {
 			$(".secondary-menu-item").children("a").eq(1).children("span").text("버거 & 세트");
 			$(".secondary-menu-item").children("a").eq(1).attr("data-value","burger");

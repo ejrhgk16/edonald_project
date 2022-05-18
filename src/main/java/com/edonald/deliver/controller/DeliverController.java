@@ -75,25 +75,28 @@ public class DeliverController {
 	
 	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
 	public @ResponseBody List<MenuDto> menuPageDo(String type, String daypartId, HttpSession session) {
-		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		int store_code = orderListDto.getStore_code();
+		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("daypartId", daypartId);
 		List<MenuDto> mList = dService.mList(map);
-		List<Integer> bList = dService.getBlockMenuList(store_code);
-		for (Integer block : bList) {
-			System.out.println(block);
-			for(MenuDto list : mList) {
-				
-				if(block == list.getSeq()) {
-					list.setBlock_status(1);
-					System.out.println(list.getName() + list.getBlock_status());
-					break;
+		
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		
+		if(orderListDto != null) {
+			int store_code = orderListDto.getStore_code();
+			List<Integer> bList = dService.getBlockMenuList(store_code);
+			for (Integer block : bList) {
+				for(MenuDto list : mList) {
+					if(block == list.getSeq()) {
+						list.setBlock_status(1);
+						break;
+					}
 				}
-				System.out.println(list.getName() + list.getBlock_status());
 			}
 		}
+		
+		
 		return mList;
 	}
 

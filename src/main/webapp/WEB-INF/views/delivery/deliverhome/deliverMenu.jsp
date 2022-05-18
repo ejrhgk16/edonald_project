@@ -15,6 +15,7 @@
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$(document).on("click", "#order-widget-submit", function(e){
 			e.preventDefault();
 			var totalPrice = $("#totalC").val();
