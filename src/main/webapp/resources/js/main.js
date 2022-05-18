@@ -31,6 +31,7 @@ $(document).ready(function() {
 				alert(res);
 			}	
 		})
+		})
 
 	
 
@@ -167,4 +168,5 @@ function LoginTabEvent(i, n, e, $loginTabs) {
 	$(tabIdNone).attr("class", "tab-pane");
 	$(tabIdActive).attr("class", "tab-pane active");
 }
+
 
