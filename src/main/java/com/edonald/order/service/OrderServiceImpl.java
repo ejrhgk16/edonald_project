@@ -193,7 +193,20 @@ public class OrderServiceImpl implements OrderService {
 		}
 		orderMapper.insertOrderInfo(orderListDto);
 	}
+
+	@Override
+	public OrderListDto getOrderInfo(String merchanuid) {
+		OrderListDto orderListDto = orderMapper.getOrderInfoByUid(merchanuid);
+		List<CartDto> cartList = orderMapper.getCartListByUid(merchanuid);
+		orderListDto.setCartList(cartList);
+		return orderListDto;
+	}
+
+	@Override
+	public OrderListDto getOrderListDto(String merchanuid) {
+		return orderMapper.getOrderInfoByUid(merchanuid);
+	}
 	
-	
+
 
 }

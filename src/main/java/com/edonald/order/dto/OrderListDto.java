@@ -28,7 +28,7 @@ public class OrderListDto {
 	private String exactcash;
 	private String cupon_title;
 	private int postcode;
-	private Date time_esti;//배달 예상 시간
+	private int  time_esti;//배달 예상 시간
 	private List<CartDto>cartList =new ArrayList<CartDto>();
 	private int deliverCost;//배달비 2500
 	private String payment_type;

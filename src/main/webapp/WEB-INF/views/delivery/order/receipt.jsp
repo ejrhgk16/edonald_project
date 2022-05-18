@@ -25,7 +25,14 @@ $(document).ready(function(){
 	
 	$("#confirmBtn").on("click", function(e){
 		e.preventDefault();
-		window.location.href="/ed/deliverHome";
+		var findCheck = '${memberOrderFind}';
+		var url = ""
+		if(findeCheck){
+			url="/member/mypage/trackOrder";
+		}else{
+			url="/ed/deliverHome";
+		}
+		window.location.href= url;
 	})
 });
 	

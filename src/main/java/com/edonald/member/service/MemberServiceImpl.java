@@ -23,6 +23,7 @@ import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.oauthConfig.NaverLogin;
 import com.edonald.order.dto.CartDto;
+import com.edonald.order.dto.OrderListDto;
 import com.edonald.securityconfig.SecurityUserDetailService;
 import com.google.gson.JsonObject;
 
@@ -130,6 +131,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<StoreDto> getNearStoreList(AddressDto deliverAddress) {
 		return mapper.getNearStoreList(deliverAddress);
+	}
+
+	@Override
+	public List<OrderListDto> getOrderList(String user_email) {
+		return mapper.getOrderList(user_email);
 	}
 
 

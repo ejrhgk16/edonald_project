@@ -168,10 +168,26 @@ public class OrderController {
 		return "/delivery/order/receipt";
 	}
 	
-	@GetMapping("/order/payment/complete3")
-	public String payComplete2() {
+	@GetMapping("/order/search/check")
+	public @ResponseBody ResponseEntity<String> merchanuidCheck(@RequestParam String merchanuid){
+		
+	}
+	
+	@GetMapping("/order/search/trackorder")
+	public String ordertrack(@RequestParam String merchanuid, Model model) {
+		OrderListDto orderListDto = orderService.getOrderListDto(merchanuid);
+		model.addAttribute("orderList", orderListDto);
+		return "/delivery/mypage/trackorder";
+	}
+	
+	@GetMapping("/order/search/orderDetail")
+	public String orderfind(@RequestParam String merchanuid, Model model) {
+		OrderListDto orderListDto = orderService.getOrderInfo(merchanuid);
+		model.addAttribute("orderListDto", orderListDto);
+		model.addAttribute("memberOrderFind", "find");
 		return "/delivery/order/receipt";
 	}
+	
 
 	}
 	

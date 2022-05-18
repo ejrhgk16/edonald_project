@@ -113,8 +113,12 @@ public class MemberController {
 		return "/ed/deliverHome";
 	}
 	
-	@GetMapping("/member/trackOrder")
-	public String trackOrder() {
+	@GetMapping("/member/mypage/trackOrder")
+	public String trackOrder(Authentication authentication, Model model ) {
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		String user_email = user.getMemberDto().getUser_email();
+		List<OrderListDto>orderList = memberService.getOrderList(user_email);
+		model.addAttribute("orderList", orderList);
 		return "/delivery/mypage/trackorder";
 	}
 
