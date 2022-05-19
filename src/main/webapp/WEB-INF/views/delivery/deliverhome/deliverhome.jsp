@@ -45,10 +45,10 @@
 								var store = '${principal.memberDto.deliverStore}';
 								var principal = '${principal}'
 								
-								if('${principal}' == ""){
+								if('${principal}' == "" && '${noLoginMemberDto}' == ""){
 									window.location.href = "/ed/menuPage";
 									return
-								}else if('${principal.memberDto.deliverStore}' != ""){
+								}else if('${principal.memberDto.deliverStore}' != "" || '${noLoginMemberDto}'!=""){
 									window.location.href = "/ed/menuPage";
 									return
 								}else{
@@ -108,7 +108,7 @@
 						<ul class="list-inline list-inline-divide">
 							<li class="list-item selected"><a class="list-item-target"
 								href="?locale=ko">한국어 <i class="fa fa-caret-left icon"></i></a>
-								<!-- --></li>
+							</li>
 							<li class="list-item"><a class="list-item-target"
 								href="?locale=en">English <i class="fa fa-caret-left icon"></i></a></li>
 						</ul>
@@ -162,29 +162,7 @@
 								class="menu-item-target dropdown-toggle" href="#signin"
 								data-toggle="modal" data-target="#signin"> <i
 									class="fa fa-user icon"></i> 마이 페이지
-							</a>
-							<ul class="dropdown-menu">
-								<li class="dropdown-menu-item">
-									
-									<a class="dropdown-menu-item-target" href="/kr/trackorder.html">주문 조회</a>
-								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/kr/account-order-history.html">주문 내역</a>
-								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/kr/account-favourites.html">즐겨찾기 메뉴</a>
-								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/kr/addressBook.html">주소록</a>
-								</li>
-								
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/member/changeAccount">계정 설정</a>
-								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/member/changePassword">비밀번호 변경</a>
-								</li>
-							</ul></li>
+							</a></li>
 
 							<li class="menu-item menu-item-support dropdown "><a
 								class="menu-item-target dropdown-toggle" href="#"
@@ -213,13 +191,13 @@
 						</ul>
 					</div>
 				</div>
-				
-				
+
+
 
 			</div>
 			<div class="main" role="main">
 
-				<!-- Begin Home Masthead Section -->
+
 				<section class="home-masthead page-masthead home-section">
 					<div class="slideshow" style="position: relative; height: 475px;">
 
@@ -257,7 +235,7 @@
 											accept-charset="utf-8" role="form"
 											class="panel-home-masthead-form" action="/kr/home.html">
 											<div class="form-group">
-												 <label for="form_select_address_delivery_address"
+												<label for="form_select_address_delivery_address"
 													class="control-label">다음의 주소로 배달됩니다:</label> <span
 													class="address-picker hide-default-error"><a
 													class="ui-selectmenu ui-widget ui-state-default ui-selectmenu-dropdown ui-corner-all"
@@ -280,223 +258,214 @@
 														aria-disabled="false" tabindex="0"
 														aria-activedescendant="ui-selectmenu-item-285"
 														style="width: 286px;">
-														<c:forEach var="addr" items="${principal.memberDto.addressList}">
-														<li role="presentation" class="ui-selectmenu-item-selected" style="border-bottom: 1px solid #efefef;">
-															<c:choose>
-																<c:when test="${addr.d_key eq 'd'}">
-																	<input type="hidden" name="select" value="true">		
-																</c:when>
-																<c:otherwise>
-																	<input type="hidden" name="select" value="false">		
-																</c:otherwise>
-															</c:choose>																
-															<input type="hidden" name="addr" value="${addr.address_seq}">		
-															<a href="#nogo" tabindex="-1" role="option" aria-selected="false">${addr.road_address}</a>
-														</li>
+														<c:forEach var="addr"
+															items="${principal.memberDto.addressList}">
+															<li role="presentation"
+																class="ui-selectmenu-item-selected"
+																style="border-bottom: 1px solid #efefef;"><c:choose>
+																	<c:when test="${addr.d_key eq 'd'}">
+																		<input type="hidden" name="select" value="true">
+																	</c:when>
+																	<c:otherwise>
+																		<input type="hidden" name="select" value="false">
+																	</c:otherwise>
+																</c:choose> <input type="hidden" name="addr"
+																value="${addr.address_seq}"> <a href="#nogo"
+																tabindex="-1" role="option" aria-selected="false">${addr.road_address}</a>
+															</li>
 														</c:forEach>
-													</ul>								
+													</ul>
 												</div>
 												<a class="action-secondary action-link action-addaddress"
-													href="/member/addAddressPage"><i class="fa fa-caret-right"></i>
-													주소 추가하기</a>
+													href="/member/addAddressPage"><i
+													class="fa fa-caret-right"></i> 주소 추가하기</a>
 											</div>
 
 											<fieldset class="form-actions">
 												<p class="action-advance-order">
-													<a href="#deliveryOptions" data-toggle="modal" id="homeOrderBtn"
+													<a href="#deliveryOptions" data-toggle="modal"
+														id="homeOrderBtn"
 														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
 												</p>
-											<hr class="fading-divider">
+												<hr class="fading-divider">
 												<p class="action-track-order">
-													<a href="#trackOrder" data-toggle="modal" id="membertrackorder"
-														class="action-link"> <i class="fa fa-caret-right"></i>
-														주문 조회
+													<a href="#trackOrder" data-toggle="modal"
+														id="membertrackorder" class="action-link"> <i
+														class="fa fa-caret-right"></i> 주문 조회
 													</a>
-												</p>										
+												</p>
 											</fieldset>
 										</form>
 									</div>
 								</div>
 							</div>
-
-
 						</c:when>
+						
+						<c:when test="${!empty noLoginMemberDto }">
+							
+								<div class="panel panel-home-masthead panel-home-masthead-order">
+									<div class="panel-heading">
+										<div>
+											<h2>환영합니다 ${noLoginMemberDto.user_name} 고객님</h2>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="panel-home-masthead-form">
+											<form name="form_select_address"
+												id="form_select_delivery_address" method="post"
+												accept-charset="utf-8" role="form"
+												class="panel-home-masthead-form" action="/kr/home.html">
+												<div class="form-group">
+													<label for="form_select_address_delivery_address"
+														class="control-label">다음의 주소로 배달됩니다:</label> <span
+														class="address-picker hide-default-error"><a
+														class="ui-selectmenu ui-widget ui-state-default ui-selectmenu-dropdown ui-corner-all"
+														id="form_select_address_delivery_address-button"
+														role="button" tabindex="0" aria-haspopup="true"
+														aria-owns="form_select_address_delivery_address-menu"
+														aria-disabled="false" style="width: 288px;"> <span
+															class="ui-selectmenu-status">
+																${noLoginMemberDto.deliverAddress.road_address}</span> <span
+															class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
+
+													<a class="action-secondary action-link action-addaddress"
+														href="/order/nologin/registerAddress"><i
+														class="fa fa-caret-right"></i> 주소 변경하기</a>
+												</div>
+
+												<fieldset class="form-actions">
+													<p class="action-advance-order">
+														<a href="#deliveryOptions" data-toggle="modal"
+															id="homeOrderBtn"
+															class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
+													</p>
+													<hr class="fading-divider">
+
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</div>
+					
+						</c:when>
+						
 						<c:otherwise>
-							<!-- Begin Guest Checkout Login Panel -->
+					
 							<div class="panel panel-home-masthead panel-home-masthead-login">
 								<div class="panel-heading">
 									<h2>주문 시작하기</h2>
 								</div>
 								<div class="panel-body">
-									<c:when test="${!empty noLoginMemberDto }">
-										<div class="panel panel-home-masthead panel-home-masthead-order">
-								<div class="panel-heading">
-									<div>
-										<h2>환영합니다 ${noLoginMemberDto.user_name} 고객님</h2>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div class="panel-home-masthead-form">
-										<form name="form_select_address"
-											id="form_select_delivery_address" method="post"
-											accept-charset="utf-8" role="form"
-											class="panel-home-masthead-form" action="/kr/home.html">
-											<div class="form-group">
-												 <label for="form_select_address_delivery_address"
-													class="control-label">다음의 주소로 배달됩니다:</label> <span
-													class="address-picker hide-default-error"><a
-													class="ui-selectmenu ui-widget ui-state-default ui-selectmenu-dropdown ui-corner-all"
-													id="form_select_address_delivery_address-button"
-													role="button" tabindex="0" aria-haspopup="true"
-													aria-owns="form_select_address_delivery_address-menu"
-													aria-disabled="false" style="width: 288px;"> <span
-														class="ui-selectmenu-status">
-															${noLoginMemberDto.deliverAddress.road_address}</span> <span
-														class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
+								<ul id="nav-tabs-login-fragment"
+									class="nav nav-tabs nav-tabs-login-fragment">
 
-												<a class="action-secondary action-link action-addaddress"
-													href="/member/addAddressPage"><i class="fa fa-caret-right"></i>
-													주소 변경하기</a>
-											</div>
+									<li class="active"><a href="#home-tab-login"
+										data-toggle="tab" aria-expanded="true">로그인</a></li>
+									<li class=""><a href="#home-tab-new" data-toggle="tab"
+										aria-expanded="false">비회원 주문</a></li>
+								</ul>
+								<div class="tab-content clearfix">
+									<div class="tab-pane active" id="home-tab-login">
+										<form method="post" accept-charset="utf-8" role="form"
+											id="form_login_masthead" name="form_login_masthead"
+											class="panel-home-masthead-form" data-required-symbol="false"
+											novalidate="novalidate" action="/ed/memberLogin.do">
+											<fieldset class="form-credentials">
+												<div class="list-group textfield-list-group">
+													<div class="list-group-item textfield-list-group-item">
+														<label class="sr-only" for="form_login_masthead_username">Email</label>
 
-											<fieldset class="form-actions">
-												<p class="action-advance-order">
-													<a href="#deliveryOptions" data-toggle="modal" id="homeOrderBtn"
-														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
-												</p>
-											<hr class="fading-divider">
-								
+														<input type="text" autocomplete="off" name="username"
+															id="form_login_masthead_username"
+															class="required email list-group-form-control"
+															placeholder="아이디" value="" aria-required="true"
+															aria-invalid="false">
+													</div>
+													<div class="list-group-item textfield-list-group-item">
+														<label class="sr-only" for="form_login_masthead_password">Password</label>
+														<input type="password" autocomplete="off" name="password"
+															id="form_login_masthead_password"
+															class="required list-group-form-control"
+															placeholder="비밀번호" maxlength="20" value=""
+															aria-required="true" aria-invalid="false">
+													</div>
+													<label id="form_login_masthead_username-error"
+														class="error" for="form_login_masthead_username"></label><label
+														id="form_login_masthead_password-error" class="error"
+														for="form_login_masthead_password"></label>
+												</div>
+
+												<div class="checkbox">
+													<div class="icheckbox" style="position: relative;"></div>
+													<input type="hidden" name="_rememberMe" value="on">
+													<label for="form_login_masthead_rememberme"
+														class="checkbox-label">자동 로그인</label>
+												</div>
 											</fieldset>
+											<fieldset class="form-actions">
+
+												<button type="submit" id="edLogin"
+													class="btn btn-default btn-red btn-block btn-xl btn-submit">로그인</button>
+
+												<div>
+
+													<a href="${naverUrl}"> <img
+														src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/naverbtn.png">
+													</a>
+												</div>
+												<p class="action-forgot-password " align="left">
+													<a class="action-link" href=""><b>비밀번호 찾기</b></a>
+												</p>
+											</fieldset>
+											<input type="hidden" name="csrfValue"
+												value="628ed532d621dd405330ca87ed2a0b6f">
 										</form>
+
+										<div
+											class="frament-new-user section-border-top margin-bottom-0 centered-text">
+
+											<a class="btn btn-block btn-red btn-xl"
+												style="margin-bottom: 4px;" href=""> <span>회원가입</span>
+											</a>
+											<div id="member-benefits"
+												class="popover-wrapper popover-details">
+												<div class="popover-wrapper">
+													<h5 class="text-default">신규 계정 생성</h5>
+													<div class="guest-order-note"
+														style="max-width: 300px !important; width: 300px !important;">맥딜리버리
+														회원에게만 제공되는 할인 및 프로모션 혜택을 누리고, 지난 주문 내역을 검색하거나 즐겨찾기 메뉴를
+														이용해서 더 빠르고 편리하게 맥딜리버리를 이용하세요.</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="tab-pane" id="home-tab-new">
+
+										<div class="frament-guest-order">
+											<div class="guest-order-header">회원가입하지 않고 주문하기</div>
+											<div class="guest-order-note">온라인 결제로 즉시 주문</div>
+
+											<hr class="fading-divider">
+											<a class="btn btn-block btn-red btn-xl"
+												href="/order/nologin/phonechek">비회원 주문</a> <a
+												class="btn btn-block btn-red btn-xl" href=""
+												id="nomembertrackorder">주문조회</a>
+										</div>
 									</div>
 								</div>
 							</div>
-									</c:when>
-									<c:otherwise>
-
-									<ul id="nav-tabs-login-fragment"
-										class="nav nav-tabs nav-tabs-login-fragment">
-
-										<li class="active"><a href="#home-tab-login"
-											data-toggle="tab" aria-expanded="true">로그인</a></li>
-										<li class=""><a href="#home-tab-new" data-toggle="tab"
-											aria-expanded="false">비회원 주문</a></li>
-									</ul>
-									<div class="tab-content clearfix">
-										<div class="tab-pane active" id="home-tab-login">
-											<form method="post" accept-charset="utf-8" role="form"
-												id="form_login_masthead" name="form_login_masthead"
-												class="panel-home-masthead-form"
-												data-required-symbol="false" novalidate="novalidate"
-												action="/ed/memberLogin.do">
-												<fieldset class="form-credentials">
-													<div class="list-group textfield-list-group">
-														<div class="list-group-item textfield-list-group-item">
-															<label class="sr-only" for="form_login_masthead_username">Email</label>
-
-															<input type="text" autocomplete="off" name="username"
-																id="form_login_masthead_username"
-																class="required email list-group-form-control"
-																placeholder="아이디" value="" aria-required="true"
-																aria-invalid="false">
-														</div>
-														<div class="list-group-item textfield-list-group-item">
-															<label class="sr-only" for="form_login_masthead_password">Password</label>
-															<input type="password" autocomplete="off" name="password"
-																id="form_login_masthead_password"
-																class="required list-group-form-control"
-																placeholder="비밀번호" maxlength="20" value=""
-																aria-required="true" aria-invalid="false">
-														</div>
-														<label id="form_login_masthead_username-error"
-															class="error" for="form_login_masthead_username"></label><label
-															id="form_login_masthead_password-error" class="error"
-															for="form_login_masthead_password"></label>
-													</div>
-
-													<div class="checkbox">
-														<div class="icheckbox" style="position: relative;"></div>
-														<input type="hidden" name="_rememberMe" value="on">
-														<label for="form_login_masthead_rememberme"
-															class="checkbox-label">자동 로그인</label>
-													</div>
-												</fieldset>
-												<fieldset class="form-actions">
-
-													<button type="submit" id="edLogin"
-														class="btn btn-default btn-red btn-block btn-xl btn-submit">로그인</button>
-
-													<div>
-													
-														<a href="${naverUrl}"> <img
-															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/naverbtn.png">
-														</a>
-													</div>
-													<p class="action-forgot-password " align="left">
-														<a class="action-link" href=""><b>비밀번호 찾기</b></a>
-													</p>
-												</fieldset>
-												<input type="hidden" name="csrfValue"
-													value="628ed532d621dd405330ca87ed2a0b6f">
-											</form>
-
-											<div
-												class="frament-new-user section-border-top margin-bottom-0 centered-text">
-
-												<a class="btn btn-block btn-red btn-xl"
-													style="margin-bottom: 4px;"
-													href=""> <span>회원가입</span>
-												</a> 
-												<div id="member-benefits"
-													class="popover-wrapper popover-details">
-													<div class="popover-wrapper">
-														<h5 class="text-default">신규 계정 생성</h5>
-														<div class="guest-order-note"
-															style="max-width: 300px !important; width: 300px !important;">맥딜리버리
-															회원에게만 제공되는 할인 및 프로모션 혜택을 누리고, 지난 주문 내역을 검색하거나 즐겨찾기 메뉴를
-															이용해서 더 빠르고 편리하게 맥딜리버리를 이용하세요.</div>
-													</div>
-												</div>
-											</div>
-
-										</div>
-										<div class="tab-pane" id="home-tab-new">
-
-											<div class="frament-guest-order">
-												<div class="guest-order-header">회원가입하지 않고 주문하기</div>
-												<div class="guest-order-note">온라인 결제로 즉시 주문</div>
-																		
-													<hr class="fading-divider">
-												<a class="btn btn-block btn-red btn-xl"
-													href="">비회원 주문</a>
-			
-												<a class="btn btn-block btn-red btn-xl"
-													href="" id="nomembertrackorder">주문조회</a>
-											</div>
-										</div>
-									</div>
-										</c:otherwise>
-								</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
-
-					<!-- End Guest Checkout Login Panel -->
 				</section>
-				<!-- End Home Masthead Section -->
 
 
-				<!-- Begin Promotion Section -->
 				<section class="promotions home-section">
 					<div class="row"></div>
 				</section>
-				<!-- End Promotion Section -->
 
-				<!-- Begin Offer Section -->
 
-				<!-- End isOfferWalletEnabled -->
-
-				<!-- Begin How It Works Section -->
 				<section class="how-it-works home-section">
 					<h1 class="section-title">맥딜리버리 이용 방법!</h1>
 					<p>
@@ -506,7 +475,7 @@
 						</a>
 					</p>
 				</section>
-				<!-- End How It Works Section -->
+
 			</div>
 		</div>
 		<div class="global-footer">
@@ -733,8 +702,7 @@
 											<div class="guest-order-header">회원가입하지 않고 주문하기</div>
 											<div class="guest-order-note">온라인 결제로 즉시 주문</div>
 											<a class="btn btn-block btn-red btn-xl"
-												onclick="dataLayer.push(               {                'event': 'trackEvent',                'eventDetails.category': 'i am new',                'eventDetails.action': 'click popup modal',                'eventDetails.label': 'guest order'               });"
-												href="/kr/guest_address.html">비회원 주문</a>
+												href="/order/nologin/phonechek">비회원 주문</a>
 										</div>
 									</div>
 

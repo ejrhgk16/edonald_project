@@ -41,6 +41,7 @@ $(document).ready(function(){
 					data: JSON.stringify(data),
 					contentType: "application/json; charset=utf-8",
 					success: function(res) {
+							alert("정보등록을 완료하였습니다.");
 							location.href="/ed/deliverHome";
 					},
 					error:function(res){
