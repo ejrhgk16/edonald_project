@@ -41,6 +41,30 @@ $(document).ready(function() {
 		joinUserInfo();
 	});
 	
+	
+	
+	//checkbox event (약관)
+	$('.checkbox').not('#allChecked').on('click',function(){
+		if($(this).children('div').attr("class") == "icheckbox"){
+			$(this).children('div').attr("class","icheckbox checked");
+		}else{
+			$(this).children('div').attr("class","icheckbox");
+		}
+	})
+	
+	$('#allChecked').on('click',function(){
+		if($(this).children('div').attr("class") == "icheckbox"){
+			$(this).children('div').attr("class","icheckbox checked");
+			$('.icheckbox').each(function(){
+				$(this).attr("class", "icheckbox checked");
+			})
+		}else{
+			$(this).children('div').attr("class","icheckbox");
+			$('.icheckbox').each(function(){
+				$(this).attr("class", "icheckbox");
+			})
+		}
+	})
 
 })
 

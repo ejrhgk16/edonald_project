@@ -138,12 +138,55 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getOrderList(user_email);
 	}
 
-
-
-
-		
-		
+	@Override
+	public String changeAccount(MemberDto sessionDto,MemberDto dto) {
+		String sessionPass = sessionDto.getUser_password();
+		String dtoPass = dto.getUser_password();
+		if(!encoder.matches(dtoPass, sessionPass)) {
+			return "fail";
+		}
+		mapper.changeAccount(dto);
+		return "success";
 	}
+	
+	@Override
+	public void changeAccountByAdmin(MemberDto dto) {
+		if(dto.getUser_password() != null) {
+			dto.setUser_password(encoder.encode(dto.getUser_password()));
+		}
+		mapper.changeAccount(dto);
+	}
+	
+	@Override
+	public String changePassword(MemberDto sessionDto, MemberDto dto, String checkPassword) {
+		String sessionPass = sessionDto.getUser_password();
+		String dtoPass = dto.getUser_password();
+		if(!encoder.matches(checkPassword, sessionPass)) {
+			return "fail";
+		}
+		dto.setUser_email(sessionDto.getUser_email());
+		dto.setUser_password(encoder.encode(dtoPass));
+		mapper.changePassword(dto);
+		return mapper.getEncodePassword(dto);
+	}
+	@Override
+	public List<MemberDto> getMemberList(int user_status){
+		List<MemberDto> list = mapper.getMemberList(user_status);
+		return list;
+	}
+	
+	@Override
+	public void activityMemberControl(MemberDto dto) {
+		mapper.activityMemberControl(dto);
+	}
+	
+	@Override
+	public MemberDto getMemberById(String username) {
+		return mapper.getMemberById(username);
+	}
+		
+		
+}
 	
 	
 

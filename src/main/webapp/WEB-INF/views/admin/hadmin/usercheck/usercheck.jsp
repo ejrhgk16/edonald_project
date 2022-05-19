@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,68 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>	
+<script>
+$(document).ready(function(){
+	var self_url = new URL(window.location.href);
+	var self_param = self_url.searchParams;
+	var user_status = '0';
+	var result_url = "/hadmin/userPage";
+	if(self_param.get('user_status') == 0){
+		$('.unactivityListBtn').text("정상 유저");
+		$('.unactivityListBtn').attr("class","btn btn-outline-dark activityListBtn");
+		$('.thBtn').text("활성화");
+		$('.unactivityBtn').text("활성화");
+		user_status ='1';
+		result_url ="/hadmin/userPage?user_status=0";
+	}
+
+	$('.modifyBtn').on('click',function(){
+		var url = "/hadmin/CMSadmin";
+		var id = "id_" + $(this).attr("data-value");
+		var email = $('#'+id).text();
+		url += "?user_email=" + email;
+		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
+	})
+	
+	$('.createSadminBtn').on('click',function(){
+		var url = "/hadmin/CMSadmin";
+		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");	
+	})
+	
+	$('.unactivityBtn').on('click',function(){
+		var id = "id_" + $(this).attr("data-value");
+		var email = $('#'+id).text();
+		
+		$.ajax({
+			url: "/hadmin/unactivity.do",
+			type: 'POST',
+			data:{
+				user_email: email,
+				user_status: user_status
+			},
+			success:function(){
+				location.href = result_url;
+			},
+			error:function(){
+				alert("error");
+			}
+		})
+	})
+		
+	$('.unactivityListBtn').on('click',function(){
+		location.href = "/hadmin/userPage?user_status=0";
+	})
+	$('.activityListBtn').on('click',function(){
+		location.href = "/hadmin/userPage";
+	})
+
+	
+})
+</script>
 </head>
 <body class="sb-nav-fixed">
+
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.jsp">관리자</a>
@@ -192,7 +253,8 @@
 						</div>
 						<div>
 							<br> &nbsp;&nbsp;&nbsp;
-							 <button type="button" onclick="window.open('admincreate.jsp');"class="btn btn-outline-dark">등록</button>
+							 <button type="button" class="btn btn-outline-dark createSadminBtn">등록</button>
+							 <button type="button" class="btn btn-outline-dark unactivityListBtn">활동 정지 목록</button>
 						</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
@@ -205,35 +267,31 @@
 										<th scope="col">권한</th>
 										<th scope="col">지점명</th>
 										<th scope="col">유저이메일</th>
-										<th scope="col">문자수신동의</th>
-										<th scope="col">이메일수신동의</th>
-										<th scope="col">삭제</th>
-										<th scope="col">정지</th>
+										<th scope="col">수정</th>
+										<th scope="col" class="thBtn">정지</th>
 									</tr>
 								</thead>
 								<tbody>
-										<tr th:each="users : ${userList}">
-					                        <form th:action="@{/user/change/{id}(id=${users.id})}" method="post" class="d-flex">
-					                            <td th:text="${users.getId()}">1</td>
-					                            <td th:text="${users.getName()}">name</td>
-					                            <td th:text="${users.getUsername()}">username</td>
-					                            <td th:text="${users.getRole()}">role</td>
-					                            <td th:text="${users.getRole()}">00지점</td>
-					                            <td th:text="${users.getEmail()}">ddd@ddd.ddd</td>
-					                            <td th:text="${users.getMoney()}">yes</td>
-					                            <td th:text="${users.getCreateDate()}">yes</td>
-					                            <td>
-					                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-					                                    삭제
-					                                </button>
-					                            </td>
-					                            <td>
-					                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-					                                    정지
-					                                </button>
-					                            </td>
-					                            </form>
-					                    </tr>
+								<c:forEach var="list" items="${list}" varStatus="status">
+									<tr class="userForm">
+			                            <td>${status.count}</td>
+			                            <td>${list.user_name }</td>
+			                            <td>${list.user_phone}</td>
+			                            <td>${list.role}</td>
+			                            <td>${list.store_name}</td>
+			                            <td id="id_${status.count}">${list.user_email }</td>
+			                            <td>
+			                                <button class="btn btn-outline-dark flex-shrink-0 modifyBtn" data-value="${status.count}" type="button">
+			                                    수정
+			                                </button>
+			                            </td>
+			                            <td>
+			                                <button class="btn btn-outline-dark flex-shrink-0 unactivityBtn" type="button" data-value="${status.count}">
+			                                    정지
+			                                </button>
+			                            </td>
+				                    </tr>								
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -254,6 +312,7 @@
 			</footer>
 		</div>
 	</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

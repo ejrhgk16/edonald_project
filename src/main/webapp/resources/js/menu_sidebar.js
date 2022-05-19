@@ -1,5 +1,5 @@
 $(document).ready(function() {
-			var date = new Date();
+	var date = new Date();
 	var time = date.getHours();
 	if(time >= 8 && time <= 12){
 		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
@@ -13,7 +13,6 @@ $(document).ready(function() {
 	}else{
 		menuRequest("burger",1);
 	}
-	
 	
 	$(".secondary-menu-item").mouseover(function() {
 		if ($(this).attr("class") == "secondary-menu-item") {

@@ -17,6 +17,7 @@ import com.edonald.hadmin.serivce.AdminMenuService;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.hadmin.serivce.StoreManageService;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.member.service.MemberService;
 
 @Controller
 public class HadminController {
@@ -26,6 +27,8 @@ public class HadminController {
 	private FileUploadService fService; 
 	@Autowired
 	private StoreManageService sService;
+	@Autowired
+	private MemberService mService;
 	
 	
 	@RequestMapping(value = "/hadmin/index", method = RequestMethod.GET)
@@ -34,18 +37,49 @@ public class HadminController {
 	}
 	
 	
-// sadmin 회원 가입
-	@RequestMapping(value = "/hadmin/createSadmin", method = RequestMethod.GET)
-	public String hadminCreateSadmin() {
+// 회원관리
+	//page
+	@RequestMapping(value = "/hadmin/userPage",method = RequestMethod.GET)
+	public String hadminUserPage(Model model,String user_status) {
+		if(user_status != null) {
+			if(user_status.equals("0")) {
+				model.addAttribute("list",mService.getMemberList(0) );
+			}else {
+				model.addAttribute("list",mService.getMemberList(1) );
+			}
+		}else {
+			model.addAttribute("list",mService.getMemberList(1) );
+		}
+		
+		return "admin/hadmin/usercheck/usercheck";
+	}
+	//insertPage
+	@RequestMapping(value = "/hadmin/CMSadmin", method = RequestMethod.GET)
+	public String hadminCreateModifySadmin(Model model,String user_email) {
+		if(user_email != null) {
+			model.addAttribute("user",mService.getMemberById(user_email));
+		}
 		return "admin/hadmin/usercheck/admincreate";
 	}
-	
+	//insertMemberSadmin.do
 	@ResponseBody
 	@RequestMapping( value = "/hadmin/createSadmin.do",method = RequestMethod.POST)
 	public String hadminCreate(MemberDto dto) {
 		String msg = sService.joinSadmin(dto);
 		String result = "{ \"msg\":\"" +msg+"\"}";
 		return result;
+	}
+	// 계정 비활성화 활성화
+	@ResponseBody
+	@RequestMapping( value = "/hadmin/unactivity.do", method = RequestMethod.POST)
+	public void hadminUnactivityMember(MemberDto dto) {
+		mService.activityMemberControl(dto);
+	}
+	
+	@ResponseBody
+	@RequestMapping( value ="/hadmin/modifyMember.do",method = RequestMethod.POST)
+	public void hadminModifyMember(MemberDto dto) {
+		mService.changeAccountByAdmin(dto);
 	}
 
 // 메뉴 관리 
@@ -73,7 +107,7 @@ public class HadminController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/hadmin/insert", method = RequestMethod.POST)
-	public String insert(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
+	public String insertMenu(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
 		dto.setStatus(1);
 		dto.setImg_path(fService.fileUpload(mainUploadFile, path));
@@ -88,7 +122,7 @@ public class HadminController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/hadmin/update", method = RequestMethod.POST)
-	public String update(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
+	public String updateMenu(MenuDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile,@RequestParam("subUploadFile") MultipartFile subUploadFile) {
 		String path = "menu/burger";
 		dto.setStatus(1);
 		if(mainUploadFile.getOriginalFilename().equals("")) {
@@ -109,8 +143,4 @@ public class HadminController {
 		bService.updateSubstitue(dto);
 	}
 	
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
-	public String temp() {
-		return "admin/hadmin/usercheck/usercheck";
-	}
 }

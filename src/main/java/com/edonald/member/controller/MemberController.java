@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,6 +53,9 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private MemberMapper mapper;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+
 
 	@RequestMapping(value = "/ed/naverCallback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String naverLogin(@RequestParam String code, @RequestParam String state, HttpServletRequest req,
@@ -122,6 +128,47 @@ public class MemberController {
 		return "/delivery/mypage/trackorder";
 	}
 
+	@GetMapping("/member/changeAccount")
+	public String changeAccount() {		
+		return "/delivery/mypage/editProfile";
+	}
+	@GetMapping("/member/changePassword")
+	public String joinFindAdress2() {		
+		return "/delivery/mypage/changeUserPassword";
+	}
 	
-
+	@ResponseBody
+	@PostMapping("/member/changedAccount.do")
+	public String changeAccountDo(Authentication authentication,MemberDto dto) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = user.getMemberDto();
+		dto.setUser_email(sessionDto.getUser_email());
+		String result = memberService.changeAccount(sessionDto,dto);
+		if(result.equals("success")) {
+			sessionDto.setUser_name(dto.getUser_name());
+			sessionDto.setUser_phone(dto.getUser_phone());
+			sessionDto.setUser_gender(dto.getUser_gender());
+			return "/ed/deliverHome";
+		}else {
+			return result;
+		}
+	}
+	
+	@ResponseBody
+	@PostMapping("/member/changedPassword.do")
+	public String changePasswordDo(Authentication authentication,MemberDto dto,@RequestParam String checkPassword) {
+		System.out.println(checkPassword);
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = user.getMemberDto();
+		System.out.println(dto.getUser_password());
+		String result = memberService.changePassword(sessionDto,dto,checkPassword);
+		if(!result.equals("fail")) {
+			System.out.println(result);
+			sessionDto.setUser_password(result);
+			return "/ed/deliverHome";
+		}else {
+			System.out.println(result);
+			return result;
+		}
+	}
 }

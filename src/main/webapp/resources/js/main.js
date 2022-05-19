@@ -1,8 +1,11 @@
 $(document).ready(function() {
 	
+<<<<<<< HEAD
 
 
 	
+=======
+>>>>>>> 2ca40bb9cc027c9e98f9f4a7c25cae163b1ce5b3
 	$("#nomembertrackorder").on("click", function(e){
 		e.preventDefault();
 		var merchanuid = prompt('주문번호를 입력하세요');
@@ -19,20 +22,21 @@ $(document).ready(function() {
 			}	
 		})
 		})
-
+	
 	
 
 	//상단 메뉴
 
-	$(".menu-item-support").on("click", function(e) {
+	$('.menu-item.dropdown').on("click", function() {
 		if ($(this).attr("class") == "menu-item menu-item-support dropdown open") {
 			$(this).attr("class", "menu-item menu-item-support dropdown");
 			$(this).attr("aria-expanded", "false");
-			$(".dropdown-menu").css("display", "none");
+			$(this).parent(".dropdown-menu").css("display", "none");
 		} else {
+			$('.menu-item.dropdown').attr("class","menu-item menu-item-support dropdown");
 			$(this).attr("class", "menu-item menu-item-support dropdown open");
 			$(this).attr("aria-expanded", "true");
-			$(".dropdown-menu").css("display", "inline-block");
+			$(this).parent(".dropdown-menu").css("display", "inline-block");
 		}
 	});
 	$(".menu-item.menu-item-account.dropdown").on("click", function(e) {
@@ -98,7 +102,7 @@ $(document).ready(function() {
 			$('input[name=_rememberMe]').val("on");
 			$("#rememberMe").attr("aria-hidden", "false");
 			$("#rememberMe").attr("class", "modal-rememberme modal fade in");
-			$("#rememberMe").css("display", "block");
+//			$("#rememberMe").css("display", "block");
 		}
 	})
 
