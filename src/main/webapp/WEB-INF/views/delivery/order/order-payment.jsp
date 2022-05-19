@@ -15,6 +15,15 @@
 <script type="text/javascript" src="/resources/js/order.js"></script>
 <script>
 	$(document).ready(function(){
+		remove();
+		function remove(){
+			var user_type= '${orderListDto.user_type}'
+			if(user_type == '2'){
+				$("#offlinePay").remove();
+			}
+		}
+		
+		
 		var total_price = '${orderListDto.total_price}';
 		if(!total_price){total_price = 0}
 		
@@ -29,8 +38,9 @@
 
 		$("#confirmBtnCashless").on("click", function() {
 			var payment_type = $(".iradio.checked").children("#payment_type").val();
-			console.log(payment_type);
+			
 			if (payment_type == "온라인결제") {
+				console.log(payment_type);
 				$.ajax({
 					type : "GET",
 					url : "/order/payment/cnum?payment_type=" + payment_type,
@@ -43,11 +53,13 @@
 					type : "GET",
 					url : "/order/payment/cnum?payment_type=" + payment_type,
 					success : function(data) {
-						if(data !=null){
 							location.href = "/order/payment/complete";
-						}
-						
+					},
+					error:function(){
+						alert("비회원은 온라인결제만 가능합니다");
 					}
+						
+					
 					})
 			}
 			})
@@ -204,30 +216,6 @@
 				</div>
 
 
-				<!-- Start of Session time out warning -->
-
-
-
-				<div
-					class="alert alert-warning alert-dismissable inline-alert type-flama hidden alert-session-timeout"
-					data-dismiss-trigger="session.action.continue">
-					<button type="button" class="close" data-hide="inline-alert"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-					<p>
-						<i class="fa fa-exclamation text-white icon"></i> 선택하신 제품의 주문 가능
-						시간이 <span class="text-primary timer session-timer">13:36</span> 분
-						남았습니다. 주문을 완료해 주세요!
-					</p>
-				</div>
-
-
-
-				<!-- [/countdownmenuswitchtimer.modal] -->
-
-
-
 			</div>
 			<div class="main" role="main">
 
@@ -273,7 +261,7 @@
 													</div>
 												</div>
 
-												<div>
+												<div id="offlinePay">
 													<h5>현장 결제</h5>
 
 													<div class="col-xs-3 first"

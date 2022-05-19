@@ -23,23 +23,24 @@
 				alert("3천원 이상 주문해야합니다");
 				return;
 			}else{
-				window.location.href="/order/orderCheck";
+				location.replace("/order/orderCheck");
 			}
-			
-			
-			
 		})
 		
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
 			var menu_code =  $(this).attr("href");
-	
-			if('${principal}' == ""){
-				alert("로그인을 해주세요");
-				window.location.href = "/ed/deliverHome"
-			}else{
-				$(this).next(".menuInfo").submit();	
-			}
+			$.ajax({
+				type : "GET",
+				url : "/order/checkSession",
+				success : function(){
+					$(".menuInfo").submit();	
+				}, 
+				error : function(){
+					alert("로그인 해주세요!");
+				}									
+			})
+			
 		})
 		
 		$(document).on("click", "#delBtn", function(e){
@@ -506,7 +507,7 @@ ${orderListDto.store_code }
 								</div>
 								<div class="col-xs-4">
 									<c:choose>
-										<c:when test="${empty principal }">
+										<c:when test="${empty orderListDto }">
 											<div class="panel panel-basic panel-narrow">
 												<div class="panel-section-group">
 													<section class="panel-section how-it-works">

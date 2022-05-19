@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -60,6 +62,7 @@ public class DeliverController {
 			 String user_address = memberDto.getDeliverAddress().getRoad_address();
 			 user_address = user_address + " - "+ memberDto.getDeliverAddress().getDetail_address();
 			OrderListDto orderListDto  = new OrderListDto();
+			orderListDto.setUser_name(memberDto.getUser_name());
 			orderListDto.setUser_address(user_address);
 			orderListDto.setStore_code(memberDto.getDeliverStore().getStore_code());
 			orderListDto.setUser_email(memberDto.getUser_email());
@@ -68,6 +71,21 @@ public class DeliverController {
 			orderListDto.setDeliverCost(2500);
 			orderListDto.setPostcode(memberDto.getDeliverAddress().getPostcode());
 			session.setAttribute("orderListDto", orderListDto);
+		}
+		if(session.getAttribute("noLoginMemberDto") != null && session.getAttribute("orderListDto") == null) {
+			MemberDto noLoginMemberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
+			 String user_address = noLoginMemberDto.getDeliverAddress().getRoad_address();
+			 user_address = user_address + " - "+ noLoginMemberDto.getDeliverAddress().getDetail_address();
+				OrderListDto orderListDto  = new OrderListDto();
+				orderListDto.setUser_name(noLoginMemberDto.getUser_name());
+				orderListDto.setUser_address(user_address);
+				orderListDto.setStore_code(noLoginMemberDto.getDeliverStore().getStore_code());
+				orderListDto.setUser_email(noLoginMemberDto.getUser_email());
+				orderListDto.setUser_type(2); //1회원 2 비회원
+				orderListDto.setUser_phone(noLoginMemberDto.getUser_phone());
+				orderListDto.setDeliverCost(2500);
+				orderListDto.setPostcode(noLoginMemberDto.getDeliverAddress().getPostcode());
+				session.setAttribute("orderListDto", orderListDto);
 		}
 		
 		
@@ -111,6 +129,32 @@ public class DeliverController {
 		return "/delivery/info/useInfo";
 	}
 	
+	@GetMapping("/ed/store/checkStatus")
+	public @ResponseBody  ResponseEntity<String>checkStatus(Authentication authentication, HttpSession session){
+			if(authentication != null) {
+				System.out.println("check authentication ! ");
+				SecurityUser user = (SecurityUser) authentication.getPrincipal();
+				if(user.getMemberDto().getDeliverStore() != null) {
+					return new ResponseEntity<String>(HttpStatus.OK);
+				}else {
+					return new ResponseEntity<String>("로그인사용자의 배달가능 지점이없음", HttpStatus.BAD_REQUEST);
+				}
+			}
+			
+			if(session.getAttribute("noLoginMemberDto") != null) {
+				System.out.println("check noLoginMemberDto ! ");
+				MemberDto noLoginMem = (MemberDto) session.getAttribute("noLoginMemberDto");
+					if(noLoginMem.getDeliverStore() != null) {
+						return new ResponseEntity<String>(HttpStatus.OK);
+					}else {
+						return new ResponseEntity<String>("비로그인사용자의 배달가능 지점이없음", HttpStatus.BAD_REQUEST);
+					}
+			}
+			
+			return new ResponseEntity<String>("배달메뉴x", HttpStatus.OK);
+			
+		
+	}
 	
 
 	

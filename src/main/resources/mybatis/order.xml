@@ -11,8 +11,8 @@
 	</insert>
 	
 		<insert id="insertOrderInfo">
-		insert into order_list(user_type, user_name, order_date, user_address, user_phone, order_status, total_price, discount, final_price, order_comment, store_code, cupone_code, merchanuid, user_email, cupon_title, postcode, payment_type)
-										  values(#{user_type}, #{user_name}, #{order_date}, #{user_address}, #{user_phone}, #{order_status}, #{total_price}, #{discount}, #{final_price},  #{order_comment},  #{store_code},  #{cupone_code}, #{merchanuid}, #{user_email}, #{cupon_title}, #{postcode}, #{payment_type}) 
+		insert into order_list(user_type, user_name, order_date, user_address, user_phone, order_status, total_price, discount, final_price, order_comment, store_code, cupone_code, merchanuid, user_email, cupon_title, postcode, payment_type, imp_uid)
+										  values(#{user_type}, #{user_name}, #{order_date}, #{user_address}, #{user_phone}, #{order_status}, #{total_price}, #{discount}, #{final_price},  #{order_comment},  #{store_code},  #{cupone_code}, #{merchanuid}, #{user_email}, #{cupon_title}, #{postcode}, #{payment_type}, #{imp_uid}) 
 	</insert>
 	
 		<insert id="insertCartInfo">
