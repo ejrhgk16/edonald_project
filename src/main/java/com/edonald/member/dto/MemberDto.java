@@ -25,7 +25,8 @@ public class MemberDto {
 	private AddressDto deliverAddress;
 	private StoreDto deliverStore;
 
-
+	private String certifyNum;
+	private String store_name;
 
 	
 }
