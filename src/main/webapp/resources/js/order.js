@@ -28,6 +28,7 @@ function requestPay(data) {
 			}).done(function(res) {
 				console.log(res);
 				alert(res);
+				location.replace("/order/payment/complete");
 			}).fail(function(res) {
 					console.log(res);
 					alert(res);

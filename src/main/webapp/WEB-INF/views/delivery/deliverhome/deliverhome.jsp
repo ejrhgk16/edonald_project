@@ -41,39 +41,20 @@
 							
 							$(document).on("click", ".action-orderinadvance", function(e) {
 								e.preventDefault();
-								$(this).attr("class", "menu-item menu-item-menu selected");
-								var store = '${principal.memberDto.deliverStore}';
-								var principal = '${principal}'
-								
-								if('${principal}' == "" && '${noLoginMemberDto}' == ""){
-									window.location.href = "/ed/menuPage";
-									return
-								}else if('${principal.memberDto.deliverStore}' != "" || '${noLoginMemberDto}'!=""){
-									window.location.href = "/ed/menuPage";
-									return
-								}else{
-									alert("현재 배달가능한 지점이 없습니다");
-									return;
-								}
+								//$(this).attr("class", "menu-item menu-item-menu selected");
+								$.ajax({
+									type : "GET",
+									url : "/ed/store/checkStatus",
+									success : function(){
+										location.href = "/ed/menuPage";
+									}, 
+									error : function(){
+										alert("배달가능한 지점이 없습니다.");
+									}									
+								})
+
 							});
 				
-							$(document).on("click",".menu-item-menu", function(e) {
-								e.preventDefault();
-								$(this).attr("class", "menu-item menu-item-menu selected");
-								var store = '${principal.memberDto.deliverStore}';
-								var principal = '${principal}'
-								
-								if('${principal}' == ""){
-									window.location.href = "/ed/menuPage";
-									return
-								}else if('${principal.memberDto.deliverStore}' != ""){
-									window.location.href = "/ed/menuPage";
-									return
-								}else{
-									alert("현재 배달가능한 지점이 없습니다");
-									return;
-								}
-							});
 							<!-- 권한 확인 후 버튼 활성화 -->
 							if ($('#role').val() == 'ROLE_SADMIN'){
 								var html = "";
@@ -331,6 +312,10 @@
 													<a class="action-secondary action-link action-addaddress"
 														href="/order/nologin/registerAddress"><i
 														class="fa fa-caret-right"></i> 주소 변경하기</a>
+														<br>
+													<a class="action-secondary action-link action-addaddress"
+														href="/ed/logout.do"><i
+														class="fa fa-caret-right"></i> 로그인하여 이용하기</a>	
 												</div>
 
 												<fieldset class="form-actions">

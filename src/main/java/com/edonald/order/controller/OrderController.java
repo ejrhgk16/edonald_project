@@ -114,10 +114,6 @@ public class OrderController {
 		return "/delivery/order/order-review-confirmation";
 	}
 
-	@GetMapping("/order/payment2")
-	public String payment2() {
-		return "/delivery/order/order-payment2";
-	}
 	
 	@GetMapping("/order/payment")
 	public String payment(HttpSession session, @RequestParam(value="order_comment" ,required = false) String order_comment ) {
@@ -127,16 +123,28 @@ public class OrderController {
 			orderListDto.setFinal_price(orderListDto.getTotal_price());
 		}
 		orderListDto.setOrder_comment(order_comment);
+		return "redirect:/order/payment/page";
+	}
+	@GetMapping("/order/payment/page")
+	public String paymentPage(HttpSession session) {
+		if(session.getAttribute("orderListDto") == null) {
+			return "/delivery/deliverhome/deliverhome";
+		}
 		return "/delivery/order/order-payment";
 	}
 	
 	@GetMapping("/order/payment/cnum")
-	public @ResponseBody OrderListDto createNumber(HttpSession session, @RequestParam String payment_type) {
+	public @ResponseBody ResponseEntity<OrderListDto> createNumber(HttpSession session, @RequestParam String payment_type) {
 		OrderListDto dto = (OrderListDto) session.getAttribute("orderListDto");
+		if(dto.getUser_type() == 2 && !payment_type.equals("온라인결제")) {
+			return new ResponseEntity<OrderListDto>( HttpStatus.BAD_REQUEST);
+		}
 		dto.setPayment_type(payment_type);
 		String orderNum = orderService.createOrderNum(dto.getUser_phone());
 		dto.setMerchanuid(orderNum);
-		return dto;
+		System.out.println(orderNum);
+		
+		return new ResponseEntity<OrderListDto>(dto, HttpStatus.OK);
 	}
 	
 	@PostMapping("/order/payment/check")
@@ -165,7 +173,6 @@ public class OrderController {
 		
 		}catch(Exception e) {
 			System.out.println("결제그냥");
-			e.printStackTrace();
 			orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
 			return new ResponseEntity<String>("결제 오류", HttpStatus.BAD_REQUEST);
 		}
@@ -174,12 +181,21 @@ public class OrderController {
 	
 	@GetMapping("/order/payment/complete")
 	public String payComplete(HttpSession session, Model model) {
+		//주문 예외사항들 체크 해줘야함 가게 상태, 배달 시간, 등등
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		session.removeAttribute("orderListDto");
 		orderService.orderComplete(orderListDto);
+		return "redirect:/order/payment/result";
+
+	}
+	
+	@GetMapping("/order/payment/result")
+	public String paymentResult(HttpSession session, Model model) {
+		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		model.addAttribute("orderListDto", orderListDto);
+		session.removeAttribute("orderListDto");
 		return "/delivery/order/receipt";
 	}
+	
 	
 	@GetMapping("/order/search/check")
 	public @ResponseBody ResponseEntity<String> merchanuidCheck(@RequestParam String merchanuid){
@@ -270,6 +286,19 @@ public class OrderController {
 		}
 
 	}
+	
+	@GetMapping("/order/checkSession")
+	public @ResponseBody ResponseEntity<String>checkSession(Authentication authentication, HttpSession session){
+		if(authentication != null) {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else if(session.getAttribute("noLoginMemberDto") != null) {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
 	
 	
 	
