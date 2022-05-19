@@ -1,11 +1,5 @@
 $(document).ready(function() {
 	
-<<<<<<< HEAD
-
-
-	
-=======
->>>>>>> 2ca40bb9cc027c9e98f9f4a7c25cae163b1ce5b3
 	$("#nomembertrackorder").on("click", function(e){
 		e.preventDefault();
 		var merchanuid = prompt('주문번호를 입력하세요');
