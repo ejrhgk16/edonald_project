@@ -154,10 +154,10 @@ $(document).ready(function(){
 									aria-labelledby="headingOne"
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="notice.jsp">공지사항</a> <a
-											class="nav-link" href="banner.jsp">배너등록</a> <a
-											class="nav-link" href="qna.jsp">q＆a</a>
-
+										<a class="nav-link" href="notice.jsp">공지사항</a> 
+										<a class="nav-link" href="banner.jsp">배너등록</a> 
+										<a class="nav-link" href="/hadmin/promotion">프로모션</a>
+										<a class="nav-link" href="qna.jsp">q＆a</a>
 									</nav>
 								</div>
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

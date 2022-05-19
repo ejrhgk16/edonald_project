@@ -36,6 +36,11 @@ public class HadminController {
 		return "admin/hadmin/index2";
 	}
 	
+// 프로모션 관리
+	@RequestMapping(value = "/hadmin/promotion", method =RequestMethod.GET)
+	public String hadminPromotionPage(Model model) {
+		return "admin/hadmin/board/promotion";
+	}
 	
 // 회원관리
 	//page
