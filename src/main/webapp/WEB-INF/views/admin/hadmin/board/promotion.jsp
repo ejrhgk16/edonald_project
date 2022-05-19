@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +13,22 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+        <script type="text/javascript">
+        	$(document).ready(function(){
+        		$('.insertBtn').on('click',function(){
+        			var url = "/hadmin/promotionInsert";
+        			window.open(url, "a", "width=300, height=300, left=100, top=50, location=no");		
+        		})
+        		$('#modifyBtn').on('click',function(){
+        			var url = "/hadmin/promotionUpdate?p_seq=";
+        			var seq = $(this).attr("data-value");
+        			url += seq;
+        			window.open(url, "a", "width=300, height=300, left=100, top=50, location=no");
+        		})
+        	})
+        	
+        </script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -157,11 +174,10 @@
                                 <i class="fas fa-table me-1"></i>
                                 	프로모션
                             </div>
-                            <div>
+                            <div class="isnertDiv">
                             <br>
-                           &nbsp;&nbsp;&nbsp;<button type="button" onclick="window.open('write.jsp');"class="btn btn-outline-dark">등록</button>
-                           
-                            </div>
+                           &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-dark insertBtn">등록</button>
+
 						<div class="card-body">
 							<table id="datatablesSimple">
 
@@ -169,21 +185,21 @@
 									<tr>
 										<th>번호</th>
 										<th>제목</th>
-										<th>조회수</th>
-										<th>등록일</th>
+										<th>상태</th>
 									</tr>
 								</thead>
 								<tbody>
-
-									<c:forEach var="list" items="${list}">
+									<c:forEach var="list" items="${list}"  varStatus="status">
 										<tr>
-											<td>${list.m_name}</td>
-											<td>${list.m_each}</td>
-											<td>${list.m_code}</td>
-											<td>${list.m_day}</td>
+											<td>${status.count}</td>
+											<td>${list.p_title}</td>
+											<td><c:if test="${list.p_status == 1 }">진행중</c:if><c:if test="${list.p_status != 1 }">종료</c:if></td>
+											<td>
+												<button class="btn btn-outline-info" type="button" id="modifyBtn" data-value="${list.p_seq }">수정</button>
+											</td>
+											<td class="pStatus" style="display:none;">${list.p_status}</td>
 										</tr>
 									</c:forEach>
-
 								</tbody>
 							</table>
 						</div>

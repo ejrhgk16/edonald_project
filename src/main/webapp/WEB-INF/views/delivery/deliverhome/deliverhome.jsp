@@ -206,17 +206,15 @@
 							<a href="#" class="slide-pager-target ir" onclick="goSlide(1)">2</a>
 							<a href="#" class="slide-pager-target ir" onclick="goSlide(2)">3</a>
 						</div>
-
-						<a class="slide-target slide-item action-ordernow cycle-slide"
-							onclick="onPromoClick({ 'id':'10777','name':'모닝(제네릭)2','creative':'banner' + '1','position':'homepage'})"
-							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67739_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 97; display: none; opacity: 1;">
-						</a><a class="slide-target slide-item action-ordernow cycle-slide"
-							onclick="onPromoClick({ 'id':'10865','name':'소시지스낵랩(BF)','creative':'banner' + '2','position':'homepage'})"
-							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67741_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 100; display: none; opacity: 1;">
-						</a><a class="slide-target slide-item action-ordernow cycle-slide"
-							onclick="onPromoClick({ 'id':'10786','name':'맥카페','creative':'banner' + '3','position':'homepage'})"
-							style="background-image: url(https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/landing_67743_WOS.jpg); position: absolute; top: 0px; left: 0px; z-index: 99; display: none; opacity: 1;">
-						</a>
+						<c:forEach var="list" items="${list }" varStatus="status">
+							<a class="slide-target slide-item action-ordernow cycle-slide"
+								style="background-image: url(${list.p_img}); position: absolute; top: 0px; left: 0px; z-index: 97; 
+								<c:choose>
+									<c:when test="${status.count eq 1 }">display:block; </c:when>
+									<c:otherwise>display: none; </c:otherwise>
+								</c:choose>
+								opacity: 1;">
+						</c:forEach>
 					</div>
 
 					<c:choose>

@@ -145,6 +145,7 @@ public class MemberServiceImpl implements MemberService {
 		if(!encoder.matches(dtoPass, sessionPass)) {
 			return "fail";
 		}
+		dto.setUser_password(encoder.encode(dtoPass));
 		mapper.changeAccount(dto);
 		return "success";
 	}

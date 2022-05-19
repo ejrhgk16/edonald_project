@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.edonald.hadmin.dto.MenuDto;
+import com.edonald.hadmin.dto.PromotionDto;
 import com.edonald.hadmin.serivce.AdminMenuService;
 import com.edonald.hadmin.serivce.FileUploadService;
+import com.edonald.hadmin.serivce.HadminService;
 import com.edonald.hadmin.serivce.StoreManageService;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.service.MemberService;
@@ -29,6 +32,8 @@ public class HadminController {
 	private StoreManageService sService;
 	@Autowired
 	private MemberService mService;
+	@Autowired
+	private HadminService hService;
 	
 	
 	@RequestMapping(value = "/hadmin/index", method = RequestMethod.GET)
@@ -39,7 +44,45 @@ public class HadminController {
 // 프로모션 관리
 	@RequestMapping(value = "/hadmin/promotion", method =RequestMethod.GET)
 	public String hadminPromotionPage(Model model) {
+		model.addAttribute("list", hService.getPromotionList());
 		return "admin/hadmin/board/promotion";
+	}
+	
+	@GetMapping(value ="/hadmin/promotionInsert")
+	public String hadminPromotionInsert() {
+		return "admin/hadmin/board/promotionRegister";
+	}
+	
+	@GetMapping(value = "/hadmin/promotionUpdate")
+	public String hadminPromotionUpdate(Model model, @RequestParam("p_seq") int p_seq) {
+		PromotionDto dto = hService.getPromotion(p_seq);
+		String img = "https://edonaldfile.s3.ap-northeast-2.amazonaws.com/" + dto.getP_img();
+		dto.setP_img(img);
+		model.addAttribute("promotion", dto);
+		return "admin/hadmin/board/promotionRegister";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/hadmin/promotionInsert.do", method = RequestMethod.POST)
+	public void hadminPromotionIsnertDo(PromotionDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile) {
+		String path = "common/delivery";
+		if(!mainUploadFile.getOriginalFilename().equals("")) {
+			dto.setP_img(fService.fileUpload(mainUploadFile, path));
+		}
+		hService.insertPromotion(dto);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/hadmin/promotionUpdate.do", method = RequestMethod.POST)
+	public void hadminPromotionUpdateDo(PromotionDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile) {
+		String path = "common/delivery";
+		System.out.println(path);
+		if(!mainUploadFile.getOriginalFilename().equals("")) {
+			System.out.println("--fservice");
+			dto.setP_img(fService.fileUpload(mainUploadFile, path));
+		}
+		System.out.println("1");
+		hService.updatePromotion(dto);
 	}
 	
 // 회원관리
