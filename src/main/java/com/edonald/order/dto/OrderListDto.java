@@ -32,5 +32,6 @@ public class OrderListDto {
 	private List<CartDto>cartList =new ArrayList<CartDto>();
 	private int deliverCost;//배달비 2500
 	private String payment_type;
+	private String imp_uid;
 	
 }

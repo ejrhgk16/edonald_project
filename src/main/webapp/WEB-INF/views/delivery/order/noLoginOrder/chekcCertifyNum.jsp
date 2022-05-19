@@ -12,22 +12,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#joinComplete").on("click", function(e){
-		var certifyNum = $("#form_accountactivation_activationcode").val()
-		var url = "/order/nologin/checkNum?certifyNum="+certifyNum;
-		$.ajax({
-			type : "GET",
-			url : url,
-			success : function(){
-				alert("회원가입 완료. 로그인 해주세요");
-				location.href = "/ed/joinComplete";
-			},
-			error : function(){
-				alert("인증번호가 다릅니다.")
-			}
-		})
+		e.preventDefault(); 
+		var certifyNum  = '${certifyNum}';
+		console.log(certifyNum);
+		if( certifyNum==$("#form_accountactivation_activationcode").val() ){
+			window.location.href="/order/nologin/registerAddress";
+		}else{
+			alert("일치하지않습니다.");
+		}
 	})
-	
-	
 })
 </script>
 <meta charset="UTF-8">

@@ -67,7 +67,6 @@
 									window.location.href = "/ed/menuPage";
 									return
 								}else if('${principal.memberDto.deliverStore}' != ""){
-									alert('${principal.memberDto.deliverStore}')
 									window.location.href = "/ed/menuPage";
 									return
 								}else{
@@ -285,18 +284,14 @@
 													<a href="#deliveryOptions" data-toggle="modal" id="homeOrderBtn"
 														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
 												</p>
-
-												<hr class="fading-divider">
+											<hr class="fading-divider">
 												<p class="action-track-order">
 													<a href="#trackOrder" data-toggle="modal" id="membertrackorder"
 														class="action-link"> <i class="fa fa-caret-right"></i>
 														주문 조회
 													</a>
-												</p>
-												
+												</p>										
 											</fieldset>
-											<input type="hidden" name="csrfValue"
-												value="0a238eea9cae586bd5f72eed2d19a687">
 										</form>
 									</div>
 								</div>
@@ -311,6 +306,52 @@
 									<h2>주문 시작하기</h2>
 								</div>
 								<div class="panel-body">
+									<c:when test="${!empty noLoginMemberDto }">
+										<div class="panel panel-home-masthead panel-home-masthead-order">
+								<div class="panel-heading">
+									<div>
+										<h2>환영합니다 ${noLoginMemberDto.user_name} 고객님</h2>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div class="panel-home-masthead-form">
+										<form name="form_select_address"
+											id="form_select_delivery_address" method="post"
+											accept-charset="utf-8" role="form"
+											class="panel-home-masthead-form" action="/kr/home.html">
+											<div class="form-group">
+												 <label for="form_select_address_delivery_address"
+													class="control-label">다음의 주소로 배달됩니다:</label> <span
+													class="address-picker hide-default-error"><a
+													class="ui-selectmenu ui-widget ui-state-default ui-selectmenu-dropdown ui-corner-all"
+													id="form_select_address_delivery_address-button"
+													role="button" tabindex="0" aria-haspopup="true"
+													aria-owns="form_select_address_delivery_address-menu"
+													aria-disabled="false" style="width: 288px;"> <span
+														class="ui-selectmenu-status">
+															${noLoginMemberDto.deliverAddress.road_address}</span> <span
+														class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
+
+												<a class="action-secondary action-link action-addaddress"
+													href="/member/addAddressPage"><i class="fa fa-caret-right"></i>
+													주소 변경하기</a>
+											</div>
+
+											<fieldset class="form-actions">
+												<p class="action-advance-order">
+													<a href="#deliveryOptions" data-toggle="modal" id="homeOrderBtn"
+														class="btn btn-red btn-block btn-xl btn-submit action-orderinadvance">주문하기</a>
+												</p>
+											<hr class="fading-divider">
+								
+											</fieldset>
+										</form>
+									</div>
+								</div>
+							</div>
+									</c:when>
+									<c:otherwise>
+
 									<ul id="nav-tabs-login-fragment"
 										class="nav nav-tabs nav-tabs-login-fragment">
 
@@ -382,7 +423,6 @@
 
 												<a class="btn btn-block btn-red btn-xl"
 													style="margin-bottom: 4px;"
-													onclick="             dataLayer.push({              'event':'trackEvent',              'vpv':'vpv_enter_delivery_address',              'eventDetails.category':'registration',              'eventDetails.action':'click',              'eventDetails.label':'register_homepage'             });             dataLayer.push({              'event':'trackEvent',              'eventDetails.category':'i am new',              'eventDetails.action':'click home page',              'eventDetails.label':'register now'             });            "
 													href=""> <span>회원가입</span>
 												</a> 
 												<div id="member-benefits"
@@ -410,14 +450,10 @@
 			
 												<a class="btn btn-block btn-red btn-xl"
 													href="" id="nomembertrackorder">주문조회</a>
-
 											</div>
-											
-											
-				
 										</div>
 									</div>
-
+										</c:otherwise>
 								</div>
 							</div>
 						</c:otherwise>

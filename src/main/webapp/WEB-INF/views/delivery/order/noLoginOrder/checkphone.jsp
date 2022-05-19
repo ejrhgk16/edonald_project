@@ -11,24 +11,44 @@
 <script type="text/javascript" src="/resources/js/join.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#joinComplete").on("click", function(e){
-		var certifyNum = $("#form_accountactivation_activationcode").val()
-		var url = "/order/nologin/checkNum?certifyNum="+certifyNum;
+	$("#sendBtn").on("click", function(e){
+		e.preventDefault(); 
+		var name = $("#noLoginName").val();
+		var phoneNum = $("#noLoginPhone").val();
+		alert("send")
+		var url = "/order/nologin/certifyNum?phoneNum="+phoneNum+"&name="+name;
+			$.ajax({
+				type : "GET",
+				url : url,
+				success : function(){
+					var text = '<label for="form_accountactivation_activationcode"class="field-label">인증번호를 입력해주세요:</label> <input type="text" class="form-control input-lg"id="noLoginCheckNum">'
+					$("#phoneNumClass").html(text);
+					
+					var btn = '<button type="button" id="checkBtn" class="btn btn-red btn-lg">확인</button>'
+					$("#sendBtn").remove();
+					$(".col-xs-4").append(btn);
+				}
+			});
+	})
+	
+	$(document).on("click", "#checkBtn", function(){
+		var num = $("#noLoginCheckNum").val();
+		console.log(num);
+		var url = "/order/nologin/checkNum?certifyNum="+num;
 		$.ajax({
 			type : "GET",
 			url : url,
 			success : function(){
-				alert("회원가입 완료. 로그인 해주세요");
-				location.href = "/ed/joinComplete";
+				location.href="/order/nologin/registerAddress";
 			},
 			error : function(){
-				alert("인증번호가 다릅니다.")
+				alert("인증번호가 다릅니다");
 			}
 		})
 	})
 	
-	
-})
+	})
+
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -140,115 +160,17 @@ $(document).ready(function(){
 					</div>
 				</div>
 
-				<div
-					class="alert alert-warning alert-dismissable inline-alert type-flama hidden alert-menuswitch-timeout"
-					data-dismiss-trigger="wos.menuswitch.warning1.closed">
-					<button type="button" class="close" data-hide="inline-alert"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-					<p>
-						<i class="fa fa-exclamation text-white icon"></i> <span>메뉴는
-							<span class="text-primary timer menuswitch-timer">49:50</span> 분
-							후에 종료됩니다. 종료 전에 주문을 완료해 주세요.
-						</span>
-					</p>
-				</div>
-
-
-				<!-- Start of Session time out warning -->
-
-				<!-- End of Session time out warning -->
-				<!-- [countdownmenuswitchtimer.modal] -->
-				<div id="countdownmenuswitchtimer" data-alert-type="modal"
-					data-backdrop="static" data-keyboard="false"
-					class="modal-countdownmenuswitchtimer modal-alert alert-menuswitch-timeout modal-alert modal fade"
-					role="dialog" aria-labelledby="countdownmenuswitchtimer-title"
-					aria-hidden="true" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header"></div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-xs-3 timer-wrapper">
-										<div class="time-disclaimer">메뉴 종료까지</div>
-										<div class="time timer text-din timer-clock menuswitch-timer">49:50</div>
-										<div class="time-disclaimer"></div>
-									</div>
-									<div class="col-xs-8 timer-wrapper">
-										<div class="alert-content text-left">
-											<h1 id="countdownmenuswitchtimer-title">메뉴가 종료됩니다</h1>
-											<p>일반 메뉴 메뉴가 종료됩니다. 종료 전에 주문을 완료해 주세요.</p>
-											<p>
-												<button type="button"
-													data-dismiss-trigger="menuswitch.action.ok"
-													aria-hidden="true" class="btn btn-red btn-lg text-ucase">확인</button>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- [/countdownmenuswitchtimer.modal] -->
-
-				<!-- <div th:fragment="modals"> -->
-				<!-- [deliveryhoursavailability.modal] -->
-				<div data-alert-type="modal" data-backdrop="static"
-					data-keyboard="false"
-					class="modal-countdownstoreclosetimer modal-countdowntimer modal-alert modal fade"
-					role="dialog" aria-labelledby="countdowntimer-title"
-					aria-hidden="true" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">
-									<i class="fa mcd mcd-close"></i>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-xs-3 timer-wrapper">
-										<div class="time-disclaimer">해당 매장의 영업은 다음 시간 후 종료됩니다:</div>
-										<div class="time timer text-din timer-clock storeclose-timer">59:50</div>
-									</div>
-									<div class="col-xs-8 timer-wrapper">
-										<div class="alert-content text-left">
-											<h1 id="countdowntimer-title">배달 가능 시간</h1>
-											<p>해당 지역의 매장은 오후 08:59 AM 까지 배달 가능합니다.</p>
-											<p>지금 주문을 완료해 주십시오.</p>
-											<p>
-												<button data-dismiss="modal" aria-hidden="true"
-													class="btn btn-red btn-lg text-ucase"
-													data-dismiss-trigger="storeclose.action.continue">계속</button>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- [/deliveryhoursavailability.modal] -->
-
 			</div>
 			<div class="main" role="main">
-				<div class="page-title">
-					<h1>회원인증</h1>
-				</div>
+			
 				<div class="page-content">
 					<div
 						class="panel panel-lg panel-default order-verification type-sans">
 						<div class="panel-heading">
-							<h3>문자 발송완료</h3>
+							<h3>문자인증</h3>
 						</div>
 						<div class="panel-body">
-							<p>
-								인증코드가 등록된 휴대전화 발송되었습니다: <strong>${memberDto.user_phone}</strong>.
-							</p>
-							<p>인증코드를 입력해주세요</p>
+
 							<p>
 								문자를 5분안에 받지못하셨다면, 재발송을 위해 <a href="/kr/sendActivate.html">여기</a>를
 								클릭해주세요
@@ -260,14 +182,20 @@ $(document).ready(function(){
 									<div class="col-xs-4">
 										<div class="form-group">
 											<label for="form_accountactivation_activationcode"
-												class="field-label">인증코드:</label> <input type="text"
+												class="field-label">이름을 입력해주세요:</label> <input type="text"
 												class="form-control input-lg"
-												id="form_accountactivation_activationcode"
-												name="activationCode" data-rule-required="true"
-												data-msg-required="인증코드가 필요합니다." aria-required="true">
+												id="noLoginName">
 										</div>
-										<div class="form-group">
-											<button type="button" id="joinComplete" class="btn btn-red btn-lg">확인</button>
+										
+										<div class="form-group" id="phoneNumClass">
+											<label for="form_accountactivation_activationcode"
+												class="field-label">휴대폰 번호를 입력해주세요:</label> 
+											<input type="text" class="form-control input-lg"
+												id="noLoginPhone">
+										</div>
+										
+										<div class="form-group" id="btnClass">
+											<button type="button" id="sendBtn" class="btn btn-red btn-lg">인증번호 발송</button>
 										</div>
 									</div>
 								</div>

@@ -3,6 +3,7 @@ package com.edonald.order.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edonald.hadmin.dto.MenuDto;
+import com.edonald.hadmin.dto.StoreDto;
+import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.MemberDto;
+import com.edonald.member.service.CertifyService;
+import com.edonald.member.service.MemberService;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
 import com.edonald.order.dto.OrderNumDto;
@@ -29,6 +35,10 @@ import com.edonald.order.service.OrderService;
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private CertifyService certifyService;
+	@Autowired
+	private MemberService memberService;
 	
 	int smallOrderCost = 2500;
 	int criteriaCost = 13000;
@@ -132,9 +142,12 @@ public class OrderController {
 	@PostMapping("/order/payment/check")
 	public  @ResponseBody ResponseEntity<String> paycheck(PayInfoDto payInfoDto, HttpSession session)throws IOException{
 		String token = orderService.getToken();
+		
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		int amount = orderService.paymentInfo(payInfoDto.getImp_uid(), token);
+		String imp_uid = payInfoDto.getImp_uid();
 		String merchanuid = payInfoDto.getMerchant_uid();
+		orderListDto.setImp_uid(imp_uid);
 		try {
 			if(amount != orderListDto.getFinal_price()) {
 				System.out.println("결제금액");
@@ -192,6 +205,71 @@ public class OrderController {
 		model.addAttribute("orderListDto", orderListDto);
 		model.addAttribute("memberOrderFind", "find");
 		return "/delivery/order/receipt";
+	}
+	
+	@GetMapping("/order/nologin/phonechek")
+	public String phonechek() {
+		return "/delivery/order/noLoginOrder/checkphone";
+	}
+	@GetMapping("/order/nologin/certifyNum")
+	public @ResponseBody void checkPhonePage(@RequestParam String phoneNum, @RequestParam String name, HttpServletRequest req) {
+		MemberDto memberDto = new MemberDto();
+		System.out.println(phoneNum);
+		System.out.println(name);
+		memberDto.setUser_phone(phoneNum);
+		memberDto.setUser_name(name);
+		
+		HttpSession session= req.getSession();
+		String certifyNum = certifyService.certifyPhone(memberDto.getUser_phone());
+		System.out.println(certifyNum);
+		memberDto.setCertifyNum(certifyNum);
+		session.setAttribute("noLoginMemberDto", memberDto);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/delivery/order/chekcCertifyNum");
+	}
+	
+	@GetMapping("/order/nologin/checkNum")
+	public @ResponseBody ResponseEntity<String>checkNum(@RequestParam String certifyNum, HttpSession session){
+		MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
+		String certifyNumCheck = memberDto.getCertifyNum();
+		if(certifyNumCheck.equals(certifyNum)) {
+			memberDto.setCertifyNum("ok");
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("인증번호가 다릅니다", HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/order/nologin/registerAddress")
+	public String registerAddress() {
+		return "/delivery/order/noLoginOrder/registerAddress";
+	}
+	
+	@PostMapping("/order/nologin/registerAddress")
+	public @ResponseBody ResponseEntity<String> registerAddr(@RequestBody AddressDto addressDto, HttpSession session) {
+		MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
+		String certifyCheck = memberDto.getCertifyNum();
+		if(certifyCheck.equals("ok")) { //정상적으로 문자인증이 되었는지 한번더 체크
+			memberDto.setDeliverAddress(addressDto);
+			List<StoreDto> nearStoreList = memberService.getNearStoreList(addressDto); 
+			if (nearStoreList.isEmpty()) {
+				memberDto.setDeliverStore(null);
+			}
+			for (StoreDto s : nearStoreList) {
+				System.out.println("sssss" + s.getStore_address());
+				if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
+					System.out.println("ss2222" + s.getStore_address());
+					memberDto.setDeliverStore(s);
+					break;
+				}
+			}
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("인증번호가 확인이 안됩니다", HttpStatus.BAD_REQUEST);
+		}
+		
+		
 	}
 	
 

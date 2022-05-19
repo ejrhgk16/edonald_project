@@ -27,7 +27,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var findCheck = '${memberOrderFind}';
 		var url = ""
-		if(findeCheck){
+		if(findCheck){
 			url="/member/mypage/trackOrder";
 		}else{
 			url="/ed/deliverHome";
@@ -82,7 +82,13 @@ $(document).ready(function(){
 										<th>연락처:</th>
 									</tr>
 									<tr>
-										<td>>${orderListDto.user_phone}</td>
+										<td>${orderListDto.user_phone}</td>
+									</tr>
+									<tr>
+										<th>결제방식:</th>
+									</tr>
+									<tr>
+										<td>${orderListDto.payment_type}</td>
 									</tr>
 								</tbody>
 							</table>

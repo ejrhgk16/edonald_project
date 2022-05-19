@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -93,16 +96,27 @@ public class JoinController {
 		HttpSession session = req.getSession();
 		MemberDto dto = (MemberDto)session.getAttribute("memberDto");
 		String certifyNum = certifyService.certifyPhone(dto.getUser_phone());
+		dto.setCertifyNum(certifyNum);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/delivery/join/joinCheckPhone");
-		mv.addObject("certifyNum", certifyNum);
 		return mv;
+	}
+	@GetMapping("/ed/join/certifyNumCheck")
+	public @ResponseBody ResponseEntity<String>certifyCheck(@RequestParam String certifyNum, HttpSession session){
+		MemberDto dto = (MemberDto) session.getAttribute("memberDto");
+		String certifyNumCheck = dto.getCertifyNum();
+		if(certifyNumCheck.equals(certifyNum)) {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("인증번호가 다릅니다", HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/ed/joinComplete")
-	public @ResponseBody void joinComplete(HttpServletRequest req) {
+	public String  joinComplete(HttpServletRequest req) {
 		System.out.println("joincompl");
 		memberService.joinMember(req);
+		return "/ed/deliverHome";
 	}
 	
 

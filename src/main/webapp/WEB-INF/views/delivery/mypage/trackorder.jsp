@@ -31,14 +31,24 @@
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
-							<li class="list-item">
-								<img src="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/img/icon_profile_blue.png" alt="Profile" width="20" class="profile-avator">
-								<b><span class="first-name">양원재</span></b>
-							</li>
+							<c:choose>
+								<c:when test="${empty principal.username }">
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator"></li>
 
-						<li class="list-item">
-								<a class="list-item-target"  href="/kr/signout.html">로그아웃</a>
-						</li>
+									<li class="list-item" id="loginText"><a
+										href="/ed/deliverHome">로그인</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="list-item"><img
+										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
+										alt="Profile" width="20" class="profile-grey-avator"> <b><span
+											class="first-name">${principal.memberDto.user_name}</span></b></li>
+									<li class="list-item"><a href="/ed/logout.do">로그아웃</a></li>
+								</c:otherwise>
+							</c:choose>
+
 
 								<li class="list-item"><a class="list-item-target" href="/kr/trackorder.html">주문 조회</a></li>
 							
@@ -48,7 +58,7 @@
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<a class="navbar-brand wos-brand" href="/kr/home.html">  
-								<img src="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/82/img/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
+								<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg" alt="McDelivery&amp;trade;">
 							
 						</a>
 					</div>
@@ -69,12 +79,7 @@
 									
 									<a class="dropdown-menu-item-target" href="/kr/trackorder.html">주문 조회</a>
 								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/kr/account-order-history.html">주문 내역</a>
-								</li>
-								<li class="dropdown-menu-item">
-									<a class="dropdown-menu-item-target" href="/kr/account-favourites.html">즐겨찾기 메뉴</a>
-								</li>
+
 								<li class="dropdown-menu-item">
 									<a class="dropdown-menu-item-target" href="/kr/addressBook.html">주소록</a>
 								</li>
@@ -158,17 +163,7 @@
 			<div>
 					
 						</div><table class="table-default table-panel table-trackorder">
-								<tfoot>
-									<tr>
-										<td colspan="6" class="actions"><a data-toggle="modal"
-											class="btn btn-red btn-lg" href="/kr/home.html">새로운 주문하기</a>
-											<p>
-												<a href="#trackOrder" data-toggle="modal"
-													class="action-secondary action-link"><i
-													class="fa fa-caret-right"></i> 주문 조회가 안 되시나요?</a>
-											</p></td>
-									</tr>
-								</tfoot>
+
 								<tbody>
 								<c:choose>
 								<c:when test="${empty nologinTarckOrder}">
