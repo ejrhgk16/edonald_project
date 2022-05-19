@@ -30,7 +30,8 @@
 		
 		$("#orderCheckBtn").on("click", function(){
 			var order_comment = $("#form_review_order_remarks").val();
-			window.location.href = "/order/payment?order_comment="+order_comment;
+			var url = "/order/payment?order_comment="+order_comment;
+			location.replace(url);
 		})
 		
 	});
