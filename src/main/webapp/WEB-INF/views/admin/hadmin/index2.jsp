@@ -177,7 +177,7 @@ $(document).ready(function(){
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="usercheck.jsp">회원관리</a>
+								<a class="nav-link" href="/hadmin/userPage">회원관리</a>
 							</nav>
 						</div>
 

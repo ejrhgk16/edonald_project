@@ -148,12 +148,20 @@ public class MemberServiceImpl implements MemberService {
 		mapper.changeAccount(dto);
 		return "success";
 	}
+	
+	@Override
+	public void changeAccountByAdmin(MemberDto dto) {
+		if(dto.getUser_password() != null) {
+			dto.setUser_password(encoder.encode(dto.getUser_password()));
+		}
+		mapper.changeAccount(dto);
+	}
+	
 	@Override
 	public String changePassword(MemberDto sessionDto, MemberDto dto, String checkPassword) {
 		String sessionPass = sessionDto.getUser_password();
 		String dtoPass = dto.getUser_password();
 		if(!encoder.matches(checkPassword, sessionPass)) {
-			System.out.println("4");
 			return "fail";
 		}
 		dto.setUser_email(sessionDto.getUser_email());
@@ -161,7 +169,21 @@ public class MemberServiceImpl implements MemberService {
 		mapper.changePassword(dto);
 		return mapper.getEncodePassword(dto);
 	}
-
+	@Override
+	public List<MemberDto> getMemberList(int user_status){
+		List<MemberDto> list = mapper.getMemberList(user_status);
+		return list;
+	}
+	
+	@Override
+	public void activityMemberControl(MemberDto dto) {
+		mapper.activityMemberControl(dto);
+	}
+	
+	@Override
+	public MemberDto getMemberById(String username) {
+		return mapper.getMemberById(username);
+	}
 		
 		
 }

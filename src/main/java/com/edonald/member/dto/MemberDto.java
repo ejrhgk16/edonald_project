@@ -24,5 +24,7 @@ public class MemberDto {
 	//배달될 주소
 	private AddressDto deliverAddress;
 	private StoreDto deliverStore;
+
+	private String store_name;
 	
 }

@@ -22,4 +22,6 @@ public interface MemberMapper {
 	public void changeAccount(MemberDto dto);
 	public void changePassword(MemberDto dto);
 	public String getEncodePassword(MemberDto dto);
+	public List<MemberDto> getMemberList(int user_status);
+	public void activityMemberControl(MemberDto dto);
 }

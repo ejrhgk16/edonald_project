@@ -38,8 +38,12 @@
 	select * from order_list where user_email = #{user_email} order by order_seq desc
 	</select>
 	
+	<!-- 유저 정보 변경 -->
 	<update id="changeAccount">
-		UPDATE user_info SET user_name = #{user_name}, user_phone = #{user_phone} , user_gender = #{user_gender} WHERE user_email = #{user_email};
+		UPDATE user_info SET user_name = #{user_name}, user_phone = #{user_phone} , user_gender = #{user_gender} 
+		<if test="store_code != null">, store_code = #{store_code} </if>
+		<if test="user_password != null">, user_password = #{user_password} </if>
+		WHERE user_email = #{user_email};
 	</update>
 	<update id="changePassword">
 		UPDATE user_info SET user_password = #{user_password} WHERE user_email =#{user_email};
@@ -47,4 +51,14 @@
 	<select id="getEncodePassword" resultType="String">
 		SELECT user_password FROM user_info WHERE user_email = #{user_email}
 	</select>
+
+	<!-- Hadmin 유저 관리 -->
+	<select id="getMemberList" resultType="com.edonald.member.dto.MemberDto">
+		SELECT u.*,s.store_name FROM user_info u LEFT JOIN store_list s ON u.store_code = s.store_code WHERE user_status = #{user_status} ORDER BY u.role ASC;
+	</select>
+	<update id="activityMemberControl">
+		UPDATE user_info SET user_status = #{user_status} WHERE user_email = #{user_email}
+	</update>
+	
+	
 </mapper>

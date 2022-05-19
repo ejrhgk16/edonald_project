@@ -41,7 +41,7 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_id" class="form-control"
-														value="${user.user_email}" id="inputId"
+														value="${storeDetail.admin_id}" id="inputId"
 														type="text" placeholder="Enter your first name" /> <label
 														for="inputFirstName">이메일</label>
 												</div>
@@ -49,17 +49,17 @@
 											<div class="col-md-6">
 												<div class="form-floating">
 													<input name="admin_name" class="form-control"
-														value="${user.user_name}" id="inputName"
+														value="${storeDetail.admin_name}" id="inputName"
 														type="text" placeholder="Enter your last name" /> <label
 														for="inputLastName">이름</label>
 												</div>
 											</div>
 										</div>
-										<div class="row mb-3 passwordDiv" style="display:none">
+										<div class="row mb-3">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_password" class="form-control"
-														value="" id="inputPassword"
+														value="${storeDetail.admin_password}" id="inputPassword"
 														type="password" placeholder="Enter your first name" /> <label
 														for="inputFirstName">비밀번호</label>
 												</div>
@@ -67,7 +67,7 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_password" class="form-control"
-														value="" id="inputPasswordCheck"
+														value="${storeDetail.admin_password}" id="inputPasswordCheck"
 														type="password" placeholder="Enter your first name" /> <label
 														for="inputFirstName">비밀번호 확인</label>
 												</div>
@@ -77,15 +77,15 @@
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="store_code" class="form-control"
-														value="${user.user_phone}" id="inputPhone"
+														value="${storeDetail.store_code}" id="inputPhone"
 														type="text" placeholder="Enter your first name" /> <label
 														for="inputFirstName">전화번호</label>
 												</div>
 											</div>
-											<div class="col-md-6 storecode" <c:if test="${user.role ne 'ROLE_SADMIN' }">style="display:none"</c:if>>
+											<div class="col-md-6">
 												<div class="form-floating">
 													<input name="store_phone" class="form-control"
-														value="${user.store_code}" id="storeCode"
+														value="${storeDetail.store_phone}" id="storeCode"
 														type="text" placeholder="Enter your last name" /> <label
 														for="inputLastName">매장번호</label>
 												</div>
@@ -97,15 +97,8 @@
 													<div class="container">
 														<select class="form-control" id="inputGender">
 														  <option value="1">남자</option>
-														  <option value="2" <c:if test="${user.user_gender == '2'}">selected</c:if>>여자</option>
+														  <option value="2">여자</option>
 														</select>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<div class="container">
-														<button type="button" id="passwordBtn" class="btn btn-dark">비밀번호 변경</button>
 													</div>
 												</div>
 											</div>
@@ -113,7 +106,7 @@
 
 										<div class="mt-4 mb-0">
 											<div class="d-grid">
-												<button type="button" id="submitBtn"
+												<button type="button" id="click"
 													class="btn btn-danger btn-block" onclick="updateDo()">등록</button>
 											</div>
 										</div>
