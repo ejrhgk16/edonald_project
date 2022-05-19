@@ -13,4 +13,7 @@ public class StoreDto {
 	private int store_code;
 	private double store_log;
 	private double store_lat;
+	
+	private String user_name;
+	private String user_phone;
 }

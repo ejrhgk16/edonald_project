@@ -114,7 +114,8 @@ function joinUserInfo(){
 			store_code: store_code
 		},
 		success : function(res){
-			alert(res.msg);
+			opener.location.reload();
+			window.open("about:blank","_self").close();
 		},
 		error : function(){
 			alert("잘못된 입력입니다.");

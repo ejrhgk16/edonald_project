@@ -14,6 +14,52 @@
 <title>관리자 로그인</title>
 <link rel="stylesheet" href="/resources/css/adminStyles.css"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script>
+$(document).ready(function(){
+	$('#storeUpdateBtn').on('click',function(){
+		var store_code = $('#storecode').attr('data-value');
+		var store_name = $('#store_name').val();
+		var store_phone = $('#store_phone').val();
+		var store_driverthru = 0;
+		var store_delivery = 0;
+		if($('#driverThru').is(':checked')){
+			store_driverthru = 1;
+		}
+		if($('#delivery').is(':checked')){
+			store_delivery = 1; 
+		}
+		
+		alert(store_name+store_phone+store_driverthru+store_delivery);
+		var url = "/hadmin/storeUpdate.do";
+		var data = {
+			store_code:store_code,
+			store_name:store_name,
+			store_phone:store_phone,
+			store_driverthru:store_driverthru,
+			store_delivery:store_delivery
+		}
+		if($('#closure').is(':checked')){
+			date.store_status = 3;
+		}else{
+			data.store_status = -1;
+		}
+		alert(JSON.stringify(data));
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: data,
+			success:function(){
+				opener.location.reload();
+				window.open("about:blank","_self").close();
+			},
+			error:function(){
+			}
+		})
+		
+	})
+})
+</script>
 </head>
 <body class="bg-black">
 <div id="layoutAuthentication" style="flex-direction: column; min-height: 100%;">
@@ -25,86 +71,74 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">매장 정보 수정</h3></div>
                                     <div class="card-body">
-                                    
-                                        <form action="" id="storeUpdate" method="post">
-                                        <input type="hidden" name="admin_seq" value="${storeDetail.admin_seq}">
-                                        <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="admin_id" class="form-control" value="${storeDetail.admin_id}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputFirstName">아이디</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input name="admin_name" class="form-control" value="${storeDetail.admin_name}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputLastName">지점장 이름</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="admin_password" class="form-control" value="${storeDetail.admin_password}" id="inputFirstName" type="password" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">비밀번호</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input name="admin_phone" class="form-control" value="${storeDetail.admin_phone}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputLastName">회원번호/관리자번호(-)제외</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="store_address" class="form-control" value="${storeDetail.store_address}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputFirstName">매장주소</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input name="store_name" class="form-control" value="${storeDetail.store_name}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputLastName">매장이름</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="store_code" class="form-control" value="${storeDetail.store_code}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputFirstName">매장코드</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input name="store_phone" class="form-control" value="${storeDetail.store_phone}" id="inputFirstName" type="text" readonly="readonly"/>
-                                                        <label for="inputLastName">매장번호</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!--     <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">매장 코드</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">매장 번호</label>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid">
-                                                   <button type="button" id="click" class="btn btn-danger btn-block" onclick="updateDo()">수정</button>
-                                                  </div>
-                                            </div>
-                                        </form>
-                                    </div>
+
+									<form action="" id="storeUpdate" method="post">
+										<div class="col-md-6">
+											<div class="form-floating mb-6 mb-md-0">
+												<input name="store_address" class="form-control"  id="store_address"
+													type="text" type="text" placeholder="Enter your last name" value="${store.store_address }" disabled/>
+												<label for="inputFirstName">매장주소</label>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-floating  mb-3 mb-md-0">
+												<input name="store_name" class="form-control"
+													value="${store.store_name}" id="store_name"
+													type="text" placeholder="Enter your last name" /> <label
+													for="inputLastName">매장이름</label>
+											</div>
+											<div class="form-floating  mb-3 mb-md-0">
+												<input name="store_name" class="form-control"
+													value="${store.store_phone}" id="store_phone"
+													type="text" placeholder="Enter your last name"/> <label
+													for="inputLastName">매장번호</label>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-floating  mb-3 mb-md-0">
+												<input name="user_name" class="form-control"
+													value="${store.user_name}" id="user_name"
+													type="text" placeholder="Enter your last name" disabled/> <label
+													for="inputLastName">지점장</label>
+											</div>
+											<div class="form-floating  mb-3 mb-md-0">
+												<input name="user_phone" class="form-control"
+													value="${store.user_phone}" id="user_phone"
+													type="text" placeholder="Enter your last name" disabled/> <label
+													for="inputLastName">지점장번호</label>
+											</div>
+										</div>
+
+										<div align="center">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="driverThru" value="option2" <c:if test="${store.store_driverthru == 1}">checked</c:if>> <label
+													class="form-check-label" for="inlineCheckbox1">드라이브쓰루</label>
+											</div>
+											
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="delivery" value="option2" <c:if test="${store.store_delivery == 1}">checked</c:if>> <label
+													class="form-check-label" for="inlineCheckbox2">딜리버리</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="closure" value="option2" <c:if test="${store.store_status == 3}">checked</c:if>> <label
+													class="form-check-label" for="inlineCheckbox2">폐업</label>
+											</div>
+										</div>
+
+
+										<div class="mt-4 mb-0">
+											<div class="d-grid">
+												<button type="button" id="storeUpdateBtn"
+													class="btn btn-danger btn-block">수정</button>
+											</div>
+										</div>
+									</form>
+								</div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="index.jsp">메인 페이지</a></div>
                                     </div>
@@ -130,6 +164,7 @@
 			</footer>
 		</div>
 	</div>
+	<div id="storecode" data-value="${store.store_code }" hidden></div>
 <script type="text/javascript">
 function updateDo() {
 	alert("수정하시겠습니까?");

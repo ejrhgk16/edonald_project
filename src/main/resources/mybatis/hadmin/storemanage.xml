@@ -18,12 +18,7 @@
 	</select>
 
 	<select id="getStoreList" resultType="com.edonald.hadmin.dto.StoreDto">
-		SELECT * FROM (SELECT row_number() over(ORDER BY s.store_code ASC)rnum, s.* FROM store_list s
-		 WHERE 1=1
-		<if test="search != null"> AND s.store_name like CONCAT('%',#{search},'%') </if>
-		<![CDATA[ 
-		ORDER BY rnum ASC ) list 
-		where rnum>(#{pageNum}-1)*#{amount} and rnum<= #{pageNum} * #{amount}]]>
+		SELECT s.*,u.user_name,u.user_phone FROM store_list s LEFT JOIN user_info u ON s.store_code = u.store_code ORDER BY store_code,store_address ASC
 	</select>
 
 	<insert id="joinSadmin">
@@ -34,5 +29,15 @@
 	<select id="checkDupl" resultType="string">
 		SELECT user_email FROM user_info WHERE user_email = #{user_email}
 	</select>
+	
+	<select id="getStore" resultType="com.edonald.hadmin.dto.StoreDto">
+		SELECT s.*,u.user_name,u.user_phone FROM store_list s LEFT JOIN user_info u ON s.store_code = u.store_code WHERE s.store_code = #{store_code};
+	</select>
+	
+	<update id="updateStore">
+		UPDATE store_list SET store_name = #{store_name}, store_phone = #{store_phone}, store_driverthru = #{store_driverthru}, store_delivery = #{store_delivery} 
+		<if test="store_status != -1">, store_status = {#store_status} </if>
+		WHERE store_code = #{store_code}
+	</update>
 
 </mapper>

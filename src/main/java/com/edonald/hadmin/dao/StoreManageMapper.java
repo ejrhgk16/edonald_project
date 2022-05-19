@@ -11,8 +11,10 @@ import com.edonald.member.dto.MemberDto;
 @Repository
 public interface StoreManageMapper {
 	public void insertStore(StoreDto storeDto);
-	public List<StoreDto> getStoreList(StorePageCriteria cri);
+	public List<StoreDto> getStoreList();
 	public int getTotalNum();
 	public void joinSadmin(MemberDto dto);
 	public String checkDupl(String user_email);
+	public StoreDto getStore(String store_code);
+	public void updateStore(StoreDto dto);
 }

@@ -39,7 +39,7 @@ $(document).ready(function(){
 		var gender = $('.iradio.checked').children('input').val();
 		var phone = $('#form_accountsetting_contactno').val();
 		var url = "/member/changedAccount.do";
-		var user_password = prompt("비밀번호 : ");
+		var user_password = $('#checkpassword').val();
 		
 		$.ajax({
 			type : "POST",
@@ -409,6 +409,14 @@ $(document).ready(function(){
 													 <div class="form-group">
 														 <label class="field-label" for="form_accountsetting_contactno"><span class="required-symbol">*</span>휴대전화 번호:</label>
 																 <input type="text" class="form-control input-lg required number digit-only" maxlength="11" id="form_accountsetting_contactno" name="contactNo" placeholder="숫자만 입력" value="${principal.memberDto.user_phone}" aria-required="true">
+													</div> 
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12">
+													 <div class="form-group">
+														 <label class="field-label" for="form_accountsetting_contactno"><span class="required-symbol">*</span>비밀번호 확인:</label>
+																 <input type="password" class="form-control input-lg required number digit-only" maxlength="11" id="checkpassword" name="contactNo" placeholder="숫자만 입력" aria-required="true">
 													</div> 
 												</div>
 											</div>

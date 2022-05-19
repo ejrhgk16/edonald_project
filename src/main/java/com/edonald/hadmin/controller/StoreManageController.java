@@ -28,27 +28,23 @@ public class StoreManageController {
 	}
 	
 	@GetMapping("/hadmin/storeUpdate")
-	public String store() {
+	public String storeUpdate(Model model,String store_code) {
+		model.addAttribute("store",storeManageService.getStore(store_code));
 		return "/admin/hadmin/usercheck/storeUpdate";
 	}
 	
-	@GetMapping("/hadmin/store")
-	public String storeManage(Model model, StorePageCriteria cri) {
-		List<StoreDto>storeList = storeManageService.getStoreList(cri);
-		StorePageDto storePage = new StorePageDto(cri, storeManageService.getTotalNum());
-		System.out.println(storeManageService.getTotalNum());
-		System.out.println(storePage.getStartPage());
-		System.out.println(storePage.getEndPage());
-		model.addAttribute("storeList", storeList);
-		model.addAttribute("pageMaker", storePage);
-		return "/admin/hadmin/index2";
+	@ResponseBody
+	@PostMapping("/hadmin/storeUpdate.do")
+	public void storeUpdateDo(StoreDto dto) {
+		System.out.println(dto.getStore_status());
+		storeManageService.updateStore(dto);
 	}
-	@GetMapping("/hadmin/storePage")
-	public @ResponseBody List<StoreDto>storePage(Model model,StorePageCriteria cri) {
-		List<StoreDto>storeList = storeManageService.getStoreList(cri);
-		StorePageDto storePage = new StorePageDto(cri, storeManageService.getTotalNum());
-		model.addAttribute("pageMaker", storePage);
-		return storeList;
+	
+	@GetMapping("/hadmin/store")
+	public String storeManage(Model model) {
+		List<StoreDto>storeList = storeManageService.getStoreList();
+		model.addAttribute("storeList", storeList);
+		return "/admin/hadmin/index2";
 	}
 
 	

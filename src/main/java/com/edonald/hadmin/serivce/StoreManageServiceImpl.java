@@ -30,8 +30,8 @@ public class StoreManageServiceImpl implements StoreManageService {
 	}
 
 	@Override
-	public List<StoreDto> getStoreList(StorePageCriteria cri) {
-		return storeMangeMapper.getStoreList(cri);
+	public List<StoreDto> getStoreList() {
+		return storeMangeMapper.getStoreList();
 	}
 
 	@Override
@@ -50,5 +50,15 @@ public class StoreManageServiceImpl implements StoreManageService {
 		dto.setUser_password(encodePassword);
 		storeMangeMapper.joinSadmin(dto);
 		return "등록 성공";
+	}
+	
+	@Override
+	public StoreDto getStore(String store_code) {
+		return storeMangeMapper.getStore(store_code);
+	}
+	
+	@Override
+	public void updateStore(StoreDto dto) {
+		storeMangeMapper.updateStore(dto);
 	}
 }
