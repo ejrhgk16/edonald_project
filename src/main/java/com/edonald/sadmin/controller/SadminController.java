@@ -35,6 +35,7 @@ public class SadminController {
 		model.addAttribute("store",store);
 		return "admin/sadmin/menu/burgerNset";
 	}	
+
 	
 	@RequestMapping( value = "/sadmin/index", method = RequestMethod.GET)
 	public String sadminHome(HttpSession session,Authentication authentication) {
