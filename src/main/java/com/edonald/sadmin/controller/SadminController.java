@@ -33,8 +33,9 @@ public class SadminController {
 	public String testMenu(Model model,String type,String store) {
 		model.addAttribute("list",sService.listAll(type));
 		model.addAttribute("store",store);
-		return "/admin/sAdmin/menu/burgerNset";
-	}
+		return "admin/sadmin/menu/burgerNset";
+	}	
+
 	
 	@RequestMapping( value = "/sadmin/index", method = RequestMethod.GET)
 	public String sadminHome(HttpSession session,Authentication authentication) {
