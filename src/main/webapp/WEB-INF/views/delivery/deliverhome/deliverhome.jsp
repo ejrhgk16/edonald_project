@@ -181,20 +181,13 @@
 
 				<section class="home-masthead page-masthead home-section">
 					<div class="slideshow" style="position: relative; height: 475px;">
-
 						<div class="cycle-pager slide-pager">
-							<a href="#" class="slide-pager-target ir" onclick="goSlide(0)">1</a>
-							<a href="#" class="slide-pager-target ir" onclick="goSlide(1)">2</a>
-							<a href="#" class="slide-pager-target ir" onclick="goSlide(2)">3</a>
+							<c:forEach var="list" items="${list }" varStatus="status">
+								<a href="#" class="slide-pager-target ir <c:if test="${status.count eq 1 }">cycle-pager-active</c:if>">${status.index }</a>
+							</c:forEach>
 						</div>
 						<c:forEach var="list" items="${list }" varStatus="status">
-							<a class="slide-target slide-item action-ordernow cycle-slide"
-								style="background-image: url(${list.p_img}); position: absolute; top: 0px; left: 0px; z-index: 97; 
-								<c:choose>
-									<c:when test="${status.count eq 1 }">display:block; </c:when>
-									<c:otherwise>display: none; </c:otherwise>
-								</c:choose>
-								opacity: 1;">
+							<a class="slide-target slide-item action-ordernow cycle-slide <c:if test="${status.count eq 1 }">active-page</c:if>" style="background-image: url(${list.p_img}); position: absolute; top: 0px; left: 0px; z-index: 97; <c:choose><c:when test="${status.count eq 1 }">opacity: 1;</c:when><c:otherwise>opacity: 0; </c:otherwise></c:choose>" data-value="${status.index }"></a>
 						</c:forEach>
 					</div>
 

@@ -20,7 +20,7 @@
         			var url = "/hadmin/promotionInsert";
         			window.open(url, "a", "width=300, height=300, left=100, top=50, location=no");		
         		})
-        		$('#modifyBtn').on('click',function(){
+        		$('.modifyBtn').on('click',function(){
         			var url = "/hadmin/promotionUpdate?p_seq=";
         			var seq = $(this).attr("data-value");
         			url += seq;
@@ -193,9 +193,9 @@
 										<tr>
 											<td>${status.count}</td>
 											<td>${list.p_title}</td>
-											<td><c:if test="${list.p_status == 1 }">진행중</c:if><c:if test="${list.p_status != 1 }">종료</c:if></td>
+											<td><c:if test="${list.p_status eq 1 }">진행중</c:if><c:if test="${list.p_status ne 1 }">종료</c:if></td>
 											<td>
-												<button class="btn btn-outline-info" type="button" id="modifyBtn" data-value="${list.p_seq }">수정</button>
+												<button class="btn btn-outline-info modifyBtn" type="button" id="modifyBtn" data-value="${list.p_seq }">수정</button>
 											</td>
 											<td class="pStatus" style="display:none;">${list.p_status}</td>
 										</tr>

@@ -33,7 +33,6 @@
 			 if($('this').attr('data-value') != ""){
 				url ="/hadmin/promotionUpdate.do";
 	 		 }
-				alert(url);
 			 var form = $('#addPromotion')[0];
 			 var formData = new FormData(form);
 			 $.ajax({
@@ -128,7 +127,7 @@
 											  		<input class="form-check-input sub_to" type="checkbox" id="p_status" name="p_status" 
 											  		<c:choose>
 												  		<c:when test="${promotion.p_status eq 1}">value="1" checked="checked"</c:when>
-												  		<c:otherwise>value="0"</c:otherwise>
+												  		<c:otherwise>value="1"</c:otherwise>
 											  		</c:choose> />
 										  		</label>
 											</div>

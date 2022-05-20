@@ -27,7 +27,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.edonald.deliver.service.DeliveryMenuService;
+import com.edonald.deliver.service.DeliveryService;
 import com.edonald.hadmin.dto.MenuDto;
+import com.edonald.hadmin.dto.PromotionDto;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
@@ -41,14 +43,19 @@ public class DeliverController {
 	NaverLogin naverlogin;
 	@Autowired
 	private DeliveryMenuService dService;	
-	
+	@Autowired
+	private DeliveryService service;
 	
 	@GetMapping("/ed/deliverHome")
 	public String deliverhome(Model model, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String naverUrl = naverlogin.getAuthorizationUrl(session);
+		List<PromotionDto> list = service.getPromotionList();
+		for(PromotionDto li : list) {
+			li.setP_img("https://edonaldfile.s3.ap-northeast-2.amazonaws.com/" +li.getP_img());
+		}
 		model.addAttribute("naverUrl", naverUrl);
-		
+		model.addAttribute("list",list);
 		return "/delivery/deliverhome/deliverhome";
 	}
 

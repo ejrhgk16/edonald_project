@@ -81,7 +81,7 @@ public class HadminController {
 			System.out.println("--fservice");
 			dto.setP_img(fService.fileUpload(mainUploadFile, path));
 		}
-		System.out.println("1");
+		System.out.println(dto.getP_status());
 		hService.updatePromotion(dto);
 	}
 	
