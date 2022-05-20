@@ -1,11 +1,9 @@
 package com.edonald.sadmin.controller;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edonald.hadmin.dto.MenuDto;
-import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
-import com.edonald.order.dto.OrderListDto;
 import com.edonald.sadmin.service.SadminMenuService;
 import com.edonald.sadmin.service.SadminService;
 
@@ -103,5 +99,15 @@ public class SadminController {
 		map.put("store_status", store_status);
 		map.put("store_code", store_code);
 		service.updateStoreStatus(map);
+	}
+	
+	@RequestMapping( value = "/sadmin/order" , method = RequestMethod.GET)
+	public String sadminOrder(Model model) {
+		return "admin/sadmin/order/order";
+	}
+	
+	@RequestMapping( value = "/sadmin/orderState" , method = RequestMethod.GET)
+	public String sadminOrderState(Model model) {
+		return "admin/sadmin/order/orderstate";
 	}
 }
