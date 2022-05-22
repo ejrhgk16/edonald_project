@@ -20,4 +20,16 @@
 	<update id="updateStoreStatus">
 		UPDATE store_list SET store_status = #{store_status} WHERE store_code = #{store_code}
 	</update>
+	<select id="getOrderList" resultType="com.edonald.order.dto.OrderListDto">
+		SELECT * FROM order_list WHERE store_code = #{store_code} ORDER BY order_seq DESC;
+	</select>
+	<select id="getNewOrderList" resultType="com.edonald.order.dto.OrderListDto">
+		SELECT * FROM order_list WHERE store_code = #{store_code} AND order_status = 0 AND order_seq > #{order_seq} ORDER BY order_seq DESC;
+	</select>
+	<select id="getCartList" resultType="com.edonald.order.dto.CartDto">
+		SELECT * FROM cart_list WHERE merchanuid = #{merchanuid}
+	</select>
+	<update id="updateOrder">
+		UPDATE order_list SET order_status = ${order_status} WHERE order_seq = ${order_seq}
+	</update>
 </mapper>

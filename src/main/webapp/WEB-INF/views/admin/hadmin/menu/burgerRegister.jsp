@@ -202,6 +202,7 @@
 	function typeChanger(){
 		var type = $('#type option:selected').val();
 		$('#category_code').children().remove();
+		$('.drinkmenuform').hide();
 		if (type == 'burger'){
 			$('#category_code').append("<option value=\"0\">신제품</option>");
 			$('#category_code').append("<option value=\"1\">오리지날</option>");
@@ -218,6 +219,7 @@
 			$('#category_code').append("<option value=\"15\">소스</option>");
 			$('#category_code').append("<option value=\"19\">기타</option>");
 		}else if(type == 'drink'){
+			$('.drinkmenuform').show();
 			$('#category_code').append("<option value=\"20\">신제품</option>");
 			$('#category_code').append("<option value=\"21\">커피</option>");
 			$('#category_code').append("<option value=\"22\">라떼</option>");
@@ -277,7 +279,17 @@
                                                     <div class="form-floating">
                                                         <input class="form-control" id="price" name="price" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);" value="${dto.price }"/>
-                                                        <label for="price">메뉴 가격</label>
+                                                        <label for="price">메뉴 가격</label>                                                        
+                                                    </div>
+                                                    <div class="form-floating drinkmenuform" style="display:none">
+                                                        <input class="form-control" id="s_price" name="s_price" type="text" placeholder="Enter your first name" 
+                                                        	style="height: calc(3.5rem + 20px);" value="${dto.s_price }"/>
+                                                        <label for="price">스몰 가격</label>                                                        
+                                                    </div>
+                                                    <div class="form-floating drinkmenuform" style="display:none">
+                                                        <input class="form-control" id="l_price" name="l_price" type="text" placeholder="Enter your first name" 
+                                                        	style="height: calc(3.5rem + 20px);" value="${dto.l_price }"/>
+                                                        <label for="price">라즈 가격</label>                                                        
                                                     </div>
                                                 </div>
                                             </div>

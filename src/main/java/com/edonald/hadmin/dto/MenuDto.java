@@ -19,6 +19,8 @@ public class MenuDto {
 	private int sub_ls;				// 라지세트
 	private int sub_s;				// 세트
 	private int sub_em;				// 이모닝
+	private int s_price;
+	private int l_price;
 	
 	private int block_status;		// 지점장 block filter
 	

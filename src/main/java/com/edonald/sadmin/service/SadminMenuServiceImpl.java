@@ -34,5 +34,7 @@ public class SadminMenuServiceImpl implements SadminMenuService {
 	public void deleteBlock(Map<String, String> map) {
 		mapper.deleteBlock(map);
 	}
-
+	
+	
+	
 }

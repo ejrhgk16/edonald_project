@@ -1,5 +1,6 @@
 package com.edonald.sadmin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.order.dto.OrderListDto;
 import com.edonald.sadmin.service.SadminMenuService;
 import com.edonald.sadmin.service.SadminService;
 
@@ -103,12 +105,34 @@ public class SadminController {
 	}
 	
 	@RequestMapping( value = "/sadmin/order" , method = RequestMethod.GET)
-	public String sadminOrder(Model model) {
+	public String sadminOrder(Authentication authentication,Model model) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = (MemberDto) user.getMemberDto();
+		int store_code = sessionDto.getStore_code();
+		List<OrderListDto> list = service.getOrderList(store_code);
+		model.addAttribute("list",list);
 		return "admin/sadmin/order/order";
 	}
 	
-	@RequestMapping( value = "/sadmin/orderState" , method = RequestMethod.GET)
+	@ResponseBody
+	@RequestMapping( value = "/sadmin/order.do" , method = RequestMethod.GET)
+	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status) {
+		service.updateOrder(order_seq, order_status);
+	}
+	
+	@ResponseBody
+	@RequestMapping( value = "/sadmin/neworder.do" , method =RequestMethod.GET)
+	public List<OrderListDto> sadminNewOrder(Authentication authentication,@RequestParam int order_seq){
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = (MemberDto) user.getMemberDto();
+		int store_code = sessionDto.getStore_code();
+		List<OrderListDto> list = service.getNewOrderList(store_code, order_seq);
+		System.out.println("--");
+		return list;
+	}
+	
+	@RequestMapping( value = "/tester" , method = RequestMethod.GET)
 	public String sadminOrderState(Model model) {
-		return "admin/sadmin/order/orderstate";
+		return "admin/sadmin/order/test";
 	}
 }
