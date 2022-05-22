@@ -30,11 +30,12 @@
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
 			var menu_code =  $(this).attr("href");
+			var $form = $(this).next();
 			$.ajax({
 				type : "GET",
 				url : "/order/checkSession",
 				success : function(){
-					$(".menuInfo").submit();	
+					$form.submit();	
 				}, 
 				error : function(){
 					alert("로그인 해주세요!");
@@ -489,6 +490,8 @@ ${orderListDto.store_code }
 																	<input type="hidden" name="allergy"
 																		value="${list.allergy}"> <input type="hidden"
 																		name="seq" value="${list.seq}">
+
+																		
 
 																</form>
 

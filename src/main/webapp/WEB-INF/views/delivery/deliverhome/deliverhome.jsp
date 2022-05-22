@@ -38,6 +38,20 @@
 								var addr_seq = $(this).children("input[name=addr]").val();
 								window.location.href = "/member/selectAddress?address_seq="+addr_seq;
 							});
+							$(".menu-item-menu").on("click", function(e){
+								e.preventDefault();
+								$.ajax({
+									type : "GET",
+									url : "/ed/store/checkStatus",
+									success : function(){
+										location.href = "/ed/menuPage";
+									}, 
+									error : function(){
+										alert("배달가능한 지점이 없습니다.");
+									}									
+								})
+							})
+							
 							
 							$(document).on("click", ".action-orderinadvance", function(e) {
 								e.preventDefault();
@@ -261,7 +275,7 @@
 												</p>
 												<hr class="fading-divider">
 												<p class="action-track-order">
-													<a href="#trackOrder" data-toggle="modal"
+													<a href="/member/mypage/trackOrder" data-toggle="modal"
 														id="membertrackorder" class="action-link"> <i
 														class="fa fa-caret-right"></i> 주문 조회
 													</a>

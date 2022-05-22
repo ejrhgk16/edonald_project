@@ -172,6 +172,8 @@ function menuRequest(type, daypartId){
 				html += "<input type=\"hidden\" name=\"price\" value=\""+item.price+"\">";
 				html += "<input type=\"hidden\" name=\"allergy\" value=\""+item.allergy+"\">";
 				html += "<input type=\"hidden\" name=\"seq\" value=\""+item.seq+"\">";
+				html += "<input type=\"hidden\" name=\"l_price\" value=\""+item.l_price+"\">";
+				html += "<input type=\"hidden\" name=\"s_price\" value=\""+item.s_price+"\">";
 				html += "</form></div></div></div></div></div>";
 				
 			});
