@@ -23,6 +23,14 @@
 			#{allergy},
 			NULL,
 			#{type},0,0,0,0,0
+			<choose>
+				<when test="l_price != 0">,#{l_price}</when>
+				<otherwise>,null</otherwise>
+			</choose>
+			<choose>
+				<when test="s_price != 0">,#{s_price}</when>
+				<otherwise>,null</otherwise>
+			</choose>
 			) 
 	</insert>
 	<update id="update">
@@ -31,10 +39,12 @@
 			kcal = #{kcal},
 			<if test="img_path != null">img_path = #{img_path},</if>
 			<if test="set_img_path != null">set_img_path = #{set_img_path},</if>
+			<if test="s_price != 0">s_price = #{s_price},</if>
+			<if test="l_price != 0">l_price = #{l_price},</if>
 			category_code = #{category_code},
 			price = #{price},
 			allergy = #{allergy},
-			type = #{type}
+			type = #{type} 
 		WHERE seq = #{seq}
 	</update>
 	<update id="updateSubstitue">

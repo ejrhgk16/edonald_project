@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.edonald.hadmin.dto.MenuDto;
+import com.edonald.order.dto.OrderListDto;
 
 public interface SadminMenuService {
 	public List<MenuDto> listAll(String type);
