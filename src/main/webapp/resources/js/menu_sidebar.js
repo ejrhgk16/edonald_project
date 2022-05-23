@@ -2,6 +2,18 @@ $(document).ready(function() {
 	var date = new Date();
 	var time = date.getHours();
 	var backtype = $('#backtype').text();
+	var target = $('.secondary-menu-item-target');
+	
+	for(var i = 0 ; i < target.length ; i++){
+		if(target.eq(i).attr('data-value')==backtype){
+			$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
+			target.eq(i).parent().attr("class", "secondary-menu-item selected");
+			break;
+		}
+	}
+	
+	
+	
 	console.log(backtype);
 	if(time >= 8 && time <= 12){
 		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
@@ -18,7 +30,7 @@ $(document).ready(function() {
 		}
 	}else{
 		if(backtype!=""){
-			menuRequest(backtype,2);
+			menuRequest(backtype,1);
 		}else{
 			menuRequest("burger",1);
 		}

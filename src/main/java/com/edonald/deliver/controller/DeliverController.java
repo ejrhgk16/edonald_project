@@ -101,7 +101,8 @@ public class DeliverController {
 	
 	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
 	public @ResponseBody List<MenuDto> menuPageDo(String type, String daypartId, HttpSession session) {
-		
+		System.out.println(type);
+		System.out.println(daypartId);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("daypartId", daypartId);
@@ -121,6 +122,7 @@ public class DeliverController {
 				}
 			}
 		}
+		System.out.println(mList.toString());
 		
 		
 		return mList;
