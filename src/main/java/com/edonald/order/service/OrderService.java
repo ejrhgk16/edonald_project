@@ -28,6 +28,6 @@ public interface OrderService {
 	public List<MenuDto>getTogetherSourceList();	
 	public void checkStoreStatus(int store_code)  throws Exception;
 	public void checkMenuStatus( int store_code, int menu_code)  throws Exception;
-	public void checkTime(CartDto dto, Timestamp time) throws Exception;
+	public void checkTime(String menu_type, Timestamp time) throws Exception;
 	public String getStoreName(int store_code);
 }

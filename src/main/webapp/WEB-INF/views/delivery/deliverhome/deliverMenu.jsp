@@ -29,11 +29,11 @@
 		
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
-			var menu_code =  $(this).attr("href");
+			var menu_type =  $(this).next().children("input[name=type]");
 			var $form = $(this).next();
 			$.ajax({
 				type : "GET",
-				url : "/order/checkSession",
+				url : "/order/checkSession?menu_type="+menu_type,
 				success : function(){
 					$form.submit();	
 				}, 
