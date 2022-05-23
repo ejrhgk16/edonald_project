@@ -29,7 +29,7 @@
 		
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
-			var menu_type =  $(this).next().children("input[name=type]");
+			var menu_type =  $(this).next().children("input[name=type]").val();
 			var $form = $(this).next();
 			$.ajax({
 				type : "GET",
@@ -37,8 +37,8 @@
 				success : function(){
 					$form.submit();	
 				}, 
-				error : function(){
-					alert("로그인 해주세요!");
+				error : function(res){
+					alert(res.responseText);
 				}									
 			})
 			
