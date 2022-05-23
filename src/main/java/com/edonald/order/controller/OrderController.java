@@ -376,19 +376,17 @@ public class OrderController {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		try {
 			orderService.checkTime(menu_type, timestamp);
+			if(authentication != null) {
+				return new ResponseEntity<String>(HttpStatus.OK);
+			}else if(session.getAttribute("noLoginMemberDto") != null) {
+				return new ResponseEntity<String>(HttpStatus.OK);
+			}else {
+				return new ResponseEntity<String>("로그인 해주세요", HttpStatus.BAD_REQUEST);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage() ,HttpStatus.BAD_REQUEST);
 		}
-		
-		if(authentication != null) {
-			return new ResponseEntity<String>(HttpStatus.OK);
-		}else if(session.getAttribute("noLoginMemberDto") != null) {
-			return new ResponseEntity<String>(HttpStatus.OK);
-		}else {
-			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-		}
 
-		
 	}
 	
 	
