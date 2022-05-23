@@ -146,7 +146,6 @@ public class OrderController {
 		orderListDto.getCartList().add(cartDto);
 		
 		String backtype = cartDto.getMenu_type();
-		System.out.println("backtype"+backtype);
 		model.addAttribute("backtype", backtype);
 		return  "/delivery/deliverhome/deliverMenu";
 	}

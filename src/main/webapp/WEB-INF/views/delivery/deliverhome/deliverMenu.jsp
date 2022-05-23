@@ -789,5 +789,6 @@ ${orderListDto.store_code }
 		</div>
 	</div>
 	<div id="daypartId" hidden>1</div>
+	<div id="backtype" hidden>${requestScope.backtype }</div>
 </body>
 </html>

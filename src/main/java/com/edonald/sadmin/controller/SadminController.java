@@ -121,9 +121,7 @@ public class SadminController {
 	@RequestMapping( value = "/sadmin/order.do" , method = RequestMethod.GET)
 	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time) {
 		OrderListDto dto = service.getOrderListBySeq(order_seq);
-		System.out.println('1');
 		if(wait_time != null) {
-			System.out.println('2');
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(dto.getOrder_date());
 			cal.add(Calendar.MINUTE, Integer.parseInt(wait_time));
@@ -131,8 +129,9 @@ public class SadminController {
 			dto.setOrder_status(order_status);
 			dto.setDelivery_time(delivery_time);
 			service.updateOrder(dto);
+		}else if(order_status == 5){
+			Date date = new Date();
 		}else {
-			System.out.println('3');
 			dto.setOrder_status(order_status);
 			service.updateOrder(dto);
 		}
