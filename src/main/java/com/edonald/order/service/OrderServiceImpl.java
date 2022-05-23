@@ -275,13 +275,13 @@ public class OrderServiceImpl implements OrderService {
 		Timestamp currentTime = time;
 			if(menu_type.equals("emorning")) { //장바구니 메뉴에
 				if(currentTime.before(tmorningMenuStart) || currentTime.after(tmorningMenuEnd)) {
-					throw new RuntimeException("해당메뉴주문시간이아닙니다.");
+					throw new RuntimeException("해당 메뉴 주문 시간이 아닙니다.");
 				}
 			}
 			if(menu_type.equals("burger")) {
 				if(currentTime.after(tmorningMenuStart) && currentTime.before(tmorningMenuEnd)) {
 					System.out.println("asdads");
-					throw new RuntimeException("해당메뉴주문시간이아닙니다.");
+					throw new RuntimeException("해당 메뉴 주문 시간이 아닙니다.");
 				}
 			}
 			
