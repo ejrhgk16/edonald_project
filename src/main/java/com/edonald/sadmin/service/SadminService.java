@@ -13,6 +13,9 @@ public interface SadminService {
 	public StoreDto getStore(int store_code);
 	public void updateStoreStatus(Map<String, String> map);
 	public List<OrderListDto> getOrderList(int store_code);
-	public void updateOrder(int order_seq,int order_status);
+//	public void updateOrder(int order_seq,int order_status);
+	public void updateOrder(OrderListDto dto);
 	public List<OrderListDto> getNewOrderList(int store_code,int order_seq);
+	public OrderListDto getOrderListBySeq(int order_seq);
+	
 }

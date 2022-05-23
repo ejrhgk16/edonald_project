@@ -30,6 +30,13 @@
 		SELECT * FROM cart_list WHERE merchanuid = #{merchanuid}
 	</select>
 	<update id="updateOrder">
-		UPDATE order_list SET order_status = ${order_status} WHERE order_seq = ${order_seq}
+		UPDATE order_list SET order_status = ${order_status} 
+		<if test="delivery_time != null">
+			, delivery_time = #{delivery_time}
+		</if>
+		WHERE order_seq = ${order_seq}
 	</update>
+	<select id="getOrderListBySeq" resultType="com.edonald.order.dto.OrderListDto">
+		SELECT * FROM order_list WHERE order_seq = #{order_seq}
+	</select>
 </mapper>

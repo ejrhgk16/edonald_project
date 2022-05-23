@@ -44,9 +44,18 @@ public class SadminServiceImpl implements SadminService {
 		return list;
 	}
 	
+//	@Override
+//	public void updateOrder(int order_seq,int order_status) {
+//		mapper.updateOrder(order_seq, order_status);
+//	}
 	@Override
-	public void updateOrder(int order_seq,int order_status) {
-		mapper.updateOrder(order_seq, order_status);
+	public void updateOrder(OrderListDto dto) {
+		mapper.updateOrder(dto);
+	}
+	
+	@Override
+	public OrderListDto getOrderListBySeq(int order_seq) {
+		return mapper.getOrderListBySeq(order_seq);
 	}
 	
 }

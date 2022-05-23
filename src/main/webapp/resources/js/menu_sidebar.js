@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var date = new Date();
 	var time = date.getHours();
+	var backtype = '$[backtype]';
 	if(time >= 8 && time <= 12){
 		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
 		$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
@@ -9,9 +10,17 @@ $(document).ready(function() {
 		$(this).children(".primary-menu-item-target").attr("href", "?daypartId=1");
 		$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
 		$("#daypartId").text("2");
-		menuRequest("emorning",2);
+		if(backtype){
+			menuRequest(backtype,2);
+		}else{
+			menuRequest("emorning",2);
+		}
 	}else{
-		menuRequest("burger",1);
+		if(backtype){
+			menuRequest(backtype,2);
+		}else{
+			menuRequest("burger",1);
+		}
 	}
 	
 	$(".secondary-menu-item").mouseover(function() {

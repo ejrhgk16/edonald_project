@@ -22,6 +22,7 @@ public interface SadminMapper {
 	public List<OrderListDto> getOrderList(@Param("store_code") int store_code);
 	public List<OrderListDto> getNewOrderList(@Param("store_code") int store_code,@Param("order_seq") int order_seq);
 	public List<CartDto> getCartList(@Param("merchanuid") String merchanuid);
-	public void updateOrder(@Param("order_seq") int order_seq, @Param("order_status") int order_status);
-	
+	//public void updateOrder(@Param("order_seq") int order_seq, @Param("order_status") int order_status);
+	public void updateOrder(OrderListDto dto);
+	public OrderListDto getOrderListBySeq(@Param("order_seq") int order_seq);
 }

@@ -1,6 +1,9 @@
 package com.edonald.sadmin.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,8 +119,23 @@ public class SadminController {
 	
 	@ResponseBody
 	@RequestMapping( value = "/sadmin/order.do" , method = RequestMethod.GET)
-	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status) {
-		service.updateOrder(order_seq, order_status);
+	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time) {
+		OrderListDto dto = service.getOrderListBySeq(order_seq);
+		System.out.println('1');
+		if(wait_time != null) {
+			System.out.println('2');
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dto.getOrder_date());
+			cal.add(Calendar.MINUTE, Integer.parseInt(wait_time));
+			Timestamp delivery_time = new Timestamp(cal.getTimeInMillis());
+			dto.setOrder_status(order_status);
+			dto.setDelivery_time(delivery_time);
+			service.updateOrder(dto);
+		}else {
+			System.out.println('3');
+			dto.setOrder_status(order_status);
+			service.updateOrder(dto);
+		}
 	}
 	
 	@ResponseBody
