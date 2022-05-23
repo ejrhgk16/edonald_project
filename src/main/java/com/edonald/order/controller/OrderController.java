@@ -107,7 +107,7 @@ public class OrderController {
 	}
 
 	@PostMapping("/order/cart/add")
-	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication) {
+	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication, Model model) {
 
 		String menu_type = cartDto.getMenu_type();
 		int productPrice = 0;
@@ -141,11 +141,13 @@ public class OrderController {
 			newTotalPrice -= smallOrderCost;
 			orderListDto.setDeliverCost(0);
 		}
-		
 		orderListDto.setTotal_price(newTotalPrice);
 		orderListDto.getCartList().add(cartDto);
-
-		return "redirect:/ed/menuPage";
+		
+		String backtype = cartDto.getMenu_type();
+		System.out.println("backtype"+backtype);
+		model.addAttribute("backtype", backtype);
+		return  "/delivery/deliverhome/deliverMenu";
 	}
 	
 	@GetMapping("/order/cart/del")
@@ -241,7 +243,7 @@ public class OrderController {
 			System.out.println("결제그냥");
 			orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
 			return new ResponseEntity<String>("결제 오류", HttpStatus.BAD_REQUEST);
-		}
+		}	
 	
 	}
 	
