@@ -51,7 +51,7 @@ public class OrderController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(menuDto.getName()+menuDto.getS_price());
 		String type = menuDto.getType();
-		if(type.equals("burger")) {
+		if(type.equals("burger") || type.equals("emorning")) {
 			List<MenuDto>largesetsidelist= orderService.getBurgerLSetSideList();
 			List<MenuDto>setsidelist = orderService.getBurgerSetSideList();
 			List<MenuDto>setdrinklist = orderService.getDrinkList();
@@ -112,7 +112,7 @@ public class OrderController {
 		String menu_type = cartDto.getMenu_type();
 		int productPrice = 0;
 		
-		if (menu_type.equals("burger")) {
+		if (menu_type.equals("burger") || menu_type.equals("emorning")) {
 			productPrice = orderService.calcPriceBurger(cartDto); //수량, 세트 여부 -> 제품가격 계산
 			cartDto.setCalc_price(productPrice);
 		}else if(menu_type.equals("package")) {
@@ -234,6 +234,7 @@ public class OrderController {
 				orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
 				return new ResponseEntity<String>("주문번호 오류", HttpStatus.BAD_REQUEST);
 			}
+			
 			return new ResponseEntity<String>("주문이 완료되었습니다 !", HttpStatus.OK);
 		
 		}catch(Exception e) {
@@ -245,17 +246,31 @@ public class OrderController {
 	}
 	
 	@GetMapping("/order/payment/complete")
-	public String payComplete(HttpSession session, Model model) {
-		//주문 예외사항들 체크 해줘야함 가게 상태, 배달 시간, 등등
+	public @ResponseBody ResponseEntity<String> payComplete(HttpSession session, Model model) throws IOException{
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		orderService.orderComplete(orderListDto);
-		return "redirect:/order/payment/result";
+		String paytype = orderListDto.getPayment_type();
+
+			try {
+				//주문 예외사항들 체크 해줘야함 가게 상태, 배달 시간, 등등
+				orderService.orderComplete(orderListDto);
+			} catch (Exception e) {
+				if(paytype.equals("온라인결제")) {
+					String token = orderService.getToken();
+					String imp_uid = orderListDto.getImp_uid();
+					int amount = orderService.paymentInfo(imp_uid, token);
+					orderService.payMentCancle(token, imp_uid, amount, e.getMessage());
+				}
+				return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			}
+		return new ResponseEntity<String>(HttpStatus.OK);
 
 	}
 	
 	@GetMapping("/order/payment/result")
 	public String paymentResult(HttpSession session, Model model) {
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
+		String store_name = orderService.getStoreName(orderListDto.getStore_code());
+		model.addAttribute("store_name", store_name);
 		model.addAttribute("orderListDto", orderListDto);
 		session.removeAttribute("orderListDto");
 		return "/delivery/order/receipt";
@@ -283,6 +298,8 @@ public class OrderController {
 	@GetMapping("/order/search/orderDetail")
 	public String orderfind(@RequestParam String merchanuid, Model model) {
 		OrderListDto orderListDto = orderService.getOrderInfo(merchanuid);
+		String store_name = orderService.getStoreName(orderListDto.getStore_code());
+		model.addAttribute("store_name", store_name);
 		model.addAttribute("orderListDto", orderListDto);
 		model.addAttribute("memberOrderFind", "find");
 		return "/delivery/order/receipt";

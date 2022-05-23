@@ -183,60 +183,73 @@
 												</c:otherwise>
 											</c:choose>
 											</td>
+								
+											
+										<c:choose>
+										<c:when test="${orderList.order_status == '1'}">
+										<td colspan="4" class="order-received complete"><h6></h6>
+										<div>주문이 취소 되었습니다.</div></td>
+										</c:when>
+										<c:otherwise>	
 										<td class="order-received complete"><h6>주문 접수</h6>
 											<div>
 											<c:choose>
 											<c:when test="${orderList.order_status >= '2'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 on.png">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 off.png">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
-										<td class="in-progress complete"><h6>준비 중</h6>
+										<td class="order-received complete"><h6>준비 중</h6>
 											<div>
 											<c:choose>
 											<c:when test="${orderList.order_status >= '3'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 on.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 off.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
-										<td class="in-delivery complete"><h6>배달 중</h6>
+										<td class="order-received complete"><h6>배달 중</h6>
 											<div>
 											<c:choose>
 											<c:when test="${orderList.order_status >= '4'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중off.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
-										<td class="delivered complete"><h6>배달 완료</h6>
+										<td class="order-received complete"><h6>배달 완료</h6>
 											<div>
 											<c:choose>
 											<c:when test="${orderList.order_status >= '5'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 on.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 off.png">
+												<img  style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
+											</c:otherwise>
+											</c:choose>
 									</tr>
 									</c:forEach>
 								</c:when>
+								
+								
+								
 								<c:otherwise>
 									<tr class="">
 										<td class="order-id"><h4>주문 번호:</h4>
 											<p><a href="/order/search/orderDetail?merchanuid=${orderList.merchanuid }">${orderList.merchanuid}</a></p></td>
 										<td class="est-time">
 										<c:choose>
-												<c:when test="${orderList.order_status eq '4' }">
+												<c:when test="${orderList.order_status eq '5' }">
 													<h4>배달완료시간</h4>
 													<p>${orderList.delivery_time}</p>
 												</c:when>
@@ -246,50 +259,59 @@
 												</c:otherwise>
 											</c:choose>
 											</td>
+											
+										<c:choose>
+										<c:when test="${orderList.order_status == '1'}">
+										<td colspan="4" class="order-received complete"><h6></h6>
+										<div>주문이 취소 되었습니다.</div></td>
+										</c:when>
+										<c:otherwise>
 										<td class="order-received complete"><h6>주문 접수</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '1'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 on.png">
+											<c:when test="${orderList.order_status >= '2'}">
+												<img style="width:50%;heigth:50%;" src= "https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 off.png">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
 										<td class="in-progress complete"><h6>준비 중</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '2'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 on.png">
+											<c:when test="${orderList.order_status >= '3'}">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 off.png">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
 										<td class="in-delivery complete"><h6>배달 중</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '3'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
+											<c:when test="${orderList.order_status >= '4'}">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중off.png">
+												<img style="width:50%;heigth:50%;"  src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
 										<td class="delivered complete"><h6>배달 완료</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '2'}">
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 on.png">
+											<c:when test="${orderList.order_status >= '5'}">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 on.png">
 											</c:when>
 											<c:otherwise>
-												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 off.png">
+												<img style="width:50%;heigth:50%;" src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 off.png">
 											</c:otherwise>
 											</c:choose>
 											</div></td>
+											</c:otherwise>
+											</c:choose>
 									</tr>
 								</c:otherwise>
 								</c:choose>

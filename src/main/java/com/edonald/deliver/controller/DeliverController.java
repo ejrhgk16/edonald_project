@@ -158,7 +158,7 @@ public class DeliverController {
 					}
 			}
 			
-			return new ResponseEntity<String>("배달메뉴x", HttpStatus.OK);
+			return new ResponseEntity<String>("그냥메뉴만봄", HttpStatus.OK);
 			
 		
 	}

@@ -51,6 +51,12 @@ $(document).ready(function(){
 						<table class="table-receipt-order-detail">
 							<tbody>
 								<tr>
+									<th>지점명:</th>
+								</tr>
+								<tr>
+									<td>${store_name}</td>
+								</tr>
+								<tr>
 									<th>주문 번호:</th>
 								</tr>
 								<tr>

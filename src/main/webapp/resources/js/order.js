@@ -26,17 +26,29 @@ function requestPay(data) {
 				type: "POST",
 				data: data,
 			}).done(function(res) {
-				console.log(res);
-				alert(res);
-				location.replace("/order/payment/complete");
+				ordervalidcheck();
 			}).fail(function(res) {
-					console.log(res);
-					alert(res);
+					alert(res.responseText);
 				})
 		} else {
 			// 결제 실패 시
 			alert("결제오류");
+			location.href="/ed/deliverHome";
 		}
 	});
+}
+
+function ordervalidcheck(){
+	$.ajax({
+				url: "/order/payment/complete",
+				type: "GET",
+				success : function(res){
+					location.href="/order/payment/result";
+				},
+				error : function(res){
+					alert(res.responseText);
+					location.href="/ed/deliverHome";
+				}
+			})
 }
 

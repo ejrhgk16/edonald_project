@@ -53,13 +53,11 @@
 					type : "GET",
 					url : "/order/payment/cnum?payment_type=" + payment_type,
 					success : function(data) {
-							location.href = "/order/payment/complete";
+						ordervalidcheck();
 					},
 					error:function(){
 						alert("비회원은 온라인결제만 가능합니다");
 					}
-						
-					
 					})
 			}
 			})

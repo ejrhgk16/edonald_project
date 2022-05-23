@@ -2,6 +2,8 @@ package com.edonald.order.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
@@ -22,5 +24,8 @@ public interface OrderMapper {
 	public List<MenuDto>getTogetherPackSideList();
 	public List<MenuDto>getTogetherPackSourceList();
 	public int getBurgerPrice(String burgername);
+	public Integer checkMenuStatus(@Param("store_code") int store_code, @Param("menu_code")int menu_code);
+	public int checkStoreStatus(int store_code);
+	public String getStoreName(int store_code);
 
 }

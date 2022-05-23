@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.order.dao.OrderMapper;
@@ -30,6 +33,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import kotlin.jvm.Throws;
 import lombok.Getter;
 
 @Service
@@ -223,20 +227,74 @@ public class OrderServiceImpl implements OrderService {
 		return dto;
 	}
 
+	@Transactional
 	@Override
-	public void orderComplete(OrderListDto dto) {
+	public void orderComplete(OrderListDto dto)throws Exception {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		// SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss"); >> string으로 변환해줌 select할 때 사용하면될 듯
 		OrderListDto orderListDto = dto;
 		orderListDto.setOrder_date(timestamp);
+		orderMapper.insertOrderInfo(orderListDto);
 		List<CartDto>cartList = orderListDto.getCartList();
 		for(CartDto cart : cartList) {
+			checkTime(cart, orderListDto.getOrder_date());
+			checkMenuStatus(orderListDto.getStore_code(), cart.getCart_product_code());
 			cart.setMerchanuid(orderListDto.getMerchanuid());
 			orderMapper.insertCartInfo(cart);
 		}
-		orderMapper.insertOrderInfo(orderListDto);
+		checkStoreStatus(orderListDto.getStore_code());
+	}
+	
+	@Override
+	public void checkStoreStatus(int store_code) {
+		int status = orderMapper.checkStoreStatus(store_code);
+		if(status == 0) {
+			throw new RuntimeException("해당 지점 주문이 불가능합니다.");
+		}
 	}
 
+	@Override
+	public void checkMenuStatus( int store_code, int menu_code) {
+		Integer check = orderMapper.checkMenuStatus( store_code, menu_code);
+		if( check != null) {
+			throw new RuntimeException("주문 메뉴가 품절되었습니다.");
+		}
+		
+	}
+
+	@Override
+	public void checkTime(CartDto dto, Timestamp time) {
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String date = now.format(formatter);
+		String morningMenuStart = date+" 03:50:00";
+		String morningMenuEnd = date+" 10:20:00";
+		Timestamp tmorningMenuStart = Timestamp.valueOf(morningMenuStart);
+		Timestamp tmorningMenuEnd = Timestamp.valueOf(morningMenuEnd);
+
+		Timestamp currentTime = time;
+			String menu_type = dto.getMenu_type();
+	
+			if(menu_type.equals("emorning")) { //장바구니 메뉴에
+				if(currentTime.before(tmorningMenuStart) || currentTime.after(tmorningMenuEnd)) {
+					throw new RuntimeException("해당메뉴주문시간이아닙니다.");
+				}
+			}
+			if(menu_type.equals("burger")) {
+				if(currentTime.after(tmorningMenuStart) && currentTime.before(tmorningMenuEnd)) {
+					System.out.println("asdads");
+					throw new RuntimeException("해당메뉴주문시간이아닙니다.");
+				}
+			}
+			
+		}
+		
+
+
+	
+
+	
+	
 	@Override
 	public OrderListDto getOrderInfo(String merchanuid) {
 		OrderListDto orderListDto = orderMapper.getOrderInfoByUid(merchanuid);
@@ -287,6 +345,12 @@ public class OrderServiceImpl implements OrderService {
 		return orderMapper.getTogetherPackSourceList();
 	}
 
+	@Override
+	public String getStoreName(int store_code) {
+		return orderMapper.getStoreName(store_code);
+	}
+
+	
 
 	
 

@@ -23,6 +23,7 @@
 		select * from menu where type = 'drink' and sub_s = 1
 	</select>
 	
+	
 	<select id="getDrinkPrice" resultType="int">
 		select price from menu where type = 'drink' and name = #{drinkname}
 	</select>
@@ -60,5 +61,19 @@
 	<select id="getCartListByUid" resultType="com.edonald.order.dto.CartDto">
 	select * from cart_list where merchanuid = #{merchanuid}
 	</select>
+	
+	<select id="checkMenuStatus" resultType="int">
+	select bol_seq from block_order_list where store_code = #{store_code} and m_seq=#{menu_code}
+	</select>
+	
+	<select id="checkStoreStatus" resultType="int">
+	select store_status from store_list where store_code = #{store_code}
+	</select>
+	
+	<select id="getStoreName" resultType="String">
+	select store_name from store_list where store_code = #{store_code}
+	</select>
+	
+	
 	
 </mapper>

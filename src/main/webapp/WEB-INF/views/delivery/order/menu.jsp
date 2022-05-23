@@ -13,7 +13,11 @@
 <script>
 
 $(document).ready(function(){
-	var price = ${menuDto.price};
+	var type = '${menuDto.type}';
+	if(type == 'emorning'){
+		$(".LargeSet").remove();
+	}
+	var price = '${menuDto.price}';
 	var set_price = parseInt(price) + 1700;
 	var lset_price = parseInt(price) + 2300;
 	$(".LargeSet").children(".cost-column").text(lset_price+"원");
