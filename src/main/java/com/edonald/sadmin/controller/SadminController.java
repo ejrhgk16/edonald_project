@@ -131,6 +131,10 @@ public class SadminController {
 			service.updateOrder(dto);
 		}else if(order_status == 5){
 			Date date = new Date();
+			Timestamp ts = new Timestamp(date.getTime());
+			dto.setOrder_status(order_status);
+			dto.setDelivery_time(ts);
+			service.updateOrder(dto);
 		}else {
 			dto.setOrder_status(order_status);
 			service.updateOrder(dto);
