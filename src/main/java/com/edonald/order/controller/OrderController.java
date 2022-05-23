@@ -42,14 +42,67 @@ public class OrderController {
 	
 	int smallOrderCost = 2500;
 	int criteriaCost = 13000;
+	int cokeprice = 2100;
+	int bigmacprice = 5400;
+
 	
 	@PostMapping("/order/orderMenu")
 	public ModelAndView orderMenu(MenuDto menuDto) {
-		System.out.println("ordermenu controller!!");
-		System.out.println("menu  " + menuDto.getName());
 		ModelAndView mav = new ModelAndView();
+		System.out.println(menuDto.getName()+menuDto.getS_price());
+		String type = menuDto.getType();
+		if(type.equals("burger")) {
+			List<MenuDto>largesetsidelist= orderService.getBurgerLSetSideList();
+			List<MenuDto>setsidelist = orderService.getBurgerSetSideList();
+			List<MenuDto>setdrinklist = orderService.getDrinkList();
+			for(MenuDto drink : setdrinklist) {
+				if(drink.getPrice() > cokeprice) {
+					int plusprice = drink.getPrice() - cokeprice;
+					String name = drink.getName() + " (+"+plusprice+")";
+					drink.setShowname(name);
+				}else {
+					drink.setShowname(drink.getName());
+				}
+			}
+			mav.addObject("largesetsidelist", largesetsidelist);
+			mav.addObject("setsidelist", setsidelist);
+			mav.addObject("setdrinklist",setdrinklist);
+			mav.setViewName("/delivery/order/menu");
+			
+		}else if(type.equals("drink") || type.equals("side")) {
+			mav.setViewName("/delivery/order/menu_noset");
+		}else if(type.equals("package")) {
+			List<MenuDto>burgerlist = orderService.getTogetherBurgerList();
+			List<MenuDto>sidelist = orderService.getTogetherSideList();
+			List<MenuDto>drinklist = orderService.getDrinkList();
+			List<MenuDto>sourcelist = orderService.getTogetherSourceList();
+			for(MenuDto burger : burgerlist) {
+				System.out.println(burger.getPrice());
+				if(burger.getPrice() > bigmacprice) {
+					int plusprice = burger.getPrice() - bigmacprice;
+					String name = burger.getName() + " (+"+plusprice+")";
+					burger.setShowname(name);
+				}else {
+					burger.setShowname(burger.getName());
+				}
+			}
+			for(MenuDto drink : drinklist) {
+				if(drink.getPrice() > cokeprice) {
+					int plusprice = drink.getPrice() - cokeprice;
+					String name = drink.getName() + " (+"+plusprice+")";
+					drink.setShowname(name);
+				}else {
+					drink.setShowname(drink.getName());
+				}
+			}
+			mav.addObject("burgerlist", burgerlist);
+			mav.addObject("sidelist", sidelist);
+			mav.addObject("drinklist", drinklist);
+			mav.addObject("sourcelist", sourcelist);
+			mav.setViewName("/delivery/order/menu_together");
+		}
+		
 		mav.addObject("menuDto", menuDto);
-		mav.setViewName("/delivery/order/menu");
 		return mav;
 	}
 
@@ -62,11 +115,23 @@ public class OrderController {
 		if (menu_type.equals("burger")) {
 			productPrice = orderService.calcPriceBurger(cartDto); //수량, 세트 여부 -> 제품가격 계산
 			cartDto.setCalc_price(productPrice);
+		}else if(menu_type.equals("package")) {
+			productPrice = orderService.calcPriceTogetherPack(cartDto);
+			cartDto.setCalc_price(productPrice);
 		}
+		else {
+			productPrice = cartDto.getCart_product_price() * cartDto.getCart_product_quant();
+			cartDto.setCalc_price(productPrice);
+		}
+		
+		
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		int orignTotalPrice = orderListDto.getTotal_price();
 		if(orignTotalPrice == 0 && productPrice < criteriaCost) {//첫 제품추가시 배달비 2500원 플러스
 			productPrice += smallOrderCost;
+		}
+		if(orignTotalPrice == 0 && productPrice > criteriaCost) {
+			orderListDto.setDeliverCost(0);
 		}
 		
 		int newTotalPrice = orignTotalPrice + productPrice;

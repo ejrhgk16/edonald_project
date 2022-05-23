@@ -19,6 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.order.dao.OrderMapper;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
@@ -54,18 +55,60 @@ public class OrderServiceImpl implements OrderService {
 
 		int price = dto.getCart_product_price();
 		String comp_type = dto.getComp_type();
-		System.out.println("ct  -- " + comp_type);
-		System.out.println("comp1 -- " + dto.getComp1_name());
 		int qty = dto.getCart_product_quant();
-
+		int cokeprice = 2100;
 		if (comp_type.equals("set")) {
+			int drinkprice = orderMapper.getDrinkPrice(dto.getComp2_name());
+			if(drinkprice > cokeprice) {
+				int plusdrinkprice = drinkprice - cokeprice;
+				price += plusdrinkprice;
+			}
 			price += 1700;
 		}
 		if (comp_type.equals("large_set")) {
+			int drinkprice = orderMapper.getDrinkPrice(dto.getComp2_name());
+			if(drinkprice > cokeprice) {
+				int plusdrinkprice = drinkprice - cokeprice;
+				price += plusdrinkprice;
+			}
 			price += 2300;
 		}
 		return price * qty;
 	}
+	
+	@Override
+	public int calcPriceTogetherPack(CartDto dto) {
+		int productprice = dto.getCart_product_price();
+		int qty = dto.getCart_product_quant();
+		int bigmacprice = 5400;
+		int cokeprice = 2100;
+		int burger1price= orderMapper.getBurgerPrice(dto.getComp1_name());
+		int burger2price = orderMapper.getBurgerPrice(dto.getComp2_name());
+		int drink1price = orderMapper.getDrinkPrice(dto.getComp6_name());
+		int drink2price = orderMapper.getDrinkPrice(dto.getComp7_name());
+		if(burger1price>bigmacprice) {
+			int plus = burger1price - bigmacprice;
+			productprice+=plus;
+		}
+		if(burger2price>bigmacprice) {
+			int plus = burger2price - bigmacprice;
+			productprice+=plus;
+		}
+		if(drink1price>cokeprice) {
+			int plus = drink1price - cokeprice;
+			productprice+=plus;
+		}
+		if(drink2price>cokeprice) {
+			int plus = drink2price - cokeprice;
+			productprice+=plus;
+		}
+		return productprice * qty;
+		
+		
+	}
+	
+	
+	
 
 	@Override
 	public String createOrderNum(String user_phone) {
@@ -212,6 +255,39 @@ public class OrderServiceImpl implements OrderService {
 	public OrderListDto getOrderListDto(String merchanuid) {
 		return orderMapper.getOrderInfoByUid(merchanuid);
 	}
+
+	
+	@Override
+	public List<MenuDto> getBurgerLSetSideList() {
+		return orderMapper.getBurgerLSetSideList();
+	}
+
+	@Override
+	public List<MenuDto> getBurgerSetSideList() {
+		return orderMapper.getBurgerSetSideList();
+	}
+
+	@Override
+	public List<MenuDto> getDrinkList() {
+		return orderMapper.getDrinkList();
+	}
+
+	@Override
+	public List<MenuDto> getTogetherBurgerList() {
+		return orderMapper.getTogetherPackBurgerList();
+	}
+
+	@Override
+	public List<MenuDto> getTogetherSideList() {
+		return orderMapper.getTogetherPackSideList();
+	}
+
+	@Override
+	public List<MenuDto> getTogetherSourceList() {
+		return orderMapper.getTogetherPackSourceList();
+	}
+
+
 	
 
 

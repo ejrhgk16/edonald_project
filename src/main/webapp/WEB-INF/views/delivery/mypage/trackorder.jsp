@@ -173,7 +173,7 @@
 											<p><a href="/order/search/orderDetail?merchanuid=${orderList.merchanuid }">${orderList.merchanuid}</a></p></td>
 										<td class="est-time">
 										<c:choose>
-												<c:when test="${orderList.order_status eq '4' }">
+												<c:when test="${orderList.order_status eq '5' }">
 													<h4>배달완료시간</h4>
 													<p>${orderList.delivery_time}</p>
 												</c:when>
@@ -186,7 +186,7 @@
 										<td class="order-received complete"><h6>주문 접수</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '1'}">
+											<c:when test="${orderList.order_status >= '2'}">
 												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/주문접수 on.png">
 											</c:when>
 											<c:otherwise>
@@ -197,7 +197,7 @@
 										<td class="in-progress complete"><h6>준비 중</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '2'}">
+											<c:when test="${orderList.order_status >= '3'}">
 												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/준비중 on.png">
 											</c:when>
 											<c:otherwise>
@@ -208,7 +208,7 @@
 										<td class="in-delivery complete"><h6>배달 중</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '3'}">
+											<c:when test="${orderList.order_status >= '4'}">
 												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달중 on.png">
 											</c:when>
 											<c:otherwise>
@@ -219,7 +219,7 @@
 										<td class="delivered complete"><h6>배달 완료</h6>
 											<div>
 											<c:choose>
-											<c:when test="${orderList.order_status >= '2'}">
+											<c:when test="${orderList.order_status >= '5'}">
 												<img src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/배달완료 on.png">
 											</c:when>
 											<c:otherwise>

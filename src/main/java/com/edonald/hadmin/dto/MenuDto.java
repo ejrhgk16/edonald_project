@@ -19,12 +19,13 @@ public class MenuDto {
 	private int sub_ls;				// 라지세트
 	private int sub_s;				// 세트
 	private int sub_em;				// 이모닝
-	private int s_price;
-	private int l_price;
-	
+
 	private int block_status;		// 지점장 block filter
 	
-//	private String burger_n_img_path;	// 영양 정보 이미지 *
+	private String showname;
+	private int l_price;
+	private int s_price;
+	//	private String burger_n_img_path;	// 영양 정보 이미지 *
 //	private String burger_e_name; 		// 영어이름 *
 //	private String burger_detail_img_path;//상세 이미지 *
 //	private String burger_btn_img_path;	// 메뉴사이트 이미지 *

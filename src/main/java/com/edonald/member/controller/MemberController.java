@@ -96,7 +96,7 @@ public class MemberController {
 				break;
 			}
 		}
-		return "/delivery/deliverhome/deliverhome";
+		return "redirect:/ed/deliverHome";
 	}
 
 	@GetMapping("/member/addAddressPage")
