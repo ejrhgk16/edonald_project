@@ -237,7 +237,7 @@ public class OrderServiceImpl implements OrderService {
 		orderMapper.insertOrderInfo(orderListDto);
 		List<CartDto>cartList = orderListDto.getCartList();
 		for(CartDto cart : cartList) {
-			checkTime(cart, orderListDto.getOrder_date());
+			checkTime(cart.getMenu_type(), orderListDto.getOrder_date());
 			checkMenuStatus(orderListDto.getStore_code(), cart.getCart_product_code());
 			cart.setMerchanuid(orderListDto.getMerchanuid());
 			orderMapper.insertCartInfo(cart);
@@ -263,7 +263,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void checkTime(CartDto dto, Timestamp time) {
+	public void checkTime(String menu_type, Timestamp time) {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String date = now.format(formatter);
@@ -273,8 +273,6 @@ public class OrderServiceImpl implements OrderService {
 		Timestamp tmorningMenuEnd = Timestamp.valueOf(morningMenuEnd);
 
 		Timestamp currentTime = time;
-			String menu_type = dto.getMenu_type();
-	
 			if(menu_type.equals("emorning")) { //장바구니 메뉴에
 				if(currentTime.before(tmorningMenuStart) || currentTime.after(tmorningMenuEnd)) {
 					throw new RuntimeException("해당메뉴주문시간이아닙니다.");
@@ -290,11 +288,6 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 
-
-	
-
-	
-	
 	@Override
 	public OrderListDto getOrderInfo(String merchanuid) {
 		OrderListDto orderListDto = orderMapper.getOrderInfoByUid(merchanuid);

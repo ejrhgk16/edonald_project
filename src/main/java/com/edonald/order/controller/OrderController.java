@@ -1,6 +1,7 @@
 package com.edonald.order.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -372,7 +373,14 @@ public class OrderController {
 	}
 	
 	@GetMapping("/order/checkSession")
-	public @ResponseBody ResponseEntity<String>checkSession(Authentication authentication, HttpSession session){
+	public @ResponseBody ResponseEntity<String>checkSession(Authentication authentication, HttpSession session, @RequestParam String menu_type){
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		try {
+			orderService.checkTime(menu_type, timestamp);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage() ,HttpStatus.BAD_REQUEST);
+		}
+		
 		if(authentication != null) {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}else if(session.getAttribute("noLoginMemberDto") != null) {
@@ -380,6 +388,7 @@ public class OrderController {
 		}else {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
+
 		
 	}
 	
