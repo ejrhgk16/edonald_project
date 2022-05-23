@@ -44,7 +44,7 @@
         			if(wait_time != null){
         				setTimeout(function(){
         					window.location.reload();
-        				},1000)
+        				},1500)
         				
         			}
 
