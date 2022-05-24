@@ -152,8 +152,8 @@ public class SadminController {
 		return list;
 	}
 	
-	@RequestMapping( value = "/tester" , method = RequestMethod.GET)
+	@RequestMapping( value = "/sadmin/chart" , method = RequestMethod.GET)
 	public String sadminOrderState(Model model) {
-		return "admin/sadmin/order/test";
+		return "admin/sadmin/chart/charts";
 	}
 }
