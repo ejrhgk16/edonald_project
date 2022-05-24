@@ -168,18 +168,24 @@
 								<c:choose>
 								<c:when test="${empty nologinTarckOrder}">
 										<c:forEach items="${orderList}" var="orderList" varStatus="status">
+										
 									<tr class="">
+								
 										<td class="order-id"><h4>주문 번호:</h4>
 											<p><a href="/order/search/orderDetail?merchanuid=${orderList.merchanuid }">${orderList.merchanuid}</a></p></td>
 										<td class="est-time">
-										<c:choose>
+									<c:choose>
 												<c:when test="${orderList.order_status eq '5' }">
 													<h4>배달완료시간</h4>
 													<p>${orderList.delivery_time}</p>
 												</c:when>
+												<c:when test="${orderList.order_status >= '2' &&  orderList.order_status  <5}">
+													<h4>배달예상시간</h4>
+													<p>${orderList.delivery_time}</p>
+												</c:when>
 												<c:otherwise>
-													<h4>배달소요시간</h4>
-													<p>${orderList.time_esti} 분</p>
+													<h4></h4>
+													<p></p>
 												</c:otherwise>
 											</c:choose>
 											</td>
@@ -240,9 +246,6 @@
 									</tr>
 									</c:forEach>
 								</c:when>
-								
-								
-								
 								<c:otherwise>
 									<tr class="">
 										<td class="order-id"><h4>주문 번호:</h4>
@@ -253,9 +256,13 @@
 													<h4>배달완료시간</h4>
 													<p>${orderList.delivery_time}</p>
 												</c:when>
+												<c:when test="${orderList.order_status >= '2' &&  orderList.order_status  <5}">
+													<h4>배달예상시간</h4>
+													<p>${orderList.delivery_time}</p>
+												</c:when>
 												<c:otherwise>
-													<h4>배달소요시간</h4>
-													<p>${orderList.time_esti} 분</p>
+													<h4></h4>
+													<p></p>
 												</c:otherwise>
 											</c:choose>
 											</td>

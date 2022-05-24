@@ -66,6 +66,7 @@ public class DeliverController {
 		if(authentication != null && session.getAttribute("orderListDto") == null) {
 			 SecurityUser user = (SecurityUser)authentication.getPrincipal();
 			 MemberDto memberDto = user.getMemberDto();
+			 if(memberDto.getRole().equals("ROLE_MEMBER")) {
 			 String user_address = memberDto.getDeliverAddress().getRoad_address();
 			 user_address = user_address + " - "+ memberDto.getDeliverAddress().getDetail_address();
 			OrderListDto orderListDto  = new OrderListDto();
@@ -78,6 +79,14 @@ public class DeliverController {
 			orderListDto.setDeliverCost(2500);
 			orderListDto.setPostcode(memberDto.getDeliverAddress().getPostcode());
 			session.setAttribute("orderListDto", orderListDto);
+			 }else if(memberDto.getRole().equals("ROLE_SADMIN")){//admin 처리
+				 OrderListDto orderListDto  = new OrderListDto();
+				 orderListDto.setStore_code(memberDto.getStore_code());
+				 session.setAttribute("orderListDto", orderListDto);
+			}else if(memberDto.getRole().equals("ROLE_HADMIN")) {
+				OrderListDto orderListDto  = new OrderListDto();
+				session.setAttribute("orderListDto", orderListDto);
+			}
 		}
 		if(session.getAttribute("noLoginMemberDto") != null && session.getAttribute("orderListDto") == null) {
 			MemberDto noLoginMemberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
@@ -143,7 +152,8 @@ public class DeliverController {
 			if(authentication != null) {
 				System.out.println("check authentication ! ");
 				SecurityUser user = (SecurityUser) authentication.getPrincipal();
-				if(user.getMemberDto().getDeliverStore() != null) {
+				 String role = user.getMemberDto().getRole();
+				if(user.getMemberDto().getDeliverStore() != null || !role.equals("ROLE_MEMBER") ){
 					return new ResponseEntity<String>(HttpStatus.OK);
 				}else {
 					return new ResponseEntity<String>("로그인사용자의 배달가능 지점이없음", HttpStatus.BAD_REQUEST);
@@ -159,6 +169,7 @@ public class DeliverController {
 						return new ResponseEntity<String>("비로그인사용자의 배달가능 지점이없음", HttpStatus.BAD_REQUEST);
 					}
 			}
+			
 			
 			return new ResponseEntity<String>("그냥메뉴만봄", HttpStatus.OK);
 			

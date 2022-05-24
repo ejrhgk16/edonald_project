@@ -1,5 +1,6 @@
 package com.edonald.sadmin.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,6 +24,7 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.order.dto.OrderListDto;
+import com.edonald.order.service.OrderService;
 import com.edonald.sadmin.service.SadminMenuService;
 import com.edonald.sadmin.service.SadminService;
 
@@ -33,6 +35,8 @@ public class SadminController {
 	private SadminMenuService sService;
 	@Autowired
 	private SadminService service;
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping( value = "/sadmin/test" , method = RequestMethod.GET)
 	public String testMenu(Model model,String type,String store) {
@@ -119,7 +123,7 @@ public class SadminController {
 	
 	@ResponseBody
 	@RequestMapping( value = "/sadmin/order.do" , method = RequestMethod.GET)
-	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time) {
+	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time) throws IOException {
 		OrderListDto dto = service.getOrderListBySeq(order_seq);
 		if(wait_time != null) {
 			Calendar cal = Calendar.getInstance();
@@ -135,7 +139,18 @@ public class SadminController {
 			dto.setOrder_status(order_status);
 			dto.setDelivery_time(ts);
 			service.updateOrder(dto);
-		}else {
+		}else if(order_status==1) {
+			String paytype = dto.getPayment_type();
+			if(paytype.equals("온라인결제")) {
+				String imp_uid = dto.getImp_uid();
+				String token = orderService.getToken();
+				int amount = dto.getFinal_price();
+				orderService.payMentCancle(token, imp_uid, amount, "매장사정상결제취소");
+			}
+			dto.setOrder_status(order_status);
+			service.updateOrder(dto);
+		}
+		else {
 			dto.setOrder_status(order_status);
 			service.updateOrder(dto);
 		}
