@@ -191,4 +191,14 @@ public class HadminController {
 		bService.updateSubstitue(dto);
 	}
 	
+	@GetMapping("/hadmin/chart")
+	public String chartpage() {
+		return "/admin/hadmin/chart/charts";
+	}
+	@GetMapping("/sadmin/chart")
+	public String chartpㄴage() {
+		return "/admin/sadmin/chart/charts";
+	}
+	
+	
 }
