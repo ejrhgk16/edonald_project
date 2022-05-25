@@ -27,4 +27,5 @@ public interface SadminMapper {
 	public OrderListDto getOrderListBySeq(@Param("order_seq") int order_seq);
 	public List<Integer> getSalesVolumeBySeq(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday);
 	public MenuDto getMenuBySeq(@Param("menu_code") int menu_code);
+	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender);
 }

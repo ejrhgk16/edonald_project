@@ -194,12 +194,13 @@ public class SadminController {
 			String[] labels = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 			map.put("labels", labels);
 		}
-		
-		
+		if(gender.equals("gender")) {
+			map.put("list1",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "1"));
+			map.put("list2",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "2"));
+		}else {
+			map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
+		}
 		map.put("label", sService.getMenuBySeq(menu_code).getName());
-		map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
-		
-		System.out.println(map.get("label"));
 		return map;
 	}
 }

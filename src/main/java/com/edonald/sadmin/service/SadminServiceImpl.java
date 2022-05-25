@@ -64,4 +64,8 @@ public class SadminServiceImpl implements SadminService {
 		return mapper.getSalesVolumeBySeq(menu_code, monthorday);
 	}
 
+	@Override
+	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender){
+		return mapper.getSalesVolumeBySeqAndGender(menu_code, monthorday, user_gender);
+	}
 }
