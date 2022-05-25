@@ -2,6 +2,8 @@ package com.edonald.sadmin.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -176,18 +178,28 @@ public class SadminController {
 	@ResponseBody
 	@RequestMapping( value = "/sadmin/chart.do" , method = RequestMethod.GET)
 	public Map<String, Object> sadminChartDo(@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
-
-		if(monthorday == "day") {
-			String[] label = {};
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(monthorday.equals("day")) {
+			Calendar calen = Calendar.getInstance();
+			Date today = new Date();
+			calen.setTime(today);
+			DateFormat df = new SimpleDateFormat("MM/dd");
+			String[] labels= new String[7];
+			for(int i=0; i<7; i++) {
+				calen.add(Calendar.DATE, -1);
+				labels[i] = df.format(calen.getTime());
+			}
+			map.put("labels", labels);
 		}else {
-			String[] label = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
+			String[] labels = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			map.put("labels", labels);
 		}
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("label", sService.getMenuBySeq(menu_code));
+		
+		map.put("label", sService.getMenuBySeq(menu_code).getName());
 		map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
 		
-		System.out.println(map.get("list").toString());
+		System.out.println(map.get("label"));
 		return map;
 	}
 }

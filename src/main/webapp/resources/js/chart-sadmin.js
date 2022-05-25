@@ -24,7 +24,6 @@ function menuChart(){
 		var monthorday = $('input:radio[name="inlineRadioOptions"]:checked').val( );
 		var gender = $("input:checkbox[id='inlineCheckbox1']:checked").val();
 		var menu_code = $('.input-chart-text').val();
-		var labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 		if(!gender){
 			gender = 'null';
 		}else{
@@ -42,7 +41,7 @@ function menuChart(){
 				$.each(res.list,function(index,item){
 					menuData.push(item);
 				})
-				menuChartUpdate(menuData,labels,res.label);
+				menuChartUpdate(menuData,res.labels,res.label);
 			},
 			error:function(){
 				alert('error');
@@ -60,7 +59,7 @@ function menuChartUpdate(menuData,labels,label){
 	    datasets: [{
 	          label: label,
 	          backgroundColor: 'transparent',
-	          borderColor: 'red',
+	          borderColor: 'orange',
 	          data: menuData
 	        }]
 	  },
