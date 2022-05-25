@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edonald.hadmin.dao.HadminMapper;
+import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.PromotionDto;
 
 @Service
@@ -32,5 +33,11 @@ public class HadminServiceImple implements HadminService {
 	@Override
 	public void updatePromotion(PromotionDto dto) {
 		mapper.updatePromotion(dto);
+	}
+
+	@Override
+	public List<Integer> getChartDataAll(ChartSearchDto dto) {
+		 mapper.getChartDataAll(dto);
+		return  mapper.getChartDataAll(dto);
 	}
 }
