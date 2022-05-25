@@ -3,13 +3,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	})
+</script>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>지점장</title>
+<title></title>
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
 	rel="stylesheet" />
@@ -41,23 +47,6 @@
 					</ul>
 				</div>
 			</div>
-			<!--               <div class="container">
-	<h2>선택(select) 상자</h2>
-	<select class="form-control">
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	</select>
-</div>
-<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1>Button</h1>
-						<button type="button" class="btn btn-light">확인</button>
-						<button type="button" class="btn btn-danger">로그아웃 <i class="fa fa-sign-out"></i></button>
-                -->
 		</form>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -156,32 +145,37 @@
 						<div class="card-header">
 							<i class="fas fa-chart-area me-1"></i> 일별 매출비교
 						</div>
-						<div class="card-body">
+						<div class="card-body salesChart">
 							<canvas id="myAreaChart" width="100%" height="30"></canvas>
 						</div>
-						<div class="card-footer small text-muted">
+						<div class="card-footer small text-muted" align="right">
 							<!-- 일별 월별 -->
-							<span>단위 :</span>
+							<span>검색조건 :</span>
+								&nbsp;&nbsp;&nbsp;
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio"
-									name="inlineRadioOptions" id="day" value="option1"
-									checked="checked"> <label class="form-check-label"
+									name="dateStandard" id="day" value="day"
+									checked="checked"
+									> <label class="form-check-label"
 									for="day">일</label>
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio"
-									name="inlineRadioOptions" id="month" value="option2"> <label
+									name="dateStandard" id="month" value="month" > <label
 									class="form-check-label" for="month">월</label>
 							</div>
 
-								&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="checkbox"
-									id="inlineCheckbox1" value="option1"> <label
+									name="sexCheckBox" value="sex"> <label
 									class="form-check-label" for="inlineCheckbox1">성별비교</label>
 							</div>
-							&nbsp;&nbsp;&nbsp;
-
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="text" id="search" placeholder="지점코드 입력" aria-label="First name" >
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<button type="button" id="searchBtn" class="btn btn-outline-primary">검색</button>
+							
 						</div>
 
 					</div>
@@ -237,7 +231,7 @@
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 			crossorigin="anonymous"></script>
-		<script src="/resources/js/chart-area-demo.js"></script>
+		<script src="/resources/js/chart-hadmin.js"></script>
 		<script src="/resources/js/chart-bar-demo.js"></script>
 		<script src="/resources/js/chart-pie-demo.js"></script>
 </body>

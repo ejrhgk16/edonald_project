@@ -1,9 +1,21 @@
 package com.edonald.hadmin.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.PromotionDto;
 import com.edonald.hadmin.serivce.AdminMenuService;
@@ -195,9 +208,35 @@ public class HadminController {
 	public String chartpage() {
 		return "/admin/hadmin/chart/charts";
 	}
-	@GetMapping("/sadmin/chart")
-	public String chartpㄴage() {
-		return "/admin/sadmin/chart/charts";
+	@GetMapping("/hadmin/chart/getData")
+	public @ResponseBody ResponseEntity<Map<String, Object>>getChartData(ChartSearchDto chartDto){
+		System.out.println(chartDto.toString());
+		Map<String, Object> chartDataMap = new HashMap<String, Object>();
+		List<Integer>dataList = hService.getChartDataAll(chartDto);
+		System.out.println(dataList.toString());
+		System.out.println(chartDto.getSex());
+		chartDataMap.put("dataList", dataList);
+		
+		String dateStandard = chartDto.getDateStandard();
+		if(dateStandard.equals("month")) {
+			String[]labels= {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			chartDataMap.put("labels", labels);
+		}else {
+			Calendar calen = Calendar.getInstance();
+			Date today = new Date();
+			calen.setTime(today);
+			DateFormat df = new SimpleDateFormat("MM/dd");
+			String[]labels= new String[7];
+			for(int i=0; i<7; i++) {
+				calen.add(Calendar.DATE, -1);
+				labels[i] = df.format(calen.getTime());
+			}
+			chartDataMap.put("labels", labels);
+		}
+		return new ResponseEntity<Map<String,Object>>(chartDataMap, HttpStatus.OK);
+		
+		
+		
 	}
 	
 	
