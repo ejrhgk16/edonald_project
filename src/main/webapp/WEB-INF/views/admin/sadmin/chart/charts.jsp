@@ -4,7 +4,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>지점장</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/resources/css/styles.css" rel="stylesheet" />
@@ -145,8 +144,33 @@
                                 <i class="fas fa-chart-bar me-1"></i>
                                 메뉴 별 판매량
                             </div>
-                            <div class="card-body"><canvas id="myMenuChart" width="100%" height="50"></canvas></div>
-                            <div class="card-footer small text-muted"><input type="text"></input></div>
+                            <div class="card-body myMenuChartCanvas"><canvas id="myMenuChart" width="100%" height="50"></canvas></div>
+                            <div class="card-footer small text-muted myMenuChartForm">
+	                            <!-- 일별 월별 -->
+								<span>단위 :</span>
+								<div class="form-check form-check-inline chartform">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="day" value="day"
+										checked="checked"> <label class="form-check-label"
+										for="day">일</label>
+								</div>
+								<div class="form-check form-check-inline chartform">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="month" value="month"> <label
+										class="form-check-label" for="month">월</label>
+								</div>
+	
+									&nbsp;&nbsp;&nbsp;
+								<div class="form-check form-check-inlin chartforme">
+									<input class="form-check-input" type="checkbox"
+										id="inlineCheckbox1" value="gender"> <label
+										class="form-check-label" for="inlineCheckbox1">성별비교</label>
+								</div>
+								&nbsp;&nbsp;&nbsp;
+								<div class="chartform">상품번호 :
+									<input type="text" class="input-chart-text">
+								</div>
+							</div>
                         </div>
                     </div>
                 </main>

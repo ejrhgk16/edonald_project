@@ -39,4 +39,36 @@
 	<select id="getOrderListBySeq" resultType="com.edonald.order.dto.OrderListDto">
 		SELECT * FROM order_list WHERE order_seq = #{order_seq}
 	</select>
+	<select id="getSalesVolumeBySeq" resultType="int">
+		SELECT IFNULL(a.count,0) counta
+		FROM 
+		( 
+		SELECT date_format(ab.order_date, 
+				<if test="monthorday == 'month'.toString">'%Y-%m'</if>
+		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>
+		    	)as yyyymmdd, ifnull(sum(ab.cart_product_quant),0) count From 
+			(SELECT ol.order_date, cl.cart_product_quant FROM order_list ol LEFT JOIN cart_list cl ON ol.merchanuid = cl.merchanuid 
+			WHERE cl.cart_product_code = ${menu_code}) ab 
+		    GROUP BY DATE_FORMAT(ab.order_date, 
+		    	<if test="monthorday == 'month'.toString">'%Y-%m'</if>
+		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>
+		    	)
+		) a  
+		RIGHT JOIN  
+		( 
+		SELECT  @N := @N +1 AS n ,  
+		DATE_FORMAT( DATE_ADD(
+			<if test="monthorday == 'month'.toString"> LAST_DAY(NOW() - INTERVAL MONTH(NOW()) MONTH)+INTERVAL 1 DAY , INTERVAL @N -1 MONTH),'%Y-%m'</if>
+			<if test="monthorday == 'day'.toString"> NOW() - INTERVAL 6 DAY , INTERVAL @N -1 DAY),'%Y-%m-%d'</if>
+			) AS yyyymmdd  
+		from (order_list), (SELECT @N:=0 FROM DUAL ) a  
+		LIMIT 
+			<if test="monthorday == 'month'.toString">12</if>
+	    	<if test="monthorday == 'day'.toString">7</if>
+		) b on a.yyyymmdd = b.yyyymmdd 
+		ORDER BY b.yyyymmdd ASC
+	</select>
+	<select id="getMenuBySeq" resultType="com.edonald.hadmin.dto.MenuDto">
+		SELECT * FROM menu WHERE seq = #{menu_code};
+	</select>
 </mapper>

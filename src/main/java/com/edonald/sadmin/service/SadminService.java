@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
@@ -17,5 +18,7 @@ public interface SadminService {
 	public void updateOrder(OrderListDto dto);
 	public List<OrderListDto> getNewOrderList(int store_code,int order_seq);
 	public OrderListDto getOrderListBySeq(int order_seq);
+	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday);
+	
 	
 }

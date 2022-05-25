@@ -5,23 +5,64 @@
 $(document).ready(function(){
 	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 	Chart.defaults.global.defaultFontColor = '#292b2c';
-
-	var ctx = document.getElementById("myMenuChart");
-	var myPieChart = new Chart(ctx, {
-  		type: 'line',
-		data: {
-	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-	    datasets: [{
-	          label: 'My First dataset',
-	          backgroundColor: 'transparent',
-	          borderColor: 'red',
-	          data: [0, 10, 5, 2, 20, 30, 45]
-	        }]
-	  },
-	});
 	
-	$('.input-chart-text').on('change',function(){
-		
+	
+	menuChart();
+	
+	
+	
+	$('.myMenuChartForm').on('change',function(){
+		$('#myMenuChart').remove();
+		$('.myMenuChartCanvas').append('<canvas id="myMenuChart" width="100%" height="50"></canvas>');
+		menuChart();
 	})
 	
 })
+
+function menuChart(){
+		var menuData = new Array();
+		var monthorday = $('input:radio[name="inlineRadioOptions"]:checked').val( );
+		var gender = $("input:checkbox[id='inlineCheckbox1']:checked").val();
+		var menu_code = $('.input-chart-text').val();
+		var labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+		if(!gender){
+			gender = 'null';
+		}else{
+			
+		}
+		if(!menu_code){
+			menu_code = 14;
+		}
+		alert(monthorday+','+gender+','+menu_code);
+		var url = "/sadmin/chart.do?menu_code="+menu_code+"&gender="+gender+"&monthorday="+monthorday;
+		$.ajax({
+			url:url,
+			type:'get',
+			success:function(res){
+				$.each(res.list,function(index,item){
+					menuData.push(item);
+				})
+				menuChartUpdate(menuData,labels,res.label);
+			},
+			error:function(){
+				alert('error');
+			}
+		})
+		
+}
+function menuChartUpdate(menuData,labels,label){
+
+	var ctx = document.getElementById("myMenuChart");
+	var myMenuChart = new Chart(ctx, {
+  		type: 'line',
+		data: {
+	    labels: labels,
+	    datasets: [{
+	          label: label,
+	          backgroundColor: 'transparent',
+	          borderColor: 'red',
+	          data: menuData
+	        }]
+	  },
+	});
+}

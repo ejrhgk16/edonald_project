@@ -13,4 +13,5 @@ public interface SadminMenuService {
 	public List<Integer> listBlock(String store_code);
 	public void insertBlock(Map<String, String> map);
 	public void deleteBlock(Map<String, String> map);
+	public MenuDto getMenuBySeq(int menu_code);
 }

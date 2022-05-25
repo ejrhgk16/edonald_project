@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.order.dto.OrderListDto;
 import com.edonald.sadmin.dao.SadminMapper;
@@ -58,4 +59,9 @@ public class SadminServiceImpl implements SadminService {
 		return mapper.getOrderListBySeq(order_seq);
 	}
 	
+	@Override
+	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday){
+		return mapper.getSalesVolumeBySeq(menu_code, monthorday);
+	}
+
 }

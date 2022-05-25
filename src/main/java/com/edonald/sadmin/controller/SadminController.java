@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
 import com.edonald.order.service.OrderService;
 import com.edonald.sadmin.service.SadminMenuService;
@@ -167,8 +168,26 @@ public class SadminController {
 		return list;
 	}
 	
-	@RequestMapping( value = "/sadmin/chart" , method = RequestMethod.GET)
-	public String sadminOrderState(Model model) {
+	@RequestMapping( value = "/sadmin/charts" , method = RequestMethod.GET)
+	public String sadminChart(Model model) {
 		return "admin/sadmin/chart/charts";
+	}
+	
+	@ResponseBody
+	@RequestMapping( value = "/sadmin/chart.do" , method = RequestMethod.GET)
+	public Map<String, Object> sadminChartDo(@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
+
+		if(monthorday == "day") {
+			String[] label = {};
+		}else {
+			String[] label = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("label", sService.getMenuBySeq(menu_code));
+		map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
+		
+		System.out.println(map.get("list").toString());
+		return map;
 	}
 }
