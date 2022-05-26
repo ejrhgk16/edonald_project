@@ -14,4 +14,6 @@ public interface HadminMapper {
 	public PromotionDto getPromotion(int p_seq);
 	public void updatePromotion(PromotionDto dto);
 	public List<Integer> getChartDataAll(ChartSearchDto dto);
+	public String getStoreName(String search);
+	public List<Integer> getGenderSalesData(ChartSearchDto dto);
 }

@@ -7,11 +7,12 @@ $(document).ready(function(){
 	
 	
 	$("#searchBtn").on("click", function(){
-		alert("clcik!");
 		var dateStandard  = $('input[name=dateStandard]:checked').val();
 		console.log(dateStandard)
-		var sex = $('input[name=sexCheckBox]').is("checked");
+		var sex = $('input[name=sexCheckBox]').is(":checked");
+		console.log(sex)
 		var search = $("#search").val();
+		 $("#search").val("");
 		graphData(dateStandard, sex, search)
 	})
 	
@@ -25,9 +26,21 @@ $(document).ready(function(){
 		url : url,
 		success : function(res){
 			if(sex){
-				
+					if(search){
+					var storename = res.storeName+" 매출차트";
+					$(".salesChartName").text(storename);
+				}else{
+					$(".salesChartName").text("전체매출차트");
+				}
+				multiLinechart(res.labels, res.mDataList, res.wDataList);
 			}else{
-				console.log(res)
+				if(search){
+					var storename = res.storeName+" 매출차트";
+					console.log(storename)
+					$(".salesChartName").text(storename);
+				}else{
+					$(".salesChartName").text("전체매출차트");
+				}
 				singleLinechart(res.labels, res.dataList )
 			}
 			
@@ -38,7 +51,6 @@ $(document).ready(function(){
 
 
 function singleLinechart(labels, chartdata){
-console.log("mlc !! " + myLineChart)
 $("#myAreaChart").remove();
 $(".salesChart").append('<canvas id="myAreaChart" width="100%" height="30"></canvas>');
 var ctx = document.getElementById("myAreaChart");
@@ -47,21 +59,21 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: labels,
     datasets: [{
-      label: "매출",
+      label: "매출(단위:원)",
       lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
+      backgroundColor: "rgba(255,255,255,0.2)",
       borderColor: "rgba(2,117,216,1)",
-      pointRadius: 5,
+      pointRadius: 4,
       pointBackgroundColor: "rgba(2,117,216,1)",
       pointBorderColor: "rgba(255,255,255,0.8)",
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
-      pointBorderWidth: 2,
+      pointBorderWidth: 1,
       data: chartdata,
     }],
   },
-  options: {
+options: {
     scales: {
       xAxes: [{
         time: {
@@ -70,14 +82,10 @@ var myLineChart = new Chart(ctx, {
         gridLines: {
           display: false
         },
-        ticks: {
-          maxTicksLimit: 7
-        }
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 100000,
           maxTicksLimit: 5
         },
         gridLines: {
@@ -86,44 +94,47 @@ var myLineChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
+      
     }
   }
+
 });
 }
 
-function multiLinechart(label, chartdataM, chartdataW){
+function multiLinechart(labels, chartdataM, chartdataW){
+$("#myAreaChart").remove();
+$(".salesChart").append('<canvas id="myAreaChart" width="100%" height="30"></canvas>');
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: labels,
     datasets: [{
-      label: "Sessions",
+      label: "남 매출액(단위:원)",
       lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
+      backgroundColor: "rgba(255,255,255,0.2)",
       borderColor: "rgba(2,117,216,1)",
-      pointRadius: 5,
+      pointRadius: 4,
       pointBackgroundColor: "rgba(2,117,216,1)",
       pointBorderColor: "rgba(255,255,255,0.8)",
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
-      pointBorderWidth: 2,
+      pointBorderWidth: 1,
       data: chartdataM,
     },
 {
-	   label: "Sessions",
+	   label: "여 매출액(단위:원)",
       lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
-      borderColor: "rgba(2,117,216,1)", // 색변경 해줘야함
+       backgroundColor: "rgba(255,255,255,0.2)",
+      borderColor: "rgba(255,0,0,1)",
       pointRadius: 5,
-      pointBackgroundColor: "rgba(2,117,216,1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointBackgroundColor: "rgb(255,0,0,1)",
+      pointBorderColor:  "rgba(255,255,255,0.8)",
       pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHoverBackgroundColor:  "rgb(255,0,0,1)",
       pointHitRadius: 50,
-      pointBorderWidth: 2,
+      pointBorderWidth: 1,
       data: chartdataW,
 }], 
   },
@@ -143,7 +154,6 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
           maxTicksLimit: 5
         },
         gridLines: {
@@ -151,9 +161,6 @@ var myLineChart = new Chart(ctx, {
         }
       }],
     },
-    legend: {
-      display: false
-    }
   }
 });
 }

@@ -208,15 +208,25 @@ public class HadminController {
 	public String chartpage() {
 		return "/admin/hadmin/chart/charts";
 	}
+	
 	@GetMapping("/hadmin/chart/getData")
 	public @ResponseBody ResponseEntity<Map<String, Object>>getChartData(ChartSearchDto chartDto){
 		System.out.println(chartDto.toString());
 		Map<String, Object> chartDataMap = new HashMap<String, Object>();
-		List<Integer>dataList = hService.getChartDataAll(chartDto);
-		System.out.println(dataList.toString());
-		System.out.println(chartDto.getSex());
-		chartDataMap.put("dataList", dataList);
-		
+		if(chartDto.getSex().equals("true")) {
+			chartDto.setSex("1");
+			List<Integer>mDataList = hService.getGenderSales(chartDto);
+			chartDto.setSex("2");
+			List<Integer>wDataList = hService.getGenderSales(chartDto);
+			chartDataMap.put("mDataList", mDataList);
+			chartDataMap.put("wDataList", wDataList);
+			System.out.println(mDataList.toString());
+			System.out.println(wDataList.toString());
+		}else {
+			List<Integer>dataList = hService.getChartDataAll(chartDto);
+			chartDataMap.put("dataList", dataList);
+		}
+
 		String dateStandard = chartDto.getDateStandard();
 		if(dateStandard.equals("month")) {
 			String[]labels= {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
@@ -227,17 +237,22 @@ public class HadminController {
 			calen.setTime(today);
 			DateFormat df = new SimpleDateFormat("MM/dd");
 			String[]labels= new String[7];
-			for(int i=0; i<7; i++) {
+			for(int i=6; i>=0; i--) {
 				calen.add(Calendar.DATE, -1);
 				labels[i] = df.format(calen.getTime());
 			}
 			chartDataMap.put("labels", labels);
 		}
+		if(chartDto.getSearch() != null) {
+			String storeName =hService.getStoreName(chartDto.getSearch());
+			chartDataMap.put("storeName", storeName);
+		}
+
+		
 		return new ResponseEntity<Map<String,Object>>(chartDataMap, HttpStatus.OK);
-		
-		
-		
 	}
+	
+	
 	
 	
 }

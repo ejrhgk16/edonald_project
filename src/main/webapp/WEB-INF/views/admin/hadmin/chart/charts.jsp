@@ -142,8 +142,8 @@
 					</div>
 
 					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-chart-area me-1"></i> 일별 매출비교
+						<div class="card-header ">
+							<i class="fas fa-chart-area me-1"></i><span class="salesChartName">전체매출차트</span>
 						</div>
 						<div class="card-body salesChart">
 							<canvas id="myAreaChart" width="100%" height="30"></canvas>
@@ -168,7 +168,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="checkbox"
-									name="sexCheckBox" value="sex"> <label
+									name="sexCheckBox"> <label
 									class="form-check-label" for="inlineCheckbox1">성별비교</label>
 							</div>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
