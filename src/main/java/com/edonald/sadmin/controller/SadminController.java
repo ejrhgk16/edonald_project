@@ -176,8 +176,11 @@ public class SadminController {
 	}
 	
 	@ResponseBody
-	@RequestMapping( value = "/sadmin/chart.do" , method = RequestMethod.GET)
-	public Map<String, Object> sadminChartDo(@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
+	@RequestMapping( value = "/sadmin/menuchart.do" , method = RequestMethod.GET)
+	public Map<String, Object> sadminMenuChartDo(Authentication authentication,@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = (MemberDto) user.getMemberDto();
+		int store_code = sessionDto.getStore_code();
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(monthorday.equals("day")) {
 			Calendar calen = Calendar.getInstance();
@@ -195,10 +198,10 @@ public class SadminController {
 			map.put("labels", labels);
 		}
 		if(gender.equals("gender")) {
-			map.put("list1",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "1"));
-			map.put("list2",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "2"));
+			map.put("list1",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "1",store_code));
+			map.put("list2",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "2",store_code));
 		}else {
-			map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
+			map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday,store_code));
 		}
 		map.put("label", sService.getMenuBySeq(menu_code).getName());
 		return map;

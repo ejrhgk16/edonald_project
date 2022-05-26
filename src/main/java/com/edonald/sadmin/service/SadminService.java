@@ -18,7 +18,7 @@ public interface SadminService {
 	public void updateOrder(OrderListDto dto);
 	public List<OrderListDto> getNewOrderList(int store_code,int order_seq);
 	public OrderListDto getOrderListBySeq(int order_seq);
-	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday);
-	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender);
+	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday, int store_code);
+	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender, int store_code);
 	
 }

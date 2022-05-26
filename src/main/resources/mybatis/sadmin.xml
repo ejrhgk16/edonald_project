@@ -48,7 +48,7 @@
 		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>
 		    	)as yyyymmdd, ifnull(sum(ab.cart_product_quant),0) count From 
 			(SELECT ol.order_date, cl.cart_product_quant FROM order_list ol LEFT JOIN cart_list cl ON ol.merchanuid = cl.merchanuid 
-			WHERE cl.cart_product_code = ${menu_code}) ab 
+			WHERE cl.cart_product_code = ${menu_code} AND ol.store_code = ${store_code}) ab 
 		    GROUP BY DATE_FORMAT(ab.order_date, 
 		    	<if test="monthorday == 'month'.toString">'%Y-%m'</if>
 		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>
@@ -77,7 +77,7 @@
 		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>
 				) date_,ifnull(sum(ab.cart_product_quant),0) count
             From (SELECT ol.order_date, cl.cart_product_quant, ui.user_gender FROM order_list ol LEFT JOIN cart_list cl ON ol.merchanuid = cl.merchanuid  LEFT JOIN user_info ui ON ol.user_email = ui.user_email  
-			WHERE cl.cart_product_code = ${menu_code} AND ui.user_gender = #{user_gender}) ab 
+			WHERE cl.cart_product_code = ${menu_code} AND ol.store_code = ${store_code} AND ui.user_gender = #{user_gender}) ab 
 			GROUP BY DATE_FORMAT(ab.order_date, 
 				<if test="monthorday == 'month'.toString">'%Y-%m'</if>
 		    	<if test="monthorday == 'day'.toString">'%Y-%m-%d'</if>

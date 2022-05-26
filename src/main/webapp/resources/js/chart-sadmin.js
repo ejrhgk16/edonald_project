@@ -20,8 +20,6 @@ $(document).ready(function(){
 })
 
 function menuChart(){
-		var menuData = new Array();
-		var menuData2 = new Array();
 		var monthorday = $('input:radio[name="inlineRadioOptions"]:checked').val( );
 		var gender = $("input:checkbox[id='inlineCheckbox1']:checked").val();
 		var menu_code = $('.input-chart-text').val();
@@ -33,38 +31,29 @@ function menuChart(){
 		if(!menu_code){
 			menu_code = 14;
 		}
-		var url = "/sadmin/chart.do?menu_code="+menu_code+"&gender="+gender+"&monthorday="+monthorday;
+		var url = "/sadmin/menuchart.do?menu_code="+menu_code+"&gender="+gender+"&monthorday="+monthorday;
 		$.ajax({
 			url:url,
 			type:'get',
 			success:function(res){
 				if(gender == 'gender'){
-					$.each(res.list1,function(index,item){
-						menuData.push(item);
-					});
-					$.each(res.list2,function(index,item){
-						menuData2.push(item);
-					});
 					var datasets = [{
 						label: res.label + " 남자",
 						backgroundColor: 'transparent',
 						borderColor: 'blue',
-						data: menuData
+						data: res.list1
 					},{
 						label: res.label + " 여자",
 						backgroundColor: 'transparent',
 						borderColor: 'orange',
-						data: menuData2
+						data: res.list2
 					}];
 				}else{
-					$.each(res.list,function(index,item){
-						menuData.push(item);
-					});
 					var datasets = [{
 						label: res.label,
 						backgroundColor: 'transparent',
 						borderColor: 'orange',
-						data: menuData
+						data: res.list,
 					}];
 					
 				}
@@ -84,7 +73,25 @@ function menuChartUpdate(datasets,labels){
   		type: 'line',
 		data: {
 	    labels: labels,
-	    datasets: datasets
-	  },
+	    datasets: datasets,
+	  },						
+		options: {
+			    scales: {
+			      xAxes: [{
+			        gridLines: {
+			          display: false
+			        }
+			      }],
+			      yAxes: [{
+			        ticks: {
+						stepSize: 1,
+						beginAtZero: true
+					},
+			        gridLines: {
+			          color: "rgba(0, 0, 0, .125)",
+			        }
+			      }],
+			    },
+			  }
 	});
 }

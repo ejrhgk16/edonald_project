@@ -25,7 +25,7 @@ public interface SadminMapper {
 	//public void updateOrder(@Param("order_seq") int order_seq, @Param("order_status") int order_status);
 	public void updateOrder(OrderListDto dto);
 	public OrderListDto getOrderListBySeq(@Param("order_seq") int order_seq);
-	public List<Integer> getSalesVolumeBySeq(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday);
+	public List<Integer> getSalesVolumeBySeq(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("store_code")int store_code);
 	public MenuDto getMenuBySeq(@Param("menu_code") int menu_code);
-	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender);
+	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender,@Param("store_code")int store_code);
 }

@@ -60,12 +60,12 @@ public class SadminServiceImpl implements SadminService {
 	}
 	
 	@Override
-	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday){
-		return mapper.getSalesVolumeBySeq(menu_code, monthorday);
+	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday, int store_code){
+		return mapper.getSalesVolumeBySeq(menu_code, monthorday, store_code);
 	}
 
 	@Override
-	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender){
-		return mapper.getSalesVolumeBySeqAndGender(menu_code, monthorday, user_gender);
+	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender, int store_code){
+		return mapper.getSalesVolumeBySeqAndGender(menu_code, monthorday, user_gender, store_code);
 	}
 }
