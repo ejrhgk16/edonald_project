@@ -180,34 +180,56 @@
 
 					</div>
 				</div>
-
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="card mb-4">
-							<div class="card-header">
-								<i class="fas fa-chart-bar me-1"></i> 달별 매출비교
-							</div>
-							<div class="card-body">
-								<canvas id="myBarChart" width="100%" height="50"></canvas>
-							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6">
-						<div class="card mb-4">
-							<div class="card-header">
-								<i class="fas fa-chart-pie me-1"></i> 매장이용 고객비교
-							</div>
-							<div class="card-body">
-								<canvas id="myPieChart" width="100%" height="50"></canvas>
-							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
-						</div>
+				
+                <div class="card mb-4">
+                     <div class="card-header">
+                         <i class="fas fa-chart-bar me-1"></i>
+                         각 메뉴 월간 판매량
+                     </div>
+                     <div class="card-body myEachMenuChartCanvas"><canvas id="myEachMenuChart" width="100%" height="50"></canvas></div>
+                     <div class="card-footer small text-muted myMenuChartForm">
+					<div class="form-check form-check-inlin chartforme">
+						<input class="form-check-input" type="checkbox"
+							id="inlineCheckbox1" value="gender"> <label
+							class="form-check-label" for="inlineCheckbox1">성별비교</label>
 					</div>
 				</div>
+                </div>
+                
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-bar me-1"></i>
+                                메뉴 별 판매량
+                            </div>
+                            <div class="card-body myMenuChartCanvas"><canvas id="myMenuChart" width="100%" height="50"></canvas></div>
+                            <div class="card-footer small text-muted myMenuChartForm">
+	                            <!-- 일별 월별 -->
+								<span>단위 :</span>
+								<div class="form-check form-check-inline chartform">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="day" value="day"
+										checked="checked"> <label class="form-check-label"
+										for="day">일</label>
+								</div>
+								<div class="form-check form-check-inline chartform">
+									<input class="form-check-input" type="radio"
+										name="inlineRadioOptions" id="month" value="month"> <label
+										class="form-check-label" for="month">월</label>
+								</div>
+	
+									&nbsp;&nbsp;&nbsp;
+								<div class="form-check form-check-inlin chartforme">
+									<input class="form-check-input" type="checkbox"
+										id="inlineCheckbox1" value="gender"> <label
+										class="form-check-label" for="inlineCheckbox1">성별비교</label>
+								</div>
+								&nbsp;&nbsp;&nbsp;
+								<div class="chartform">상품번호 :
+									<input type="text" class="input-chart-text">
+								</div>
+							</div>
+                        </div>                
+                
 			</main>
 			<footer class="py-4 bg-light mt-auto">
 				<div class="container-fluid px-4">
