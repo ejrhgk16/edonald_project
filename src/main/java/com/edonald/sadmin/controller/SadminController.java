@@ -2,6 +2,8 @@ package com.edonald.sadmin.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
 import com.edonald.order.service.OrderService;
 import com.edonald.sadmin.service.SadminMenuService;
@@ -167,8 +170,37 @@ public class SadminController {
 		return list;
 	}
 	
-	@RequestMapping( value = "/tester" , method = RequestMethod.GET)
-	public String sadminOrderState(Model model) {
-		return "admin/sadmin/order/test";
+	@RequestMapping( value = "/sadmin/charts" , method = RequestMethod.GET)
+	public String sadminChart(Model model) {
+		return "admin/sadmin/chart/charts";
+	}
+	
+	@ResponseBody
+	@RequestMapping( value = "/sadmin/chart.do" , method = RequestMethod.GET)
+	public Map<String, Object> sadminChartDo(@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(monthorday.equals("day")) {
+			Calendar calen = Calendar.getInstance();
+			Date today = new Date();
+			calen.setTime(today);
+			DateFormat df = new SimpleDateFormat("MM/dd");
+			String[] labels= new String[7];
+			for(int i=0; i<7; i++) {
+				calen.add(Calendar.DATE, -1);
+				labels[i] = df.format(calen.getTime());
+			}
+			map.put("labels", labels);
+		}else {
+			String[] labels = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			map.put("labels", labels);
+		}
+		if(gender.equals("gender")) {
+			map.put("list1",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "1"));
+			map.put("list2",service.getSalesVolumeBySeqAndGender(menu_code, monthorday, "2"));
+		}else {
+			map.put("list",service.getSalesVolumeBySeq(menu_code, monthorday));
+		}
+		map.put("label", sService.getMenuBySeq(menu_code).getName());
+		return map;
 	}
 }

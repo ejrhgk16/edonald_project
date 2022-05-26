@@ -35,6 +35,9 @@ public class SadminMenuServiceImpl implements SadminMenuService {
 		mapper.deleteBlock(map);
 	}
 	
-	
+	@Override
+	public MenuDto getMenuBySeq(int menu_code) {
+		return mapper.getMenuBySeq(menu_code);
+	}
 	
 }
