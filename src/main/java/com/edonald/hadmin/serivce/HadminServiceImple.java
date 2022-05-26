@@ -37,7 +37,16 @@ public class HadminServiceImple implements HadminService {
 
 	@Override
 	public List<Integer> getChartDataAll(ChartSearchDto dto) {
-		 mapper.getChartDataAll(dto);
 		return  mapper.getChartDataAll(dto);
+	}
+
+	@Override
+	public String getStoreName(String search) {		
+		return mapper.getStoreName(search);
+	}
+
+	@Override
+	public List<Integer> getGenderSales(ChartSearchDto dto) {
+		return mapper.getGenderSalesData(dto);
 	}
 }
