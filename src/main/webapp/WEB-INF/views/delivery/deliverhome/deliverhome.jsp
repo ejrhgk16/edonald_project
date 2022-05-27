@@ -38,37 +38,7 @@
 								var addr_seq = $(this).children("input[name=addr]").val();
 								window.location.href = "/member/selectAddress?address_seq="+addr_seq;
 							});
-							$(".menu-item-menu").on("click", function(e){
-								e.preventDefault();
-								$.ajax({
-									type : "GET",
-									url : "/ed/store/checkStatus",
-									success : function(){
-										location.href = "/ed/menuPage";
-									}, 
-									error : function(){
-										alert("배달가능한 지점이 없습니다.");
-									}									
-								})
-							})
 							
-							
-							$(document).on("click", ".action-orderinadvance", function(e) {
-								e.preventDefault();
-								//$(this).attr("class", "menu-item menu-item-menu selected");
-								$.ajax({
-									type : "GET",
-									url : "/ed/store/checkStatus",
-									success : function(){
-										location.href = "/ed/menuPage";
-									}, 
-									error : function(){
-										alert("배달가능한 지점이 없습니다.");
-									}									
-								})
-
-							});
-				
 							<!-- 권한 확인 후 버튼 활성화 -->
 							if ($('#role').val() == 'ROLE_SADMIN'){
 								var html = "";
@@ -100,13 +70,6 @@
 				<!-- End Cookies Wrap -->
 				<div class="header-actions row">
 					<div class="language-selector">
-						<ul class="list-inline list-inline-divide">
-							<li class="list-item selected"><a class="list-item-target"
-								href="?locale=ko">한국어 <i class="fa fa-caret-left icon"></i></a>
-							</li>
-							<li class="list-item"><a class="list-item-target"
-								href="?locale=en">English <i class="fa fa-caret-left icon"></i></a></li>
-						</ul>
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
@@ -459,7 +422,7 @@
 				<section class="how-it-works home-section">
 					<h1 class="section-title">맥딜리버리 이용 방법!</h1>
 					<p>
-						<a href="#signin" data-target="#signin" data-toggle="modal"> <img
+						<a  data-target="#signin" data-toggle="modal"> <img
 							class="img-block" alt=""
 							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_ko.png">
 						</a>
@@ -704,34 +667,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="rememberMe" class="modal-rememberme modal fade"
-			data-backdrop="static" role="dialog"
-			aria-labelledby="rememberme-title" aria-hidden="true" tabindex="-1"
-			style="display: none;">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 id="rememberme-title">자동 로그인</h1>
-					</div>
-					<div class="modal-body">
-						<p>입력하신 정보로 웹사이트에 자동 로그인 됩니다. 공공장소에 있는 컴퓨터에서는 개인정보가 유출될 수 있으니
-							사용을 자제해 주시기 바랍니다.</p>
-						<div class="form-group">
-							<button id="btnRememberMeCancel"
-								class="btn btn-default btn-black btn-lg text-ucase">취소</button>
-							<button id="btnRememberMeAgree"
-								class="btn btn-default btn-red btn-lg text-ucase">동의</button>
-						</div>
-						<p class="note">맥딜리버리 채널을 이용한 주문 관련 문의 사항은 맥딜리버리 콜센터
-							(1600-5252) 를 이용해 주시기 바랍니다.</p>
-					</div>
-				</div>
-			</div>
-		</div>
 		
-		
-		
-	
 
 
 	</div>

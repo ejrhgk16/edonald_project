@@ -100,4 +100,96 @@
 	<select id="getMenuBySeq" resultType="com.edonald.hadmin.dto.MenuDto">
 		SELECT * FROM menu WHERE seq = #{menu_code};
 	</select>
+	
+	
+	
+	
+	<select id="getChartDataAll" resultType="int">
+		select ifnull(a.total,0)
+		from
+		<if test="dateStandard == 'month'.toString() ">
+		(
+		select date_format(order_date, '%Y-%m')as yyyymmdd, sum(final_price) as total from order_list
+		<if test="search!=null and !search.equals('') ">where store_code = #{search}</if>
+		group by
+		date_format(order_date,'%Y-%m')
+		) a
+		right join
+		(
+			select @N := @N +1 AS n ,
+			date_format( date_add( LAST_DAY(NOW() - interval Month(now()) month)+interval 1
+			DAY , interval @N -1 month),'%Y-%m') as yyyymmdd
+			from (order_list), (select @N:=0 from dual ) a
+			limit 12
+	)
+	</if>
+	<if test="dateStandard == 'day'.toString() ">
+	  ( 
+      SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS yyyymmdd, SUM(final_price) AS total
+      FROM order_list 
+      <if test="search!=null and !search.equals('') ">where store_code = #{search}</if>
+      GROUP BY DATE_FORMAT(order_date, '%Y-%m-%d')  
+      ) a  
+      RIGHT JOIN  
+      ( 
+      SELECT  @N := @N +1 AS n ,  
+      DATE_FORMAT( DATE_ADD( NOW() - INTERVAL 6 DAY , INTERVAL @N -1 DAY),'%Y-%m-%d') AS yyyymmdd  
+      FROM (order_list), (SELECT @N:=0 FROM DUAL ) a  
+      LIMIT 7
+      )
+	</if>
+		 b on a.yyyymmdd = b.yyyymmdd
+		order by b.yyyymmdd asc
+	</select>
+	
+	<select id="getGenderSalesData" resultType="int">
+		SELECT IFNULL(a.total,0) price
+      FROM 
+      <if test="dateStandard == 'month'.toString() ">
+      ( 
+      SELECT DATE_FORMAT(order_date, '%Y-%m') AS yyyymmdd, SUM(final_price) AS total
+      FROM 
+      (SELECT ol.order_date, ui.user_gender, final_price FROM order_list ol LEFT JOIN user_info ui ON ol.user_email = ui.user_email  
+         WHERE ui.user_gender = #{sex}
+         <if test="search!=null and !search.equals('') ">and ol.store_code = #{search}</if>
+         ) ab 
+      GROUP BY DATE_FORMAT(ab.order_date, '%Y-%m')  
+      ) a  
+      RIGHT JOIN  
+      ( 
+      SELECT  @N := @N +1 AS n ,  
+      DATE_FORMAT( DATE_ADD( LAST_DAY(NOW() - interval Month(now()) month)+interval 1 DAY , interval @N -1 month),'%Y-%m') AS yyyymmdd  
+      FROM (order_list), (SELECT @N:=0 FROM DUAL ) ac  
+      LIMIT 12
+      ) 
+      </if>
+      <if test="dateStandard == 'day'.toString() ">
+        ( 
+      SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS yyyymmdd, SUM(final_price) AS total
+      FROM 
+      (SELECT ol.order_date, ui.user_gender, final_price FROM order_list ol LEFT JOIN user_info ui ON ol.user_email = ui.user_email  
+         WHERE ui.user_gender = #{sex}
+         <if test="search!=null and !search.equals('') ">and ol.store_code = #{search}</if>
+         ) ab 
+      GROUP BY DATE_FORMAT(ab.order_date, '%Y-%m-%d')  
+      ) a  
+      RIGHT JOIN  
+      ( 
+      SELECT  @N := @N +1 AS n ,  
+      DATE_FORMAT( DATE_ADD( NOW() - INTERVAL 6 DAY , INTERVAL @N -1 DAY),'%Y-%m-%d') AS yyyymmdd      
+      FROM (order_list), (SELECT @N:=0 FROM DUAL ) ac  
+      LIMIT 7
+      ) 
+      </if>
+      b on a.yyyymmdd = b.yyyymmdd 
+      ORDER BY b.yyyymmdd ASC;
+		
+	</select>
+	
+	<select id="getExcelData" resultType="com.edonald.order.dto.OrderListDto">
+		select * from order_list where store_code = #{store_code} and order_date >=  DATE_FORMAT(( NOW() - INTERVAL 6 DAY),'%Y-%m-%d')
+	</select>
+	
+	
+	
 </mapper>

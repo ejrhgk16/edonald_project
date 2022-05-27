@@ -169,11 +169,18 @@ public class DeliverController {
 						return new ResponseEntity<String>("비로그인사용자의 배달가능 지점이없음", HttpStatus.BAD_REQUEST);
 					}
 			}
-			
-			
+
 			return new ResponseEntity<String>("그냥메뉴만봄", HttpStatus.OK);
-			
-		
+
+	}
+	
+	@GetMapping("/ed/logincheck")
+	public @ResponseBody  ResponseEntity<String>checkStatus(Authentication authentication){
+		if(authentication == null) {
+			return new ResponseEntity<String>("로그인 해주세요", HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}
 	}
 	
 

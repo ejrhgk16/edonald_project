@@ -12,11 +12,21 @@
         <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
         <script>
         	$(document).ready(function(){
+        		
+        		$("#exceldown").on("click", function(e){
+        			e.preventDefault();
+        			alert("click");
+        			location.href="/sadmin/getExcel"
+
+        		})
+        		
         		setInterval(function(){
         			
         			window.location.reload();
     
         		},5000);
+        		
+        		
         		$(document).on('change','.orderselect',function(e){
         			e.stopPropagation();
         			var order_seq= $(this).parent().parent().attr('data-value');
@@ -190,7 +200,7 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					매장 주문 관리 <a target="_blank" href="">WDonald 주문관리</a>
+					매장 주문 관리 <a id="exceldown" href="">주문내역 액셀로 다운</a>
 				</div>
 			</div>
 			<div class="card mb-4">

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.order.dto.CartDto;
@@ -28,4 +29,10 @@ public interface SadminMapper {
 	public List<Integer> getSalesVolumeBySeq(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("store_code")int store_code);
 	public MenuDto getMenuBySeq(@Param("menu_code") int menu_code);
 	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender,@Param("store_code")int store_code);
+	
+	public List<Integer> getChartDataAll(ChartSearchDto dto);
+	public List<Integer> getGenderSalesData(ChartSearchDto dto);
+
+	public List<OrderListDto>getExcelData(int sotre_code);
+
 }

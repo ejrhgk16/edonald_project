@@ -1,23 +1,55 @@
 $(document).ready(function() {
-	
-	$("#nomembertrackorder").on("click", function(e){
+
+	$(".menu-item-menu").on("click", function(e) {
+		e.preventDefault();
+		$.ajax({
+			type: "GET",
+			url: "/ed/store/checkStatus",
+			success: function() {
+				location.href = "/ed/menuPage";
+			},
+			error: function() {
+				alert("배달가능한 지점이 없습니다.");
+			}
+		})
+	})
+
+
+	$(document).on("click", ".action-orderinadvance", function(e) {
+		e.preventDefault();
+		//$(this).attr("class", "menu-item menu-item-menu selected");
+		$.ajax({
+			type: "GET",
+			url: "/ed/store/checkStatus",
+			success: function() {
+				location.href = "/ed/menuPage";
+			},
+			error: function() {
+				alert("배달가능한 지점이 없습니다.");
+			}
+		})
+
+	});
+
+
+	$("#nomembertrackorder").on("click", function(e) {
 		e.preventDefault();
 		var merchanuid = prompt('주문번호를 입력하세요');
 		console.log(merchanuid);
 		$.ajax({
-			type : "GET",
-			url : "/order/search/check?merchanuid="+merchanuid,
-			success : function(){
-				window.location.href="/order/search/trackorder?merchanuid="+merchanuid;
+			type: "GET",
+			url: "/order/search/check?merchanuid=" + merchanuid,
+			success: function() {
+				window.location.href = "/order/search/trackorder?merchanuid=" + merchanuid;
 			},
-			error : function(res){
+			error: function(res) {
 				console.log(res);
 				alert(res);
-			}	
+			}
 		})
-		})
-	
-	
+	})
+
+
 
 	//상단 메뉴
 
@@ -27,7 +59,7 @@ $(document).ready(function() {
 			$(this).attr("aria-expanded", "false");
 			$(this).parent(".dropdown-menu").css("display", "none");
 		} else {
-			$('.menu-item.dropdown').attr("class","menu-item menu-item-support dropdown");
+			$('.menu-item.dropdown').attr("class", "menu-item menu-item-support dropdown");
 			$(this).attr("class", "menu-item menu-item-support dropdown open");
 			$(this).attr("aria-expanded", "true");
 			$(this).parent(".dropdown-menu").css("display", "inline-block");
@@ -42,7 +74,7 @@ $(document).ready(function() {
 		noLogin();
 	})
 	var $topLoginText = $(".my-account-quicklinks").children(".list-inline.list-inline-divide").children();
-	console.log($topLoginText);
+
 	$topLoginText.eq(1).children(".list-item-target").on("click", function(e) {
 		e.preventDefault();
 		noLogin();
@@ -64,7 +96,7 @@ $(document).ready(function() {
 
 		LoginTabEvent(1, 0, e, $loginTabs)
 	})
-	
+
 	//close
 	$(".modal-header").children("button").on("click", function() {
 		$("#signin").attr("class", "modal-login modal fade signin-modal");
@@ -96,7 +128,7 @@ $(document).ready(function() {
 			$('input[name=_rememberMe]').val("on");
 			$("#rememberMe").attr("aria-hidden", "false");
 			$("#rememberMe").attr("class", "modal-rememberme modal fade in");
-//			$("#rememberMe").css("display", "block");
+			//			$("#rememberMe").css("display", "block");
 		}
 	})
 
@@ -113,11 +145,11 @@ $(document).ready(function() {
 		$("#rememberMe").attr("class", "modal-rememberme modal fade");
 		$("#rememberMe").css("display", "none");
 	});
-	
+
 
 	//메뉴화면 알레르기 text 펼치기
-	$(document).on('click',".text-default",function(){
-		$('html').one('click',function(){
+	$(document).on('click', ".text-default", function() {
+		$('html').one('click', function() {
 			$('.popover.fade.bottom.in').remove();
 		})
 		var name = $(this).parent().parent().children('.popover-details').children().children('h4').text();
@@ -126,14 +158,14 @@ $(document).ready(function() {
 		source += "<div class=\"arrow\" style=\"left: 50%;\"></div>";
 		source += "<h3 class=\"popover-title\" style=\"display: none;\"></h3><div class=\"popover-content\">";
 		source += "<div class=\"popover-wrapper type-sans\">";
-		source += "<h4>"+name+"</h4>";
-		source += "<div>"+detail+"</div></div></div></div>";
+		source += "<h4>" + name + "</h4>";
+		source += "<div>" + detail + "</div></div></div></div>";
 		$(this).parent().after(source);
 	})
-	
+
 	//메뉴화면 
 })
-	
+
 
 function noLogin() {//loginmodal show
 	$("#signin").attr("class", "modal-login modal fade signin-modal in");

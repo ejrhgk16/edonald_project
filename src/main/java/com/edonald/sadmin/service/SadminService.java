@@ -3,8 +3,12 @@ package com.edonald.sadmin.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.order.dto.CartDto;
@@ -21,4 +25,9 @@ public interface SadminService {
 	public List<Integer> getSalesVolumeBySeq(int menu_code, String monthorday, int store_code);
 	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender, int store_code);
 	
+	public List<Integer>getChartDataAll(ChartSearchDto dto);
+	public List<Integer> getGenderSales(ChartSearchDto dto);
+	
+	public void getExcel(int store_code, HttpServletResponse req);
+
 }

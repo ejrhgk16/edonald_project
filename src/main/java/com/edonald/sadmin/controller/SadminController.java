@@ -11,17 +11,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
@@ -206,4 +211,59 @@ public class SadminController {
 		map.put("label", sService.getMenuBySeq(menu_code).getName());
 		return map;
 	}
+	
+	@GetMapping("/sadmin/chart/getData")
+	public @ResponseBody ResponseEntity<Map<String, Object>>getChartData(Authentication authentication, ChartSearchDto chartDto){
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto sessionDto = (MemberDto) user.getMemberDto();
+		int store_code = sessionDto.getStore_code();
+		
+		chartDto.setSearch(String.valueOf(store_code));
+		Map<String, Object> chartDataMap = new HashMap<String, Object>();
+		
+		if(chartDto.getSex().equals("true")) {
+			chartDto.setSex("1");
+			List<Integer>mDataList = service.getGenderSales(chartDto);
+			chartDto.setSex("2");
+			List<Integer>wDataList = service.getGenderSales(chartDto);
+			chartDataMap.put("mDataList", mDataList);
+			chartDataMap.put("wDataList", wDataList);
+			System.out.println(mDataList.toString());
+			System.out.println(wDataList.toString());
+		}else {
+			List<Integer>dataList = service.getChartDataAll(chartDto);
+			chartDataMap.put("dataList", dataList);
+		}
+
+		String dateStandard = chartDto.getDateStandard();
+		if(dateStandard.equals("month")) {
+			String[]labels= {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			chartDataMap.put("labels", labels);
+		}else {
+			Calendar calen = Calendar.getInstance();
+			Date today = new Date();
+			calen.setTime(today);
+			DateFormat df = new SimpleDateFormat("MM/dd");
+			String[]labels= new String[7];
+			for(int i=6; i>=0; i--) {
+				calen.add(Calendar.DATE, -1);
+				labels[i] = df.format(calen.getTime());
+			}
+			chartDataMap.put("labels", labels);
+		}
+
+		
+		return new ResponseEntity<Map<String,Object>>(chartDataMap, HttpStatus.OK);
+	}
+	
+	@GetMapping("/sadmin/getExcel")
+	public void getExcel(Authentication authentication, HttpServletResponse res){
+		
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		MemberDto sadmin = user.getMemberDto();
+		service.getExcel(sadmin.getStore_code(), res);
+
+	}
+	
+	
 }
