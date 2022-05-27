@@ -58,6 +58,13 @@ public class SadminController {
 		return "admin/sadmin/index";
 	}
 	
+	//insertPage
+	@RequestMapping(value = "/sadmin/Msadmin", method = RequestMethod.GET)
+	public String sadminModifySadmin(Authentication authentication) {
+		return "admin/sadmin/Modify/settingmine";
+	}
+	
+	
 	@RequestMapping(value = "/sadmin/menu", method = RequestMethod.GET)
 	public String sadminMenu(Model model,String type, Authentication authentication) {
 		SecurityUser user = (SecurityUser)authentication.getPrincipal();
