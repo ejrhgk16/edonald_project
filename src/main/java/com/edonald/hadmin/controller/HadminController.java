@@ -3,6 +3,7 @@ package com.edonald.hadmin.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +35,9 @@ import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.hadmin.serivce.HadminService;
 import com.edonald.hadmin.serivce.StoreManageService;
 import com.edonald.member.dto.MemberDto;
+import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.MemberService;
+import com.edonald.order.dto.CartDto;
 
 @Controller
 public class HadminController {
@@ -253,6 +257,68 @@ public class HadminController {
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping( value = "/hadmin/menuchart.do" , method = RequestMethod.GET)
+	public Map<String, Object> sadminMenuChartDo(@RequestParam int menu_code, @RequestParam String monthorday, @RequestParam String gender){
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(monthorday.equals("day")) {
+			Calendar calen = Calendar.getInstance();
+			Date today = new Date();
+			calen.setTime(today);
+			DateFormat df = new SimpleDateFormat("MM/dd");
+			String[] labels= new String[7];
+			for(int i=0; i<7; i++) {
+				calen.add(Calendar.DATE, -1);
+				labels[i] = df.format(calen.getTime());
+			}
+			map.put("labels", labels);
+		}else {
+			String[] labels = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+			map.put("labels", labels);
+		}
+		if(gender.equals("gender")) {
+			map.put("list1",hService.getSalesVolumeBySeqAndGender(menu_code, monthorday, "1"));
+			map.put("list2",hService.getSalesVolumeBySeqAndGender(menu_code, monthorday, "2"));
+		}else {
+			map.put("list",hService.getSalesVolumeBySeq(menu_code, monthorday));
+		}
+		map.put("label", hService.getMenuBySeq(menu_code).getName());
+		return map;
+	}
 	
-	
+	@ResponseBody
+	@RequestMapping( value = "/hadmin/eachmenuchart.do" , method = RequestMethod.GET)
+	public Map<String, Object> sadminEachMenuChartDo(@RequestParam String menu_type, @RequestParam String order_date, @RequestParam boolean user_gender){
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<CartDto> basicList = new ArrayList<CartDto>();
+		List<String> labelsList = new ArrayList<String>();
+		List<Integer> dataList = new ArrayList<Integer>();
+		List<Integer> dataList2 = new ArrayList<Integer>();
+		if(!user_gender) {
+			basicList =  hService.getEachMenuSalesVolume(0,menu_type,order_date);
+			for(CartDto li : basicList) {
+				labelsList.add(li.getCart_product_name());
+				dataList.add(li.getCart_product_quant());
+			}
+			map.put("labels", labelsList);
+			map.put("list", dataList);
+			System.out.println(map.get("list").toString());
+		}else {
+			basicList =  hService.getEachMenuSalesVolume(1,menu_type,order_date);	
+			for(CartDto li : basicList) {
+				labelsList.add(li.getCart_product_name());
+				dataList.add(li.getCart_product_quant());
+			}
+			map.put("labels", labelsList);
+			map.put("list1", dataList);
+			basicList =  hService.getEachMenuSalesVolume(2,menu_type,order_date);
+			for(CartDto li : basicList) {
+				dataList2.add(li.getCart_product_quant());
+			}
+			map.put("list2", dataList2);
+			System.out.println(map.get("list1").toString());
+			System.out.println(map.get("list2").toString());
+		}
+		return map;
+	}
 }

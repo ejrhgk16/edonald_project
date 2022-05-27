@@ -186,12 +186,31 @@
                          <i class="fas fa-chart-bar me-1"></i>
                          각 메뉴 월간 판매량
                      </div>
-                     <div class="card-body myEachMenuChartCanvas"><canvas id="myEachMenuChart" width="100%" height="50"></canvas></div>
-                     <div class="card-footer small text-muted myMenuChartForm">
-					<div class="form-check form-check-inlin chartforme">
+                     <div class="card-body myEachMenuChartCanvas"><canvas id="myEachMenuChart" width="100%" height="30"></canvas></div>
+                     <div class="card-footer small text-muted myEachMenuChartForm">
+					<div class="form-check  form-check-inline chartforme" align="right">
+						<span>검색조건 :</span>
+						<div class="form-check form-check-inline">
 						<input class="form-check-input" type="checkbox"
-							id="inlineCheckbox1" value="gender"> <label
-							class="form-check-label" for="inlineCheckbox1">성별비교</label>
+							id="inlineCheckbox2" value="gender"> <label
+							class="form-check-label" for="inlineCheckbox2">성별비교</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<span>메뉴타입 :</span>
+							<select id="inlineSelect2">
+                           		<option selected value="burger">버거</option>
+                           		<option value="side">사이드</option>
+                           		<option value="drink">음료</option>
+                           		<option value="dessert">디저트</option>
+								<option value="happymeal">해피밀</option>
+								<option value="emorning">이모닝</option>
+								<option value="package">패키지</option>
+							</select>
+						</div>
+						<div class="form-check form-check-inline">
+							<span>날짜선택 :</span>
+							<input id="inlineMonth2" type="month"> 
+						</div>
 					</div>
 				</div>
                 </div>
@@ -201,10 +220,10 @@
                                 <i class="fas fa-chart-bar me-1"></i>
                                 메뉴 별 판매량
                             </div>
-                            <div class="card-body myMenuChartCanvas"><canvas id="myMenuChart" width="100%" height="50"></canvas></div>
-                            <div class="card-footer small text-muted myMenuChartForm">
+                            <div class="card-body myMenuChartCanvas"><canvas id="myMenuChart" width="100%" height="30"></canvas></div>
+                            <div class="card-footer small text-muted myMenuChartForm" align="right">
 	                            <!-- 일별 월별 -->
-								<span>단위 :</span>
+								<span>검색조건 :</span>
 								<div class="form-check form-check-inline chartform">
 									<input class="form-check-input" type="radio"
 										name="inlineRadioOptions" id="day" value="day"
@@ -218,13 +237,13 @@
 								</div>
 	
 									&nbsp;&nbsp;&nbsp;
-								<div class="form-check form-check-inlin chartforme">
+								<div class="form-check form-check-inline chartforme">
 									<input class="form-check-input" type="checkbox"
 										id="inlineCheckbox1" value="gender"> <label
 										class="form-check-label" for="inlineCheckbox1">성별비교</label>
 								</div>
 								&nbsp;&nbsp;&nbsp;
-								<div class="chartform">상품번호 :
+								<div class="form-check form-check-inline chartform">상품번호 :
 									<input type="text" class="input-chart-text">
 								</div>
 							</div>
@@ -254,7 +273,5 @@
 			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 			crossorigin="anonymous"></script>
 		<script src="/resources/js/chart-hadmin.js"></script>
-		<script src="/resources/js/chart-bar-demo.js"></script>
-		<script src="/resources/js/chart-pie-demo.js"></script>
 </body>
 </html>

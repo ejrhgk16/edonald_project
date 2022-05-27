@@ -3,8 +3,14 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 $(document).ready(function(){
+	document.getElementById('inlineMonth2').value= new Date().toISOString().slice(0, 7);
 	graphData( 'day', false,  '');
+	menuChart();
+	eachMenuChart();
 	
+
+	
+
 	
 	$("#searchBtn").on("click", function(){
 		var dateStandard  = $('input[name=dateStandard]:checked').val();
@@ -16,6 +22,13 @@ $(document).ready(function(){
 		graphData(dateStandard, sex, search)
 	})
 	
+	$('.myMenuChartForm').on('change',function(){
+		menuChart();
+	})	
+	$('.myEachMenuChartForm').on('change',function(){
+
+		eachMenuChart();
+	})	
 	
 })
 
@@ -177,19 +190,19 @@ function menuChart(){
 		if(!menu_code){
 			menu_code = 14;
 		}
-		var url = "/sadmin/menuchart.do?menu_code="+menu_code+"&gender="+gender+"&monthorday="+monthorday;
+		var url = "/hadmin/menuchart.do?menu_code="+menu_code+"&gender="+gender+"&monthorday="+monthorday;
 		$.ajax({
 			url:url,
 			type:'get',
 			success:function(res){
 				if(gender == 'gender'){
 					var datasets = [{
-						label: res.label + " 남자",
+						label: "남 " + res.label,
 						backgroundColor: 'transparent',
 						borderColor: 'blue',
 						data: res.list1
 					},{
-						label: res.label + " 여자",
+						label: "여 " + res.label,
 						backgroundColor: 'transparent',
 						borderColor: 'orange',
 						data: res.list2
@@ -203,6 +216,8 @@ function menuChart(){
 					}];
 					
 				}
+				$('#myMenuChart').remove();
+				$('.myMenuChartCanvas').append('<canvas id="myMenuChart" width="100%" height="30"></canvas>');
 				menuChartUpdate(datasets,res.labels);
 			},
 			error:function(){
@@ -244,6 +259,74 @@ function menuChartUpdate(datasets,labels){
 
 
 
-
+function eachMenuChart(){
+		var order_date =  $('#inlineMonth2').val()+'-01';
+		var menu_type = $('#inlineSelect2').val();
+		var user_gender = $('#inlineCheckbox2').is(":Checked");
+		var url = "/hadmin/eachmenuchart.do?order_date="+order_date+"&menu_type="+menu_type+"&user_gender="+user_gender;
+		$.ajax({
+			url:url,
+			type:'get',
+			success:function(res){
+				if(user_gender){
+					var datasets = [{
+						label: "남",
+						backgroundColor: 'blue',
+						borderColor: 'blue',
+						data: res.list1
+					},{
+						label: "여",
+						backgroundColor: 'orange',
+						borderColor: 'orange',
+						data: res.list2
+					}];
+				}else{
+					var datasets = [{
+						label: "판매량",
+						backgroundColor: 'orange',
+						borderColor: 'orange',
+						data: res.list,
+					}];
+					
+				}
+				$('#myEachMenuChart').remove();
+				$('.myEachMenuChartCanvas').append('<canvas id="myEachMenuChart" width="100%" height="30"></canvas>');
+				eachMenuChartUpdate(datasets,res.labels);
+			},
+			error:function(){
+				alert('error');
+			}
+		})
+		
+}
+function eachMenuChartUpdate(datasets,labels){
+	var ctx = document.getElementById("myEachMenuChart");
+	
+	var myEachMenuChart = new Chart(ctx, {
+  		type: 'bar',
+		data: {
+	    labels: labels,
+	    datasets: datasets,
+	  },						
+		options: {
+			    scales: {
+			      xAxes: [{
+			        gridLines: {
+			          display: false
+			        }
+			      }],
+			      yAxes: [{
+			        ticks: {
+						stepSize: 1,
+						beginAtZero: true
+					},
+			        gridLines: {
+			          color: "rgba(0, 0, 0, .125)",
+			        }
+			      }],
+			    },
+			  }
+	});
+}
 
 
