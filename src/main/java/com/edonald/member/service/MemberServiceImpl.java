@@ -170,6 +170,11 @@ public class MemberServiceImpl implements MemberService {
 		mapper.changePassword(dto);
 		return mapper.getEncodePassword(dto);
 	}
+	
+	@Override
+	public void findPasswordByEmail(MemberDto dto) {
+		Mail
+	}
 	@Override
 	public List<MemberDto> getMemberList(int user_status){
 		List<MemberDto> list = mapper.getMemberList(user_status);
@@ -186,6 +191,14 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getMemberById(username);
 	}
 		
+	@Override
+	public Boolean checkPassword(MemberDto dto, String checkPassword) {
+		String sessionPass = dto.getUser_password();
+		if(!encoder.matches(checkPassword, sessionPass)) {
+			return false;
+		}
+		return true;
+	}
 		
 }
 	

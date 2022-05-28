@@ -3,6 +3,7 @@ package com.edonald.hadmin.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.hadmin.dto.StorePageCriteria;
 import com.edonald.hadmin.dto.StorePageDto;
 import com.edonald.hadmin.serivce.StoreManageService;
+import com.edonald.member.dto.SecurityUser;
 
 import kotlin.internal.RequireKotlin;
 
@@ -36,9 +38,23 @@ public class StoreManageController {
 	@ResponseBody
 	@PostMapping("/hadmin/storeUpdate.do")
 	public void storeUpdateDo(StoreDto dto) {
-		System.out.println(dto.getStore_status());
 		storeManageService.updateStore(dto);
 	}
+	
+
+	@GetMapping("/sadmin/storeUpdate")
+	public String storeUpdateBySadmin(Authentication authentication, Model model) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal(); 
+		model.addAttribute("store",storeManageService.getStore(Integer.toString(user.getMemberDto().getStore_code())));
+		return "/admin/hadmin/usercheck/storeUpdate";
+	}	
+	
+	@ResponseBody
+	@PostMapping("/sadmin/storeUpdate.do")
+	public void storeUpdateDoBySadmin(StoreDto dto) {
+		storeManageService.updateStore(dto);
+	}
+
 	
 	@GetMapping("/hadmin/store")
 	public String storeManage(Model model) {

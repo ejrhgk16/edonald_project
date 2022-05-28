@@ -24,6 +24,96 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var status = 0;
+		$('#passwordBtn').on('click',function(){
+			if(status == 0){
+				$('.passwordDiv').removeAttr('style');	
+				status = 1;
+			}else{
+				$('.passwordDiv').attr('style','display:none;');
+				status = 0;
+			}
+		})
+		
+		$(document).on('click','#submitBtn',function(){
+			var user_email = $('#inputId').val();
+			var user_phone = $('#inputPhone').val();
+			var user_password = $('#inputUserPasswordChecker').val();
+			console.log(user_password);
+			var phoneVaild = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/;
+			var phoneVaild2 = /^[0-9]{2,3}[0-9]{3,4}[0-9]{4}/;
+			if(status == 1){
+				var new_user_password = $('#inputPassword').val();
+				var new_user_passwordCheck = $('#inputPasswordCheck').val();
+				if (new_user_password == "") {
+					alert("신규 비밀번호를 입력하세요.");
+					$("#inputPassword").focus();
+					return false;
+				}
+				if (new_user_password != new_user_passwordCheck){
+					alert("신규 비밀번호를 확인해주세요.");
+					$('#inputPassword').focuse();
+				}
+			}
+			if (user_password == "") {
+				alert("기존 비밀번호를 입력하세요.");
+				$("#inputUserPasswordChecker").focus();
+				return false;
+			}
+			if (user_phone == "") {
+				alert("전화번호를 입력하세요.");
+				$("#inputPhone").focus();
+				return false;
+			}
+			if (phoneVaild2.test(user_phone)==false){
+				if (phoneVaild.test(user_phone)==false){
+					alert("전화번호를 확인하세요.");
+					$('#inputPhone');
+					return false;
+				}
+				user_phone = user_phone.replace('-','');
+				user_phone = user_phone.replace('-','');
+			}			
+			var json = {
+				"user_password":user_password
+			}
+			var url = "/sadmin/checkMember.do";
+			$.ajax({
+				type :"POST",
+				url : url,
+				data : json,
+				success :function(){
+					json = {
+						"user_email": user_email,
+						"user_phone": user_phone,
+					}
+					if(status == 1){
+						json.user_password = new_user_password;
+					}
+					url = "/sadmin/modifyMember.do";
+					$.ajax({
+						type : "POST",
+						url : url,
+						data : json,
+						success : function(){
+							opener.location.reload();
+							window.open("about:blank","_self").close();
+						},
+						error : function(){
+							alert("error");
+						}
+					})
+				},
+				error: function(res){
+					console.log(res);
+					alert(res.responseText);
+				}
+			});
+		})
+	})
+</script>
 </head>
 <body class="bg-black">
 	<div id="layoutAuthentication"
@@ -35,7 +125,7 @@
 						<div class="col-lg-7">
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header">
-									<h3 class="text-center font-weight-light my-4 haeder-text">지점장 등록</h3>
+									<h3 class="text-center font-weight-light my-4 haeder-text">개인정보 수정</h3>
 								</div>
 								<div class="card-body">
 
@@ -47,26 +137,34 @@
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_id" class="form-control"
 														value="${principal.memberDto.user_email}" id="inputId"
-														type="text" placeholder="Enter your first name" /> <label
-														for="inputFirstName">이메일</label>
+														type="text" placeholder="Enter your first name" disabled/> <label
+														for="inputFirstName" >이메일</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-floating">
 													<input name="admin_name" class="form-control"
 														value="${principal.memberDto.user_name}" id="inputName"
-														type="text" placeholder="Enter your last name" /> <label
-														for="inputLastName">이름</label>
+														type="text" placeholder="Enter your last name" disabled/> <label
+														for="inputLastName" >이름</label>
 												</div>
 											</div>
 										</div>
+										<div class="col-md-6">
+												<div class="form-floating mb-3 mb-md-0">
+													<input name="admin_password" class="form-control"
+														value="" id="inputUserPasswordChecker"
+														type="password" placeholder="Enter your first name" /> <label
+														for="inputFirstName">기존 비밀번호</label>
+												</div>
+											</div>										
 										<div class="row mb-3 passwordDiv" style="display:none">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<input name="admin_password" class="form-control"
 														value="" id="inputPassword"
 														type="password" placeholder="Enter your first name" /> <label
-														for="inputFirstName">비밀번호</label>
+														for="inputFirstName">신규 비밀번호</label>
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -74,7 +172,7 @@
 													<input name="admin_password" class="form-control"
 														value="" id="inputPasswordCheck"
 														type="password" placeholder="Enter your first name" /> <label
-														for="inputFirstName">비밀번호 확인</label>
+														for="inputFirstName">신규 비밀번호 확인</label>
 												</div>
 											</div>
 										</div>
@@ -87,26 +185,9 @@
 														for="inputFirstName">전화번호</label>
 												</div>
 											</div>
-											<div class="col-md-6 storecode">
-												<div class="form-floating">
-													<input name="store_phone" class="form-control"
-														value="${principal.memberDto.store_code}" id="storeCode"
-														type="text" placeholder="Enter your last name" /> <label
-														for="inputLastName">매장번호</label>
-												</div>
-											</div>
+										
 										</div>
-										<div class="row mb-3">
-											<div class="col-md-6">
-												<div class="form-floating mb-3 mb-md-0">
-													<div class="container">
-														<select class="form-control" id="inputGender">
-														  <option value="1">남자</option>
-														  <option value="2" <c:if test="${principal.memberDto.user_gender == '2'}">selected</c:if>>여자</option>
-														</select>
-													</div>
-												</div>
-											</div>
+										<div class="row mb-6">
 											<div class="col-md-6">
 												<div class="form-floating mb-3 mb-md-0">
 													<div class="container">
@@ -119,7 +200,7 @@
 										<div class="mt-4 mb-0">
 											<div class="d-grid">
 												<button type="button" id="submitBtn"
-													class="btn btn-danger btn-block" onclick="updateDo()">등록</button>
+													class="btn btn-danger btn-block">변경</button>
 											</div>
 										</div>
 									</form>

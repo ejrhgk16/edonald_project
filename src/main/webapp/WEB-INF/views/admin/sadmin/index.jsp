@@ -62,10 +62,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="/sadmin/Msadmin" onclick="window.open(this.href, '_blank', 'width=400,height=800,toolbars=no,scrollbars=no'); return false;">Settings</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="login.jsp">Login</a></li>
                         <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
                 </li>
@@ -105,7 +103,7 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             
-                            <a class="nav-link" href="storeUpdate.jsp">
+                            <a class="nav-link" href="/sadmin/storeUpdate" onClick="window.open(this.href, '지점 정보 변경', 'width=500, height=600, top=30, left=30, resizable=no, scrollbars=no, location=no'); return false;">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 매장정보 수정
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

@@ -40,7 +40,9 @@
 	
 	<!-- 유저 정보 변경 -->
 	<update id="changeAccount">
-		UPDATE user_info SET user_name = #{user_name}, user_phone = #{user_phone} , user_gender = #{user_gender} 
+		UPDATE user_info SET user_phone = #{user_phone}
+		<if test="user_name != null">, user_name = #{user_name}</if>
+		<if test="user_gender != null">, user_gender = #{user_gender} </if> 
 		<if test="store_code != null">, store_code = #{store_code} </if>
 		<if test="user_password != null">, user_password = #{user_password} </if>
 		WHERE user_email = #{user_email};

@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.member.service.MemberService;
 import com.edonald.order.dto.CartDto;
 import com.edonald.order.dto.OrderListDto;
 import com.edonald.order.service.OrderService;
@@ -44,7 +46,11 @@ public class SadminController {
 	@Autowired
 	private SadminService service;
 	@Autowired
+	private MemberService mService;
+	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@RequestMapping( value = "/sadmin/test" , method = RequestMethod.GET)
 	public String testMenu(Model model,String type,String store) {
@@ -63,11 +69,34 @@ public class SadminController {
 		return "admin/sadmin/index";
 	}
 	
-	//insertPage
+	//updatePage
 	@RequestMapping(value = "/sadmin/Msadmin", method = RequestMethod.GET)
 	public String sadminModifySadmin(Authentication authentication) {
 		return "admin/sadmin/Modify/settingmine";
 	}
+	@ResponseBody
+	@RequestMapping( value ="/sadmin/modifyMember.do",method = RequestMethod.POST)
+	public void hadminModifyMember(Authentication authentication,MemberDto dto) {
+		System.out.println(dto.getUser_email()+dto.getUser_password());
+		mService.changeAccountByAdmin(dto);
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		user.getMemberDto().setUser_phone(dto.getUser_phone());
+		if(dto.getUser_password() != null) {
+			user.getMemberDto().setUser_password(mService.getMemberById(dto.getUser_email()).getUser_password());
+		}
+	}
+	@ResponseBody
+	@RequestMapping( value ="/sadmin/checkMember.do",method = RequestMethod.POST)
+	public ResponseEntity<String> hadminCheckMember(Authentication authentication, @RequestParam("user_password") String user_password) {
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		MemberDto dto = user.getMemberDto();
+		if(!mService.checkPassword(dto, user_password)) {
+			return new ResponseEntity<String>("기존 비밀번호가 틀렸습니다.",HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}
+	}
+	
 	
 	
 	@RequestMapping(value = "/sadmin/menu", method = RequestMethod.GET)
@@ -113,7 +142,7 @@ public class SadminController {
 		map.put("seq", seq);
 		sService.deleteBlock(map);
 	}
-	
+	// 영업 중 - 영업 종료
 	@ResponseBody
 	@RequestMapping(value = "/sadmin/storeStatus.do", method = RequestMethod.GET)
 	public void sadminStoreStatus(Authentication authentication,@RequestParam("store_status") String store_status) {
