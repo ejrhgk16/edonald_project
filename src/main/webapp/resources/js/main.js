@@ -146,9 +146,8 @@ $(document).ready(function() {
 	})
 
 
-
 	//자동로그인 체크
-	$(".icheckbox").on("click", function(e) {
+	$(".remember-me").on("click", function(e) {
 		if ($(this).attr("class") == "icheckbox checked") {
 			$(this).attr("class", "icheckbox");
 			$('input[name=_rememberMe]').val("off"); // 체크여부 

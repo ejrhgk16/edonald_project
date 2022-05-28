@@ -12,8 +12,11 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
 public class CertifyServiceImpl implements CertifyService{
-	private String key ="NCSQKBNXP8GLDJNI";
-	private String secret = "NL4QAN5PBT1A0JCJGYV7KYY209OKQIJB";
+//	private String key ="NCSQKBNXP8GLDJNI";
+//	private String secret = "NL4QAN5PBT1A0JCJGYV7KYY209OKQIJB";
+
+	private String key ="NCSHLRZOR4C97AXM";
+	private String secret = "FVERMOZDK8QB5R2PN7E9CTVGUMTANTGJ";
 	
 	@Override
 	public String certifyPhone(String user_phone) {
