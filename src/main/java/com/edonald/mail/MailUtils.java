@@ -2,6 +2,7 @@ package com.edonald.mail;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.activation.DataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 

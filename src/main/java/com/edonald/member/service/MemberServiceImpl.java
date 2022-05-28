@@ -170,11 +170,7 @@ public class MemberServiceImpl implements MemberService {
 		mapper.changePassword(dto);
 		return mapper.getEncodePassword(dto);
 	}
-	
-	@Override
-	public void findPasswordByEmail(MemberDto dto) {
-		Mail
-	}
+
 	@Override
 	public List<MemberDto> getMemberList(int user_status){
 		List<MemberDto> list = mapper.getMemberList(user_status);
