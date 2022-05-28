@@ -62,5 +62,16 @@
 		UPDATE user_info SET user_status = #{user_status} WHERE user_email = #{user_email}
 	</update>
 	
+	<delete id="addrDel">
+		delete from user_address where address_seq = #{address_seq}
+	</delete>
+	
+	<update id="setDKeyInit">
+		update user_address set d_key='n' where user_email = #{user_email}
+	</update>
+	
+	<update id ="setDKey">
+		update user_address set d_key='d' where address_seq = #{address_seq}
+	</update>
 	
 </mapper>

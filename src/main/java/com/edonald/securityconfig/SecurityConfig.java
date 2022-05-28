@@ -14,12 +14,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import com.edonald.exception.AccessDeniedController;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	SecurityUserDetailService userDetailService;
+
 	
 	@Autowired
 	@Qualifier("dataSource")
@@ -51,9 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.formLogin().loginPage("/ed/deliverHome")
 		.loginProcessingUrl("/ed/memberLogin.do")
-		.successHandler(new LoginSuccessHandler());
-		//http.exceptionHandling().accessDeniedPage("/system/accessDenied");
-		
+		.successHandler(new LoginSuccessHandler())
+		.failureHandler(new LoginFailHandler());
+	
+		http.exceptionHandling().accessDeniedPage("/error/accessDenied");
+	
 		http
 		.logout().logoutUrl("/ed/logout.do").invalidateHttpSession(true)
 		.deleteCookies("remember-me", "JSESSIONID")

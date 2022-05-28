@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -152,10 +153,44 @@ public class MemberController {
 		return "/delivery/mypage/addressBook";
 	}
 	@GetMapping("member/mypage/addressBook/delCheck")
-	public @ResponseBody ResponseEntity<String> addrDel() {
-		
+	public @ResponseBody ResponseEntity<String> addrDelCheck(Authentication authentication) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto member = user.getMemberDto();
+		List<AddressDto>addrList = member.getAddressList();
+		if(addrList.size() <= 1) {
+			return new ResponseEntity<String>("주소가 최소 하나있어야 합니다", HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 	
+	@DeleteMapping("/member/mypage/addressBook/addrDel")
+	public @ResponseBody ResponseEntity<List<AddressDto>>addrDel(@RequestParam int index, Authentication authentication){
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto member = user.getMemberDto();
+		List<AddressDto>addrList = member.getAddressList();
+		AddressDto addrDto = addrList.get(index);
+		int deladdrseq = addrDto.getAddress_seq();
+		addrList.remove(index);
+		user.getMemberDto().setAddressList(addrList);
+		memberService.delAddr(deladdrseq);
+		return new ResponseEntity<List<AddressDto>>(addrList, HttpStatus.OK);
+	}
+	
+	@GetMapping("/member/mypage/addressBook/setDKey")
+	public @ResponseBody ResponseEntity<String>setDKey(@RequestParam int index, Authentication authentication){
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		MemberDto member = user.getMemberDto();
+		List<AddressDto>addrList = member.getAddressList();
+		addrList.get(index).setD_key("d");
+		AddressDto addrDto = addrList.get(index);
+		int addrseq = addrDto.getAddress_seq();
+		memberService.setDKey(addrseq,member.getUser_email());
+		
+		user.getMemberDto().setDeliverAddress(addrDto);
+		user.getMemberDto().setAddressList(addrList);
+		
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
 	
 	
 	@ResponseBody

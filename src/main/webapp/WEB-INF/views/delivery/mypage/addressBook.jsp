@@ -19,22 +19,63 @@
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(doucument).on("click", ".addrDel", function(e){
-		e.prevnetDefault();
+	$(document).on("click", "#dkeyBtn", function(e){
+		e.preventDefault();
+		alert("해당 주소를 기본주소로 등록하겠습니까?");
+		var index = $(this).attr("href");
+		$.ajax({
+			type:"GET",
+			url:"/member/mypage/addressBook/setDKey?index="+index,
+			success:function(){
+				alert("해당 주소가 기본주소로 등록되었습니다.")
+			}
+		})
+	})
+	
+	
+	$(document).on("click", ".addrDel", function(e){
+		e.preventDefault();
 		var index = $(this).attr("href");
 		$.ajax({
 			type : "GET",
 			url : "/member/mypage/addressBook/delCheck",
 			success : function(){
-				
+				$.ajax({
+					type : "DELETE",
+					url : "/member/mypage/addressBook/addrDel?index="+index,
+					success : function(res){
+						var addrList = '';
+						$.each(res, function(index, item){
+							addrList += addrListView(item, index);
+							$("tbody").html(addrList);
+						})
+						
+					},
+					error : function(res){
+						alert(res.responseText);
+					}
+				})
 			},
-			error : function(){
-				
+			error : function(res){
+				alert(res.responseText);
 			}
 		})
 	})
 })
+
+function addrListView(item, index){
+	var addrList = "";
+	var num = parseInt(index) + 1;
+	addrList += '<tr><td class="address-number">'+num+'</td>'
+	addrList += '	<td class="address-details"><div>'+item.road_address+item.detail_address+'</div>';
+	addrList += '<div></div>	</td><td class="special-instructions">'+'<a href="'+index+'" type="button" id="dkeyBtn"><font size="2em" color="green">√ 기본주소로 등록하기</font></a></td>'
+	addrList += '</td><td class="controls">'
+	addrList += '<a class="text-gray-light addrDel"  href="'+index+'"  title="주소 삭제">×</a></td></tr>'
+	return addrList;
 	
+
+
+}
 </script>
 
 </head>
@@ -146,7 +187,7 @@ $(document).ready(function(){
 								<thead>
 									<tr>
 										<th scope="colgroup" colspan="2"><h3>주소</h3></th>
-										<th scope="col"><h3>배달 시 유의사항</h3></th>
+										<th scope="col"><h3></h3></th>
 										<th scope="col"></th>
 									</tr>
 
@@ -156,7 +197,7 @@ $(document).ready(function(){
 								<tfoot>
 									<tr>
 										<td colspan="4" class="actions"><a
-											class="btn btn-red btn-lg" href="/kr/address.html">새로운 주소
+											class="btn btn-red btn-lg" href="/member/addAddressPage">주소
 												추가</a></td>
 									</tr>
 								</tfoot>
@@ -164,15 +205,15 @@ $(document).ready(function(){
 									
 									<c:forEach items="${addrlist}" var="addr" varStatus="status">
 									<tr>
-										<td class="address-number">${status.index }</td>
+									
+										<td class="address-number">${status.index + '1'} </td>
+										
 										<td class="address-details">
-											<div>${addr.road_address } ${addr.detail_address }</div>
-
-											<div></div>
+											<div>${addr.road_address } ${addr.detail_address } </div>
 										</td>
-										<td class="special-instructions"></td>
+										<td class="special-instructions"><a href="${status.index }" type="button" id="dkeyBtn"><font size="2em" color="green">√ 기본주소로 등록하기</font></a></td>
 										<td class="controls"><a class="text-gray-light addrDel"
-											href="${status.index }" title="주소 삭제">×</a></td>
+											href="${status.index }" title="주소 삭제">×</a>  </td>
 									</tr>
 									</c:forEach>
 							

@@ -24,4 +24,7 @@ public interface MemberMapper {
 	public String getEncodePassword(MemberDto dto);
 	public List<MemberDto> getMemberList(int user_status);
 	public void activityMemberControl(MemberDto dto);
+	public void addrDel(int address_seq);
+	public void setDKeyInit(String user_email);
+	public void setDKey(int address_seq);
 }
