@@ -13,10 +13,30 @@
 <head>
 <meta charset="UTF-8">
 <title>addressBook</title>
-<link rel="stylesheet" href="kor/css/main.css">
-<link rel="stylesheet" href="kor/css/local.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/local.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(doucument).on("click", ".addrDel", function(e){
+		e.prevnetDefault();
+		var index = $(this).attr("href");
+		$.ajax({
+			type : "GET",
+			url : "/member/mypage/addressBook/delCheck",
+			success : function(){
+				
+			},
+			error : function(){
+				
+			}
+		})
+	})
+})
+	
+</script>
+
 </head>
 <body>
 	<div class="root">
@@ -137,43 +157,25 @@
 									<tr>
 										<td colspan="4" class="actions"><a
 											class="btn btn-red btn-lg" href="/kr/address.html">새로운 주소
-												추가</a> <a class="btn btn-red btn-lg" href="/kr/home.html">메인화면으로
-												이동</a></td>
+												추가</a></td>
 									</tr>
 								</tfoot>
 								<tbody>
+									
+									<c:forEach items="${addrlist}" var="addr" varStatus="status">
 									<tr>
-										<td class="address-number">1</td>
+										<td class="address-number">${status.index }</td>
 										<td class="address-details">
-											<div>서울특별시 강북구 미아동 791-961 4층</div>
+											<div>${addr.road_address } ${addr.detail_address }</div>
 
 											<div></div>
 										</td>
 										<td class="special-instructions"></td>
-										<td class="controls"><a class="text-gray-light"
-											href="/kr/address.html?addressType=1" title="주소 변경하기"><i
-												class="fa mcd mcd-edit icon"></i></a></td>
+										<td class="controls"><a class="text-gray-light addrDel"
+											href="${status.index }" title="주소 삭제">×</a></td>
 									</tr>
-									<!-- <tr>
-						<td class="address-number">1</td>
-						<td class="address-details">
-							<div>Address Line 1</div>
-							<div>Address Line 2</div>
-							<div>Address Line 3</div>
-						</td>
-						<td class="special-instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quidem vitae mollitia commodi corporis suscipit esse laboriosam blanditiis labore minus.</td>
-						<td class="controls"><a href="/index.php?r=site/page&amp;view=account-edit-address" class="text-gray-light"><i class="fa mcd mcd-edit icon"></i></a> <a href="" class="text-gray-light"><i class="fa mcd mcd-remove icon"></i></a></td>
-					</tr>
-					<tr>
-						<td class="address-number">2</td>
-						<td class="address-details">
-							<div>Address Line 1</div>
-							<div>Address Line 2</div>
-							<div>Address Line 3</div>
-						</td>
-						<td class="special-instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quidem vitae mollitia commodi corporis suscipit esse laboriosam blanditiis labore minus.</td>
-						<td class="controls"><a href="/index.php?r=site/page&amp;view=account-edit-address" class="text-gray-light"><i class="fa mcd mcd-edit icon"></i></a> <a href="" class="text-gray-light"><i class="fa mcd mcd-remove icon"></i></a></td>
-					</tr> -->
+									</c:forEach>
+							
 								</tbody>
 							</table>
 						</div>
@@ -186,11 +188,14 @@
 			<div class="footer-disclaimer">
 				<div class="container">
 					<div class="text-center">
+						<span>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br>
 						한국맥도날드(유) | 대표자: 앤토니 마티네즈 | 서울특별시 종로구 종로 51 종로타워 14층 | 전화번호:
 						1600-5252 | 사업자등록번호: 101-81-26409 | 호스팅서비스 제공자: 아마존 웹 서비스 <br>
 						<br>공정위 사업자 링크 정보: <a
 							href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=1018126409"
 							target="_blank">한국맥도날드(유)</a>
+							</span>
 					</div>
 					<div class="text-center text-ucase">Copyright © 2014 All
 						Rights Reserved By McDonald's™</div>

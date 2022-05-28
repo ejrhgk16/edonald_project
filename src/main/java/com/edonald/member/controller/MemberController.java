@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -140,9 +142,18 @@ public class MemberController {
 	public String joinFindAdress2() {		
 		return "/delivery/mypage/changeUserPassword";
 	}
+	
 	@GetMapping("/member/mypage/addressBook")
-	public String addressBook() {
+	public String addressBook(Authentication authentication, Model model) {
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		MemberDto member = user.getMemberDto();
+		List<AddressDto>addrlist = member.getAddressList();
+		model.addAttribute("addrlist", addrlist);
 		return "/delivery/mypage/addressBook";
+	}
+	@GetMapping("member/mypage/addressBook/delCheck")
+	public @ResponseBody ResponseEntity<String> addrDel() {
+		
 	}
 	
 	
@@ -181,6 +192,8 @@ public class MemberController {
 			return result;
 		}
 	}
+	
+
 	
 
 }
