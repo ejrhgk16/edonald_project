@@ -229,10 +229,8 @@ function addMenu(setCheck){
 							</div>
 
 						</div>
-						<button type="button" class="close action-cancel"
-							aria-hidden="true">
-							<i class="mcd icon mcd-close"></i>
-						</button>
+				
+				
 					</div>
 				</div>
 			</div>
@@ -277,8 +275,7 @@ function addMenu(setCheck){
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
 															data-content-selector=".popover-details"
-															data-original-title="" title=""> <i
-																class="mcd icon mcd-allergen"></i>
+															data-original-title="" title="">
 														</a>
 															<div class="popover-details">
 																<div class="popover-wrapper type-sans">
@@ -317,8 +314,7 @@ function addMenu(setCheck){
 					<div class="media">
 						<div class="media-left">
 							<a href="#"
-								class="h5 text-default text-ucase btn-back action-cancel"><i
-								class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
+								class="h5 text-default text-ucase btn-back action-cancel">√메뉴로 돌아가기</a>
 						</div>
 						<div class="media-body">
 							<div id="cost-section" class="clearfix"></div>
@@ -344,7 +340,7 @@ function addMenu(setCheck){
 							</form>
 							<button id="cartAddBtn"
 								class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder">
-								<i class="mcd icon mcd-bag"></i> 카트에 추가
+							카트에 추가
 							</button>
 						</div>
 					</div>
@@ -369,7 +365,7 @@ function addMenu(setCheck){
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
+											
 											</button>
 										</div>
 										<div class="modal-body">
@@ -428,7 +424,7 @@ function addMenu(setCheck){
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
+												
 											</button>
 										</div>
 										<div class="modal-body">
@@ -488,7 +484,7 @@ function addMenu(setCheck){
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
+											
 											</button>
 										</div>
 										<div class="modal-body">
@@ -545,10 +541,7 @@ function addMenu(setCheck){
 									<div class="modal-content">
 										<div class="modal-header">
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
-											</button>
+							
 										</div>
 										<div class="modal-body">
 											<div class="media">

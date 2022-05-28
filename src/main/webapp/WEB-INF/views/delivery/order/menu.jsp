@@ -200,10 +200,6 @@ function addMenu(setCheck){
 							</div>
 
 						</div>
-						<button type="button" class="close action-cancel"
-							aria-hidden="true">
-							<i class="mcd icon mcd-close"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -328,7 +324,7 @@ function addMenu(setCheck){
 															</div>
 
 													</span> &nbsp; <span class="calories-column__nutrition-info">
-															${menuDto.kcal} </span></td>
+															${menuDto.kcal} Kcal </span></td>
 
 
 												</tr>
@@ -356,9 +352,8 @@ function addMenu(setCheck){
 				<div class="container">
 					<div class="media">
 						<div class="media-left">
-							<a href="#"
-								class="h5 text-default text-ucase btn-back action-cancel"><i
-								class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
+							<a href="/ed/menuPage"
+								class="h5 text-default text-ucase btn-back action-cancel">√ 메뉴로 돌아가기</a>
 						</div>
 						<div class="media-body">
 							<div id="cost-section" class="clearfix"></div>
@@ -404,10 +399,7 @@ function addMenu(setCheck){
 									<div class="modal-content">
 										<div class="modal-header">
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
-											</button>
+				
 										</div>
 										<div class="modal-body">
 											<div class="media">
@@ -463,10 +455,7 @@ function addMenu(setCheck){
 									<div class="modal-content">
 										<div class="modal-header">
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
-											</button>
+									
 										</div>
 										<div class="modal-body">
 											<div class="media">

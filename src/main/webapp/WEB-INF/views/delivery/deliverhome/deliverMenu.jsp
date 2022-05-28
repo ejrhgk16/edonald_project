@@ -15,6 +15,13 @@
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$(document).on("click", ".action-edit-address", function(e){
+			e.preventDefault();
+			alert("주소를 변경하시면 장바구니가 초기화 됩니다");
+			location.href = "/ed/deliverHome"
+		})
+		
+		
 		
 		$(document).on("click", "#order-widget-submit", function(e){
 			e.preventDefault();
@@ -113,52 +120,29 @@
 <title>Menu</title>
 <meta name="keywords" content="Menu">
 <meta name="description" content="Menu desc">
-
-
-
 <link rel="stylesheet" href="/resources/css/main.css">
-<!--[if lte IE 9]>
-				<link rel="stylesheet" href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/00/css/main-2.css" />
-		<![endif]-->
 
 
 <link rel="stylesheet" href="/resources/css/local.css">
 
 </head>
 <body class="country-82 lang-ko page-menu">
-${orderListDto.store_code }
 	<div class="root">
 		<div class="wrap container">
 			<div class="global-header">
-				<script>	
-			/*<![CDATA[*/ 	
-				window.WOSPageVars = {	
-	            	'DURATION_OF_GDPR_DAY': 365	
-	            };
-				     		        
-				
-			/*]]>*/	
-			</script>
-				<!-- Begin Cookies Wrap -->
 
-				<!-- End Cookies Wrap -->
 				<div class="header-actions row">
 					<div class="language-selector">
-						<ul class="list-inline list-inline-divide">
-							<li class="list-item selected"><a class="list-item-target"
-								href="?locale=ko">한국어 <i class="fa fa-caret-left icon"></i></a>
-								<!-- --></li>
-							<li class="list-item"><a class="list-item-target"
-								href="?locale=en">English <i class="fa fa-caret-left icon"></i></a></li>
-						</ul>
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
+
 							<c:choose>
 								<c:when test="${empty principal.username }">
 									<li class="list-item"><img
 										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 										alt="Profile" width="20" class="profile-grey-avator"></li>
+
 									<li class="list-item" id="loginText"><a
 										href="/ed/deliverHome">로그인</a></li>
 								</c:when>
@@ -175,13 +159,12 @@ ${orderListDto.store_code }
 								class="list-item-target track-order-flag" href="#signin"
 								data-toggle="modal" data-target="#signin">주문 조회</a></li>
 
-
 						</ul>
 					</div>
 				</div>
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
-						<a class="navbar-brand wos-brand" href=""> <img
+						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
 							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
 							alt="McDelivery&amp;trade;">
 
@@ -191,123 +174,34 @@ ${orderListDto.store_code }
 						<ul class="nav navbar-nav">
 
 							<li class="menu-item menu-item-menu selected"><a
-								class="menu-item-target" href="/kr/menu.html"> <i
-									class="fa mcd mcd-burger icon"></i> 메뉴
+								class="menu-item-target" href="/ed/menuPage"> 메뉴
 							</a></li>
+
 
 							<li class="menu-item menu-item-account dropdown"><a
 								class="menu-item-target dropdown-toggle" href="#signin"
-								data-toggle="modal" data-target="#signin"> <i
-									class="fa fa-user icon"></i> 마이 페이지
+								data-toggle="modal" data-target="#signin">마이 페이지
 							</a></li>
 
 							<li class="menu-item menu-item-support dropdown "><a
 								class="menu-item-target dropdown-toggle" href="#"
-								data-toggle="dropdown"> <i class="fa fa-phone icon"></i>
-									기타정보<span class="caret"></span></a>
+								data-toggle="dropdown" aria-expanded="false">  기타정보<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="" target="_self">이용약관</a>
-
-									</li>
+										class="dropdown-menu-item-target" href="/ed/ect/useInfo" target="_self">이용약관</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="" target="_self">개인정보
+										class="dropdown-menu-item-target" href="/ed/ect/userInfo" target="_self">개인정보
 											처리방침</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="" target="_self">자주
+										class="dropdown-menu-item-target" href="/ed/ect/question" target="_self">자주
 											묻는 질문</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="http://www.mcdonalds.co.kr/kor/news/detail.do?page=1&amp;seq=517&amp;rnum=1&amp;temp_seq=&amp;searchWord="
-										target="_blank">과일 칠러 판매 제외 매장</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="http://www.mcdonalds.co.kr/uploadFolder/page/p_menu.jsp?staticLinkId=17&amp;locale=ko"
-										target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="https://www.mcdelivery.co.kr/m/kr/changeSkin.html?skin=mobile"
-										target="_self">모바일 웹</a></li>
-
-
 								</ul></li>
 
 						</ul>
 					</div>
 				</div>
 
-				<div
-					class="alert alert-warning alert-dismissable inline-alert type-flama hidden alert-menuswitch-timeout"
-					data-dismiss-trigger="wos.menuswitch.warning1.closed">
-					<button type="button" class="close" data-hide="inline-alert"
-						aria-hidden="true">
-						<i class="fa mcd mcd-close"></i>
-					</button>
-					<p>
-						<i class="fa fa-exclamation text-white icon"></i> <span><span
-							class="text-primary timer menuswitch-timer"></span> 분 후 아침 메뉴
-							주문으로 전환됩니다. 주문을 완료해 주세요.</span>
-					</p>
-				</div>
 
-
-				<!-- Start of Session time out warning -->
-
-				<!-- End of Session time out warning -->
-				<!-- [countdownmenuswitchtimer.modal] -->
-				<div id="countdownmenuswitchtimer" data-alert-type="modal"
-					data-backdrop="static" data-keyboard="false"
-					class="modal-countdownmenuswitchtimer modal-alert alert-menuswitch-timeout modal-alert modal fade"
-					role="dialog" aria-labelledby="countdownmenuswitchtimer-title"
-					aria-hidden="true" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header"></div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-xs-3 timer-wrapper">
-										<div class="time-disclaimer">메뉴 변경 시간까지...</div>
-										<div class="time timer text-din timer-clock menuswitch-timer"></div>
-										<div class="time-disclaimer"></div>
-									</div>
-									<div class="col-xs-8 timer-wrapper">
-										<div class="alert-content text-left">
-											<h1 id="countdownmenuswitchtimer-title">곧 메뉴가 변경됩니다!</h1>
-											<p>곧 아침 메뉴로 전환됩니다. 제한 시간 내에 주문을 완료해 주세요.</p>
-											<p>
-												<button type="button"
-													data-dismiss-trigger="menuswitch.action.ok"
-													aria-hidden="true" class="btn btn-red btn-lg text-ucase">확인</button>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- [/countdownmenuswitchtimer.modal] -->
-
-				<!-- <div th:fragment="modals"> -->
-				<!-- [deliveryhoursavailability.modal] -->
-				<div data-alert-type="modal" data-backdrop="static"
-					data-keyboard="false"
-					class="modal-countdownstoreclosetimer modal-countdowntimer modal-alert modal fade"
-					role="dialog" aria-labelledby="countdowntimer-title"
-					aria-hidden="true" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">
-									<i class="fa mcd mcd-close"></i>
-								</button>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<!-- [/deliveryhoursavailability.modal] -->
 
 			</div>
 			<div class="main">
@@ -319,46 +213,41 @@ ${orderListDto.store_code }
 
 									<li class="primary-menu-item selected"><a
 										class="primary-menu-item-target" href="?daypartId=1"><span>일반
-												메뉴</span><i class="fa fa-angle-right"></i></a>
+												메뉴</span></a>
 										<ul class="secondary-menu">
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target" href="#"
-												data-value="package"><i class="fa fa-circle"></i> <span>패키지
+												data-value="package"><span>패키지
 														메뉴</span></a></li>
 											<li class="secondary-menu-item selected"><a
 												class="secondary-menu-item-target" href="#"
-												data-value="burger"><i class="fa fa-circle"></i> <span>버거
+												data-value="burger"><span>버거
 														&amp; 세트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=13" data-value="side"><i
-													class="fa fa-circle"></i> <span>스낵 &amp; 사이드</span></a></li>
+												href="?daypartId=1&amp;catId=13" data-value="side"> <span>스낵 &amp; 사이드</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=14" data-value="drink"><i
-													class="fa fa-circle"></i> <span>음료</span></a></li>
+												href="?daypartId=1&amp;catId=14" data-value="drink"> <span>음료</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=15" data-value="dessert"><i
-													class="fa fa-circle"></i> <span>디저트</span></a></li>
+												href="?daypartId=1&amp;catId=15" data-value="dessert"> <span>디저트</span></a></li>
 											<li class="secondary-menu-item "><a
 												class="secondary-menu-item-target"
-												href="?daypartId=1&amp;catId=16" data-value="happymeal"><i
-													class="fa fa-circle"></i> <span>해피밀®</span></a></li>
+												href="?daypartId=1&amp;catId=16" data-value="happymeal"><span>해피밀®</span></a></li>
 
 										</ul></li>
 
 									<li class="primary-menu-item"><a
 										class="primary-menu-item-target" href="?daypartId=2"><span>아침
-												메뉴</span><i class="fa fa-angle-right"></i></a></li>
+												메뉴</span></a></li>
 
 								</ul>
 							</div>
 							<a href="#menu-availability" class="h5 text-link"
 								data-toggle="html-popover" data-container="body"
 								data-html="true" data-content-selector="#menu-availability"
-								data-placement="right" data-original-title="" title=""><i
-								class="mcd icon mcd-detail"></i> <span class="text-default">메뉴
+								data-placement="right" data-original-title="" title="">√ <span >메뉴
 									주문 시간</span></a>
 							<div id="menu-availability"
 								class="popover-wrapper popover-details">
@@ -399,9 +288,6 @@ ${orderListDto.store_code }
 						<div class="clearfix">
 							<div class="page-breadcrumbs pull-left">
 								<ol class="breadcrumb type-sans">
-									<li><a href="">메뉴</a></li>
-
-									<li class="active">추천 메뉴</li>
 
 								</ol>
 							</div>
@@ -514,7 +400,7 @@ ${orderListDto.store_code }
 											<div class="panel panel-basic panel-narrow">
 												<div class="panel-section-group">
 													<section class="panel-section how-it-works">
-														<a href="#signin" data-toggle="modal"
+														<a href="/ed/deliverHome" data-toggle="modal"
 															data-target="#signin"><img
 															src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/how_mcdelivery_works_portrait_ko.png"></a>
 													</section>
@@ -653,79 +539,7 @@ ${orderListDto.store_code }
 		</div>
 
 
-		<div class="global-footer">
-			<div class="footer-nav">
-				<div class="container">
-					<div class="row">
-
-						<div class="column">
-							<h3 class="list-group-title">메뉴</h3>
-							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=10">추천 메뉴</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=11">버거 &amp; 세트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=13">스낵 &amp; 사이드</a>
-								</li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=14">음료</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=15">디저트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=16">해피밀®</a></li>
-								<li><a class="menu-item-target" target="_blank"
-									href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/82/mcdelivery_menu_82_ko.pdf">메뉴
-										다운로드</a></li>
-							</ul>
-						</div>
-
-
-
-
-						<div class="column">
-							<h3 class="list-group-title">기타정보</h3>
-							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_self">이용약관</a></li>
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_self">개인정보 처리방침</a></li>
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_self">자주 묻는 질문</a></li>
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_blank">과일 칠러 판매 제외 매장</a></li>
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-								<li class="menu-item"><a class="menu-item-target" href=""
-									target="_self">모바일 웹</a></li>
-							</ul>
-						</div>
-
-						<div class="column">
-							<h3 class="list-group-title">팔로우</h3>
-							<ul class="list-unstyled">
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon fb"
-									href="https://www.facebook.com/McDonaldsKorea" target="_blank">페이스북</a>
-								</li>
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon in"
-									href="https://instagram.com/McDonalds_kr" target="_blank">인스타그램</a>
-								</li>
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon yt"
-									href="https://www.youtube.com/user/McDonaldsKor"
-									target="_blank">유튜브</a></li>
-
-							</ul>
-						</div>
-
-					</div>
-				</div>
-			</div>
+		
 			<div class="footer-disclaimer">
 				<div class="container">
 					<div class="text-center">

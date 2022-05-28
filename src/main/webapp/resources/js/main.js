@@ -1,4 +1,9 @@
 $(document).ready(function() {
+	
+	$(".navbar-header").on("click", function(e){
+		e.preventDefault();
+		location.href="/ed/deliverHome"
+	})
 
 	$(".menu-item-menu").on("click", function(e) {
 		e.preventDefault();
@@ -43,17 +48,31 @@ $(document).ready(function() {
 				window.location.href = "/order/search/trackorder?merchanuid=" + merchanuid;
 			},
 			error: function(res) {
-				console.log(res);
-				alert(res);
+				alert(res.responseText);
 			}
 		})
 	})
+	$(".track-order-flag").on("click",function(e){
+		e.preventDefault();
+		var merchanuid = prompt('주문번호를 입력하세요');
+		console.log(merchanuid);
+		$.ajax({
+			type: "GET",
+			url: "/order/search/check?merchanuid=" + merchanuid,
+			success: function() {
+				window.location.href = "/order/search/trackorder?merchanuid=" + merchanuid;
+			},
+			error: function(res) {
+				alert(res.responseText);
+			}
+		})
+	} )
 
 
 
 	//상단 메뉴
 
-	$('.menu-item.dropdown').on("click", function() {
+	$('.menu-item-support').on("click", function() {
 		if ($(this).attr("class") == "menu-item menu-item-support dropdown open") {
 			$(this).attr("class", "menu-item menu-item-support dropdown");
 			$(this).attr("aria-expanded", "false");
@@ -66,8 +85,18 @@ $(document).ready(function() {
 		}
 	});
 	$(".menu-item.menu-item-account.dropdown").on("click", function(e) {
-		//로그인 안되어있을시
-		noLogin();
+		e.preventDefault();
+		$.ajax({
+			url : "/ed/logincheck",
+			type : "get",
+			success : function(){
+				location.href="/member/mypage/trackOrder";
+			},
+			error : function(){
+				alert("로그인을 해주세요");
+
+			}
+		})
 	});
 	$(".how-it-works.home-section").children("p").on("click", function(e) {
 		e.preventDefault();
@@ -148,7 +177,8 @@ $(document).ready(function() {
 
 
 	//메뉴화면 알레르기 text 펼치기
-	$(document).on('click', ".text-default", function() {
+	$(document).on('click', ".al", function(e) {
+		e.preventDefault();
 		$('html').one('click', function() {
 			$('.popover.fade.bottom.in').remove();
 		})

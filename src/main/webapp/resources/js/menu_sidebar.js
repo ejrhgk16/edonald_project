@@ -135,10 +135,9 @@ $(document).ready(function() {
 		if ($(".popover.fade.right.in").attr("style") != "") {
 			$(".popover.fade.right.in").attr("style", "");
 		}
-		var end = $(document).height() - $(".footer-disclaimer").height() - 100;
+		var end = $(document).height() - $(".footer-disclaimer").height() + 100;
 		var position = $(document).scrollTop() + $(window).innerHeight()
 		if (position >= end) {
-			console.log("checkccc!!!!!!!!!!!bbbb");
 			$(".sidebar-menu").attr("class", "sidebar-menu sticky-bottom sticking");
 		} else if ($(document).scrollTop() >= 100) {
 			$(".sidebar-menu").attr("class", "sidebar-menu sticky-top sticking");
@@ -174,8 +173,8 @@ function menuRequest(type, daypartId){
 				html += "가격 ₩ <span class=\"starting-price\">"+price+"</span></div>";
 				html += "<div class=\"product-nutritional-info\"><span class=\"text-default\">"+item.kcal+" Kcal</span></div>";
 				html += "<div class=\"product-allergen-info\"><div>";
-				html += "<a href=\"#\" class=\"action-link\" data-toggle=\"html-popover\" data-placement=\"bottom\" data-html=\"true\" data-content-selector=\".popover-details\" data-original-title=\"\" title=\"\">";
-				html += "<i class=\"mcd icon mcd-allergen\"></i><span class=\"text-default\">알레르기 정보</span></a>";
+				html += "<a href=\"#\"  >";
+				html += "<span class=\"text-default al\">√알레르기 정보</span></a>";
 				html += "<div class=\"popover-details\"><div class=\"popover-wrapper type-sans\"><h4>"+item.name+"</h4>";
 				html += "<div>"+item.name+" "+item.allergy+"</div></div></div></div></div></div></div>";
 				html += "<div class=\"product-controls\">";	

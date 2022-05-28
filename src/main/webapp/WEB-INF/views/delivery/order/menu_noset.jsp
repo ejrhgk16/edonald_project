@@ -17,6 +17,7 @@ $(document).ready(function(){
 		//처음 화면에서
 	$(document).on("click", "input[name=select-choice]", function(){
 		var setCheck = $(this).parent().parent().attr("class");
+		console.log(setCheck);
 		if($(".menuSelect").html() != null){
 			$(".menuSelect").remove();
 			addMenu(setCheck);
@@ -57,7 +58,6 @@ $(document).ready(function(){
 });	
 
 function addMenu(sizeCheck){
-	console.log(sizeCheck);
 	if(sizeCheck == 'small'){
 		$('input[name=cart_product_price]').val("${menuDto.s_price}");
 	}else if(sizeCheck == 'medium'){
@@ -76,6 +76,8 @@ function addMenu(sizeCheck){
 		if(menu_type == 'drink'){
 		html = html + '<div class="header-title-column" align="center"><h3 class="item-title">'+ sizeCheck+ '</h3></div><br>'+btnHtml+'</div>' 
 		$('input[name=comp_type]').val(sizeCheck);
+		}else{
+			html += btnHtml + '</div>'
 		}
 		$("#added-sets").append(html);
 	}
@@ -109,10 +111,6 @@ function addMenu(sizeCheck){
 							</div>
 
 						</div>
-						<button type="button" class="close action-cancel"
-							aria-hidden="true">
-							<i class="mcd icon mcd-close"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -158,8 +156,7 @@ function addMenu(sizeCheck){
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
 															data-content-selector=".popover-details"
-															data-original-title="" title=""> <i
-																class="mcd icon mcd-allergen"></i>
+															data-original-title="" title=""> 
 														</a>
 															<div class="popover-details">
 																<div class="popover-wrapper type-sans">
@@ -199,8 +196,7 @@ function addMenu(sizeCheck){
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
 															data-content-selector=".popover-details"
-															data-original-title="" title=""><i
-																class="mcd icon mcd-allergen"></i> </a>
+															data-original-title="" title=""></a>
 															<div class="popover-details">
 																<div class="popover-wrapper type-sans">
 																	<h4>아라비아따 리코타 치킨 버거</h4>
@@ -232,8 +228,7 @@ function addMenu(sizeCheck){
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
 															data-content-selector=".popover-details"
-															data-original-title="" title=""><i
-																class="mcd icon mcd-allergen"></i> </a>
+															data-original-title="" title=""></a>
 															<div class="popover-details">
 																<div class="popover-wrapper type-sans">
 																	<h4>아라비아따 리코타 치킨 버거</h4>
@@ -271,9 +266,8 @@ function addMenu(sizeCheck){
 				<div class="container">
 					<div class="media">
 						<div class="media-left">
-							<a href="#"
-								class="h5 text-default text-ucase btn-back action-cancel"><i
-								class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
+							<a href="/ed/menuPage"
+								class="h5 text-default text-ucase btn-back action-cancel">√ 메뉴로 돌아가기</a>
 						</div>
 						<div class="media-body">
 							<div id="cost-section" class="clearfix"></div>
@@ -296,7 +290,7 @@ function addMenu(sizeCheck){
 							</form>
 							<button id="cartAddBtn"
 								class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder">
-								<i class="mcd icon mcd-bag"></i> 카트에 추가
+								 카트에 추가
 							</button>
 						</div>
 					</div>

@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,7 +63,7 @@ public class DeliverController {
 	
 
 	@GetMapping("/ed/menuPage")
-	public String menuPage(Authentication authentication, HttpSession session) {
+	public String menuPage(Authentication authentication, HttpSession session, Model model, @RequestParam(value="backtype", required = false)String backtype ) {
 		if(authentication != null && session.getAttribute("orderListDto") == null) {
 			 SecurityUser user = (SecurityUser)authentication.getPrincipal();
 			 MemberDto memberDto = user.getMemberDto();
@@ -103,8 +104,8 @@ public class DeliverController {
 				orderListDto.setPostcode(noLoginMemberDto.getDeliverAddress().getPostcode());
 				session.setAttribute("orderListDto", orderListDto);
 		}
-		
-		
+		System.out.println("backtype" + backtype);
+		model.addAttribute("backtype", backtype);
 		return "/delivery/deliverhome/deliverMenu";
 	}
 	
@@ -177,10 +178,25 @@ public class DeliverController {
 	@GetMapping("/ed/logincheck")
 	public @ResponseBody  ResponseEntity<String>checkStatus(Authentication authentication){
 		if(authentication == null) {
-			return new ResponseEntity<String>("로그인 해주세요", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("로그인 해주세요", HttpStatus.BAD_REQUEST); 
 		}else {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping("/ed/ect/question")
+	public String question() {
+		return "/delivery/info/question";
+	}
+	
+	@GetMapping("/ed/ect/useInfo")
+	public String useInfo() {
+		return "/delivery/info/useInfo";
+	}
+	
+	@GetMapping("/ed/ect/userInfo")
+	public String userInfo() {
+		return "/delivery/info/userInfo";
 	}
 	
 

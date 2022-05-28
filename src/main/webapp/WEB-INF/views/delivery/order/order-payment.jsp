@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
+<script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script type="text/javascript" src="/resources/js/order.js"></script>
@@ -92,35 +93,19 @@
 	<div class="root">
 		<div class="wrap container">
 			<div class="global-header">
-				<script>	
-			/*<![CDATA[*/ 	
-				window.WOSPageVars = {	
-	            	'DURATION_OF_GDPR_DAY': 365	
-	            };
-				     		        
-				
-			/*]]>*/	
-			</script>
-				<!-- Begin Cookies Wrap -->
 
-				<!-- End Cookies Wrap -->
 				<div class="header-actions row">
 					<div class="language-selector">
-						<ul class="list-inline list-inline-divide">
-							<li class="list-item selected"><a class="list-item-target"
-								href="?locale=ko">한국어 <i class="fa fa-caret-left icon"></i></a>
-								<!-- --></li>
-							<li class="list-item"><a class="list-item-target"
-								href="?locale=en">English <i class="fa fa-caret-left icon"></i></a></li>
-						</ul>
 					</div>
 					<div class="my-account-quicklinks">
 						<ul class="list-inline list-inline-divide">
+
 							<c:choose>
 								<c:when test="${empty principal.username }">
 									<li class="list-item"><img
 										src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/icon_profile_gray.png"
 										alt="Profile" width="20" class="profile-grey-avator"></li>
+
 									<li class="list-item" id="loginText"><a
 										href="/ed/deliverHome">로그인</a></li>
 								</c:when>
@@ -133,13 +118,17 @@
 								</c:otherwise>
 							</c:choose>
 
+							<li class="list-item"><a
+								class="list-item-target track-order-flag" href="#signin"
+								data-toggle="modal" data-target="#signin">주문 조회</a></li>
+
 						</ul>
 					</div>
 				</div>
 				<div class="global-navbar navbar navbar-default" role="navigation">
 					<div class="navbar-header">
-						<a class="navbar-brand wos-brand" href="/kr/home.html"> <img
-							src="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/82/img/mcdelivery_logo_ko.jpg"
+						<a class="navbar-brand wos-brand" href=""> <img
+							src="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/mcdelivery_logo_ko.jpg"
 							alt="McDelivery&amp;trade;">
 
 						</a>
@@ -148,65 +137,27 @@
 						<ul class="nav navbar-nav">
 
 							<li class="menu-item menu-item-menu"><a
-								class="menu-item-target" href="/kr/menu.html"> <i
-									class="fa mcd mcd-burger icon"></i> 메뉴
+								class="menu-item-target" href="/ed/menuPage"> 메뉴
 							</a></li>
 
+
 							<li class="menu-item menu-item-account dropdown"><a
-								class="menu-item-target dropdown-toggle" href=""
-								data-toggle="dropdown"> <i class="fa fa-user icon"></i> 마이
-									페이지 <span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="#trackOrder"
-										data-toggle="modal">주문 조회</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="/kr/account-order-history.html">주문 내역</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="/kr/account-favourites.html">즐겨찾기 메뉴</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="/kr/addressBook.html">주소록</a>
-									</li>
-
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target" href="/kr/editProfile.html">계정
-											설정</a></li>
-
-								</ul></li>
-
+								class="menu-item-target dropdown-toggle" href="#signin"
+								data-toggle="modal" data-target="#signin">마이 페이지
+							</a></li>
 
 							<li class="menu-item menu-item-support dropdown "><a
-								class="menu-item-target dropdown-toggle" href=""
-								data-toggle="dropdown"> <i class="fa fa-phone icon"></i>
-									기타정보<span class="caret"></span></a>
+								class="menu-item-target dropdown-toggle" href="#"
+								data-toggle="dropdown" aria-expanded="false">  기타정보<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="https://www.mcdelivery.co.kr/kr/support-tnc.html?staticLinkId=7&amp;locale=ko"
-										target="_self">이용약관</a></li>
+										class="dropdown-menu-item-target" href="/ed/ect/useInfo" target="_self">이용약관</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="https://www.mcdelivery.co.kr/kr/support-privacy.html?locale=ko"
-										target="_self">개인정보 처리방침</a></li>
+										class="dropdown-menu-item-target" href="/ed/ect/userInfo" target="_self">개인정보
+											처리방침</a></li>
 									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="https://www.mcdelivery.co.kr/kr/support-faq.html?staticLinkId=10&amp;locale=ko"
-										target="_self">자주 묻는 질문</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="http://www.mcdonalds.co.kr/kor/news/detail.do?page=1&amp;seq=517&amp;rnum=1&amp;temp_seq=&amp;searchWord="
-										target="_blank">과일 칠러 판매 제외 매장</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="http://www.mcdonalds.co.kr/uploadFolder/page/p_menu.jsp?staticLinkId=17&amp;locale=ko"
-										target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-									<li class="dropdown-menu-item"><a
-										class="dropdown-menu-item-target"
-										href="https://www.mcdelivery.co.kr/m/kr/changeSkin.html?skin=mobile"
-										target="_self">모바일 웹</a></li>
+										class="dropdown-menu-item-target" href="/ed/ect/question" target="_self">자주
+											묻는 질문</a></li>
 								</ul></li>
 
 						</ul>
@@ -214,7 +165,9 @@
 				</div>
 
 
+
 			</div>
+			
 			<div class="main" role="main">
 
 				<div class="clearfix">
@@ -455,9 +408,8 @@
 											</div>
 
 											<div class="form-group">
-												<a href="./order-review-confirmation.html"
-													class="action-secondary action-link "><i
-													class="fa fa-caret-right"></i> &nbsp; <span>주문 재확인</span></a>
+												<a href="/order/orderCheck"
+													class="action-secondary action-link ">&nbsp; <span>√ 주문 재확인</span></a>
 											</div>
 										</fieldset>
 									</section>
@@ -491,121 +443,7 @@
 			</div>
 		</div>
 		<div class="global-footer">
-			<div class="footer-nav">
-				<div class="container">
-					<div class="row">
-
-
-
-						<div class="column">
-							<h3 class="list-group-title">메뉴</h3>
-							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=10">추천 메뉴</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=11">버거 &amp; 세트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=13">스낵 &amp; 사이드</a>
-								</li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=14">음료</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=15">디저트</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/menu.html?daypartId=1&amp;catId=16">해피밀®</a></li>
-								<li><a class="menu-item-target" target="_blank"
-									href="https://www.mcdelivery.co.kr/kr//static/1646703884037/assets/82/mcdelivery_menu_82_ko.pdf">메뉴
-										다운로드</a></li>
-							</ul>
-						</div>
-
-
-						<div class="column">
-							<h3 class="list-group-title">마이 페이지</h3>
-
-
-
-
-
-							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="#trackOrder" data-toggle="modal">주문 조회</a></li>
-
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/account-order-history.html">주문 내역</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/account-favourites.html">즐겨찾기 메뉴</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/addressBook.html">주소록</a></li>
-
-								<li class="menu-item"><a class="menu-item-target"
-									href="/kr/editProfile.html">계정 설정</a></li>
-
-							</ul>
-
-
-						</div>
-
-						<div class="column">
-							<h3 class="list-group-title">기타정보</h3>
-							<ul class="list-unstyled">
-								<li class="menu-item"><a class="menu-item-target"
-									href="https://www.mcdelivery.co.kr/kr/support-tnc.html?staticLinkId=7&amp;locale=ko"
-									target="_self">이용약관</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="https://www.mcdelivery.co.kr/kr/support-privacy.html?locale=ko&amp;locale=ko"
-									target="_self">개인정보 처리방침</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="https://www.mcdelivery.co.kr/kr/support-faq.html?staticLinkId=10&amp;locale=ko"
-									target="_self">자주 묻는 질문</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="http://www.mcdonalds.co.kr/kor/news/detail.do?page=1&amp;seq=517&amp;rnum=1&amp;temp_seq=&amp;searchWord=&amp;locale=ko"
-									target="_blank">과일 칠러 판매 제외 매장</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="http://www.mcdonalds.co.kr/uploadFolder/page/p_menu.jsp?staticLinkId=17&amp;locale=ko"
-									target="_blank">영양정보/원산지 정보/기타 정보</a></li>
-								<li class="menu-item"><a class="menu-item-target"
-									href="https://www.mcdelivery.co.kr/m/kr/changeSkin.html?skin=mobile&amp;locale=ko"
-									target="_self">모바일 웹</a></li>
-							</ul>
-						</div>
-
-						<div class="column">
-							<h3 class="list-group-title">팔로우</h3>
-							<ul class="list-unstyled">
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon fb"
-									href="https://www.facebook.com/McDonaldsKorea" target="_blank">페이스북</a>
-								</li>
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon in"
-									href="https://instagram.com/McDonalds_kr" target="_blank">인스타그램</a>
-								</li>
-
-								<li class="menu-item"><a
-									class="menu-item-target footer-icon yt"
-									href="https://www.youtube.com/user/McDonaldsKor"
-									target="_blank">유튜브</a></li>
-
-							</ul>
-						</div>
-
-						<!-- <div class="column col-xs-4">
-						<h3>Stay in touch with us!</h3>
-						<form class="signup-form form" action="" method="post" accept-charset="utf-8" role="form">
-						  	<div class="form-row">
-						  		<input type="text" class="form-control input-lg" placeholder="Enter your email address">
-						  	</div>
-							<div class="form-row">
-								<button type="submit" class="btn btn-primary btn-lg btn-block btn-red">Sign me up!</button>
-							</div>
-						</form>
-					</div> -->
-					</div>
-				</div>
-			</div>
+			
 			<div class="footer-disclaimer">
 				<div class="container">
 					<div class="text-center">
@@ -619,7 +457,7 @@
 						Rights Reserved By McDonald's™</div>
 					<div class="text-center text-ucase">골든 아치 로고와 "i'm lovin'
 						it"은 맥도날드 고유의 상표입니다.</div>
-
+</div>
 
 				</div>
 			</div>

@@ -70,7 +70,7 @@ public class OrderController {
 			mav.addObject("setdrinklist",setdrinklist);
 			mav.setViewName("/delivery/order/menu");
 			
-		}else if(type.equals("drink") || type.equals("side")) {
+		}else if(type.equals("drink") || type.equals("side") || type.equals("dessert")) {
 			mav.setViewName("/delivery/order/menu_noset");
 		}else if(type.equals("package")) {
 			List<MenuDto>burgerlist = orderService.getTogetherBurgerList();
@@ -146,8 +146,7 @@ public class OrderController {
 		orderListDto.getCartList().add(cartDto);
 		
 		String backtype = cartDto.getMenu_type();
-		model.addAttribute("backtype", backtype);
-		return  "/delivery/deliverhome/deliverMenu";
+		return  "redirect:/ed/menuPage?backtype="+backtype;
 	}
 	
 	@GetMapping("/order/cart/del")

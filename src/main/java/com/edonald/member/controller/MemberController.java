@@ -73,7 +73,11 @@ public class MemberController {
 	// @RequestMapping(value="/member/selectAddress", produces = "application/text;
 	// charset=UTF-8", method=RequestMethod.GET)
 	@GetMapping("/member/selectAddress")
-	public String selectAddress(@RequestParam int address_seq, Authentication authentication) {
+	public String selectAddress(@RequestParam int address_seq, Authentication authentication, HttpSession session) {
+		if(session.getAttribute("orderListDto") != null) {
+			session.removeAttribute("orderListDto");
+		}
+		
 		SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
 		System.out.println("principal " + securityUser.getMemberDto().getUser_email());
 		AddressDto addr = memberService.getAddressById(address_seq);
@@ -136,6 +140,12 @@ public class MemberController {
 	public String joinFindAdress2() {		
 		return "/delivery/mypage/changeUserPassword";
 	}
+	@GetMapping("/member/mypage/addressBook")
+	public String addressBook() {
+		return "/delivery/mypage/addressBook";
+	}
+	
+	
 	
 	@ResponseBody
 	@PostMapping("/member/changedAccount.do")
@@ -171,4 +181,6 @@ public class MemberController {
 			return result;
 		}
 	}
+	
+
 }
