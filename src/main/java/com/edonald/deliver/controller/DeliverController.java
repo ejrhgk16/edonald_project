@@ -34,6 +34,7 @@ import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.member.service.MemberService;
 import com.edonald.oauthConfig.NaverLogin;
 import com.edonald.order.dto.OrderListDto;
 
@@ -45,6 +46,9 @@ public class DeliverController {
 	private DeliveryMenuService dService;	
 	@Autowired
 	private DeliveryService service;
+	@Autowired
+	private MemberService mService;
+	
 	
 	@GetMapping("/ed/deliverHome")
 	public String deliverhome(Model model, HttpServletRequest req) {
@@ -184,6 +188,21 @@ public class DeliverController {
 	}
 	
 
+	@GetMapping("/ed/findpassword")
+	public String findpassword(){
+		return "delivery/join/findPassword";
+	}
+	
+	@ResponseBody
+	@GetMapping("/ed/findpasswordCheck.do")
+	public ResponseEntity<String> findpasswordCheckDo(String user_email){
+		if(mService.getMemberById(user_email) != null) {
+			return new ResponseEntity<String>("잘 못된 이메일 입니다.",HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}
+		
+	}
 	
 	
 

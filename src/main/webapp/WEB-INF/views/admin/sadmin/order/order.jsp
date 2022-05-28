@@ -257,6 +257,27 @@
 											<td>
 												<button type="button" class="btn btn-light orderbutton" data-value="1">Cancel</button>
 											</td>
+											<c:forEach items="${list.cartList}" var="cartList" varStatus="status2">
+												<tr class="hiddenrow ${status.index }_row" style="background-color: #eeeeee;">
+										    	<td>${cartList.cart_product_name} ${cartList.comp_type } ${cartList.cart_product_quant }개</td>
+												 <c:if test="${!empty cartList.comp1_name }"><td colspan="100%">${cartList.comp1_name }
+												 <c:if test="${!empty cartList.comp2_name }">, ${cartList.comp2_name }</c:if>
+												 <c:if test="${!empty cartList.comp3_name }">, ${cartList.comp3_name }</c:if>
+												 <c:if test="${!empty cartList.comp4_name }">, ${cartList.comp4_name }</c:if>
+												 <c:if test="${!empty cartList.comp5_name }">, ${cartList.comp5_name }</c:if>
+												 <c:if test="${!empty cartList.comp6_name }">, ${cartList.comp6_name }</c:if>
+												 <c:if test="${!empty cartList.comp7_name }">, ${cartList.comp7_name }</c:if>
+												 <c:if test="${!empty cartList.comp8_name }">, ${cartList.comp8_name }</c:if>
+												 </td></c:if>
+												 <c:if test="${empty cartList.comp1_name }"><td colspan="100%"></td></c:if>
+												 </tr>
+										    </c:forEach>
+										    <c:if test="${!empty list.order_comment }">
+										    	<tr class="hiddenrow" style="background-color: #eeeeee;">
+										    		<td>고객 요구사항 </td>
+										    		<td colspan="100%">${list.order_comment }</td>
+										    	</tr>
+									    	</c:if>
 										</c:when>
 										<c:when test="${list.order_status eq 1 }"><td colspan="100%">취소된 주문</td></c:when>
 										<c:when test="${list.order_status eq 5 }"><td colspan="100%">배달 완료</td></c:when>
@@ -287,6 +308,12 @@
 											 <c:if test="${empty cartList.comp1_name }"><td colspan="100%"></td></c:if>
 											 </tr>
 									    </c:forEach>
+									    <c:if test="${!empty list.order_comment }">
+									    	<tr class="hiddenrow" style="background-color: #eeeeee;">
+									    		<td>고객 요구사항 </td>
+									    		<td colspan="100%">${list.order_comment }</td>
+									    	</tr>
+								    	</c:if>
 										</c:otherwise>
 									</c:choose>
 							</tr>
