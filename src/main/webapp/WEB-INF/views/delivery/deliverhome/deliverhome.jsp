@@ -171,7 +171,7 @@
 													aria-owns="form_select_address_delivery_address-menu"
 													aria-disabled="false" style="width: 288px;"> <span
 														class="ui-selectmenu-status">
-															${principal.memberDto.deliverAddress.road_address}</span> <span
+															${principal.memberDto.deliverAddress.road_address} ${principal.memberDto.deliverAddress.detail_address} </span> <span
 														class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span>
 
 												<div
@@ -198,7 +198,7 @@
 																	</c:otherwise>
 																</c:choose> <input type="hidden" name="addr"
 																value="${addr.address_seq}"> <a href="#nogo"
-																tabindex="-1" role="option" aria-selected="false">${addr.road_address}</a>
+																tabindex="-1" role="option" aria-selected="false">${addr.road_address} ${addr.detail_address} </a>
 															</li>
 														</c:forEach>
 													</ul>
