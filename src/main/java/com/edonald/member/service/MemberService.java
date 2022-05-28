@@ -24,7 +24,7 @@ public interface MemberService {
 	public String changeAccount(MemberDto sessionDto,MemberDto dto);
 	public void changeAccountByAdmin(MemberDto dto);
 	public String changePassword(MemberDto sessionDto,MemberDto dto,String checkPassword);
-	public void findPasswordByEmail(MemberDto dto);
+
 	public List<MemberDto> getMemberList(int user_status);
 	public void activityMemberControl(MemberDto dto);
 	public MemberDto getMemberById(String username);
