@@ -2,6 +2,8 @@ package com.edonald.member.service;
 
 import org.springframework.stereotype.Service;
 
+import com.edonald.member.dto.MemberDto;
+
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -29,5 +31,9 @@ public class CertifyServiceImpl implements CertifyService{
 
 		
 	}
-
+	
+	@Override
+	public void findPasswordByEmail(MemberDto dto) {
+		
+	}
 }
