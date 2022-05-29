@@ -189,4 +189,8 @@
 		
 	</select>
 	
+	<select id="getExcelData" resultType="com.edonald.order.dto.OrderListDto">
+		select * from order_list where order_date >=  DATE_FORMAT(( NOW() - INTERVAL 6 DAY),'%Y-%m-%d')
+	</select>
+	
 </mapper>

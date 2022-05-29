@@ -46,10 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.userDetailsService(userDetailService)
 		.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/ed/**").permitAll()
+		.antMatchers("/ed/**", "/", "/resources/**", "/error/**", "/order/**").permitAll()
 		//.antMatchers("/sadmin/**").access("hasRole('ROLE_SADMIN')")
 		.antMatchers("/sample/admin")
 		.access("hasRole('ROLE_ADMIN')");
+		//.anyRequest().authenticated();
 
 		http
 		.formLogin().loginPage("/ed/deliverHome")

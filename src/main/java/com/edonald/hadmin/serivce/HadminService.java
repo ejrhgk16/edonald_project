@@ -2,6 +2,8 @@ package com.edonald.hadmin.serivce;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.PromotionDto;
@@ -19,4 +21,5 @@ public interface HadminService {
 	public MenuDto getMenuBySeq(int menu_code);
 	public List<Integer> getSalesVolumeBySeqAndGender(int menu_code,String monthorday,String user_gender);
 	public List<CartDto> getEachMenuSalesVolume(int user_gender, String menu_type, String order_date);
+	public void getExcel( HttpServletResponse res);
 }
