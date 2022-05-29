@@ -39,23 +39,6 @@
 					  </ul>
 					</div>
                 </div>
- <!--               <div class="container">
-	<h2>선택(select) 상자</h2>
-	<select class="form-control">
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	  <option>종로지점</option>
-	</select>
-</div>
-<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1>Button</h1>
-						<button type="button" class="btn btn-light">확인</button>
-						<button type="button" class="btn btn-danger">로그아웃 <i class="fa fa-sign-out"></i></button>
-                -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -64,7 +47,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/sadmin/Msadmin" onclick="window.open(this.href, '_blank', 'width=400,height=800,toolbars=no,scrollbars=no'); return false;">Settings</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="/ed/logout.do">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -87,7 +70,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/sadmin/menu?type=package">추천메뉴</a>
+                                            <a class="nav-link" href="/sadmin/menu?type=package">패키지</a>
                                             <a class="nav-link" href="/sadmin/menu?type=burger">버거＆세트</a>
                                             <a class="nav-link" href="/sadmin/menu?type=side">스낵＆사이드</a>
                                             <a class="nav-link" href="/sadmin/menu?type=drink">음료</a>
@@ -97,26 +80,22 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">관리</div>
-                             <a class="nav-link" href="order.jsp">
+                             <a class="nav-link" href="/sadmin/order">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 주문관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             
-                            <a class="nav-link" href="/sadmin/storeUpdate" onClick="window.open(this.href, '지점 정보 변경', 'width=500, height=600, top=30, left=30, resizable=no, scrollbars=no, location=no'); return false;">
+                            <a class="nav-link" href="/sadmin/storeUpdate" onClick="window.open(this.href, '지점 정보 변경', 'width=500, height=1000, top=30, left=30, resizable=no, scrollbars=no, location=no'); return false;">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 매장정보 수정
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
                             <div class="sb-sidenav-menu-heading">매출</div>
-                            <a class="nav-link" href="charts.jsp">
+                            <a class="nav-link" href="/sadmin/charts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 매출차트
-                            </a>
-                            <a class="nav-link" href="tables.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                매출테이블
                             </a>
                         </div>
                     </div>

@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script>
 $(document).ready(function(){
-
+	
 	var gender = $('#hGender').text();
 	if(gender == '2'){
 		$('.iradio').eq(0).attr("class","iradio");
@@ -37,11 +37,31 @@ $(document).ready(function(){
 	
 	// 탈퇴
 	$('#deleteaccount').on('click',function(){
-		var user_password = $('#checkpassword').val();
-		$.ajax({
-			type: 'POST',
-			url: "/"
-		})
+		
+		var check = confirm("회원 탈퇴 하시겠습니까?");
+		console.log(check);
+		if (check){
+			console.log('1');
+			var user_email = "${principal.memberDto.user_email}";
+			console.log('2');
+			var user_password = $('#checkpassword').val();
+			console.log(user_email + "," + user_password);
+			$.ajax({
+				type: 'POST',
+				url: "/member/withdrawal.do",
+				data: {
+					user_email: user_email,
+					user_password:user_password,
+				},
+				success:function(res){
+					alert("탈퇴 되었습니다.");
+					$(location).attr("href","/ed/logout.do");
+				},
+				error:function(res){
+					alert(res.responseText);
+				}
+			})
+		}
 	})
 	// 수정
 	$('#changeaccout').on('click',function(){
@@ -78,6 +98,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="root">
+	
 	<div class="wrap container">
 		<div class="global-header">
 

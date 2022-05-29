@@ -240,22 +240,9 @@ function addMenu(setCheck){
 
 													<td class="cost-column"></td>
 													<td class="calories-column"><span
-														class="calories-column__allergen-info"> <a href="#"
-															class="action-link" data-toggle="html-popover"
-															data-placement="bottom" data-html="true"
-															data-content-selector=".popover-details"
-															data-original-title="" title=""> <i
-																class="mcd icon mcd-allergen"></i>
-														</a>
-															<div class="popover-details">
-																<div class="popover-wrapper type-sans">
-																	<h4>아라비아따 리코타 치킨 버거</h4>
-																	<p>아라비아따 리코타 치킨 버거 (난류, 우유, 대두, 밀, 돼지고기, 토마토, 닭고기),
-																		후렌치 후라이 (대두), 케첩 (토마토)</p>
-																</div>
-															</div>
+														class="calories-column__allergen-info">
 
-													</span> &nbsp; <span class="calories-column__nutrition-info">1024~1230
+													</span> &nbsp; <span class="calories-column__nutrition-info">${menuDto.kcal +441}
 															Kcal</span></td>
 												</tr>
 
@@ -276,21 +263,9 @@ function addMenu(setCheck){
 
 													<td class="cost-column"></td>
 													<td class="calories-column"><span
-														class="calories-column__allergen-info"> <a href="#"
-															class="action-link" data-toggle="html-popover"
-															data-placement="bottom" data-html="true"
-															data-content-selector=".popover-details"
-															data-original-title="" title=""><i
-																class="mcd icon mcd-allergen"></i> </a>
-															<div class="popover-details">
-																<div class="popover-wrapper type-sans">
-																	<h4>아라비아따 리코타 치킨 버거</h4>
-																	<p>아라비아따 리코타 치킨 버거 (난류, 우유, 대두, 밀, 돼지고기, 토마토, 닭고기),
-																		후렌치 후라이 (대두), 케첩 (토마토)</p>
-																</div>
-															</div>
+														class="calories-column__allergen-info">
 
-													</span> &nbsp; <span class="calories-column__nutrition-info">948~1097
+													</span> &nbsp; <span class="calories-column__nutrition-info">${menuDto.kcal +365}
 															Kcal</span></td>
 
 
@@ -310,18 +285,7 @@ function addMenu(setCheck){
 
 													<td class="cost-column">₩ 7,300</td>
 													<td class="calories-column"><span
-														class="calories-column__allergen-info"> <a href="#"
-															class="action-link" data-toggle="html-popover"
-															data-placement="bottom" data-html="true"
-															data-content-selector=".popover-details"
-															data-original-title="" title=""><i
-																class="mcd icon mcd-allergen"></i> </a>
-															<div class="popover-details">
-																<div class="popover-wrapper type-sans">
-																	<h4>아라비아따 리코타 치킨 버거</h4>
-																	<p>아라비아따 리코타 치킨 버거 (난류, 우유, 대두, 밀, 돼지고기, 토마토, 닭고기)</p>
-																</div>
-															</div>
+														class="calories-column__allergen-info">
 
 													</span> &nbsp; <span class="calories-column__nutrition-info">
 															${menuDto.kcal} Kcal </span></td>

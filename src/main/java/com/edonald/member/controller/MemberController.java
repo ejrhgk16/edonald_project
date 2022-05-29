@@ -144,6 +144,18 @@ public class MemberController {
 		return "/delivery/mypage/changeUserPassword";
 	}
 	
+	@PostMapping("/member/withdrawal.do")
+	public ResponseEntity<String> withdrawalDo(Authentication authentication, MemberDto dto) {
+		SecurityUser user = (SecurityUser)authentication.getPrincipal();
+		MemberDto member = user.getMemberDto();
+		if(memberService.checkPassword(member, dto.getUser_password())) {
+			memberService.withdrawal(dto.getUser_email());
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<String>("비밀번호가 틀렸습니다",HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@GetMapping("/member/mypage/addressBook")
 	public String addressBook(Authentication authentication, Model model) {
 		SecurityUser user = (SecurityUser)authentication.getPrincipal();

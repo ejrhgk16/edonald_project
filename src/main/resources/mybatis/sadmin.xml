@@ -37,7 +37,7 @@
 		WHERE order_seq = ${order_seq}
 	</update>
 	<select id="getOrderListBySeq" resultType="com.edonald.order.dto.OrderListDto">
-		SELECT * FROM order_list WHERE order_seq = #{order_seq}
+		SELECT * FROM order_list WHERE order_seq = #{order_seq} AND order_date >=  DATE_FORMAT(( NOW() - INTERVAL 6 DAY),'%Y-%m-%d')
 	</select>
 	<select id="getSalesVolumeBySeq" resultType="int">
 		SELECT IFNULL(a.count,0) counta

@@ -30,12 +30,6 @@
 			<param-name>throwExceptionIfNoHandlerFound</param-name>
 			<param-value>true</param-value>
 		</init-param>
-		<multipart-config>
-			<location>C:\\Users\\HP\\Documents</location>
-			<max-file-size>20971520</max-file-size>
-			<max-request-size>41943040</max-request-size>
-			<file-size-threshold>20971520</file-size-threshold> 
-		</multipart-config>
 	</servlet>
 
 	<servlet-mapping>

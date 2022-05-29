@@ -210,7 +210,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public void withdrawal(String user_email) {
-		
+		mapper.withdrawal(user_email);
 	}
 		
 }
