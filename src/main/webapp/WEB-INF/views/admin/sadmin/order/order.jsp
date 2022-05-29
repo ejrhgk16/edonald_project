@@ -15,7 +15,6 @@
         		
         		$("#exceldown").on("click", function(e){
         			e.preventDefault();
-        			alert("click");
         			location.href="/sadmin/getExcel"
 
         		})
