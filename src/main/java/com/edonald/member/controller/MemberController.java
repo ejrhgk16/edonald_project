@@ -48,6 +48,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import lombok.extern.log4j.Log4j2;
+
+
 @Controller
 public class MemberController {
 	@Autowired

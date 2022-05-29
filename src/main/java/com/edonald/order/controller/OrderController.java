@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
+import com.edonald.member.controller.MemberController;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.AuthenticationCodeDto;
 import com.edonald.member.dto.MemberDto;
@@ -33,6 +34,9 @@ import com.edonald.order.dto.OrderNumDto;
 import com.edonald.order.dto.PayInfoDto;
 import com.edonald.order.service.OrderService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class OrderController {
 	@Autowired
@@ -110,7 +114,7 @@ public class OrderController {
 
 	@PostMapping("/order/cart/add")
 	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication, Model model) {
-
+		log.info("OrderContorller : {}" + cartDto.toString());
 		String menu_type = cartDto.getMenu_type();
 		int productPrice = 0;
 		
