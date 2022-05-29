@@ -157,7 +157,37 @@ public class HadminServiceImple implements HadminService {
 				e.printStackTrace();
 			}
 
-		}
+		}else {
+			String fileName = "orderList.xlsx";
+			String[] colNames = { "주문내역이 없음" };
+			int[] colWidths = {  6000 };
+			XSSFWorkbook workbook = new XSSFWorkbook();
+			XSSFSheet sheet = null;
+			XSSFCell cell = null;
+			XSSFRow row = null;
+			CellStyle bodyStyle = workbook.createCellStyle();
+			bodyStyle.setAlignment(HorizontalAlignment.CENTER);
+			int rowCnt = 0;
+			sheet = workbook.createSheet("주문내역");
+			row = sheet.createRow(rowCnt++);
+
+			for (int i = 0; i < colNames.length; i++) {
+				cell = row.createCell(i);
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(colNames[i]);
+				sheet.setColumnWidth(i, colWidths[i]); // column width 지정
+			}
+			res.setContentType("application/vnd.ms-excel");
+			res.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+	
+			try {
+				workbook.write(res.getOutputStream());
+				workbook.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 	}
 }
