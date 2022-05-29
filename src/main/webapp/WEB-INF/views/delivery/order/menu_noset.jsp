@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,7 +152,7 @@ function addMenu(sizeCheck){
 													</td>
 
 													<td class="cost-column">${menuDto.l_price }원</td>
-													<td class="calories-column">${menuDto.kcal } Kcal<span
+													<td class="calories-column"><fmt:formatNumber pattern='0' >${menuDto.kcal * 1.33}</fmt:formatNumber> Kcal<span
 														class="calories-column__allergen-info"> <a href="#"
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
@@ -182,8 +183,11 @@ function addMenu(sizeCheck){
 													<td class="description-column">
 
 														<h4 class="item-title">
-														<c:if test="${menuDto.type eq 'drink'}">
-														미디움
+														<c:if test="${menuDto.type eq 'drink' || menuDto.type eq 'side' || menuDto.type eq 'dessert'}">
+															<c:choose>
+																<c:when test="${menuDto.l_price == '0' && menuDto.s_price == '0'}">${menuDto.name }</c:when>
+																<c:otherwise>미디움</c:otherwise>
+															</c:choose>
 														</c:if>
 														</h4>
 														<p class="item-description"></p>
@@ -223,7 +227,7 @@ function addMenu(sizeCheck){
 													</td>
 
 													<td class="cost-column">${menuDto.s_price }원</td>
-													<td class="calories-column">${menuDto.kcal }Kcal<span
+													<td class="calories-column"><fmt:formatNumber pattern='0' >${menuDto.kcal * 0.66 }</fmt:formatNumber>Kcal<span
 														class="calories-column__allergen-info"> <a href="#"
 															class="action-link" data-toggle="html-popover"
 															data-placement="bottom" data-html="true"
@@ -266,7 +270,7 @@ function addMenu(sizeCheck){
 				<div class="container">
 					<div class="media">
 						<div class="media-left">
-							<a href="/ed/menuPage"
+							<a href="/ed/menuPage?backtype=${menuDto.type }"
 								class="h5 text-default text-ucase btn-back action-cancel">√ 메뉴로 돌아가기</a>
 						</div>
 						<div class="media-body">

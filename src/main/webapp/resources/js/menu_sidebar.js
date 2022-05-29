@@ -4,17 +4,6 @@ $(document).ready(function() {
 	var backtype = $('#backtype').text();
 	var target = $('.secondary-menu-item-target');
 	
-	for(var i = 0 ; i < target.length ; i++){
-		if(target.eq(i).attr('data-value')==backtype){
-			$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
-			target.eq(i).parent().attr("class", "secondary-menu-item selected");
-			break;
-		}
-	}
-	
-	
-	
-	console.log(backtype);
 	if(time >= 4 && time <= 10){
 		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
 		$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
@@ -23,43 +12,53 @@ $(document).ready(function() {
 		$(this).children(".primary-menu-item-target").attr("href", "?daypartId=1");
 		$(this).children(".primary-menu-item-target").children("span").text("일반 메뉴");
 		$("#daypartId").text("2");
-		if(backtype!=""){
-			menuRequest(backtype,2);
-		}else{
-			menuRequest("emorning",2);
+		if(backtype==""){
+			backtype = "emorning";
 		}
+		menuRequest(backtype,2);
 	}else{
-		if(backtype!=""){
-			menuRequest(backtype,1);
-		}else{
-			menuRequest("burger",1);
+		if(backtype==""){
+			backtype ="burger";
 		}
+		menuRequest(backtype,1);
 	}
 	
-	$(".secondary-menu-item").mouseover(function() {
-		if ($(this).attr("class") == "secondary-menu-item") {
-			$(this).attr("class", "secondary-menu-item :focus");
+	for(var i = 0 ; i < target.length ; i++){
+		console.log(i);
+		if(target.eq(i).attr('data-value')==backtype){
+			$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
+			target.eq(i).parent().attr("class", "secondary-menu-item selected");
+			$(".secondary-menu-item.selected").children().children().attr("style", "color:white");
+			break;
 		}
-	});
-	$(".secondary-menu-item").mouseout(function() {
-		if ($(this).attr("class") == "secondary-menu-item :focus") {
-			$(this).attr("class", "secondary-menu-item");
-		}
-	});
-
+	}
 	$(".secondary-menu-item").on("click", function(e) {
 		e.preventDefault();
+		$(".secondary-menu-item.selected").children().children().attr("style","");
 		$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
 		$(this).attr("class", "secondary-menu-item selected");
+		$(".secondary-menu-item.selected").children().children().attr("style","color:white");
 	});
+
+	$(".secondary-menu-item").mouseover(function(e) {
+		$(this).children().children().attr("style","color:white");
+	});
+	$(".secondary-menu-item").mouseout(function(e) {
+		if($(this).hasClass("selected")){
+			return;
+		}
+		$(this).children().children().attr("style","");
+	});
+
+
 
 	$(".sidebar-menu").children(".h5.text-link").on("click", function(e) {
 		e.preventDefault();
 		if ($(".popover.fade.right.in").attr("style") != "") {
 			$(".popover.fade.right.in").attr("style", "");
 		} else {
-			var height = $(this).offset().top - 75
-			var styleText = "top: " + height + "px; left: 127.602px; display: block;";
+			var height = $(this).offset().top +20
+			var styleText = "top: " + height + "px; left: 300.602px; display: block;";
 			$(".popover.fade.right.in").attr("style", styleText);
 		}
 	});

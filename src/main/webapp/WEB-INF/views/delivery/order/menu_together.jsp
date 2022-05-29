@@ -313,7 +313,7 @@ function addMenu(setCheck){
 				<div class="container">
 					<div class="media">
 						<div class="media-left">
-							<a href="#"
+							<a href="/ed/menuPage?backtype=package"
 								class="h5 text-default text-ucase btn-back action-cancel">√메뉴로 돌아가기</a>
 						</div>
 						<div class="media-body">
