@@ -35,7 +35,15 @@ $(document).ready(function(){
 		$icheck.eq(0).parent().attr("class", "iradio");
 	})
 	
-	//수정
+	// 탈퇴
+	$('#deleteaccount').on('click',function(){
+		var user_password = $('#checkpassword').val();
+		$.ajax({
+			type: 'POST',
+			url: "/"
+		})
+	})
+	// 수정
 	$('#changeaccout').on('click',function(){
 		var name = $('#form_accountsetting_firstname').val();
 		var gender = $('.iradio.checked').children('input').val();

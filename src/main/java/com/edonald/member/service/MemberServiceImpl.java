@@ -208,6 +208,10 @@ public class MemberServiceImpl implements MemberService {
 		mapper.setDKey(address_seq);
 		
 	}
+	@Override
+	public void withdrawal(String user_email) {
+		
+	}
 		
 }
 	
