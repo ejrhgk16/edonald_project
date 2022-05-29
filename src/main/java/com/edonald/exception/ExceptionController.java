@@ -15,24 +15,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @ControllerAdvice
 public class ExceptionController  {
 
 	@ExceptionHandler(Exception.class)
-	public String except() {
+	public String except(HttpServletRequest req) {
+		log.error("Exception " + "url : " + req.getRequestURL() + " ip : "+req.getRemoteAddr());
 		return "/delivery/error/error";
 	}
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public String handle404(NoHandlerFoundException ex) {
+	public String handle404(NoHandlerFoundException ex, HttpServletRequest req) {
+		log.warn("NoHandlerFoundException " + "url : " + req.getRequestURL() + " ip : "+req.getRemoteAddr());
 		return "/delivery/error/error404";
 	}
 	
-	@GetMapping("/ed/error/accessDenied")
-	public String accessDenied() {
-		return "/delivery/error/accessDenied";
-	}
+
 
 
 	

@@ -27,5 +27,6 @@ public interface OrderMapper {
 	public Integer checkMenuStatus(@Param("store_code") int store_code, @Param("menu_code")int menu_code);
 	public int checkStoreStatus(int store_code);
 	public String getStoreName(int store_code);
+	public int getMenuStatus(int seq);
 
 }

@@ -82,10 +82,14 @@ public class JoinController {
 	}
 	
 	@PostMapping("/ed/certifyPhone")
-	public @ResponseBody String joinPhoneCheck(@RequestBody MemberDto dto, HttpServletRequest req) {
+	public @ResponseBody ResponseEntity<String> joinPhoneCheck(@RequestBody MemberDto dto, HttpServletRequest req) {
+		if(memberService.joinCheckEmail(dto.getUser_email()) != null) {
+			return new ResponseEntity<String>("이메일이 이미 존재합니다", HttpStatus.BAD_REQUEST);
+		}
+		
 		HttpSession session = req.getSession();
 		session.setAttribute("memberDto", dto);
-		return "/ed/checkPhonePage";
+		return new ResponseEntity<String>(" d", HttpStatus.OK);
 	}
 	
 	@GetMapping("/ed/checkEmailPage")
@@ -124,7 +128,7 @@ public class JoinController {
 	public String  joinComplete(HttpServletRequest req) {
 		System.out.println("joincompl");
 		memberService.joinMember(req);
-		return "/ed/deliverHome";
+		return "redirect:/ed/deliverHome";
 	}
 	
 

@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration>    
-    <Appenders>
-        <Console name="console_root" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p %m%n" />
-        </Console>
-         <Console name="console_com" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p [%c] %m%n" />
-        </Console>       
-    </Appenders>
-    
-    
-    <Loggers>
-         <Logger name="java.sql" level="INFO" additivity="false">
-            <AppenderRef ref="console_com" />
-        </Logger>
-        <Logger name="jdbc.sqltiming" level="INFO" additivity="false">
-            <AppenderRef ref="console_com" />
-        </Logger>
-        <Logger name="egovframework" level="INFO" additivity="false">
-            <AppenderRef ref="console_com" />
-        </Logger>
-        <Logger name="com" level="INFO" additivity="false">
-            <AppenderRef ref="console_com" />
-        </Logger>
-        <Logger name="org.springframework" level="INFO" additivity="false">
-            <AppenderRef ref="console_com" />
-        </Logger>
-        <Root level="INFO">
-            <AppenderRef ref="console_root" />
-        </Root>
-    </Loggers>
+<Configuration>
+	<Appenders>
+		<Console name="console_com" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %5p [%c] %m%n" />
+		</Console>
+		<RollingFile name="file" fileName="./logs/file/all.log"
+			filePattern="./logs/file/$${date:yyyy}/$${date:MM}/$${date:dd}/%d{yyyyMMddHH}.log">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy/><!-- filepattern의 최소단위 시간 마다  그 위치로 이동-->
+			</Policies>
+		</RollingFile>
+
+	</Appenders>
+
+
+	<Loggers>
+		<Logger name="java.sql" level="INFO" additivity="false">
+			<AppenderRef ref="console_com" />
+		</Logger>
+		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+			<AppenderRef ref="console_com" />
+		</Logger>
+		<Logger name="egovframework" level="INFO" additivity="false">
+			<AppenderRef ref="console_com" />
+			<AppenderRef ref="file" />
+		</Logger>
+		<Logger name="com" level="INFO" additivity="false">
+			<AppenderRef ref="console_com" />
+			<AppenderRef ref="file" />
+		</Logger>
+		<Logger name="org.springframework" level="INFO"
+			additivity="false">
+			<AppenderRef ref="console_com" />
+			<AppenderRef ref="file" />
+		</Logger>
+		<Root level="INFO">
+			<AppenderRef ref="console_root" />
+		</Root>
+	</Loggers>
 </Configuration>

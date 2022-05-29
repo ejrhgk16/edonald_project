@@ -74,6 +74,10 @@
 	select store_name from store_list where store_code = #{store_code}
 	</select>
 	
+	<select id="getMenuStatus" resultType="int">
+		select status from menu where seq = #{seq}
+	</select>
+	
 	
 	
 </mapper>

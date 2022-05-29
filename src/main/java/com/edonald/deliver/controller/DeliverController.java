@@ -44,6 +44,9 @@ import com.edonald.member.service.MemberService;
 import com.edonald.oauthConfig.NaverLogin;
 import com.edonald.order.dto.OrderListDto;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class DeliverController {
 	@Autowired
@@ -69,7 +72,6 @@ public class DeliverController {
 		model.addAttribute("list",list);
 		
 		model.addAttribute("errorMsg", errorMsg);
-		System.out.println("login  " + errorMsg);
 		return "/delivery/deliverhome/deliverhome";
 	}
 
@@ -124,8 +126,6 @@ public class DeliverController {
 	
 	@RequestMapping(value= "/ed/menuPage.do", method = RequestMethod.GET)
 	public @ResponseBody List<MenuDto> menuPageDo(String type, String daypartId, HttpSession session) {
-		System.out.println(type);
-		System.out.println(daypartId);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("daypartId", daypartId);
@@ -145,7 +145,7 @@ public class DeliverController {
 				}
 			}
 		}
-		System.out.println(mList.toString());
+
 		
 		
 		return mList;
@@ -164,7 +164,6 @@ public class DeliverController {
 	@GetMapping("/ed/store/checkStatus")
 	public @ResponseBody  ResponseEntity<String>checkStatus(Authentication authentication, HttpSession session){
 			if(authentication != null) {
-				System.out.println("check authentication ! ");
 				SecurityUser user = (SecurityUser) authentication.getPrincipal();
 				 String role = user.getMemberDto().getRole();
 				if(user.getMemberDto().getDeliverStore() != null || !role.equals("ROLE_MEMBER") ){
@@ -175,7 +174,7 @@ public class DeliverController {
 			}
 			
 			if(session.getAttribute("noLoginMemberDto") != null) {
-				System.out.println("check noLoginMemberDto ! ");
+
 				MemberDto noLoginMem = (MemberDto) session.getAttribute("noLoginMemberDto");
 					if(noLoginMem.getDeliverStore() != null) {
 						return new ResponseEntity<String>(HttpStatus.OK);
@@ -220,7 +219,7 @@ public class DeliverController {
 	
 	@ResponseBody
 	@GetMapping("/ed/findpasswordCheck.do")
-	public ResponseEntity<String> findpasswordCheckDo(String user_email){
+	public ResponseEntity<String> findpasswordCheckDo(String user_email, HttpServletRequest req){
 		MemberDto memberDto =  mService.getMemberById(user_email);
 		AuthenticationCodeDto dto = new AuthenticationCodeDto();
 		dto.setUser_email(user_email);
@@ -228,6 +227,7 @@ public class DeliverController {
 		if(memberDto == null) {
 			return new ResponseEntity<String>("잘못된 이메일 입니다.",HttpStatus.BAD_REQUEST);
 		}else if( cService.getCountAuthentication(dto) > 5) {
+			log.info("금일 인증 횟수 초과 : "+"url : "+req.getRequestURL() +" ip: " + req.getRemoteAddr() );
 			return new ResponseEntity<String>("금일 인증 횟수를 초과하였습니다.",HttpStatus.BAD_REQUEST);
 		}else {
 			// CertifyService << 인증코드 만들어서 발송 
@@ -241,7 +241,7 @@ public class DeliverController {
 	@ResponseBody
 	@GetMapping("/ed/findpasswordCheckCode.do")
 	public ResponseEntity<String> findpasswordCheckCodeDo(int authenticationNum){
-		System.out.println(authenticationNum);
+
 		// db 가서 인증코드 맞는지 받아오고.
 		AuthenticationCodeDto dto = new AuthenticationCodeDto();
 		dto.setCode(authenticationNum);

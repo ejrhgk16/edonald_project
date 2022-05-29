@@ -15,12 +15,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class LoginFailHandler implements AuthenticationFailureHandler {
 
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
-
+		log.info("login fail " +" ip: " + request.getRemoteAddr() );
 		String errorMessage;
 		if (exception instanceof BadCredentialsException) {
 			errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해 주세요.";

@@ -206,7 +206,10 @@ function joinUserInfo() {
 		data : JSON.stringify(data),
 		contentType: "application/json; charset=utf-8",
 		success : function(res){
-			location.href = res;
+			location.href = "/ed/checkPhonePage";
+		},
+		error : function(res){
+			alert(res.responseText);
 		}
 	})
 

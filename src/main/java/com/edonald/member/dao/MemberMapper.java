@@ -36,4 +36,5 @@ public interface MemberMapper {
 	public List<AuthenticationCodeDto> getAuthenticationCodeByCode(AuthenticationCodeDto dto);
 	public void deleteAuthenticationRecord(String user_email);
 
+	public MemberDto checkEmail(String user_email);
 }
