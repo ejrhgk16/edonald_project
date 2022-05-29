@@ -99,6 +99,10 @@ public class JoinController {
 		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
 		authenticationDto.setUser_email(dto.getUser_email());
 		authenticationDto.setType("join");
+		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
+			System.out.println("인증횟수 초과");
+			return null;
+		}
 		String certifyNum = certifyService.certifyPhone(dto.getUser_phone(),authenticationDto);
 		dto.setCertifyNum(certifyNum);
 		ModelAndView mv = new ModelAndView();

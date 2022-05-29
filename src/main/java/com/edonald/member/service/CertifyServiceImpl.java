@@ -28,32 +28,31 @@ public class CertifyServiceImpl implements CertifyService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	private String key ="NCSHLRZOR4C97AXM";
-	private String secret = "FVERMOZDK8QB5R2PN7E9CTVGUMTANTGJ";
+//	private String key ="NCSHLRZOR4C97AXM";
+//	private String secret = "FVERMOZDK8QB5R2PN7E9CTVGUMTANTGJ";
 
 	@Override
 	public String certifyPhone(String user_phone,AuthenticationCodeDto dto) {
 		// 디비에서 중복확인 및 횟수 확인 추가 해야함
 		// 포인트 다써버림
-		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(key, secret, "https://api.coolsms.co.kr");
+//		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(key, secret, "https://api.coolsms.co.kr");
 		int num;
 		while (true) {
 			num = (int) (Math.random() * (99999 - 10000 + 1)) + 10000;
 			if (getCountAuthentication(dto) == 0) {
-				System.out.println(num);
+				System.out.println( "인증코드 : "+num);
 				break;
 			}
 		}
-		Message msg = new Message();
+//		Message msg = new Message();
 //		msg.setFrom("01039085470");
-		msg.setFrom("01024954502");
-		msg.setTo(user_phone);
-		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
-		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(msg));
+//		msg.setFrom("01024954502");
+//		msg.setTo(user_phone);
+//		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
+//		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(msg));
 		dto.setCode(num);
 		insertAuthenticationCode(dto);
 		return String.valueOf(num);
-//		return "12345";
 
 	}
 
