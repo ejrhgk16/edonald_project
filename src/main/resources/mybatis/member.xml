@@ -78,4 +78,22 @@
 		update user_address set d_key='d' where address_seq = #{address_seq}
 	</update>
 	
+	<!-- 인증관리 -->
+	<select id="getCountAuthentication" resultType="int">
+		SELECT count(*) FROM authentication_code WHERE type= #{type}
+		<if test="user_email != null"> AND user_email = #{user_email}</if>
+		<if test="code != null"> AND code = #{code};</if>
+	</select>
+	<select id="getCountAuthenticationByEmail" resultType="int">
+		SELECT count(*) FROM authentication_code WHERE user_email = #{user_email}
+	</select>
+	<insert id="insertAuthenticationCode">
+		INSERT INTO authentication_code VALUES(${code},#{user_email},#{type},default)
+	</insert>
+	<select id="getAuthenticationCodeByCode" resultType="com.edonald.member.dto.AuthenticationCodeDto">
+		SELECT * FROM authentication_code WHERE code = #{code} AND type = #{type}
+	</select>
+	<delete id="deleteAuthenticationRecord">
+		DELETE FROM authentication_code WHERE user_email = #{user_email}
+	</delete>
 </mapper>
