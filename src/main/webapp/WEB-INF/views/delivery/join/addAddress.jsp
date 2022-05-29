@@ -143,9 +143,6 @@ function addr() {
 			</div>
 			<div class="main" role="main">
 
-				<div class="page-header">
-					<h1 class="h4">배달 받을 주소를 입력하시면 예상 배달 시간을 확인 할 수 있습니다.</h1>
-				</div>
 				<div class="page-content">
 					<div class="form-column">
 						<form method="post" role="form" class="form form_deliveryaddress"

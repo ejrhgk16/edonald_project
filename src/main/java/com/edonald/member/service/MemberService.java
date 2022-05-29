@@ -30,4 +30,8 @@ public interface MemberService {
 	public MemberDto getMemberById(String username);
 	public Boolean checkPassword(MemberDto dto, String checkPassword);
 	
+	public void delAddr(int address_seq);
+	public void setDKey(int address_seq, String user_email);
+	
+	
 }

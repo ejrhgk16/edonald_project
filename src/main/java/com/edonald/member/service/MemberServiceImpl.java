@@ -195,6 +195,19 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return true;
 	}
+
+	@Override
+	public void delAddr(int address_seq) {
+		mapper.addrDel(address_seq);
+		
+	}
+
+	@Override
+	public void setDKey(int address_seq, String user_email) {
+		mapper.setDKeyInit(user_email);
+		mapper.setDKey(address_seq);
+		
+	}
 		
 }
 	

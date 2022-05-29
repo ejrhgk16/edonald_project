@@ -62,7 +62,6 @@
 					dataType: "json", 
 					error: function() { alert('통신실패!!'); }, 
 					success: function(res) {
-						console.log(res);
 						var cart = '';
 						$.each(res.cartList, function(index, item){
 							 cart += cartView(item, index);

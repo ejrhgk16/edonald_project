@@ -15,7 +15,7 @@ $(document).ready(function() {
 	
 	
 	console.log(backtype);
-	if(time >= 8 && time <= 12){
+	if(time >= 4 && time <= 10){
 		$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
 		$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
 		$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=2");

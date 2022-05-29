@@ -58,7 +58,7 @@ public class DeliverController {
 	private CertifyService cService;
 	
 	@GetMapping("/ed/deliverHome")
-	public String deliverhome(Model model, HttpServletRequest req) {
+	public String deliverhome(Model model, HttpServletRequest req, @RequestParam(value="errorMsg", required = false)String errorMsg) {
 		HttpSession session = req.getSession();
 		String naverUrl = naverlogin.getAuthorizationUrl(session);
 		List<PromotionDto> list = service.getPromotionList();
@@ -67,6 +67,9 @@ public class DeliverController {
 		}
 		model.addAttribute("naverUrl", naverUrl);
 		model.addAttribute("list",list);
+		
+		model.addAttribute("errorMsg", errorMsg);
+		System.out.println("login  " + errorMsg);
 		return "/delivery/deliverhome/deliverhome";
 	}
 

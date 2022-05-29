@@ -417,7 +417,7 @@
 								<div class="panel panel-home-masthead panel-home-masthead-order">
 									<div class="panel-heading">
 										<div>
-											<h2>환영합니다 ${noLoginMemberDto.user_name} 고객님</h2>
+											<h2>환영합니다 고객님</h2>
 										</div>
 									</div>
 									<div class="panel-body">
@@ -507,7 +507,9 @@
 														id="form_login_masthead_password-error" class="error"
 														for="form_login_masthead_password"></label>
 												</div>
-										
+											<c:if test="${not empty errorMsg }">
+												<label id="errorId" class="error">${errorMsg }</label>
+												</c:if>
 											<div class="checkbox">
 												<div class="icheckbox" style="position: relative;">
 													<input type="checkbox" name="remember-me" id="remember-me" value="true" aria-invalid="false" style="position: absolute; opacity: 0;">
