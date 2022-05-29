@@ -14,6 +14,9 @@ import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
 
+import lombok.extern.log4j.Log4j2;
+
+
 @Service
 public class SecurityUserDetailService implements UserDetailsService {
 
@@ -22,7 +25,6 @@ public class SecurityUserDetailService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("username   !!!!!!!!!!!!!!!!!!!!!!!!!" + username);
 		MemberDto memberDto = mapper.getMemberById(username);
 		if (memberDto == null) {
 			System.out.println("해당사용자없음");

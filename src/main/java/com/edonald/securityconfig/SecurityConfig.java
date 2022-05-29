@@ -16,6 +16,9 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 
 import com.edonald.exception.AccessDeniedController;
 
+import lombok.extern.log4j.Log4j2;
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
