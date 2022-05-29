@@ -16,21 +16,21 @@ public class Interceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("url : {}", request.getRequestURI());
+		log.info("url : pre{}", request.getRequestURI() + " ip:"+request.getRemoteAddr());
 		return super.preHandle(request, response, handler);
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		log.info("url : {}", request.getRequestURI());
+		log.info("url : post{}", request.getRequestURI() + " ip: "+request.getRemoteAddr());
 		super.postHandle(request, response, handler, modelAndView);
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		log.info("url : {}", request.getRequestURI());
+		log.info("url : after{}", request.getRequestURI() + "   ip"+request.getRemoteAddr());
 		super.afterCompletion(request, response, handler, ex);
 	}
 

@@ -385,10 +385,11 @@ public class OrderController {
 	}
 	
 	@GetMapping("/order/checkSession")
-	public @ResponseBody ResponseEntity<String>checkSession(Authentication authentication, HttpSession session, @RequestParam String menu_type){
+	public @ResponseBody ResponseEntity<String>checkSession(Authentication authentication, HttpSession session, @RequestParam String seq){
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		try {
-			orderService.checkTime(menu_type, timestamp);
+			
+			orderService.checkTime(Integer.parseInt(seq), timestamp);
 			if(authentication != null) {
 				return new ResponseEntity<String>(HttpStatus.OK);
 			}else if(session.getAttribute("noLoginMemberDto") != null) {

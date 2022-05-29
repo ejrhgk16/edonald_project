@@ -34,5 +34,7 @@ public interface MemberService {
 	public void delAddr(int address_seq);
 	public void setDKey(int address_seq, String user_email);
 	
+	public MemberDto joinCheckEmail(String user_email);
+	
 	
 }

@@ -36,11 +36,11 @@
 		
 		$(document).on("click", ".action-create",  function(e){
 			e.preventDefault();
-			var menu_type =  $(this).next().children("input[name=type]").val();
+			var seq =  $(this).next().children("input[name=seq]").val();
 			var $form = $(this).next();
 			$.ajax({
 				type : "GET",
-				url : "/order/checkSession?menu_type="+menu_type,
+				url : "/order/checkSession?seq="+seq, //메뉴 시퀀스
 				success : function(){
 					$form.submit();	
 				}, 

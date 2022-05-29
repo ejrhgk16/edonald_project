@@ -18,6 +18,7 @@ import java.util.Random;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -237,7 +238,8 @@ public class OrderServiceImpl implements OrderService {
 		orderMapper.insertOrderInfo(orderListDto);
 		List<CartDto>cartList = orderListDto.getCartList();
 		for(CartDto cart : cartList) {
-			checkTime(cart.getMenu_type(), orderListDto.getOrder_date());
+	
+			checkTime(cart.getCart_product_code(), orderListDto.getOrder_date());
 			checkMenuStatus(orderListDto.getStore_code(), cart.getCart_product_code());
 			cart.setMerchanuid(orderListDto.getMerchanuid());
 			orderMapper.insertCartInfo(cart);
@@ -263,25 +265,30 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void checkTime(String menu_type, Timestamp time) {
+	public void checkTime(int seq, Timestamp time) {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String date = now.format(formatter);
-		String morningMenuStart = date+" 03:50:00";
-		String morningMenuEnd = date+" 10:20:00";
+		String morningMenuStart = date+" 04:00:00";
+		String morningMenuEnd = date+" 10:00:00";
 		Timestamp tmorningMenuStart = Timestamp.valueOf(morningMenuStart);
 		Timestamp tmorningMenuEnd = Timestamp.valueOf(morningMenuEnd);
 
 		Timestamp currentTime = time;
-			if(menu_type.equals("emorning")) { //장바구니 메뉴에
-				if(currentTime.before(tmorningMenuStart) || currentTime.after(tmorningMenuEnd)) {
+		
+		int menu_status = orderMapper.getMenuStatus(seq);
+			if(menu_status == 2 ) { 
+				if(currentTime.before(tmorningMenuStart) || currentTime.after(tmorningMenuEnd)) {//저녁시간
 					throw new RuntimeException("해당 메뉴 주문 시간이 아닙니다.");
 				}
 			}
-			if(menu_type.equals("burger")) {
-				if(currentTime.after(tmorningMenuStart) && currentTime.before(tmorningMenuEnd)) {
+			if(menu_status == 1) {
+				if(currentTime.after(tmorningMenuStart) && currentTime.before(tmorningMenuEnd)) {//아침시간
 					throw new RuntimeException("해당 메뉴 주문 시간이 아닙니다.");
 				}
+			}
+			if(menu_status == 0) {
+				throw new RuntimeException(" 현재 해당 메뉴는 주문 할 수 없습니다");
 			}
 			
 		}

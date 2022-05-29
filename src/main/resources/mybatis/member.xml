@@ -96,4 +96,8 @@
 	<delete id="deleteAuthenticationRecord">
 		DELETE FROM authentication_code WHERE user_email = #{user_email}
 	</delete>
+	
+	<select id="checkEmail" resultType="com.edonald.member.dto.MemberDto">
+		select * from user_info where user_email = #{user_email}
+	</select>
 </mapper>

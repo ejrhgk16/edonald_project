@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService {
 		HttpSession session = req.getSession();
 		AddressDto addrDto = (AddressDto) session.getAttribute("addrDto");
 		MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
+
 		String password = memberDto.getUser_password();
 		String encodePassword = encoder.encode(password);
 		memberDto.setUser_password(encodePassword);
@@ -211,6 +212,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void withdrawal(String user_email) {
 		mapper.withdrawal(user_email);
+	}
+
+	@Override
+	public MemberDto joinCheckEmail(String user_email) {
+	
+		return mapper.checkEmail(user_email);
 	}
 		
 }

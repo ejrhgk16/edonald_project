@@ -40,6 +40,9 @@ import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.MemberService;
 import com.edonald.order.dto.CartDto;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class HadminController {
 	@Autowired
@@ -52,8 +55,7 @@ public class HadminController {
 	private MemberService mService;
 	@Autowired
 	private HadminService hService;
-	
-	
+
 	@RequestMapping(value = "/hadmin/index", method = RequestMethod.GET)
 	public String hadminIndex() {
 		return "admin/hadmin/index2";
