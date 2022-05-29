@@ -16,6 +16,12 @@ $(document).ready(function(){
 
 //	var	storeBtn = '<div><button type="button" onclick="storeRegPop()" class="btn btn-outline-dark" id="newStoreBtn">지점추가하기</button></div>';
 //	$(".dataTable-top").append(storeBtn);
+	$("#exceldown").on("click", function(e){
+        			e.preventDefault();
+        			location.href="/hadmin/getExcel"
+
+        		})
+	
 	
 	$(document).on('click', '#newStoreBtn', function(){
 		var url = '/hadmin/storeRegister';
@@ -144,6 +150,7 @@ $(document).ready(function(){
 					<div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-table me-1"></i>가게운영 현황
+							<a id="exceldown" href="">주문내역 액셀로 다운</a>
 							<button type="button" onclick="storeRegPop()" class="btn btn-outline-dark" id="newStoreBtn" style="float:right">지점추가하기</button>
 						</div>
 								

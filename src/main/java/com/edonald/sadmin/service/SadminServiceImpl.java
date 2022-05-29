@@ -98,8 +98,8 @@ public class SadminServiceImpl implements SadminService {
 
 		if (excelData != null && excelData.size() > 0) {
 			String fileName = "orderList.xlsx";
-			String[] colNames = { "No", "이름", "주문날짜", "주소", "주문가격", "주문번호", "결제방식", "유저이메일" };
-			int[] colWidths = { 3000, 5000, 6000, 10000, 5000, 5000, 5000, 7000 };
+			String[] colNames = { "No", "이름", "주문날짜", "주소", "주문가격", "주문번호", "결제방식" };
+			int[] colWidths = { 3000, 5000, 6000, 10000, 5000, 5000, 5000 };
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet sheet = null;
 			XSSFCell cell = null;
@@ -152,9 +152,6 @@ public class SadminServiceImpl implements SadminService {
 				cell.setCellStyle(bodyStyle);
 				cell.setCellValue(dto.getPayment_type());
 
-				cell = row.createCell(cellCnt++);
-				cell.setCellStyle(bodyStyle);
-				cell.setCellValue(dto.getUser_email());
 			}
 			res.setContentType("application/vnd.ms-excel");
 			res.setHeader("Content-Disposition", "attachment;filename=" + fileName);
@@ -168,6 +165,37 @@ public class SadminServiceImpl implements SadminService {
 				e.printStackTrace();
 			}
 
+		}else {
+			String fileName = "orderList.xlsx";
+			String[] colNames = { "주문내역이 없음" };
+			int[] colWidths = {  6000 };
+			XSSFWorkbook workbook = new XSSFWorkbook();
+			XSSFSheet sheet = null;
+			XSSFCell cell = null;
+			XSSFRow row = null;
+			CellStyle bodyStyle = workbook.createCellStyle();
+			bodyStyle.setAlignment(HorizontalAlignment.CENTER);
+			int rowCnt = 0;
+			sheet = workbook.createSheet("주문내역");
+			row = sheet.createRow(rowCnt++);
+
+			for (int i = 0; i < colNames.length; i++) {
+				cell = row.createCell(i);
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(colNames[i]);
+				sheet.setColumnWidth(i, colWidths[i]); // column width 지정
+			}
+			res.setContentType("application/vnd.ms-excel");
+			res.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+	
+			try {
+				workbook.write(res.getOutputStream());
+				workbook.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

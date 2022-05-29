@@ -9,6 +9,7 @@ import com.edonald.hadmin.dto.ChartSearchDto;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.PromotionDto;
 import com.edonald.order.dto.CartDto;
+import com.edonald.order.dto.OrderListDto;
 
 @Repository
 public interface HadminMapper {
@@ -23,4 +24,6 @@ public interface HadminMapper {
 	public MenuDto getMenuBySeq(int menu_code);
 	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender);
 	public List<CartDto> getEachMenuSalesVolume(@Param("user_gender") int user_gender,@Param("menu_type") String menu_type,@Param("order_date") String order_date);
+	public List<OrderListDto>getExcelData();
+
 }
