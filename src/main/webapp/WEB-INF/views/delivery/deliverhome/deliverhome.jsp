@@ -530,7 +530,7 @@
 													</a>
 												</div>
 												<p class="action-forgot-password " align="left">
-													<a class="action-link" href=""><b>비밀번호 찾기</b></a>
+													<a class="action-link" href="/ed/findpassword"><b>비밀번호 찾기</b></a>
 												</p>
 											</fieldset>
 											<input type="hidden" name="csrfValue"

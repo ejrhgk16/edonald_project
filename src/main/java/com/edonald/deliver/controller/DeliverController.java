@@ -2,6 +2,9 @@ package com.edonald.deliver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +36,10 @@ import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.PromotionDto;
 import com.edonald.hadmin.serivce.FileUploadService;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.AuthenticationCodeDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.member.service.CertifyService;
 import com.edonald.member.service.MemberService;
 import com.edonald.oauthConfig.NaverLogin;
 import com.edonald.order.dto.OrderListDto;
@@ -49,7 +54,8 @@ public class DeliverController {
 	private DeliveryService service;
 	@Autowired
 	private MemberService mService;
-	
+	@Autowired
+	private CertifyService cService;
 	
 	@GetMapping("/ed/deliverHome")
 	public String deliverhome(Model model, HttpServletRequest req) {
@@ -212,15 +218,53 @@ public class DeliverController {
 	@ResponseBody
 	@GetMapping("/ed/findpasswordCheck.do")
 	public ResponseEntity<String> findpasswordCheckDo(String user_email){
-		if(mService.getMemberById(user_email) != null) {
-			return new ResponseEntity<String>("잘 못된 이메일 입니다.",HttpStatus.BAD_REQUEST);
+		MemberDto memberDto =  mService.getMemberById(user_email);
+		AuthenticationCodeDto dto = new AuthenticationCodeDto();
+		dto.setUser_email(user_email);
+		dto.setType("find_pass");
+		if(memberDto == null) {
+			return new ResponseEntity<String>("잘못된 이메일 입니다.",HttpStatus.BAD_REQUEST);
+		}else if( cService.getCountAuthentication(dto) > 5) {
+			return new ResponseEntity<String>("금일 인증 횟수를 초과하였습니다.",HttpStatus.BAD_REQUEST);
 		}else {
+			// CertifyService << 인증코드 만들어서 발송 
+			System.out.println(memberDto.getUser_phone());
+			int code = Integer.parseInt(cService.certifyPhone(memberDto.getUser_phone(),dto));
+
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}
-		
 	}
 	
-	
+	@ResponseBody
+	@GetMapping("/ed/findpasswordCheckCode.do")
+	public ResponseEntity<String> findpasswordCheckCodeDo(int authenticationNum){
+		System.out.println(authenticationNum);
+		// db 가서 인증코드 맞는지 받아오고.
+		AuthenticationCodeDto dto = new AuthenticationCodeDto();
+		dto.setCode(authenticationNum);
+		dto.setType("find_pass");
+		List<AuthenticationCodeDto> list = cService.getAuthenticationCodeByCode(dto);
+		// CODE 확인
+		if(list.size() == 1) {
+			// db에서 시간값 ㅣ 3분 + now() (cal클래스) 비교해서 if 문 "만료된 인증" 
+			Timestamp dbDate = list.get(0).getDate();
+			Calendar cal1 = Calendar.getInstance();
+			Calendar cal2 = Calendar.getInstance();
+	        cal1.setTime(new java.util.Date());
+	        cal2.setTime(dbDate);
+	        cal2.add(Calendar.MINUTE, 5); //5분안에 인증
+	        if( cal1.before(cal2) ) {
+	        	String tempPassword = cService.changePassword(list.get(0).getUser_email());
+	        	System.out.println(tempPassword);
+	        	cService.deleteAuthenticationRecord(list.get(0).getUser_email());
+	    		return new ResponseEntity<String>(tempPassword,HttpStatus.OK);	        	
+	        }else {
+	        	return new ResponseEntity<String>("만료된 코드입니다.",HttpStatus.BAD_REQUEST);
+	        }
+		}else {
+			return new ResponseEntity<String>("WrongCode",HttpStatus.BAD_REQUEST);
+		}
+	}
 
 	
 }

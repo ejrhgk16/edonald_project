@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.AuthenticationCodeDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
 import com.edonald.member.service.CertifyService;
@@ -95,7 +96,10 @@ public class JoinController {
 	public ModelAndView checkPhonePage(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		MemberDto dto = (MemberDto)session.getAttribute("memberDto");
-		String certifyNum = certifyService.certifyPhone(dto.getUser_phone());
+		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
+		authenticationDto.setUser_email(dto.getUser_email());
+		authenticationDto.setType("join");
+		String certifyNum = certifyService.certifyPhone(dto.getUser_phone(),authenticationDto);
 		dto.setCertifyNum(certifyNum);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/delivery/join/joinCheckPhone");

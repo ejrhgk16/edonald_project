@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.AuthenticationCodeDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.order.dto.OrderListDto;
 
@@ -24,4 +25,8 @@ public interface MemberMapper {
 	public String getEncodePassword(MemberDto dto);
 	public List<MemberDto> getMemberList(int user_status);
 	public void activityMemberControl(MemberDto dto);
+	public int getCountAuthentication(AuthenticationCodeDto dto);
+	public void insertAuthenticationCode(AuthenticationCodeDto dto);
+	public List<AuthenticationCodeDto> getAuthenticationCodeByCode(AuthenticationCodeDto dto);
+	public void deleteAuthenticationRecord(String user_email);
 }

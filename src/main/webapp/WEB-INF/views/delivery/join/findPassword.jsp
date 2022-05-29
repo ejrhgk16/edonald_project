@@ -263,7 +263,7 @@
 						
 
 						<div class="panel-body">
-							<form action="/kr/submitForgotPassword.html" method="post" role="form" id="form_forgotpassword" name="form_forgotpassword" data-required-symbol="*" novalidate="novalidate">
+							<form action="/ed/findpasswordCheck.do" method="post" role="form" id="form_forgotpassword" name="form_forgotpassword" data-required-symbol="*" novalidate="novalidate">
 
 								<!-- ECP Workflow Start-->
 
@@ -273,7 +273,7 @@
 								<div>
 									<div class="row">
 										<div class="col-xs-4">
-											<div class="form-group">
+											<div id="inputform" class="form-group">
 												
 												
 													<label for="verification-code" class="field-label"><span class="required-symbol">*</span>아이디:</label>
@@ -291,7 +291,7 @@
 									</div>
 								</div>
 
-								<button type="submit" class="btn btn-red btn-lg">확인</button>
+								<button type="button" id="sumbitBtn" class="btn btn-red btn-lg">확인</button>
 							<input type="hidden" name="csrfValue" value="82e5a54b2662fecf50115b87c4d2e350"></form>
 						</div>
 					</div>

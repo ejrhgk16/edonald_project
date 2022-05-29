@@ -53,7 +53,10 @@
 	<select id="getEncodePassword" resultType="String">
 		SELECT user_password FROM user_info WHERE user_email = #{user_email}
 	</select>
-
+	<update id="withdrawal">
+		UPDATE user_info SET user_status = #{user_status} WHERE user_email = #{user_email};
+	</update>
+	
 	<!-- Hadmin 유저 관리 -->
 	<select id="getMemberList" resultType="com.edonald.member.dto.MemberDto">
 		SELECT u.*,s.store_name FROM user_info u LEFT JOIN store_list s ON u.store_code = s.store_code WHERE user_status = #{user_status} ORDER BY u.role ASC;
@@ -62,5 +65,22 @@
 		UPDATE user_info SET user_status = #{user_status} WHERE user_email = #{user_email}
 	</update>
 	
-	
+	<!-- 인증관리 -->
+	<select id="getCountAuthentication" resultType="int">
+		SELECT count(*) FROM authentication_code WHERE type= #{type}
+		<if test="user_email != null"> AND user_email = #{user_email}</if>
+		<if test="code != null"> AND code = #{code};</if>
+	</select>
+	<select id="getCountAuthenticationByEmail" resultType="int">
+		SELECT count(*) FROM authentication_code WHERE user_email = #{user_email}
+	</select>
+	<insert id="insertAuthenticationCode">
+		INSERT INTO authentication_code VALUES(${code},#{user_email},#{type},default)
+	</insert>
+	<select id="getAuthenticationCodeByCode" resultType="com.edonald.member.dto.AuthenticationCodeDto">
+		SELECT * FROM authentication_code WHERE code = #{code} AND type = #{type}
+	</select>
+	<delete id="deleteAuthenticationRecord">
+		DELETE FROM authentication_code WHERE user_email = #{user_email}
+	</delete>
 </mapper>

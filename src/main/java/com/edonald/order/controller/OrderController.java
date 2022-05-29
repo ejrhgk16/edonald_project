@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edonald.hadmin.dto.MenuDto;
 import com.edonald.hadmin.dto.StoreDto;
 import com.edonald.member.dto.AddressDto;
+import com.edonald.member.dto.AuthenticationCodeDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.service.CertifyService;
 import com.edonald.member.service.MemberService;
@@ -318,8 +319,11 @@ public class OrderController {
 		memberDto.setUser_phone(phoneNum);
 		memberDto.setUser_name(name);
 		
+		AuthenticationCodeDto dto = new AuthenticationCodeDto();
+		dto.setType("order_nologin");
+		
 		HttpSession session= req.getSession();
-		String certifyNum = certifyService.certifyPhone(memberDto.getUser_phone());
+		String certifyNum = certifyService.certifyPhone(memberDto.getUser_phone(),dto);
 		System.out.println(certifyNum);
 		memberDto.setCertifyNum(certifyNum);
 		session.setAttribute("noLoginMemberDto", memberDto);
