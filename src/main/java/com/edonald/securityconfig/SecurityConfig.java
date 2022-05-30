@@ -50,10 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/ed/**", "/", "/resources/**", "/error/**", "/order/**").permitAll()
-		//.antMatchers("/sadmin/**").access("hasRole('ROLE_SADMIN')")
-		.antMatchers("/sample/admin")
-		.access("hasRole('ROLE_ADMIN')");
-		//.anyRequest().authenticated();
+		.antMatchers("/sadmin/**").access("hasRole('ROLE_SADMIN')")
+		.antMatchers("/member/**").access("hasRole('ROLE_MEMBER')")
+		.antMatchers("/hadmin/**").access("hasRole('ROLE_HADMIN')")
+		.anyRequest().authenticated();
 
 		http
 		.formLogin().loginPage("/ed/deliverHome")

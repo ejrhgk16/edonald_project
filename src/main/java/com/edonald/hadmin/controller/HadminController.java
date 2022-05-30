@@ -132,7 +132,8 @@ public class HadminController {
 	//insertMemberSadmin.do
 	@ResponseBody
 	@RequestMapping( value = "/hadmin/createSadmin.do",method = RequestMethod.POST)
-	public String hadminCreate(MemberDto dto) {
+	public String hadminCreate(MemberDto dto, HttpServletRequest req) {
+		log.info("create_sadmin url: " + req.getRequestURL() + " ip: " + req.getRemoteAddr()  );
 		String msg = sService.joinSadmin(dto);
 		String result = "{ \"msg\":\"" +msg+"\"}";
 		return result;
@@ -146,7 +147,8 @@ public class HadminController {
 	
 	@ResponseBody
 	@RequestMapping( value ="/hadmin/modifyMember.do",method = RequestMethod.POST)
-	public void hadminModifyMember(MemberDto dto) {
+	public void hadminModifyMember(MemberDto dto, HttpServletRequest req) {
+		log.info("modfyMember " + " url: " + req.getRequestURL() + " ip: " + req.getRemoteAddr() );
 		mService.changeAccountByAdmin(dto);
 	}
 

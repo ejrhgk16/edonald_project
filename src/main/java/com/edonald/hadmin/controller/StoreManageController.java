@@ -2,6 +2,8 @@ package com.edonald.hadmin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,9 @@ import com.edonald.hadmin.serivce.StoreManageService;
 import com.edonald.member.dto.SecurityUser;
 
 import kotlin.internal.RequireKotlin;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Controller
 public class StoreManageController {
 	@Autowired
@@ -37,7 +41,8 @@ public class StoreManageController {
 	
 	@ResponseBody
 	@PostMapping("/hadmin/storeUpdate.do")
-	public void storeUpdateDo(StoreDto dto) {
+	public void storeUpdateDo(StoreDto dto, HttpServletRequest req) {
+		log.info("storeupdate storecode: " + dto.getStore_code() +  " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 		storeManageService.updateStore(dto);
 	}
 	
@@ -70,8 +75,8 @@ public class StoreManageController {
 	}
 	
 	@PostMapping("/hadmin/storeRegister") 
-	public @ResponseBody void  storeRegisterDo(@RequestBody StoreDto storeDto) {
-		System.out.println(storeDto.getStore_driverthru());
+	public @ResponseBody void  storeRegisterDo(@RequestBody StoreDto storeDto, HttpServletRequest req) {
+		log.info("storeregister storecode: "+ storeDto.getStore_code() +  " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 		storeManageService.registerStore(storeDto);
 	}
 	
