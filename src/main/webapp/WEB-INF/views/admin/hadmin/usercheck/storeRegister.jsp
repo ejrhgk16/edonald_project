@@ -55,6 +55,8 @@
 								success : function(){
 									//alert("등록성공")
 									//window.close()
+									opener.location.reload();
+									window.open("about:blank","_self").close();
 								}
 							});
 						};
