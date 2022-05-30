@@ -3,6 +3,7 @@ package com.edonald.securityconfig;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,7 +30,11 @@ public class SecurityUserDetailService implements UserDetailsService {
 		if (memberDto == null) {
 			System.out.println("해당사용자없음");
 			throw new UsernameNotFoundException("해당사용자를 찾을수가없습니다");
-		} else {
+		} 
+		else if (memberDto.getUser_status() != 1) {
+			throw new AuthenticationCredentialsNotFoundException("인증 요청이 거부되었습니다");
+		}
+		else {
 			List<AddressDto> addressList = mapper.getAddress(username);
 			memberDto.setAddressList(addressList);
 			for (AddressDto addr : addressList) {
