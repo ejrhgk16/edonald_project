@@ -181,8 +181,6 @@ public class HadminController {
 		String path = "menu/burger";
 		dto.setStatus(1);
 		dto.setImg_path(fService.fileUpload(mainUploadFile, path));
-		dto.setL_price(0);
-		dto.setS_price(0);
 		if(subUploadFile.getOriginalFilename().equals("")) {
 			dto.setSet_img_path("");
 		}else {

@@ -219,7 +219,7 @@
 			$('#category_code').append("<option value=\"15\">소스</option>");
 			$('#category_code').append("<option value=\"19\">기타</option>");
 		}else if(type == 'drink'){
-			$('.priceInput').append('<div class="form-floating drinkmenuform" style="display:none"><input class="form-control" id="s_price" name="s_price" type="text" placeholder="Enter your first name" style="height: calc(3.5rem + 20px);" value="${dto.s_price }"/><label for="price">스몰 가격</label></div><div class="form-floating drinkmenuform" style="display:none"><input class="form-control" id="l_price" name="l_price" type="text" placeholder="Enter your first name"style="height: calc(3.5rem + 20px);" value="${dto.l_price }"/><label for="price">라즈 가격</label></div>');
+			$('.priceInput').append('<div class="form-floating drinkmenuform"><input class="form-control" id="s_price" name="s_price" type="text" placeholder="Enter your first name" style="height: calc(3.5rem + 20px);" value="<c:choose><c:when test="${!empty dto.s_price }">${dto.s_price }</c:when><c:otherwise>0</c:otherwise></c:choose>"/><label for="price">스몰 가격</label></div><div class="form-floating drinkmenuform"><input class="form-control" id="l_price" name="l_price" type="text" placeholder="Enter your first name"style="height: calc(3.5rem + 20px);" value="<c:choose><c:when test="${!empty dto.l_price }">${dto.l_price }</c:when><c:otherwise>0</c:otherwise></c:choose>" /><label for="price">라즈 가격</label></div>');
 			$('#category_code').append("<option value=\"20\">신제품</option>");
 			$('#category_code').append("<option value=\"21\">커피</option>");
 			$('#category_code').append("<option value=\"22\">라떼</option>");

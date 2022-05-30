@@ -83,11 +83,18 @@ $(document).ready(function() {
 	$(document).on('click','.btnModify',function(){
 		var seq = $(this).parent().parent().children('.list_seq').text();	
 		var url = "/hadmin/updateSubstitue.do";
-		var sub_to = $(this).parent().parent().children().children().children('.sub_to').is(':checked');
-		var sub_pl = $(this).parent().parent().children().children().children('.sub_pl').is(':checked');
-		var sub_ls = $(this).parent().parent().children().children().children('.sub_ls').is(':checked');
-		var sub_s = $(this).parent().parent().children().children().children('.sub_s').is(':checked');
-		var sub_em = $(this).parent().parent().children().children().children('.sub_em').is(':checked');
+		var sub_to = $("#sub_to_"+seq).is(':checked');
+		var sub_pl = $("#sub_pl_"+seq).is(':checked');
+		var sub_ls = $("#sub_ls_"+seq).is(':checked');
+		var sub_s = $("#sub_s_"+seq).is(':checked');
+		var sub_em = $("#sub_em_"+seq).is(':checked');
+		
+//		var sub_to = $(this).parent().parent().children().children().children('.sub_to').is(':checked');
+//		var sub_pl = $(this).parent().parent().children().children().children('.sub_pl').is(':checked');
+//		var sub_ls = $(this).parent().parent().children().children().children('.sub_ls').is(':checked');
+//		var sub_s = $(this).parent().parent().children().children().children('.sub_s').is(':checked');
+//		var sub_em = $(this).parent().parent().children().children().children('.sub_em').is(':checked');
+
 		if(sub_to){sub_to = 1;}else{sub_to = 0;}
 		if(sub_pl){sub_pl = 1;}else{sub_pl = 0;}
 		if(sub_ls){sub_ls = 1;}else{sub_ls = 0;}
