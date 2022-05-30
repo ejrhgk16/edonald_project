@@ -54,9 +54,9 @@
 		
 		$(document).on("click", "#delBtn", function(e){
 				e.preventDefault();
-				var index = $("input[name=cartIndex]").val();
+				var index = $(this).next("input[name=cartIndex]").val();
 				var url = "/order/cart/del?cartIndex="+index
-				console.log(index);
+				console.log("index  "+index);
 				$.ajax({ 
 					type: "GET",
 					url: url, 

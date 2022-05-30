@@ -15,7 +15,6 @@ $(document).ready(function(){
 		e.preventDefault(); 
 		var name = $("#noLoginName").val();
 		var phoneNum = $("#noLoginPhone").val();
-		alert("send")
 		var url = "/order/nologin/certifyNum?phoneNum="+phoneNum+"&name="+name;
 			$.ajax({
 				type : "GET",
