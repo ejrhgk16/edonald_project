@@ -46,6 +46,15 @@
 								$('.panel-home-masthead-form').html(html);
 								$('div.panel-heading').html("<h4>환영합니다 ${principal.memberDto.user_name} 지점장님</h4>");
 							}
+							
+							if ($('#role').val() == 'ROLE_HADMIN'){
+								var html = "";
+								html += "<p class=\"action-hadmin\">";
+								html += "<a id=\"sadminBtn\" href=\"/hadmin/store\" class=\"btn btn-red btn-block btn-xl\">관리자 사이트로</a></p>"
+								$('.panel-home-masthead-form').html(html);
+								$('div.panel-heading').html("<h4>환영합니다 ${principal.memberDto.user_name} 관리자님</h4>");
+							}
+							
 							$(".navbar-header").on("click", function(e){
 								e.preventDefault();
 								location.href="/ed/deliverHome"
