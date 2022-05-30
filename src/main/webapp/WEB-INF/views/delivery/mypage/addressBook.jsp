@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/favicon.ico">
 <meta charset="UTF-8">
 <title>addressBook</title>
 <link rel="stylesheet" href="/resources/css/main.css">

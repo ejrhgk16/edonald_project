@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/favicon.ico">
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/local.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
@@ -19,7 +20,7 @@
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/join.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이도날드</title>
 </head>
 <body class="country-82 lang-ko page-guest-enter-delivery-address">
 

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/favicon.ico">
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
@@ -43,7 +44,7 @@
 							}
 					});
 </script>
-<title>비밀번호 찾기</title>
+<title>이도날드</title>
 </head>
 	<body class="country-82 lang-ko ">
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KM4PZ8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KM4PZ8');</script>

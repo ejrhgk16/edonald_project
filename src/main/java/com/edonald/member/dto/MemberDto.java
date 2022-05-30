@@ -1,6 +1,5 @@
 package com.edonald.member.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.edonald.hadmin.dto.StoreDto;

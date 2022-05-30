@@ -70,11 +70,11 @@ function joinUserInfo(){
 		$("#inputId").focus();
 		return false;
 	}
-	if(emailVaild.test(user_email)==false){
-		alert("이메일형식이 올바르지 않습니다.");
-		$("#inputId").focus();
-		return false;
-	}
+//	if(emailVaild.test(user_email)==false){
+//		alert("이메일형식이 올바르지 않습니다.");
+//		$("#inputId").focus();
+//		return false;
+//	}
 	if (user_gender == "") {
 		alert("성별을 입력하세요.");
 		$("#inputGender").focus();

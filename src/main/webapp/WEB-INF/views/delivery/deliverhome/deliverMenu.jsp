@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/favicon.ico">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/menu_sidebar.js"></script>
@@ -116,7 +117,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache,no-Store">
 
-<title>Menu</title>
+<title>이도날드</title>
 <meta name="keywords" content="Menu">
 <meta name="description" content="Menu desc">
 <link rel="stylesheet" href="/resources/css/main.css">

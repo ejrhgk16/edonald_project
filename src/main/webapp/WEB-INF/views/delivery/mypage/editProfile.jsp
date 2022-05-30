@@ -11,7 +11,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>editProfile</title>
+<title>이도날드</title>
+<link rel="icon" href="https://edonaldfile.s3.ap-northeast-2.amazonaws.com/common/delivery/favicon.ico">
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="/resources/css/local.css">
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>

@@ -37,7 +37,7 @@ $(document).ready(function(){
 		result_url ="/hadmin/userPage?user_status=0";
 	}
 
-	$('.modifyBtn').on('click',function(){
+	$(document).on('click','.modifyBtn',function(){
 		var url = "/hadmin/CMSadmin";
 		var id = "id_" + $(this).attr("data-value");
 		var email = $('#'+id).text();
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");
 	})
 	
-	$('.createSadminBtn').on('click',function(){
+	$(document).on('click','.createSadminBtn',function(){
 		var url = "/hadmin/CMSadmin";
 		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");	
 	})
