@@ -26,12 +26,30 @@
 
         		})
         		
-        		setInterval(function(){
+        		
+        		
+        		var interval = setInterval(function(){
         			
         			window.location.reload();
     
         		},5000);
         		
+				$('.intervalCon').on('click',function(){
+        			
+        			if($(this).attr("data-value") != "stop"){
+	        			$(this).text("주문 접수를 받으세요");
+	        			$(this).attr("style","color:red");
+	        			$(this).attr("data-value","stop");
+	        			clearInterval(interval);
+        			}else{
+        				$(this).text("주문 접수 중...");
+        				$(this).attr("style","");
+        				$(this).attr("data-value","");
+        				interval = setInterval(function(){
+                			window.location.reload();
+                		},5000);
+        			}
+        		})
         		
         		$(document).on('change','.orderselect',function(e){
         			e.stopPropagation();
@@ -47,22 +65,14 @@
         				url: url,
         				type: 'get',
         				success:function(){
-        					
+        					window.location.reload();
         				},
         				error:function(){
         					alert("error");
         				}
         			});
         			
-        			if($(this).val() == 5){
-						window.location.reload();
-					}
-        			if(wait_time != null){
-        				setTimeout(function(){
-        					window.location.reload();
-        				},1500)
-        				
-        			}
+        			window.location.reload();
 
         		})
         			$(document).on('click','.orderbutton',function(e){
@@ -179,6 +189,7 @@
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i>주문현황
+					<button type="button" class="intervalCon btn btn-white">주문 접수 중...</button>
 				</div>
 				<form action="">
 				<div class="card-body">
