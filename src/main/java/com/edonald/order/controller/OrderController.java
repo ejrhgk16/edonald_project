@@ -156,6 +156,8 @@ public class OrderController {
 	
 	@GetMapping("/order/cart/del")
 	public @ResponseBody OrderListDto cartDel(@RequestParam int cartIndex, HttpSession session){
+		
+		System.out.println("zkxmindex"  + cartIndex);
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		List<CartDto> cartList = orderListDto.getCartList();
 		int productPrice = cartList.get(cartIndex).getCalc_price();
