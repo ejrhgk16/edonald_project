@@ -28,7 +28,6 @@ public class SecurityUserDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberDto memberDto = mapper.getMemberById(username);
 		if (memberDto == null) {
-			System.out.println("해당사용자없음");
 			throw new UsernameNotFoundException("해당사용자를 찾을수가없습니다");
 		} 
 		else if (memberDto.getUser_status() != 1) {
