@@ -60,7 +60,7 @@ public class DeliverController {
 	@Autowired
 	private CertifyService cService;
 	
-	@GetMapping("/ed/deliverHome")
+	@RequestMapping(value={"/ed/deliverHome", "/"})
 	public String deliverhome(Model model, HttpServletRequest req, @RequestParam(value="errorMsg", required = false)String errorMsg) {
 		HttpSession session = req.getSession();
 		String naverUrl = naverlogin.getAuthorizationUrl(session);

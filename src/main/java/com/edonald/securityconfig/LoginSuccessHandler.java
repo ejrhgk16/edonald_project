@@ -27,13 +27,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		log.info("login success : "+auth +member.getUser_email() +" ip: " + request.getRemoteAddr() );
 		String url="";
 		if(auth.equals( "[ROLE_MEMBER]")) {
-			System.out.println("로그인 성공");
 			url="/ed/deliverHome";
 		}else if(auth.equals("[ROLE_SADMIN]")) {
-			System.out.println("지점장 로그인 성공");
 			url="/ed/deliverHome";
 		}else if(auth.equals("[ROLE_HADMIN]")) {
-			url = "/ed/deliverHome/";
+			url = "/ed/deliverHome";
 	}
 		response.sendRedirect(url);
 		

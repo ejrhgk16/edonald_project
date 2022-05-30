@@ -113,8 +113,8 @@ public class OrderController {
 	}
 
 	@PostMapping("/order/cart/add")
-	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication, Model model) {
-		log.info("OrderContorller : {}" + cartDto.toString());
+	public String cartAdd(CartDto cartDto, HttpSession session, Authentication authentication, Model model, HttpServletRequest req) {
+		log.info("cartadd "+cartDto.getCart_product_code() +  " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 		String menu_type = cartDto.getMenu_type();
 		int productPrice = 0;
 		
@@ -187,9 +187,9 @@ public class OrderController {
 
 	
 	@GetMapping("/order/payment")
-	public String payment(HttpSession session, @RequestParam(value="order_comment" ,required = false) String order_comment ) {
+	public String payment(HttpSession session, @RequestParam(value="order_comment" ,required = false) String order_comment,  HttpServletRequest req ) {
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
-		System.out.println(order_comment + "  ordercomment");
+
 		if(orderListDto.getCupone_code() == null) {
 			orderListDto.setFinal_price(orderListDto.getTotal_price());
 		}
@@ -219,7 +219,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/order/payment/check")
-	public  @ResponseBody ResponseEntity<String> paycheck(PayInfoDto payInfoDto, HttpSession session)throws IOException{
+	public  @ResponseBody ResponseEntity<String> paycheck(PayInfoDto payInfoDto, HttpSession session, HttpServletRequest req)throws IOException{
 		String token = orderService.getToken();
 		
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
@@ -229,33 +229,36 @@ public class OrderController {
 		orderListDto.setImp_uid(imp_uid);
 		try {
 			if(amount != orderListDto.getFinal_price()) {
-				System.out.println("결제금액");
+
 				orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "결제금액 오류");
+				log.info("orderpayment fail "+ orderListDto.getPayment_type()+" 결제금액 오류  "+ orderListDto.getMerchanuid() +" imp_uid: "+ orderListDto.getImp_uid()+" url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 				return new ResponseEntity<String>("결제금액 오류", HttpStatus.BAD_REQUEST);
+
 			}
-			System.out.println("주문번호  " + merchanuid);
+
 			OrderNumDto orderNumDto = orderService.orderNumCheck(merchanuid);
 			if(!merchanuid.equals(orderNumDto.getOrder_num())) {
-				System.out.println("주문번호");
+
 				orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
+				log.info("orderpayment fail "+ orderListDto.getPayment_type()+" 주문번호 오류  "+ orderListDto.getMerchanuid() +" imp_uid: "+ orderListDto.getImp_uid()+" url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 				return new ResponseEntity<String>("주문번호 오류", HttpStatus.BAD_REQUEST);
 			}
-			
+			log.info("orderpayment success "+ orderListDto.getPayment_type()+" "+ orderListDto.getMerchanuid() +" imp_uid: "+ orderListDto.getImp_uid()+ " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 			return new ResponseEntity<String>("주문이 완료되었습니다 !", HttpStatus.OK);
 		
 		}catch(Exception e) {
-			System.out.println("결제그냥");
 			orderService.payMentCancle(token, payInfoDto.getImp_uid(), amount,  "주문번호 오류");
+			log.info("orderpayment fail "+orderListDto.getPayment_type()+" 결제오류  "+ orderListDto.getMerchanuid() +" imp_uid: "+ orderListDto.getImp_uid()+ " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 			return new ResponseEntity<String>("결제 오류", HttpStatus.BAD_REQUEST);
 		}	
 	
 	}
 	
 	@GetMapping("/order/payment/complete")
-	public @ResponseBody ResponseEntity<String> payComplete(HttpSession session, Model model) throws IOException{
+	public @ResponseBody ResponseEntity<String> payComplete(HttpSession session, Model model, HttpServletRequest req) throws IOException{
 		OrderListDto orderListDto = (OrderListDto) session.getAttribute("orderListDto");
 		String paytype = orderListDto.getPayment_type();
-
+		log.info("ordercomplete "+orderListDto.getPayment_type()+ orderListDto.getMerchanuid() + " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 			try {
 				//주문 예외사항들 체크 해줘야함 가게 상태, 배달 시간, 등등
 				orderService.orderComplete(orderListDto);
@@ -265,6 +268,8 @@ public class OrderController {
 					String imp_uid = orderListDto.getImp_uid();
 					int amount = orderService.paymentInfo(imp_uid, token);
 					orderService.payMentCancle(token, imp_uid, amount, e.getMessage());
+					log.info("orderfail "+e.getMessage() +" "+orderListDto.getPayment_type()+ orderListDto.getMerchanuid() + " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
+
 				}
 				return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 			}

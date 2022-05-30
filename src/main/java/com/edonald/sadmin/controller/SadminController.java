@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -38,6 +39,9 @@ import com.edonald.order.service.OrderService;
 import com.edonald.sadmin.service.SadminMenuService;
 import com.edonald.sadmin.service.SadminService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class SadminController {
 	
@@ -156,7 +160,7 @@ public class SadminController {
 	}
 	
 	@RequestMapping( value = "/sadmin/order" , method = RequestMethod.GET)
-	public String sadminOrder(Authentication authentication,Model model) {
+	public String sadminOrder(Authentication authentication,Model model) { 
 		SecurityUser user = (SecurityUser) authentication.getPrincipal();
 		MemberDto sessionDto = (MemberDto) user.getMemberDto();
 		int store_code = sessionDto.getStore_code();
@@ -167,9 +171,11 @@ public class SadminController {
 	
 	@ResponseBody
 	@RequestMapping( value = "/sadmin/order.do" , method = RequestMethod.GET)
-	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time) throws IOException {
+	public void sadminOrderDo(Model model,@RequestParam int order_seq, @RequestParam int order_status,@RequestParam(value = "wait_time" , required = false) String wait_time, HttpServletRequest req) throws IOException {
 		OrderListDto dto = service.getOrderListBySeq(order_seq);
+		log.info("sadmin"+ dto.getMerchanuid()+ " update orderstatus: "+order_status+ " url: " + req.getRequestURL() + " ip :" + req.getRemoteAddr());
 		if(wait_time != null) {
+
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(dto.getOrder_date());
 			cal.add(Calendar.MINUTE, Integer.parseInt(wait_time));
