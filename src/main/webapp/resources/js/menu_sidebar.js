@@ -111,6 +111,12 @@ $(document).ready(function() {
 		var partId = $(this).children(".primary-menu-item-target").attr("href");
 		if (partId == "?daypartId=1") {
 			$(".secondary-menu-item").children("a").eq(1).children("span").text("버거 & 세트");
+		
+			$(".secondary-menu-item.selected").children().children().attr("style","");
+			$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
+			$(".secondary-menu-item").eq(1).attr("class", "secondary-menu-item selected");
+			$(".secondary-menu-item.selected").children().children().attr("style","color:white");
+		
 			$(".secondary-menu-item").children("a").eq(1).attr("data-value","burger");
 			$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=1");
 			$(".primary-menu-item.selected").children("a").children("span").text("일반 메뉴");
@@ -120,6 +126,12 @@ $(document).ready(function() {
 			menuRequest("burger",1);
 		} else {
 			$(".secondary-menu-item").children("a").eq(1).children("span").text("이모닝&세트");
+			
+			$(".secondary-menu-item.selected").children().children().attr("style","");
+			$(".secondary-menu-item.selected").attr("class", "secondary-menu-item");
+			$(".secondary-menu-item").eq(1).attr("class", "secondary-menu-item selected");
+			$(".secondary-menu-item.selected").children().children().attr("style","color:white");
+			
 			$(".secondary-menu-item").children("a").eq(1).attr("data-value","emorning");
 			$(".primary-menu-item.selected").children("a").attr("href", "?daypartId=2");
 			$(".primary-menu-item.selected").children("a").children("span").text("아침 메뉴");

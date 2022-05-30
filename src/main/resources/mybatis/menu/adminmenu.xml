@@ -24,11 +24,11 @@
 			NULL,
 			#{type},0,0,0,0,0
 			<choose>
-				<when test="l_price != null">,#{l_price}</when>
+				<when test="l_price != '0'">,#{l_price}</when>
 				<otherwise>,null</otherwise>
 			</choose>
 			<choose>
-				<when test="s_price != null">,#{s_price}</when>
+				<when test="s_price != '0'">,#{s_price}</when>
 				<otherwise>,null</otherwise>
 			</choose>
 			) 
