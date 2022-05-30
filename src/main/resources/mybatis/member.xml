@@ -14,7 +14,7 @@
 	</insert>
 	
 	<select id="getMemberById" resultType="com.edonald.member.dto.MemberDto">
-		select * from user_info where user_email = #{username}
+		select * from user_info where user_email = #{username} and user_status=1
 	</select>
 	<select id="getAddress" resultType="com.edonald.member.dto.AddressDto">
 		select * from user_address where user_email = #{username}
