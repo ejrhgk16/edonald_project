@@ -25,5 +25,10 @@ public interface HadminMapper {
 	public List<Integer> getSalesVolumeBySeqAndGender(@Param("menu_code") int menu_code,@Param("monthorday") String monthorday,@Param("user_gender") String user_gender);
 	public List<CartDto> getEachMenuSalesVolume(@Param("user_gender") int user_gender,@Param("menu_type") String menu_type,@Param("order_date") String order_date);
 	public List<OrderListDto>getExcelData();
-
+	
+	//demp
+	public List<Integer> getMenuSeqList();
+	public MenuDto getMenuByCode(int code);
+	public void insertOrderInfo(OrderListDto dto);
+	public void insertCartInfo(CartDto dto);
 }

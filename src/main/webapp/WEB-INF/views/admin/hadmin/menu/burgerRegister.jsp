@@ -140,7 +140,7 @@
 				input.val(log);
 			} else {
 				if (log)
-					alert(log);
+					;
 			}
 			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#image').attr("src", tmppath);
@@ -165,7 +165,7 @@
 				input.val(log);
 			} else {
 				if (log)
-					alert(log);
+					;
 			}
 			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#Dimage').attr("src", tmppath);

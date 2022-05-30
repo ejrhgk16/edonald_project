@@ -59,7 +59,7 @@
           if( input.length ) {
               input.val(log);
           } else {
-              if( log ) alert(log);
+              if( log ) ;
           }
           var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#image').attr("src", tmppath);
