@@ -14,6 +14,7 @@ import com.edonald.member.dao.MemberMapper;
 import com.edonald.member.dto.AddressDto;
 import com.edonald.member.dto.MemberDto;
 import com.edonald.member.dto.SecurityUser;
+import com.edonald.sadmin.dao.SadminMapper;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -23,6 +24,8 @@ public class SecurityUserDetailService implements UserDetailsService {
 
 	@Autowired
 	MemberMapper mapper;
+	@Autowired
+	SadminMapper sadminMapper;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,6 +37,8 @@ public class SecurityUserDetailService implements UserDetailsService {
 			throw new AuthenticationCredentialsNotFoundException("인증 요청이 거부되었습니다");
 		}
 		else {
+
+					
 			List<AddressDto> addressList = mapper.getAddress(username);
 			memberDto.setAddressList(addressList);
 			for (AddressDto addr : addressList) {
@@ -42,6 +47,14 @@ public class SecurityUserDetailService implements UserDetailsService {
 				}
 			}
 			
+			if(memberDto.getStore_code() != 0) {
+				int store_code = memberDto.getStore_code();
+			
+				StoreDto storeDto = sadminMapper.getStore(store_code);
+				System.out.println(storeDto.toString());
+				memberDto.setDeliverStore(storeDto);
+
+			}else {
 			List<StoreDto> nearStoreList = mapper.getNearStoreList(memberDto.getDeliverAddress());
 			if(nearStoreList.isEmpty()) {
 				memberDto.setDeliverStore(null);
@@ -52,8 +65,10 @@ public class SecurityUserDetailService implements UserDetailsService {
 					break;
 				}
 			}
-
+			}
+			
 			return new SecurityUser(memberDto);
+			
 		}
 	}
 

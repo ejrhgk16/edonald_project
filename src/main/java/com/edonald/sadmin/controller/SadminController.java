@@ -64,15 +64,6 @@ public class SadminController {
 	}	
 
 	
-	@RequestMapping( value = "/sadmin/index", method = RequestMethod.GET)
-	public String sadminHome(HttpSession session,Authentication authentication) {
-		SecurityUser user = (SecurityUser)authentication.getPrincipal();
-		MemberDto member = user.getMemberDto();
-		int store_code = member.getStore_code();
-		member.setDeliverStore(service.getStore(store_code));
-		return "admin/sadmin/index";
-	}
-	
 	//updatePage
 	@RequestMapping(value = "/sadmin/Msadmin", method = RequestMethod.GET)
 	public String sadminModifySadmin(Authentication authentication) {
@@ -165,6 +156,8 @@ public class SadminController {
 		MemberDto sessionDto = (MemberDto) user.getMemberDto();
 		int store_code = sessionDto.getStore_code();
 		List<OrderListDto> list = service.getOrderList(store_code);
+		
+
 		model.addAttribute("list",list);
 		return "admin/sadmin/order/order";
 	}
