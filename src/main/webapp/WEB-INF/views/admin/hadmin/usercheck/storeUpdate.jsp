@@ -30,7 +30,6 @@ $(document).ready(function(){
 			store_delivery = 1; 
 		}
 		
-		alert(store_name+store_phone+store_driverthru+store_delivery);
 		var url = "/hadmin/storeUpdate.do";
 		var data = {
 			store_code:store_code,
@@ -44,7 +43,6 @@ $(document).ready(function(){
 		}else{
 			data.store_status = -1;
 		}
-		alert(JSON.stringify(data));
 		$.ajax({
 			url: url,
 			type: 'POST',
