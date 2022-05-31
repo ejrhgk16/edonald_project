@@ -147,8 +147,7 @@ $(document).ready(function(){
 						<div class="panel-body">
 
 							<p>
-								문자를 5분안에 받지못하셨다면, 재발송을 위해 <a href="/kr/sendActivate.html">여기</a>를
-								클릭해주세요
+								문자로 받은 인증번호는 5분안에 입력하셔야 합니다.
 							</p>
 							<form id="form_accountactivation" name="form_accountactivation"
 								method="post" accept-charset="utf-8" role="form"
