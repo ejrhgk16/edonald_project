@@ -23,6 +23,12 @@ $(document).ready(function(){
 		var store_phone = $('#store_phone').val();
 		var store_driverthru = 0;
 		var store_delivery = 0;
+		console.log($('#closure').is(':checked'));
+		if($('#closure').is(':checked')){
+			var store_status = 3;
+		}else{
+			var store_status = 0;
+		}
 		if($('#driverThru').is(':checked')){
 			store_driverthru = 1;
 		}
@@ -36,13 +42,10 @@ $(document).ready(function(){
 			store_name:store_name,
 			store_phone:store_phone,
 			store_driverthru:store_driverthru,
-			store_delivery:store_delivery
+			store_delivery:store_delivery,
+			store_status: store_status
 		}
-		if($('#closure').is(':checked')){
-			date.store_status = 3;
-		}else{
-			data.store_status = -1;
-		}
+		
 		$.ajax({
 			url: url,
 			type: 'POST',
