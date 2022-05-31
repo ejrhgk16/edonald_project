@@ -82,7 +82,8 @@
 	<select id="getCountAuthentication" resultType="int">
 		SELECT count(*) FROM authentication_code WHERE type= #{type}
 		<if test="user_email != null"> AND user_email = #{user_email}</if>
-		<if test="code != null"> AND code = #{code};</if>
+		<if test="code != 0"> AND code = #{code};</if>
+		AND DATE_FORMAT( date, "%Y-%m-%d") = curdate()
 	</select>
 	<select id="getCountAuthenticationByEmail" resultType="int">
 		SELECT count(*) FROM authentication_code WHERE user_email = #{user_email}
