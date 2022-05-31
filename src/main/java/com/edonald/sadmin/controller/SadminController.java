@@ -148,6 +148,7 @@ public class SadminController {
 		SecurityUser user = (SecurityUser) authentication.getPrincipal();
 		MemberDto sessionDto = (MemberDto) user.getMemberDto();
 		String store_code = Integer.toString(sessionDto.getStore_code());
+		user.getMemberDto().getDeliverStore().setStore_status(Integer.parseInt(store_status));
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("store_status", store_status);
 		map.put("store_code", store_code);

@@ -318,7 +318,9 @@ function eachMenuChartUpdate(datasets,labels){
 			      yAxes: [{
 			        ticks: {
 						stepSize: 1,
-						beginAtZero: true
+						beginAtZero: true,
+						 min: 0,
+          				maxTicksLimit: 15
 					},
 			        gridLines: {
 			          color: "rgba(0, 0, 0, .125)",

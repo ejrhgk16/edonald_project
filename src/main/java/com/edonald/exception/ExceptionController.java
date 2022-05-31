@@ -21,12 +21,12 @@ import lombok.extern.log4j.Log4j2;
 @ControllerAdvice
 public class ExceptionController  {
 
-//	@ExceptionHandler(Exception.class)
-//	public String except(HttpServletRequest req) {
-//		log.error("Exception " + "url : " + req.getRequestURL() + " ip : "+req.getRemoteAddr() );
-//		return "/delivery/error/error";
-//	}
-//	
+	@ExceptionHandler(Exception.class)
+	public String except(HttpServletRequest req, Exception e) {
+		log.error("Exception " + "url : " + req.getRequestURL() + " ip : "+req.getRemoteAddr() + " "+e.getStackTrace() );
+		return "/delivery/error/error";
+	}
+	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException ex, HttpServletRequest req) {

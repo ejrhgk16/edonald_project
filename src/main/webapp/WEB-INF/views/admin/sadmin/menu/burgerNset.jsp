@@ -32,6 +32,7 @@
 					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					    <c:if test="${principal.memberDto.deliverStore.store_status == 0}">영업 종료</c:if>
 					    <c:if test="${principal.memberDto.deliverStore.store_status == 1}">정상 영업</c:if>
+					    <c:if test="${principal.memberDto.deliverStore.store_status == 3}">폐업</c:if>
 					  </button>
 					  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					    <li><a class="dropdown-item store_status">정상 영업</a></li>

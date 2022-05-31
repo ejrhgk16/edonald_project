@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <!-- Spring Security Login Session 처리 -->
@@ -30,6 +31,7 @@
 					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					    <c:if test="${principal.memberDto.deliverStore.store_status == 0}">영업 종료</c:if>
 					    <c:if test="${principal.memberDto.deliverStore.store_status == 1}">정상 영업</c:if>
+					    <c:if test="${principal.memberDto.deliverStore.store_status == 3}">폐업</c:if>
 					  </button>
 					  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					    <li><a class="dropdown-item store_status">정상 영업</a></li>
