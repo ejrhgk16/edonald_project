@@ -141,8 +141,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String changeAccount(MemberDto sessionDto,MemberDto dto) {
+
 		String sessionPass = sessionDto.getUser_password();
 		String dtoPass = dto.getUser_password();
+		if(sessionDto.getOauth().equals("naver")) {
+			mapper.changeAccount(dto);
+			return "success";
+		}
 		if(!encoder.matches(dtoPass, sessionPass)) {
 			return "fail";
 		}

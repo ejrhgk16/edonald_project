@@ -51,6 +51,7 @@ import com.google.gson.JsonParser;
 import lombok.extern.log4j.Log4j2;
 
 
+@Log4j2
 @Controller
 public class MemberController {
 	@Autowired
@@ -72,6 +73,7 @@ public class MemberController {
 		JsonElement element = parser.parse(result);
 		JsonObject object = element.getAsJsonObject();
 		JsonObject response = object.getAsJsonObject("response");
+		log.info("naverlogin success : " + response.get("email").getAsString() + " url: " + req.getRequestURL()+ " ip: "+req.getRemoteAddr());
 		String url = memberService.naverLogin(response, req);
 		return url;
 	}
@@ -85,12 +87,10 @@ public class MemberController {
 		}
 		
 		SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
-		System.out.println("principal " + securityUser.getMemberDto().getUser_email());
 		AddressDto addr = memberService.getAddressById(address_seq);
-		System.out.println("바꿀 주소 : " + addr.getRoad_address());
+	
 		securityUser.getMemberDto().setDeliverAddress(addr);
 		String changeAddr = securityUser.getMemberDto().getDeliverAddress().getRoad_address();
-		System.out.println("주소 바뀜??" + securityUser.getMemberDto().getDeliverAddress().getRoad_address());
 
 		AddressDto addrDto = securityUser.getMemberDto().getDeliverAddress();
 
@@ -99,9 +99,7 @@ public class MemberController {
 			securityUser.getMemberDto().setDeliverStore(null);
 		}
 		for (StoreDto s : nearStoreList) {
-			System.out.println("sssss" + s.getStore_address());
 			if (s.getStore_delivery() == 1 && s.getStore_status() == 1) {
-				System.out.println("ss2222" + s.getStore_address());
 				securityUser.getMemberDto().setDeliverStore(s);
 				break;
 			}
@@ -117,12 +115,8 @@ public class MemberController {
 	@PostMapping("/member/addAddress")
 	public @ResponseBody String addAddress(Authentication authentication, @RequestBody AddressDto addr) {
 		SecurityUser user = (SecurityUser) authentication.getPrincipal();
-		System.out.println("주소추가 !!! " + user.getMemberDto().getUser_name());
-		System.out.println("주소" + addr.getDetail_address());
 		addr.setUser_email(user.getMemberDto().getUser_email());
 		addr.setD_key("n");
-		System.out.println("로드 " + addr.getRoad_address());
-		System.out.println("주소" + addr.getDetail_address());
 		memberService.addAddress(addr);
 		List<AddressDto> addrList = memberService.getAddressList(user.getMemberDto().getUser_email());
 		user.getMemberDto().setAddressList(addrList);
