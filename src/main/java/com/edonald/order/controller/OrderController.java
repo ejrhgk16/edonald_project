@@ -323,7 +323,7 @@ public class OrderController {
 		return "/delivery/order/noLoginOrder/checkphone";
 	}
 	@GetMapping("/order/nologin/certifyNum")
-	public @ResponseBody void checkPhonePage(@RequestParam String phoneNum, @RequestParam String name, HttpServletRequest req) {
+	public @ResponseBody ResponseEntity<String> checkPhonePage(@RequestParam String phoneNum, @RequestParam String name, HttpServletRequest req) {
 		MemberDto memberDto = new MemberDto();
 		System.out.println(phoneNum);
 		System.out.println(name);
@@ -336,6 +336,7 @@ public class OrderController {
 		
 		if (certifyService.getCountAuthentication(dto) > 5) {
 			System.out.println("인증횟수 초과");
+			return new ResponseEntity<String>("인증 횟수 초과", HttpStatus.BAD_REQUEST);
 		}else {
 		
 			HttpSession session= req.getSession();
@@ -346,6 +347,7 @@ public class OrderController {
 			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("/delivery/order/chekcCertifyNum");
+			return new ResponseEntity<String>(HttpStatus.OK);
 		}
 	}
 	

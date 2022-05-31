@@ -26,6 +26,10 @@ $(document).ready(function(){
 					var btn = '<button type="button" id="checkBtn" class="btn btn-red btn-lg">확인</button>'
 					$("#sendBtn").remove();
 					$(".col-xs-4").append(btn);
+				},
+				error:function(res){
+					alert(res.responseText);
+					window.location.href="/ed/deliverHome";
 				}
 			});
 	})
