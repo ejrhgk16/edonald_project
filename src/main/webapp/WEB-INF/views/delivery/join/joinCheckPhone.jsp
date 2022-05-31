@@ -29,8 +29,8 @@ $(document).ready(function(){
 				alert("회원가입 완료. 로그인 해주세요");
 				location.href = "/ed/joinComplete";
 			},
-			error : function(){
-				alert("인증번호가 다릅니다.")
+			error : function(res){
+				alert(res.responseText);
 			}
 		})
 	})
@@ -137,8 +137,7 @@ $(document).ready(function(){
 							</p>
 							<p>인증코드를 입력해주세요</p>
 							<p>
-								문자를 5분안에 받지못하셨다면, 재발송을 위해 <a href="/ed/checkPhonePage">여기</a>를
-								클릭해주세요
+								문자를 5분 안에 입력해주세요
 							</p>
 							<form id="form_accountactivation" name="form_accountactivation"
 								method="post" accept-charset="utf-8" role="form"
