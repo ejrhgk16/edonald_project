@@ -117,6 +117,11 @@ public class JoinController {
 		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
 		authenticationDto.setUser_email(dto.getUser_email());
 		authenticationDto.setType("join");
+		int count = certifyService.getCountAuthentication(authenticationDto);
+		if ( count > 5) {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("redirect:/deliver/deliverHome");
+		}
 		String certifyNum = certifyService.certifyPhone(dto.getUser_phone(),authenticationDto);
 		dto.setCertifyNum(certifyNum);
 		ModelAndView mv = new ModelAndView();
