@@ -30,7 +30,8 @@
 			 }
 			 
 			 var url="/hadmin/promotionInsert.do";
-			 if($('this').attr('data-value') != ""){
+			 
+			 if($('#p_seq').val() != null){
 				url ="/hadmin/promotionUpdate.do";
 	 		 }
 			 var form = $('#addPromotion')[0];
@@ -58,8 +59,6 @@
 
           if( input.length ) {
               input.val(log);
-          } else {
-              if( log ) ;
           }
           var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#image').attr("src", tmppath);
@@ -138,7 +137,9 @@
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">프로모션 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>
                                             </div>
-                                            <input type="hidden" id="p_seq" name="p_seq" value="${promotion.p_seq }"/>
+                                            <c:if test="${!empty promotion.p_seq }">
+                                            	<input type="hidden" id="p_seq" name="p_seq" value="${promotion.p_seq }"/>
+                                            </c:if>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">

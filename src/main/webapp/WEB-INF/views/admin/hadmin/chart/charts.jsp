@@ -98,7 +98,7 @@
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">매출차트</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+						<li class="breadcrumb-item"><a href="/hadmin/store">Dashboard</a></li>
 						<li class="breadcrumb-item active">매출차트</li>
 					</ol>
 					<div class="card mb-4">

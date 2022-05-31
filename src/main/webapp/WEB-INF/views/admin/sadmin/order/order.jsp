@@ -32,7 +32,7 @@
         			
         			window.location.reload();
     
-        		},5000);
+        		},60000);
         		
 				$('.intervalCon').on('click',function(){
         			

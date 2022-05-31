@@ -50,7 +50,7 @@ $(document).ready(function(){
 		window.open(url, "a", "width=600, height=800, left=100, top=50, location=no");	
 	})
 	
-	$('.unactivityBtn').on('click',function(){
+	$(document).on('click','.unactivityBtn',function(){
 		var id = "id_" + $(this).attr("data-value");
 		var email = $('#'+id).text();
 		
@@ -150,7 +150,7 @@ $(document).ready(function(){
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">유저관리</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+						<li class="breadcrumb-item"><a href="/hadmin/store">Dashboard</a></li>
 						<li class="breadcrumb-item active">유저관리</li>
 					</ol>
 

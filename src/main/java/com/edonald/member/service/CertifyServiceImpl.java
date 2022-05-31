@@ -1,9 +1,13 @@
 package com.edonald.member.service;
 
+import java.io.IOException;
+import java.io.Reader;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import org.apache.ibatis.io.Resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,14 +32,28 @@ public class CertifyServiceImpl implements CertifyService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	private String key ="NCSHLRZOR4C97AXM";
-	private String secret = "FVERMOZDK8QB5R2PN7E9CTVGUMTANTGJ";
+   private String api_key = "NCSWE7PH3DUSTKYL";
+   private String api_secret;
+   private String fromNum ="01027764122";
+   String resource = "properties/config.properties";
+
+//	private String key ="NCSHLRZOR4C97AXM";
+//	private String secret = "FVERMOZDK8QB5R2PN7E9CTVGUMTANTGJ";
 
 	@Override
 	public String certifyPhone(String user_phone,AuthenticationCodeDto dto) {
+		Properties properties = new Properties();
+		Reader reader;
+	    try {
+        reader = Resources.getResourceAsReader(resource);
+        properties.load(reader);
+        api_secret = properties.getProperty("SMS_SECRET_API_KEY");
+	    }catch(IOException e) {
+	    	
+	    }
 		// 디비에서 중복확인 및 횟수 확인 추가 해야함
 		// 포인트 다써버림
-		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(key, secret, "https://api.coolsms.co.kr");
+		DefaultMessageService messageService = NurigoApp.INSTANCE.initialize(api_key, api_secret, "https://api.coolsms.co.kr");
 		int num;
 		while (true) {
 			num = (int) (Math.random() * (99999 - 10000 + 1)) + 10000;
@@ -47,6 +65,7 @@ public class CertifyServiceImpl implements CertifyService {
 		Message msg = new Message();
 		msg.setFrom("01039085470");
 		msg.setFrom("01024954502");
+		msg.setFrom(fromNum);
 		msg.setTo(user_phone);
 		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
 		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(msg));
