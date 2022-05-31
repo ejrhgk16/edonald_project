@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/resources/js/jquery-3.6.0.js"></script>
@@ -442,6 +445,7 @@
 
 			</div>
 		</div>
+		</div>
 		<div class="global-footer">
 			
 			<div class="footer-disclaimer">
@@ -461,6 +465,7 @@
 
 				</div>
 			</div>
+
 </body>
 
 </html>
