@@ -35,8 +35,7 @@
 	</select>
 	
 	<update id="updateStore">
-		UPDATE store_list SET store_name = #{store_name}, store_phone = #{store_phone}, store_driverthru = #{store_driverthru}, store_delivery = #{store_delivery} 
-		<if test="store_status != -1">, store_status = {#store_status} </if>
+		UPDATE store_list SET store_name = #{store_name}, store_phone = #{store_phone}, store_driverthru = #{store_driverthru}, store_delivery = #{store_delivery}, store_status = #{store_status} 
 		WHERE store_code = #{store_code}
 	</update>
 

@@ -92,8 +92,12 @@ public class SadminController {
 		}
 	}
 	
-	
-	
+//	@ResponseBody
+//	@RequestMapping( value="/sadmin/updateStore.do", method = RequestMethod.GET)
+//	public void sadminUpdateStoreDo() {
+//		
+//	}
+//	
 	@RequestMapping(value = "/sadmin/menu", method = RequestMethod.GET)
 	public String sadminMenu(Model model,String type, Authentication authentication) {
 		SecurityUser user = (SecurityUser)authentication.getPrincipal();

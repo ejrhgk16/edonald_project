@@ -85,6 +85,7 @@ public class HadminController {
 	@ResponseBody
 	@RequestMapping(value = "/hadmin/promotionInsert.do", method = RequestMethod.POST)
 	public void hadminPromotionIsnertDo(PromotionDto dto,@RequestParam("mainUploadFile") MultipartFile mainUploadFile) {
+		System.out.println(dto.toString());
 		String path = "common/delivery";
 		if(!mainUploadFile.getOriginalFilename().equals("")) {
 			dto.setP_img(fService.fileUpload(mainUploadFile, path));

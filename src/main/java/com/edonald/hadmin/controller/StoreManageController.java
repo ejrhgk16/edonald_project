@@ -51,7 +51,7 @@ public class StoreManageController {
 	public String storeUpdateBySadmin(Authentication authentication, Model model) {
 		SecurityUser user = (SecurityUser) authentication.getPrincipal(); 
 		model.addAttribute("store",storeManageService.getStore(Integer.toString(user.getMemberDto().getStore_code())));
-		return "/admin/hadmin/usercheck/storeUpdate";
+		return "/admin/sadmin/Modify/storeUpdate";
 	}	
 	
 	@ResponseBody
