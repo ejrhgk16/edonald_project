@@ -49,7 +49,7 @@ public class CertifyServiceImpl implements CertifyService {
         properties.load(reader);
         api_secret = properties.getProperty("SMS_SECRET_API_KEY");
 	    }catch(IOException e) {
-	    	
+	    	System.out.println("IOException");
 	    }
 		// 디비에서 중복확인 및 횟수 확인 추가 해야함
 		// 포인트 다써버림
@@ -57,14 +57,15 @@ public class CertifyServiceImpl implements CertifyService {
 		int num;
 		while (true) {
 			num = (int) (Math.random() * (99999 - 10000 + 1)) + 10000;
+			dto.setCode(num);
 			if (getCountAuthentication(dto) == 0) {
 				System.out.println( "인증코드 : "+num);
 				break;
 			}
 		}
 		Message msg = new Message();
-		msg.setFrom("01039085470");
-		msg.setFrom("01024954502");
+//		msg.setFrom("01039085470");
+//		msg.setFrom("01024954502");
 		msg.setFrom(fromNum);
 		msg.setTo(user_phone);
 		msg.setText("[edonald]인증번호 "+ num+" 입니다.");
