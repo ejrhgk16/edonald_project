@@ -50,13 +50,18 @@ public class JoinController {
 		session.setAttribute("addrDto", addrDto);
 		MemberDto mem = (MemberDto)session.getAttribute("memberDto");
 		if(mem != null) {
+			if(mem.getOauth().equals("naver")) {
 			addrDto.setUser_email(mem.getUser_email());
+			addrDto.setD_key("d");
 			memberService.joinAddressNaver(addrDto);
 			SecurityUser naverDto = (SecurityUser)userDetailService.loadUserByUsername(mem.getUser_email());
 			Authentication authentication = new UsernamePasswordAuthenticationToken(naverDto, naverDto.getPassword(), naverDto.getAuthorities());
 			SecurityContext context = SecurityContextHolder.getContext();
 			context.setAuthentication(authentication);
 			return "/ed/deliverHome";
+			}else {
+				return "/ed/joinUserPage";
+			}
 		}
 		return "/ed/joinUserPage";
 	}
@@ -86,6 +91,13 @@ public class JoinController {
 		if(memberService.joinCheckEmail(dto.getUser_email()) != null) {
 			return new ResponseEntity<String>("이메일이 이미 존재합니다", HttpStatus.BAD_REQUEST);
 		}
+		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
+		authenticationDto.setUser_email(dto.getUser_email());
+		authenticationDto.setType("join");
+		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
+			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
+		
+		}
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("memberDto", dto);
@@ -96,6 +108,8 @@ public class JoinController {
 	public String checkEmailPage() {
 		return "/delivery/join/joinCheckEmail";
 	}
+	
+	
 	@GetMapping("/ed/checkPhonePage")
 	public ModelAndView checkPhonePage(HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -103,10 +117,6 @@ public class JoinController {
 		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
 		authenticationDto.setUser_email(dto.getUser_email());
 		authenticationDto.setType("join");
-		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
-			System.out.println("인증횟수 초과");
-			return null;
-		}
 		String certifyNum = certifyService.certifyPhone(dto.getUser_phone(),authenticationDto);
 		dto.setCertifyNum(certifyNum);
 		ModelAndView mv = new ModelAndView();
@@ -117,6 +127,13 @@ public class JoinController {
 	public @ResponseBody ResponseEntity<String>certifyCheck(@RequestParam String certifyNum, HttpSession session){
 		MemberDto dto = (MemberDto) session.getAttribute("memberDto");
 		String certifyNumCheck = dto.getCertifyNum();
+		System.out.println(certifyNum);
+		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
+		authenticationDto.setUser_email(dto.getUser_email());
+		authenticationDto.setType("join");
+		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
+			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
+		}
 		if(certifyNumCheck.equals(certifyNum)) {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}else {

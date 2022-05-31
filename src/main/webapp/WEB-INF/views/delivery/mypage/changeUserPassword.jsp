@@ -43,7 +43,10 @@
 									},
 									success : function(res) {
 										if (res != "fail") {
+											alert("비밀번호변경완료")
 											location.href = res;
+										}else{
+											alert("비밀번호가 틀렸습니다")
 										}
 									},
 									error : function() {

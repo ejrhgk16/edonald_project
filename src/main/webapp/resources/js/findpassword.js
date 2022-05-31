@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var end = false;
 	$('#sumbitBtn').on('click',function(){
 		if (end){
-			$(location).attr("href", "/ed/deliveryHome");
+			$(location).attr("href", "/ed/deliverHome");
 			return;
 		}
 		var user_email =  $('#form_forgotpassword_verification').val();

@@ -294,6 +294,7 @@ $(document).ready(function(){
 													</div> 
 												</div>
 											</div>
+											<c:if test="${principal.memberDto.oauth == 'edonald'}">
 											<div class="row">
 												<div class="col-xs-12">
 													 <div class="form-group">
@@ -302,6 +303,7 @@ $(document).ready(function(){
 													</div> 
 												</div>
 											</div>
+											</c:if>
 									
 								</fieldset>
 								

@@ -21,7 +21,7 @@
 $(document).ready(function(){
 	$("#joinComplete").on("click", function(e){
 		var certifyNum = $("#form_accountactivation_activationcode").val()
-		var url = "/order/nologin/checkNum?certifyNum="+certifyNum;
+		var url = "/ed/join/certifyNumCheck?certifyNum="+certifyNum;
 		$.ajax({
 			type : "GET",
 			url : url,
@@ -137,7 +137,7 @@ $(document).ready(function(){
 							</p>
 							<p>인증코드를 입력해주세요</p>
 							<p>
-								문자를 5분안에 받지못하셨다면, 재발송을 위해 <a href="/kr/sendActivate.html">여기</a>를
+								문자를 5분안에 받지못하셨다면, 재발송을 위해 <a href="/ed/checkPhonePage">여기</a>를
 								클릭해주세요
 							</p>
 							<form id="form_accountactivation" name="form_accountactivation"
