@@ -94,9 +94,9 @@ public class JoinController {
 		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
 		authenticationDto.setUser_email(dto.getUser_email());
 		authenticationDto.setType("join");
-		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
+		int count = certifyService.getCountAuthentication(authenticationDto);
+		if ( count > 5) {
 			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
-		
 		}
 		
 		HttpSession session = req.getSession();
@@ -131,7 +131,8 @@ public class JoinController {
 		AuthenticationCodeDto authenticationDto = new AuthenticationCodeDto();
 		authenticationDto.setUser_email(dto.getUser_email());
 		authenticationDto.setType("join");
-		if (certifyService.getCountAuthentication(authenticationDto) > 5) {
+		int count = certifyService.getCountAuthentication(authenticationDto);
+		if ( count > 5) {
 			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
 		}
 		if(certifyNumCheck.equals(certifyNum)) {
