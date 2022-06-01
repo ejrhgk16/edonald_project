@@ -322,21 +322,27 @@ public class OrderController {
 	public String phonechek() {
 		return "/delivery/order/noLoginOrder/checkphone";
 	}
+	
 	@GetMapping("/order/nologin/certifyNum")
 	public @ResponseBody ResponseEntity<String> checkPhonePage(@RequestParam String phoneNum, @RequestParam String name, HttpServletRequest req) {
 		MemberDto memberDto = new MemberDto();
+		System.out.println(phoneNum);
+		System.out.println(name);
 		memberDto.setUser_phone(phoneNum);
 		memberDto.setUser_name(name);
 		
 		AuthenticationCodeDto dto = new AuthenticationCodeDto();
 		dto.setUser_email(phoneNum);
 		dto.setType("order_nologin");
+		
 		if (certifyService.getCountAuthentication(dto) > 5) {
 			System.out.println("인증횟수 초과");
 			return new ResponseEntity<String>("인증 횟수 초과", HttpStatus.BAD_REQUEST);
 		}else {
+		
 			HttpSession session= req.getSession();
 			String certifyNum = certifyService.certifyPhone(memberDto.getUser_phone(),dto);
+			System.out.println(certifyNum);
 			memberDto.setCertifyNum(certifyNum);
 			session.setAttribute("noLoginMemberDto", memberDto);
 			
