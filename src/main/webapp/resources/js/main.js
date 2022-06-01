@@ -100,17 +100,17 @@ $(document).ready(function() {
 	});
 	$(".how-it-works.home-section").children("p").on("click", function(e) {
 		e.preventDefault();
-		noLogin();
+		
 	})
 	var $topLoginText = $(".my-account-quicklinks").children(".list-inline.list-inline-divide").children();
 
 	$topLoginText.eq(1).children(".list-item-target").on("click", function(e) {
 		e.preventDefault();
-		noLogin();
+		
 	})
 	$topLoginText.eq(2).children(".list-item-target").on("click", function(e) {
 		e.preventDefault();
-		noLogin();
+	
 	})
 
 

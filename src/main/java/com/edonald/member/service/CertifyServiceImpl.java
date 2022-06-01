@@ -49,7 +49,6 @@ public class CertifyServiceImpl implements CertifyService {
         properties.load(reader);
         api_secret = properties.getProperty("SMS_SECRET_API_KEY");
 	    }catch(IOException e) {
-	    	System.out.println("IOException");
 	    }
 		// 디비에서 중복확인 및 횟수 확인 추가 해야함
 		// 포인트 다써버림
