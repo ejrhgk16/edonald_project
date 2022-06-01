@@ -139,7 +139,7 @@ public class OrderController {
 		if(orignTotalPrice == 0 && productPrice < criteriaCost) {//첫 제품추가시 배달비 2500원 플러스
 			productPrice += smallOrderCost;
 		}
-		if(orignTotalPrice == 0 && productPrice > criteriaCost) {
+		else if(orignTotalPrice == 0 && productPrice > criteriaCost) {
 			orderListDto.setDeliverCost(0);
 		}
 		
@@ -175,8 +175,9 @@ public class OrderController {
 		}
 		
 		//장바구니에 제품이 없는경우
-		if(totalPrice == smallOrderCost) {
+		if(totalPrice <= smallOrderCost) {
 			totalPrice=0;
+			orderListDto.setDeliverCost(smallOrderCost);
 		}
 
 		orderListDto.setTotal_price(totalPrice);
@@ -338,7 +339,7 @@ public class OrderController {
 		dto.setUser_email(phoneNum);
 		dto.setType("order_nologin");
 		
-		if (certifyService.getCountAuthentication(dto) > 5) {
+		if (certifyService.getCountAuthentication(dto) > 20) {
 			System.out.println("인증횟수 초과");
 			return new ResponseEntity<String>("인증 횟수 초과", HttpStatus.BAD_REQUEST);
 		}else {
@@ -363,7 +364,7 @@ public class OrderController {
 		dto.setUser_email(mDto.getUser_email());
 		
 		int count = certifyService.getCountAuthentication(dto);
-		if ( count > 5) {
+		if ( count > 20) {
 			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
 		}
 		// db 가서 인증코드 맞는지 받아오고.

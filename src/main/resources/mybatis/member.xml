@@ -21,7 +21,7 @@
 	</select>
 	
 	<update id="OauthNaver">
-		update user_info set oauth=naver where user_email = #{user_email} 
+		update user_info set oauth='naver' where user_email = #{user_email} 
 	</update>
 	
 	<select id="getAddressBySeq" resultType="com.edonald.member.dto.AddressDto">

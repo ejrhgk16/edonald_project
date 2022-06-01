@@ -46,6 +46,9 @@ $(document).ready(function(){
 			},
 			error : function(res){
 				alert(res.responseText);
+				if(res.responseText == "인증가능횟수가 초과되었습니다"){
+					location.href="/ed/deliverHome";
+				}
 			}
 		})
 	})
@@ -186,6 +189,7 @@ $(document).ready(function(){
 			<div class="footer-disclaimer">
 				<div class="container">
 					<div class="text-center">
+					             <br><br><br><br><br><br><br><br><br><br><br><br><br>
 						한국맥도날드(유) | 대표자: 앤토니 마티네즈 | 서울특별시 종로구 종로 51 종로타워 14층 | 전화번호:
 						1600-5252 | 사업자등록번호: 101-81-26409 | 호스팅서비스 제공자: 아마존 웹 서비스 <br>
 						<br>공정위 사업자 링크 정보: <a
