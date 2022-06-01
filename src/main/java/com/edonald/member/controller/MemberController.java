@@ -58,10 +58,6 @@ public class MemberController {
 	private NaverLogin naverLogin;
 	@Autowired
 	private MemberService memberService;
-	@Autowired
-	private MemberMapper mapper;
-	@Autowired
-	private BCryptPasswordEncoder encoder;
 
 
 	@RequestMapping(value = "/ed/naverCallback", method = { RequestMethod.GET, RequestMethod.POST })
