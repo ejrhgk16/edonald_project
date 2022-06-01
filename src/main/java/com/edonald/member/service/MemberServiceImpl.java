@@ -60,6 +60,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String naverLogin(JsonObject res, HttpServletRequest req) {
 		String email = res.get("email").getAsString();
+		System.out.println(email);
 		String id = res.get("id").getAsString();
 		String name = res.get("name").getAsString();
 		System.out.println("name  " + name);
@@ -75,6 +76,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		HttpSession session = req.getSession();
 		MemberDto member = mapper.getMemberById(email);
+
 		
 		if (member == null) {
 			MemberDto mem = new MemberDto();

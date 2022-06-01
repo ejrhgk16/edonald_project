@@ -20,7 +20,8 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 public class NaverLogin {
     private final static String CLIENT_ID = "DXUoYUTnxjQh2eIbHQ30";
     private final static String CLIENT_SECRET = "9ADIoX1_n_";
-    private final static String REDIRECT_URI = "http://ec2-3-34-182-115.ap-northeast-2.compute.amazonaws.com/ed/naverCallback";
+//    private final static String REDIRECT_URI = "http://ec2-3-34-182-115.ap-northeast-2.compute.amazonaws.com/ed/naverCallback";
+    private final static String REDIRECT_URI = "http://localhost:8080/ed/naverCallback";
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
