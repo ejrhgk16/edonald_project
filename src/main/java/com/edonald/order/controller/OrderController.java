@@ -375,7 +375,9 @@ public class OrderController {
 	        cal2.setTime(dbDate);
 	        cal2.add(Calendar.MINUTE, 5); //5분안에 인증
 	        if( cal1.before(cal2) ) {
+	        	MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
 	        	cService.deleteAuthenticationRecord(list.get(0).getUser_email());
+	        	memberDto.setCertifyNum("ok");
 	    		return new ResponseEntity<String>(HttpStatus.OK);	        	
 	        }else {
 	        	return new ResponseEntity<String>("만료된 코드입니다.",HttpStatus.BAD_REQUEST);
