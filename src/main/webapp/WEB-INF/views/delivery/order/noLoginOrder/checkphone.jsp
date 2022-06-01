@@ -44,8 +44,8 @@ $(document).ready(function(){
 			success : function(){
 				location.href="/order/nologin/registerAddress";
 			},
-			error : function(){
-				alert("인증번호가 다릅니다");
+			error : function(res){
+				alert(res.responseText);
 			}
 		})
 	})

@@ -1,6 +1,10 @@
 package com.edonald.member.controller;
 
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -37,6 +41,7 @@ public class JoinController {
 	private MemberService memberService;
 	@Autowired
 	private SecurityUserDetailService userDetailService;
+
 	
 	@GetMapping("/ed/joinPage")
 	public String joinpage( ) {
@@ -130,6 +135,7 @@ public class JoinController {
 	}
 	@GetMapping("/ed/join/certifyNumCheck")
 	public @ResponseBody ResponseEntity<String>certifyCheck(@RequestParam String certifyNum, HttpSession session){
+
 		MemberDto dto = (MemberDto) session.getAttribute("memberDto");
 		String certifyNumCheck = dto.getCertifyNum();
 		System.out.println(certifyNum);
@@ -156,7 +162,7 @@ public class JoinController {
 	
 
 	
-	}
+}
 
 	
 	

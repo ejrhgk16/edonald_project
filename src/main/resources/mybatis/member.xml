@@ -92,7 +92,7 @@
 		INSERT INTO authentication_code VALUES(${code},#{user_email},#{type},default)
 	</insert>
 	<select id="getAuthenticationCodeByCode" resultType="com.edonald.member.dto.AuthenticationCodeDto">
-		SELECT * FROM authentication_code WHERE code = #{code} AND type = #{type}
+		SELECT * FROM authentication_code WHERE code = #{code} AND type = #{type} AND DATE_FORMAT( date, "%Y-%m-%d") = curdate()
 	</select>
 	<delete id="deleteAuthenticationRecord">
 		DELETE FROM authentication_code WHERE user_email = #{user_email}

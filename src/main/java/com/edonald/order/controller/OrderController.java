@@ -2,6 +2,7 @@ package com.edonald.order.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,8 @@ public class OrderController {
 	private CertifyService certifyService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private CertifyService cService;
 	
 	int smallOrderCost = 2500;
 	int criteriaCost = 13000;
@@ -348,14 +351,48 @@ public class OrderController {
 	
 	@GetMapping("/order/nologin/checkNum")
 	public @ResponseBody ResponseEntity<String>checkNum(@RequestParam String certifyNum, HttpSession session){
-		MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
-		String certifyNumCheck = memberDto.getCertifyNum();
-		if(certifyNumCheck.equals(certifyNum)) {
-			memberDto.setCertifyNum("ok");
-			return new ResponseEntity<String>(HttpStatus.OK);
-		}else {
-			return new ResponseEntity<String>("인증번호가 다릅니다", HttpStatus.BAD_REQUEST);
+		AuthenticationCodeDto dto = new AuthenticationCodeDto();
+		
+		MemberDto mDto = (MemberDto) session.getAttribute("noLoginMemberDto");
+		dto.setUser_email(mDto.getUser_email());
+		
+		int count = certifyService.getCountAuthentication(dto);
+		if ( count > 5) {
+			return new ResponseEntity<String>("인증가능횟수가 초과되었습니다", HttpStatus.BAD_REQUEST);
 		}
+		// db 가서 인증코드 맞는지 받아오고.
+		dto.setUser_email(null);
+		dto.setCode(Integer.parseInt(certifyNum));
+		dto.setType("order_nologin");
+		List<AuthenticationCodeDto> list = cService.getAuthenticationCodeByCode(dto);
+		// CODE 확인
+		if(list.size() == 1) {
+			// db에서 시간값 ㅣ 3분 + now() (cal클래스) 비교해서 if 문 "만료된 인증" 
+			Timestamp dbDate = list.get(0).getDate();
+			Calendar cal1 = Calendar.getInstance();
+			Calendar cal2 = Calendar.getInstance();
+	        cal1.setTime(new java.util.Date());
+	        cal2.setTime(dbDate);
+	        cal2.add(Calendar.MINUTE, 5); //5분안에 인증
+	        if( cal1.before(cal2) ) {
+	        	cService.deleteAuthenticationRecord(list.get(0).getUser_email());
+	    		return new ResponseEntity<String>(HttpStatus.OK);	        	
+	        }else {
+	        	return new ResponseEntity<String>("만료된 코드입니다.",HttpStatus.BAD_REQUEST);
+	        }
+		}else {
+			return new ResponseEntity<String>("WrongCode",HttpStatus.BAD_REQUEST);
+		}
+		
+		
+//		MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
+//		String certifyNumCheck = memberDto.getCertifyNum();
+//		if(certifyNumCheck.equals(certifyNum)) {
+//			memberDto.setCertifyNum("ok");
+//			return new ResponseEntity<String>(HttpStatus.OK);
+//		}else {
+//			return new ResponseEntity<String>("인증번호가 다릅니다", HttpStatus.BAD_REQUEST);
+//		}
 	}
 	
 	@GetMapping("/order/nologin/registerAddress")
