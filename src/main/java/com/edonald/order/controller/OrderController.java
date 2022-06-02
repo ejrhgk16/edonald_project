@@ -46,8 +46,6 @@ public class OrderController {
 	private CertifyService certifyService;
 	@Autowired
 	private MemberService memberService;
-	@Autowired
-	private CertifyService cService;
 	
 	int smallOrderCost = 2500;
 	int criteriaCost = 13000;
@@ -370,7 +368,7 @@ public class OrderController {
 		dto.setUser_email(null);
 		dto.setCode(Integer.parseInt(certifyNum));
 		dto.setType("order_nologin");
-		List<AuthenticationCodeDto> list = cService.getAuthenticationCodeByCode(dto);
+		List<AuthenticationCodeDto> list = certifyService.getAuthenticationCodeByCode(dto);
 		// CODE 확인
 		if(list.size() == 1) {
 			// db에서 시간값 ㅣ 3분 + now() (cal클래스) 비교해서 if 문 "만료된 인증" 
@@ -382,7 +380,7 @@ public class OrderController {
 	        cal2.add(Calendar.MINUTE, 5); //5분안에 인증
 	        if( cal1.before(cal2) ) {
 	        	MemberDto memberDto = (MemberDto) session.getAttribute("noLoginMemberDto");
-	        	cService.deleteAuthenticationRecord(list.get(0).getUser_email());
+	        	certifyService.deleteAuthenticationRecord(list.get(0).getUser_email());
 	        	memberDto.setCertifyNum("ok");
 	    		return new ResponseEntity<String>(HttpStatus.OK);	        	
 	        }else {

@@ -111,11 +111,7 @@
                                 <i class="fas fa-table me-1"></i>
                                 	맥도날드 버거＆세트메뉴 내역
                             </div>
-                            <div>
-                            <br>
-                           &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-dark">저장</button>
-                           
-                            </div>
+                          
 						<div class="card-body">
 							<table id="datatablesSimple">
 

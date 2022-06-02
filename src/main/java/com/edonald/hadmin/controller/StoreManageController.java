@@ -56,7 +56,11 @@ public class StoreManageController {
 	
 	@ResponseBody
 	@PostMapping("/sadmin/storeUpdate.do")
-	public void storeUpdateDoBySadmin(StoreDto dto) {
+	public void storeUpdateDoBySadmin(Authentication authentication, StoreDto dto) {
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
+		user.getMemberDto().getDeliverStore().setStore_name(dto.getStore_name());
+		user.getMemberDto().getDeliverStore().setStore_status(dto.getStore_status());
+		user.getMemberDto().getDeliverStore().setStore_phone(dto.getStore_phone());
 		storeManageService.updateStore(dto);
 	}
 
