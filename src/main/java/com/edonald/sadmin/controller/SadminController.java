@@ -233,7 +233,8 @@ public class SadminController {
 			calen.setTime(today);
 			DateFormat df = new SimpleDateFormat("MM/dd");
 			String[] labels= new String[7];
-			for(int i=0; i<7; i++) {
+			labels[6] = df.format(calen.getTime());
+			for(int i=5; i>=0; i--) {
 				calen.add(Calendar.DATE, -1);
 				labels[i] = df.format(calen.getTime());
 			}
@@ -285,7 +286,8 @@ public class SadminController {
 			calen.setTime(today);
 			DateFormat df = new SimpleDateFormat("MM/dd");
 			String[]labels= new String[7];
-			for(int i=6; i>=0; i--) {
+			labels[6] = df.format(calen.getTime());
+			for(int i=5; i>=0; i--) {
 				calen.add(Calendar.DATE, -1);
 				labels[i] = df.format(calen.getTime());
 			}
