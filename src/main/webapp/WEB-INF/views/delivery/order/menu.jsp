@@ -340,7 +340,7 @@ function addMenu(setCheck){
 							</form>
 							<button id="cartAddBtn"
 								class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder">
-								<i class="mcd icon mcd-bag"></i> 카트에 추가
+								카트에 추가
 							</button>
 						</div>
 					</div>
@@ -478,7 +478,7 @@ function addMenu(setCheck){
 											<h2 class="modal-title text-ucase">항목을 선택하세요</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">
-												<i class="mcd icon mcd-close"></i>
+												x
 											</button>
 										</div>
 										<div class="modal-body">

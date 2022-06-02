@@ -136,9 +136,6 @@ $(document).ready(function(){
 								인증코드가 등록된 휴대전화 발송되었습니다: <strong>${memberDto.user_phone}</strong>.
 							</p>
 							<p>인증코드를 입력해주세요</p>
-							<p>
-								문자를 5분 안에 입력해주세요
-							</p>
 							<form id="form_accountactivation" name="form_accountactivation"
 								method="post" accept-charset="utf-8" role="form"
 								action="/kr/registerActivate.html" novalidate="novalidate">
