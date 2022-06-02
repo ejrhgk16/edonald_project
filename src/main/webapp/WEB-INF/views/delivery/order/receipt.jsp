@@ -13,13 +13,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var total_price = '${orderListDto.total_price}';
+	var deliver_cost = '${orderListDto.deliverCost}';
+
 	if(!total_price){total_price = 0}
 	total_price ='₩ '+comma(total_price);
 
-	var deliver_cost = '${orderListDto.deliverCost}';
 	if(!deliver_cost){deliver_cost = 0}
 	deliver_cost = '₩ '+comma(deliver_cost);
 
+	
+	
 	$("#totalCost").text(total_price);
 	$("#deliverCost").text(deliver_cost);
 	

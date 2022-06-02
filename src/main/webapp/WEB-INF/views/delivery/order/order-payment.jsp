@@ -375,7 +375,7 @@
 										<table class="table-default table-cost">
 											<tfoot class="total">
 												<tr>
-													<th scope="row">총 주문합계:</th>
+													<th scope="row" style="width100%"><h3>총 주문합계:</h3></th>
 	
 													<td><span id="totalCost"> </span></td>
 												</tr>
