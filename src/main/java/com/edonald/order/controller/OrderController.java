@@ -146,7 +146,7 @@ public class OrderController {
 		int newTotalPrice = orignTotalPrice + productPrice;
 		int deliverCost = orderListDto.getDeliverCost();
 		//제품을 2번이상 추가했는데 만삼천원을 처음으로 넘겼을때  2500원마이너스
-		if(newTotalPrice >= criteriaCost && deliverCost == smallOrderCost && orignTotalPrice!=0) {
+		if(newTotalPrice - orderListDto.getDeliverCost() >= criteriaCost && deliverCost == smallOrderCost && orignTotalPrice!=0) {
 			newTotalPrice -= smallOrderCost;
 			orderListDto.setDeliverCost(0);
 		}

@@ -20,11 +20,8 @@
 		select * from user_address where user_email = #{username}
 	</select>
 	
-<<<<<<< HEAD
-	<update id="OauthNaver">
-=======
+
 	<update id="oauthNaver">
->>>>>>> bc9db942ee8cc0ea1868f45d06bb4dcd9c4730de
 		update user_info set oauth='naver' where user_email = #{user_email} 
 	</update>
 	
