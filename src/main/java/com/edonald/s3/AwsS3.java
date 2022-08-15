@@ -18,8 +18,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class AwsS3 {
 	private AmazonS3 s3Client;
-	final private String accessKey = "AKIA4D6LFMKRSWEPKBP7";
-	final private String secretKey = "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";
+	final private String accessKey = "*";
+	final private String secretKey = "*";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
 	private String bucket = "edonaldfile";	
 
